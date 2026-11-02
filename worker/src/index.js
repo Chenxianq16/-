@@ -146,21 +146,6 @@ Return only one valid JSON object with this shape:
 `;
 }
 
-function extractOutputText(response) {
-  if (typeof response.output_text === "string") {
-    return response.output_text;
-  }
-  const parts = [];
-  for (const item of response.output || []) {
-    for (const content of item.content || []) {
-      if (typeof content.text === "string") {
-        parts.push(content.text);
-      }
-    }
-  }
-  return parts.join("");
-}
-
 function parseModelJson(text) {
   const trimmed = String(text || "").trim();
   try {
@@ -178,7 +163,7 @@ function parseModelJson(text) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    if (url.pathname !== "/api/analyze") {
+    if (!url.pathname.endsWith("/api/analyze")) {
       return jsonResponse({ error: "Not found" }, 404, request, env);
     }
 
@@ -201,11 +186,10 @@ export default {
       return jsonResponse({ error: "Origin not allowed" }, 403, request, env);
     }
 
-    if (!env.OPENAI_API_KEY || !env.OPENAI_MODEL) {
+    if (!env.DEEPSEEK_API_KEY) {
       return jsonResponse(
         {
-          error:
-            "Worker is missing OPENAI_API_KEY or OPENAI_MODEL. Configure the secrets first."
+          error: "Worker is missing DEEPSEEK_API_KEY. Configure the secret first."
         },
         500,
         request,
@@ -227,17 +211,21 @@ export default {
         : body.type === "question"
           ? questionInstructions()
           : articleInstructions();
-    const apiResponse = await fetch("https://api.openai.com/v1/responses", {
+    const apiResponse = await fetch("https://api.deepseek.com/chat/completions", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${env.OPENAI_API_KEY}`,
+        Authorization: `Bearer ${env.DEEPSEEK_API_KEY}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: env.OPENAI_MODEL,
-        instructions,
-        input: JSON.stringify(body),
-        max_output_tokens: 1800
+        model: env.DEEPSEEK_MODEL || "deepseek-chat",
+        messages: [
+          { role: "system", content: instructions },
+          { role: "user", content: JSON.stringify(body) }
+        ],
+        response_format: { type: "json_object" },
+        max_tokens: 1800,
+        stream: false
       }),
       signal: AbortSignal.timeout(40_000)
     });
@@ -245,12 +233,13 @@ export default {
     const result = await apiResponse.json().catch(() => ({}));
     if (!apiResponse.ok) {
       const message =
-        result.error?.message || `OpenAI returned HTTP ${apiResponse.status}`;
+        result.error?.message || `DeepSeek returned HTTP ${apiResponse.status}`;
       return jsonResponse({ error: message }, 502, request, env);
     }
 
     try {
-      const data = parseModelJson(extractOutputText(result));
+      const text = result.choices?.[0]?.message?.content;
+      const data = parseModelJson(text);
       return jsonResponse({ data }, 200, request, env);
     } catch (error) {
       return jsonResponse({ error: error.message }, 502, request, env);

@@ -1,4 +1,4 @@
 window.CET6_CONFIG = {
-  aiEndpoint: "",
+  aiEndpoint: "https://lingosu.online/cet6-listening-ai/api/analyze",
   requestTimeoutMs: 45000
 };

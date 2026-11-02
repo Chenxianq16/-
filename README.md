@@ -30,28 +30,33 @@ npm test
 npm run validate:data
 ```
 
-## AI 代理配置
+## DeepSeek AI 代理配置
 
-OpenAI API Key 不能放进浏览器。先将 `worker/` 部署到 Cloudflare Workers：
+DeepSeek API Key 不能放进浏览器。先将 `worker/` 部署到 Cloudflare Workers：
 
 ```powershell
 cd worker
 npx wrangler login
-npx wrangler secret put OPENAI_API_KEY
-npx wrangler secret put OPENAI_MODEL
+npx wrangler secret put DEEPSEEK_API_KEY
 npx wrangler deploy
 ```
 
-`OPENAI_MODEL` 填写你的 OpenAI 账号可用的模型 ID。随后在网页右上角的
+模型默认使用 `deepseek-chat`。随后在网页右上角的
 “AI 设置”中填写 Worker 地址，例如：
 
 ```text
 https://cet6-listening-ai.<your-subdomain>.workers.dev/api/analyze
 ```
 
-建议同时配置 `ALLOWED_ORIGIN` 为你的 GitHub Pages 域名，避免其他人调用
-该代理消耗你的 API 额度。本机开发时可设为
+`ALLOWED_ORIGIN` 已设置为你的 GitHub Pages 域名，避免其他人调用
+该代理消耗你的 DeepSeek API 额度。本机开发时可设为
 `http://127.0.0.1:8080`。
+
+当前线上 Worker 地址：
+
+```text
+https://lingosu.online/cet6-listening-ai/api/analyze
+```
 
 ## GitHub Pages
 

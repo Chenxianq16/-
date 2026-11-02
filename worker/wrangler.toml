@@ -2,7 +2,13 @@ name = "cet6-listening-ai"
 main = "src/index.js"
 compatibility_date = "2026-11-02"
 
+[vars]
+ALLOWED_ORIGIN = "https://chenxianq16.github.io"
+DEEPSEEK_MODEL = "deepseek-chat"
+
+[[routes]]
+pattern = "lingosu.online/cet6-listening-ai/*"
+zone_name = "lingosu.online"
+
 # Configure secrets with Wrangler instead of committing them:
-#   npx wrangler secret put OPENAI_API_KEY
-#   npx wrangler secret put OPENAI_MODEL
-#   npx wrangler secret put ALLOWED_ORIGIN
+#   npx wrangler secret put DEEPSEEK_API_KEY

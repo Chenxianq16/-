@@ -2,5 +2,9 @@ node_modules/
 .DS_Store
 Thumbs.db
 .wrangler/
+.dev.vars
+.deepseek-key.txt
+.env
+.env.*
 tmp/
 *.log

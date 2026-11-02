@@ -14,7 +14,7 @@ test("worker answers CORS preflight", async () => {
   assert.equal(response.headers.get("Access-Control-Allow-Origin"), "http://127.0.0.1:8080");
 });
 
-test("worker rejects invalid payload before calling OpenAI", async () => {
+test("worker rejects invalid payload before calling DeepSeek", async () => {
   const response = await worker.fetch(
     new Request("https://worker.example/api/analyze", {
       method: "POST",
@@ -26,8 +26,7 @@ test("worker rejects invalid payload before calling OpenAI", async () => {
     }),
     {
       ALLOWED_ORIGIN: "http://127.0.0.1:8080",
-      OPENAI_API_KEY: "test",
-      OPENAI_MODEL: "test"
+      DEEPSEEK_API_KEY: "test"
     }
   );
   assert.equal(response.status, 400);
@@ -45,8 +44,7 @@ test("worker rejects an empty review-article word list", async () => {
     }),
     {
       ALLOWED_ORIGIN: "http://127.0.0.1:8080",
-      OPENAI_API_KEY: "test",
-      OPENAI_MODEL: "test"
+      DEEPSEEK_API_KEY: "test"
     }
   );
   assert.equal(response.status, 400);
