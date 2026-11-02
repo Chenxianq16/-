@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7f7f4">
+    <meta
+      name="description"
+      content="六级听力盲听、逐句默写、题目检测与 AI 错因分析。"
+    >
+    <title>CET6 精听</title>
+    <link rel="stylesheet" href="./assets/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="回到首页">
+        <span class="brand-mark">C6</span>
+        <span>CET6 精听</span>
+      </a>
+      <nav class="nav" aria-label="主导航">
+        <a href="#home" data-nav="home">训练</a>
+        <a href="#vocabulary" data-nav="vocabulary">错词本</a>
+        <button class="text-button" id="open-settings" type="button">AI 设置</button>
+      </nav>
+    </header>
+
+    <main id="app" class="app-shell" aria-live="polite">
+      <section class="loading-state">
+        <p class="eyebrow">LOADING</p>
+        <h1>正在载入听力数据</h1>
+      </section>
+    </main>
+
+    <audio id="audio" controls preload="metadata"></audio>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <dialog id="settings-dialog" class="dialog">
+      <form method="dialog" class="dialog-panel">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">OPENAI PROXY</p>
+            <h2>AI 接口设置</h2>
+          </div>
+          <button class="icon-button" value="cancel" aria-label="关闭">×</button>
+        </div>
+        <label class="field">
+          <span>Worker 地址</span>
+          <input
+            id="ai-endpoint"
+            type="url"
+            placeholder="https://your-worker.workers.dev/api/analyze"
+            autocomplete="off"
+          >
+        </label>
+        <p class="hint">
+          只填写代理地址，不要把 OpenAI API Key 写入网页。配置后点击“保存”。
+        </p>
+        <div class="dialog-actions">
+          <button class="button button-secondary" value="cancel">取消</button>
+          <button class="button" id="save-settings" value="default">保存</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="./assets/config.js"></script>
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>

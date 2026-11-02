@@ -1,0 +1,8 @@
+name = "cet6-listening-ai"
+main = "src/index.js"
+compatibility_date = "2026-11-02"
+
+# Configure secrets with Wrangler instead of committing them:
+#   npx wrangler secret put OPENAI_API_KEY
+#   npx wrangler secret put OPENAI_MODEL
+#   npx wrangler secret put ALLOWED_ORIGIN
