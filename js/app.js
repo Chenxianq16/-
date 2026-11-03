@@ -783,7 +783,7 @@ function renderDiffTokens(diff) {
         return `<span class="diff-token diff-correct">${escapeHtml(token.expected)}</span>`;
       }
       if (token.status === "wrong") {
-        return `<span class="diff-token diff-wrong"><span class="diff-expected">${escapeHtml(token.expected)}</span><span class="diff-replacement"> → ${escapeHtml(token.actual)}</span></span>`;
+        return `<span class="diff-token diff-wrong"><span class="diff-actual">${escapeHtml(token.actual)}</span><span class="diff-expected"> → ${escapeHtml(token.expected)}</span></span>`;
       }
       if (token.status === "missing") {
         return `<span class="diff-token diff-missing">${escapeHtml(token.expected)}</span>`;

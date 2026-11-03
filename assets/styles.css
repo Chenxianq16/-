@@ -1016,12 +1016,13 @@ audio.audio-element {
   background: var(--danger-soft);
 }
 
-.diff-wrong .diff-expected {
+.diff-wrong .diff-actual {
   text-decoration: line-through;
 }
 
-.diff-wrong .diff-replacement {
-  color: var(--ink);
+.diff-wrong .diff-expected {
+  color: var(--correct);
+  font-weight: 650;
 }
 
 .diff-missing {
