@@ -23,6 +23,8 @@ const audioEl = document.querySelector("#audio");
 const toastEl = document.querySelector("#toast");
 const settingsDialog = document.querySelector("#settings-dialog");
 const aiEndpointInput = document.querySelector("#ai-endpoint");
+const reasonDialog = document.querySelector("#reason-dialog");
+const reasonItemName = document.querySelector("#reason-item-name");
 
 const store = loadStore();
 const state = {
@@ -43,7 +45,7 @@ const state = {
   sentenceAnalyses: {},
   questionAnalyses: {},
   loading: new Set(),
-  selfTags: {},
+  pendingAdd: null,
   articleLoading: false
 };
 
@@ -57,6 +59,38 @@ const escapeHtml = (value) =>
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
+
+const wrongItemKindLabels = {
+  word: "单词",
+  phrase: "固定搭配",
+  grammar: "重点语法"
+};
+
+const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+function highlightWrongBookTerms(text) {
+  const terms = Object.values(store.wrongWords)
+    .map((item) => item.word)
+    .filter(Boolean)
+    .sort((a, b) => b.length - a.length);
+  if (!terms.length) {
+    return escapeHtml(text);
+  }
+
+  const pattern = new RegExp(
+    `(?<![A-Za-z])(${terms.map(escapeRegExp).join("|")})(?![A-Za-z])`,
+    "gi"
+  );
+  let output = "";
+  let cursor = 0;
+  for (const match of text.matchAll(pattern)) {
+    output += escapeHtml(text.slice(cursor, match.index));
+    output += `<mark class="wrong-word-highlight">${escapeHtml(match[0])}</mark>`;
+    cursor = match.index + match[0].length;
+  }
+  output += escapeHtml(text.slice(cursor));
+  return output;
+}
 
 const formatDuration = (seconds) => {
   const total = Math.max(0, Math.floor(Number(seconds) || 0));
@@ -595,7 +629,6 @@ function renderDictationStage(section) {
   const analysis = state.sentenceAnalyses[sentence.id];
   const loading = state.loading.has(`sentence:${sentence.id}`);
   const percent = Math.round(((state.sentenceIndex + 1) / section.sentences.length) * 100);
-  const selfTag = state.selfTags[sentence.id];
 
   return `
     <div class="panel-heading">
@@ -621,6 +654,10 @@ function renderDictationStage(section) {
     <textarea
       class="dictation-input"
       id="dictation-input"
+      lang="en"
+      dir="ltr"
+      inputmode="text"
+      enterkeyhint="done"
       spellcheck="false"
       autocomplete="off"
       autocapitalize="sentences"
@@ -655,12 +692,6 @@ function renderDictationStage(section) {
             <p class="translation-line"><strong>原文：</strong>${escapeHtml(sentence.text)}</p>
             <p class="translation-line"><strong>中文：</strong>${escapeHtml(sentence.translationZh)}</p>
             ${renderWrongWordCandidates(diff)}
-            <div class="self-tags">
-              <span class="status-pill">帮我确认错因</span>
-              <button class="self-tag ${selfTag === "known" ? "active" : ""}" data-action="self-tag" data-value="known">其实认识，只是没听出来</button>
-              <button class="self-tag ${selfTag === "unknown" ? "active" : ""}" data-action="self-tag" data-value="unknown">确实不认识这个词</button>
-              <button class="self-tag ${selfTag === "unclear" ? "active" : ""}" data-action="self-tag" data-value="unclear">不确定</button>
-            </div>
             <div class="analysis-actions">
               <button
                 class="button-secondary"
@@ -757,7 +788,7 @@ function renderReviewStage(section) {
                 <div class="review-sentence-main">
                   <span class="review-sentence-number">${sentence.index + 1}</span>
                   <div>
-                    <p>${escapeHtml(sentence.text)}</p>
+                    <p>${highlightWrongBookTerms(sentence.text)}</p>
                     <small>${escapeHtml(sentence.translationZh)}</small>
                   </div>
                 </div>
@@ -819,6 +850,8 @@ function renderSentenceAnalysis(analysis) {
   const collocations = Array.isArray(analysis.collocations) ? analysis.collocations : [];
   const words = Array.isArray(analysis.words) ? analysis.words : [];
   const nextStep = analysis.nextStep || analysis.practiceTip || "";
+  const currentSentence = getSection()?.sentences[state.sentenceIndex];
+  const context = currentSentence?.text || "";
 
   return `
     <div class="analysis-shell">
@@ -835,12 +868,12 @@ function renderSentenceAnalysis(analysis) {
             }</div>`
           : ""
       }
-      ${renderGrammar(grammar)}
+      ${renderGrammar(grammar, context)}
       ${
         collocations.length
           ? `<div class="analysis-section"><h3>固定搭配</h3><ul>${collocations
               .map(
-                (item) =>
+                (item, index) =>
                   `<li><strong>${escapeHtml(item.expression || item.phrase || item)}</strong>${
                     item.meaning || item.meaningZh
                       ? ` — ${escapeHtml(item.meaning || item.meaningZh)}`
@@ -849,12 +882,12 @@ function renderSentenceAnalysis(analysis) {
                     item.example
                       ? `<br><span>${escapeHtml(item.example)}</span>`
                       : ""
-                  }</li>`
+                  }<div class="analysis-actions"><button class="candidate-word" data-action="add-collocation" data-index="${index}" data-context="${escapeHtml(context)}">+ 加入错词本</button></div></li>`
               )
               .join("")}</ul></div>`
           : ""
       }
-      ${renderVocabularyFromAnalysis(words, "")}
+      ${renderVocabularyFromAnalysis(words, context)}
       ${
         nextStep
           ? `<div class="analysis-section"><h3>下一步</h3><p>${escapeHtml(nextStep)}</p></div>`
@@ -871,13 +904,16 @@ function normalizeTags(tags) {
     .filter(Boolean);
 }
 
-function renderGrammar(grammar) {
+function renderGrammar(grammar, context = "") {
   if (!grammar) return "";
   if (typeof grammar === "string") {
     return `
       <div class="analysis-section">
         <h3>复杂句与语法</h3>
         <p>${escapeHtml(grammar)}</p>
+        <div class="analysis-actions">
+          <button class="candidate-word" data-action="add-grammar" data-context="${escapeHtml(context)}">+ 加入错词本</button>
+        </div>
       </div>
     `;
   }
@@ -894,6 +930,9 @@ function renderGrammar(grammar) {
           ? `<ul>${examples.map((example) => `<li>${escapeHtml(example)}</li>`).join("")}</ul>`
           : ""
       }
+      <div class="analysis-actions">
+        <button class="candidate-word" data-action="add-grammar" data-context="${escapeHtml(context)}">+ 加入错词本</button>
+      </div>
     </div>
   `;
 }
@@ -970,6 +1009,8 @@ function renderVocabularyPage() {
                   </div>
                   ${item.context ? `<p class="vocab-context">${escapeHtml(item.context)}</p>` : ""}
                   <div class="hero-meta" style="margin-top:10px">
+                    <span class="meta-chip">${wrongItemKindLabels[item.kind] || "单词"}</span>
+                    <span class="meta-chip">${escapeHtml(item.reason || "未记录错因")}</span>
                     <span class="meta-chip">出现 ${item.count} 次</span>
                     <span class="meta-chip">${formatRelativeDate(item.updatedAt)}</span>
                   </div>
@@ -1247,6 +1288,17 @@ function openSettings() {
   settingsDialog.showModal();
 }
 
+function queueWrongBookItem(item) {
+  state.pendingAdd = item;
+  reasonItemName.textContent = item.word;
+  reasonDialog.showModal();
+}
+
+function getCurrentSentenceAnalysis() {
+  const sentence = getSection()?.sentences[state.sentenceIndex];
+  return sentence ? state.sentenceAnalyses[sentence.id] : null;
+}
+
 function nextSentence() {
   const section = getSection();
   if (state.sentenceIndex >= section.sentences.length - 1) {
@@ -1374,12 +1426,46 @@ app.addEventListener("click", async (event) => {
   if (action === "add-word") {
     const section = getSection();
     const sentence = section?.sentences[state.sentenceIndex];
-    addWrongWord(store, button.dataset.word, {
+    queueWrongBookItem({
+      word: button.dataset.word,
+      kind: "word",
       meaningZh: button.dataset.meaning || "",
       context: button.dataset.context || sentence?.text || "",
       sectionId: section?.id || ""
     });
-    showToast(`已收藏 ${button.dataset.word}`);
+    return;
+  }
+  if (action === "add-grammar") {
+    const analysis = getCurrentSentenceAnalysis();
+    const grammar = analysis?.grammar;
+    if (!grammar) return;
+    const isText = typeof grammar === "string";
+    const word = isText
+      ? "重点语法"
+      : grammar.title || grammar.structure || "重点语法";
+    const meaningZh = isText
+      ? grammar
+      : [grammar.structure, grammar.explanation].filter(Boolean).join("；");
+    queueWrongBookItem({
+      word,
+      kind: "grammar",
+      meaningZh,
+      context: button.dataset.context || "",
+      sectionId: getSection()?.id || ""
+    });
+    return;
+  }
+  if (action === "add-collocation") {
+    const analysis = getCurrentSentenceAnalysis();
+    const item = analysis?.collocations?.[Number(button.dataset.index)];
+    if (!item) return;
+    queueWrongBookItem({
+      word: item.expression || item.phrase || "固定搭配",
+      kind: "phrase",
+      meaningZh: item.meaning || item.meaningZh || "",
+      context: button.dataset.context || item.example || "",
+      sectionId: getSection()?.id || ""
+    });
     return;
   }
   if (action === "remove-word") {
@@ -1399,14 +1485,6 @@ app.addEventListener("click", async (event) => {
   }
   if (action === "generate-article") {
     await generateArticle();
-    return;
-  }
-  if (action === "self-tag") {
-    const section = getSection();
-    const sentence = section.sentences[state.sentenceIndex];
-    state.selfTags[sentence.id] = button.dataset.value;
-    incrementTag(store, `self:${button.dataset.value}`);
-    render();
     return;
   }
 });
@@ -1446,6 +1524,30 @@ document.querySelector("#save-settings").addEventListener("click", (event) => {
   saveStore(store);
   settingsDialog.close();
   showToast(store.aiEndpoint ? "AI 接口已保存" : "AI 接口已清空");
+});
+
+document.querySelector("#cancel-reason").addEventListener("click", () => {
+  state.pendingAdd = null;
+  reasonDialog.close();
+});
+
+reasonDialog.addEventListener("click", (event) => {
+  const reasonButton = event.target.closest("[data-reason]");
+  if (!reasonButton || !state.pendingAdd) return;
+  const reason = reasonButton.dataset.reason;
+  const item = state.pendingAdd;
+  addWrongWord(store, item.word, {
+    ...item,
+    reason
+  });
+  incrementTag(store, `reason:${reason}`);
+  state.pendingAdd = null;
+  reasonDialog.close();
+  showToast(`已加入错词本：${item.word}`);
+});
+
+reasonDialog.addEventListener("close", () => {
+  state.pendingAdd = null;
 });
 
 audioEl.addEventListener("timeupdate", () => {

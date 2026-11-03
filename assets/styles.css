@@ -781,8 +781,7 @@ audio.audio-element {
 
 .question-actions,
 .dictation-actions,
-.analysis-actions,
-.self-tags {
+.analysis-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -1124,23 +1123,6 @@ audio.audio-element {
   background: var(--warn-soft);
 }
 
-.self-tag {
-  padding: 7px 10px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  color: var(--muted);
-  background: var(--surface);
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.self-tag:hover,
-.self-tag.active {
-  border-color: var(--accent);
-  color: var(--accent-ink);
-  background: var(--accent-soft);
-}
-
 .word-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1225,6 +1207,7 @@ audio.audio-element {
   margin: 0;
   font-size: 22px;
   letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
 }
 
 .vocab-meaning {
@@ -1398,6 +1381,50 @@ audio.audio-element {
   margin-top: 22px;
 }
 
+.reason-item-name {
+  margin-bottom: 4px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--surface-soft);
+  font-size: 18px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.reason-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.reason-option {
+  min-height: 44px;
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  color: var(--ink);
+  background: var(--surface);
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.reason-option:hover {
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  background: var(--accent-soft);
+}
+
+.wrong-word-highlight {
+  padding: 0 2px;
+  border-radius: 3px;
+  color: inherit;
+  background: #ffe66d;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
 .hidden {
   display: none !important;
 }
@@ -1534,6 +1561,10 @@ audio.audio-element {
 
   .review-sentence-actions {
     justify-content: flex-end;
+  }
+
+  .reason-options {
+    grid-template-columns: 1fr;
   }
 }
 

@@ -70,6 +70,8 @@ export function addWrongWord(store, word, details = {}) {
   const existing = store.wrongWords[normalized];
   store.wrongWords[normalized] = {
     word: String(word).trim(),
+    kind: details.kind || existing?.kind || "word",
+    reason: details.reason || existing?.reason || "",
     meaningZh: details.meaningZh || existing?.meaningZh || "",
     meaningEn: details.meaningEn || existing?.meaningEn || "",
     phonetic: details.phonetic || existing?.phonetic || "",

@@ -62,6 +62,30 @@
       </form>
     </dialog>
 
+    <dialog id="reason-dialog" class="dialog">
+      <div class="dialog-panel">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">ERROR REASON</p>
+            <h2>为什么加入错词本？</h2>
+          </div>
+          <button class="icon-button" id="cancel-reason" type="button" aria-label="关闭">×</button>
+        </div>
+        <p class="reason-item-name" id="reason-item-name"></p>
+        <p class="hint">选择一个最接近的错误原因。该原因会和单词、原句一起保存在本机。</p>
+        <div class="reason-options">
+          <button type="button" class="reason-option" data-reason="不认识这个词">不认识这个词</button>
+          <button type="button" class="reason-option" data-reason="认识但没听出来">认识但没听出来</button>
+          <button type="button" class="reason-option" data-reason="连读、弱读或吞音">连读、弱读或吞音</button>
+          <button type="button" class="reason-option" data-reason="语法或句子结构">语法或句子结构</button>
+          <button type="button" class="reason-option" data-reason="固定搭配不熟悉">固定搭配不熟悉</button>
+          <button type="button" class="reason-option" data-reason="拼写或输入错误">拼写或输入错误</button>
+          <button type="button" class="reason-option" data-reason="注意力或记忆遗漏">注意力或记忆遗漏</button>
+          <button type="button" class="reason-option" data-reason="其他原因">其他原因</button>
+        </div>
+      </div>
+    </dialog>
+
     <script src="./assets/config.js"></script>
     <script type="module" src="./js/app.js"></script>
   </body>
