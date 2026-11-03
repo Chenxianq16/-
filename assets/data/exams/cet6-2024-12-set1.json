@@ -1,0 +1,2953 @@
+{
+  "meta": {
+    "id": "cet6-2024-12-set1",
+    "sourceId": "cet6_2024.12_set1",
+    "title": "2024 年 12 月六级听力（第 1 套）",
+    "shortTitle": "2024.12 · 第 1 套",
+    "session": "2024-12",
+    "year": 2024,
+    "month": 12,
+    "setNumber": 1,
+    "subtitle": "真实六级听力 · 25 题 · 164 句逐句时间轴",
+    "audio": "assets/audio/cet6-2024-12-set1.mp3",
+    "sourceAudioPath": "resources/CET6_2024.12/CET6_2024.12_set1_listening.mp3",
+    "duration": 1669.02,
+    "sentenceCount": 164,
+    "questionCount": 25,
+    "sourceName": "CET-6 Listening Study",
+    "sourceUrl": "https://github.com/getfine333-ux/cet6-listening-study",
+    "upstreamName": "CET-6 Listening Resources & Analysis",
+    "upstreamUrl": "https://github.com/Ysoseri1224/CET-6-Listening-10-Years-Resources-and-Analysis",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "downloadedAt": "2026-11-03"
+  },
+  "sections": [
+    {
+      "id": "cet6-2024-12-set1--conversation-1",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "title": "长对话 1",
+      "sourceTitle": "Conversation One",
+      "order": 1,
+      "start": 133.04,
+      "end": 264.08,
+      "questions": [
+        {
+          "id": "cet6-2024-12-set1--q1",
+          "number": 1,
+          "sectionId": "cet6-2024-12-set1--conversation-1",
+          "type": "long-conversation",
+          "typeLabel": "长对话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Preparing for a job interview"
+            },
+            {
+              "letter": "B",
+              "text": "Writing a work report together"
+            },
+            {
+              "letter": "C",
+              "text": "Going through a couple of issues the company faces"
+            },
+            {
+              "letter": "D",
+              "text": "Discussing the woman's annual performance review"
+            }
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "cet6-2024-12-set1--q2",
+          "number": 2,
+          "sectionId": "cet6-2024-12-set1--conversation-1",
+          "type": "long-conversation",
+          "typeLabel": "长对话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "The overall culture of the company"
+            },
+            {
+              "letter": "B",
+              "text": "The instruction from her supervisor"
+            },
+            {
+              "letter": "C",
+              "text": "The honesty of the manager"
+            },
+            {
+              "letter": "D",
+              "text": "The recognition of her merits"
+            }
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "cet6-2024-12-set1--q3",
+          "number": 3,
+          "sectionId": "cet6-2024-12-set1--conversation-1",
+          "type": "long-conversation",
+          "typeLabel": "长对话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Her inadequate language proficiency"
+            },
+            {
+              "letter": "B",
+              "text": "Her inability to interact with colleagues properly"
+            },
+            {
+              "letter": "C",
+              "text": "Her inappropriate behavior at company meetings"
+            },
+            {
+              "letter": "D",
+              "text": "Her simplistic approach to dealing with others"
+            }
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "cet6-2024-12-set1--q4",
+          "number": 4,
+          "sectionId": "cet6-2024-12-set1--conversation-1",
+          "type": "long-conversation",
+          "typeLabel": "长对话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "To avoid offending the recipients"
+            },
+            {
+              "letter": "B",
+              "text": "To show her unique writing style"
+            },
+            {
+              "letter": "C",
+              "text": "To save time"
+            },
+            {
+              "letter": "D",
+              "text": "To be frank"
+            }
+          ],
+          "correct": "C"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s1",
+          "index": 0,
+          "speaker": "M",
+          "text": "OK then, this here is your yearly performance review.",
+          "translationZh": "好的，这是您的年度绩效评估。",
+          "start": 133.04,
+          "end": 136.62
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s2",
+          "index": 1,
+          "speaker": "M",
+          "text": "You've been with the company for 3 years and under my direct supervision for the past 12 months.",
+          "translationZh": "您已在公司工作 3 年，过去 12 个月一直在我的直接监督下。",
+          "start": 136.62,
+          "end": 142.14
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s3",
+          "index": 2,
+          "speaker": "M",
+          "text": "Your report is mostly good.",
+          "translationZh": "你的报告大部分都很好。",
+          "start": 142.8,
+          "end": 144.8
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s4",
+          "index": 3,
+          "speaker": "M",
+          "text": "But there are a couple of issues we must discuss.",
+          "translationZh": "但有几个问题我们必须讨论。",
+          "start": 145.22,
+          "end": 147.54
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s5",
+          "index": 4,
+          "speaker": "M",
+          "text": "The report is yours to take with you.",
+          "translationZh": "该报告是您的，可以随身携带。",
+          "start": 148.34,
+          "end": 150.46
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s6",
+          "index": 5,
+          "speaker": "M",
+          "text": "We'll go through the main points together now.",
+          "translationZh": "我们现在将一起讨论要点。",
+          "start": 150.94,
+          "end": 153.6
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s7",
+          "index": 6,
+          "speaker": "M",
+          "text": "And you can come through it in greater detail later.",
+          "translationZh": "您可以稍后更详细地了解它。",
+          "start": 154.08,
+          "end": 156.74
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s8",
+          "index": 7,
+          "speaker": "M",
+          "text": "Do you have any questions before we start?",
+          "translationZh": "在我们开始之前您还有什么问题吗？",
+          "start": 157.72,
+          "end": 159.54
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s9",
+          "index": 8,
+          "speaker": "W",
+          "text": "No, sir.",
+          "translationZh": "不，先生。",
+          "start": 160.1,
+          "end": 160.9
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s10",
+          "index": 9,
+          "speaker": "M",
+          "text": "I'll get straight to it then.",
+          "translationZh": "那我就直接讲吧。",
+          "start": 160.52,
+          "end": 162.52
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s11",
+          "index": 10,
+          "speaker": "M",
+          "text": "It is evident that you are a hard worker.",
+          "translationZh": "看得出来你是一个勤奋的人。",
+          "start": 163.42,
+          "end": 166.16
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s12",
+          "index": 11,
+          "speaker": "M",
+          "text": "You are punctual and industrious.",
+          "translationZh": "你很准时而且勤奋。",
+          "start": 167.04,
+          "end": 169.32
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s13",
+          "index": 12,
+          "speaker": "M",
+          "text": "Furthermore, you have strong analytical skills and attention to detail.",
+          "translationZh": "此外，您具有很强的分析能力和对细节的关注。",
+          "start": 169.98,
+          "end": 174.14
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s14",
+          "index": 13,
+          "speaker": "M",
+          "text": "The company, myself included, are happy with your productivity and overall performance.",
+          "translationZh": "公司（包括我本人）对您的生产力和整体表现感到满意。",
+          "start": 174.8,
+          "end": 180.16
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s15",
+          "index": 14,
+          "speaker": "W",
+          "text": "Thank you.",
+          "translationZh": "谢谢。",
+          "start": 180.62,
+          "end": 181.42
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s16",
+          "index": 15,
+          "speaker": "W",
+          "text": "I appreciate the recognition.",
+          "translationZh": "我很感谢您的认可。",
+          "start": 181.56,
+          "end": 182.92
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s17",
+          "index": 16,
+          "speaker": "M",
+          "text": "Do you agree, then, with this depiction so far?",
+          "translationZh": "那么，到目前为止，您同意这种描述吗？",
+          "start": 183.62,
+          "end": 186.92
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s18",
+          "index": 17,
+          "speaker": "W",
+          "text": "Yeah, it's a little simplistic perhaps.",
+          "translationZh": "是的，也许有点简单化。",
+          "start": 187.74,
+          "end": 190.32
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s19",
+          "index": 18,
+          "speaker": "W",
+          "text": "But that's to be expected from this kind of evaluation.",
+          "translationZh": "但这是从这种评估中可以预料到的。",
+          "start": 190.52,
+          "end": 193.56
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s20",
+          "index": 19,
+          "speaker": "M",
+          "text": "Sure.",
+          "translationZh": "当然。",
+          "start": 194.2,
+          "end": 195
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s21",
+          "index": 20,
+          "speaker": "M",
+          "text": "Would you want to add anything?",
+          "translationZh": "您想添加什么吗？",
+          "start": 195.2,
+          "end": 197.12
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s22",
+          "index": 21,
+          "speaker": "M",
+          "text": "Your comments can be added to the report if you wish.",
+          "translationZh": "如果您愿意，可以将您的评论添加到报告中。",
+          "start": 197.94,
+          "end": 201.62
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s23",
+          "index": 22,
+          "speaker": "W",
+          "text": "Oh, there's no need.",
+          "translationZh": "哦，没必要。",
+          "start": 202.2,
+          "end": 203.18
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s24",
+          "index": 23,
+          "speaker": "W",
+          "text": "It's a flattering portrayal really.",
+          "translationZh": "这实在是一个令人赏心悦目的写照。",
+          "start": 203.52,
+          "end": 205.24
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s25",
+          "index": 24,
+          "speaker": "W",
+          "text": "Thank you, though.",
+          "translationZh": "不过还是谢谢你。",
+          "start": 205.68,
+          "end": 206.48
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s26",
+          "index": 25,
+          "speaker": "M",
+          "text": "OK.",
+          "translationZh": "好的。",
+          "start": 206.16,
+          "end": 208.52
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s27",
+          "index": 26,
+          "speaker": "M",
+          "text": "This leads me to the not-so-good part.",
+          "translationZh": "这让我想到了不太好的部分。",
+          "start": 208.62,
+          "end": 211.56
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s28",
+          "index": 27,
+          "speaker": "M",
+          "text": "This mostly centers around one behavioral aspect — your ability to work with others.",
+          "translationZh": "这主要围绕一个行为方面——你与他人合作的能力。",
+          "start": 212.78,
+          "end": 219.08
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s29",
+          "index": 28,
+          "speaker": "W",
+          "text": "I see.",
+          "translationZh": "我懂了。",
+          "start": 219.08,
+          "end": 220.1
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s30",
+          "index": 29,
+          "speaker": "M",
+          "text": "Yes.",
+          "translationZh": "是的。",
+          "start": 221.2,
+          "end": 222
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s31",
+          "index": 30,
+          "speaker": "M",
+          "text": "As you already know, over the last several months, there have been some complaints raised about your communication style.",
+          "translationZh": "正如您所知，在过去的几个月里，有人对您的沟通方式提出了一些抱怨。",
+          "start": 222.14,
+          "end": 229.52
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s32",
+          "index": 31,
+          "speaker": "W",
+          "text": "Of course, we already had like three meetings about this.",
+          "translationZh": "当然，我们已经就此召开了三次会议。",
+          "start": 230.1,
+          "end": 233.56
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s33",
+          "index": 32,
+          "speaker": "W",
+          "text": "Look, all I'm going to say is that it was never my intention to offend anyone.",
+          "translationZh": "听着，我要说的是，我从来无意冒犯任何人。",
+          "start": 234.1,
+          "end": 238.82
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s34",
+          "index": 33,
+          "speaker": "W",
+          "text": "Simply put, I don't like to write long emails, because, frankly, I think they're a waste of time.",
+          "translationZh": "简而言之，我不喜欢写长电子邮件，因为坦率地说，我认为它们是浪费时间。",
+          "start": 239.42,
+          "end": 245.3
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s35",
+          "index": 34,
+          "speaker": "W",
+          "text": "Conciseness is efficiency.",
+          "translationZh": "简洁就是效率。",
+          "start": 246.88,
+          "end": 247.82
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s36",
+          "index": 35,
+          "speaker": "W",
+          "text": "I feel that writing long emails hurts that same productivity you praised me for just a minute ago.",
+          "translationZh": "我觉得写长电子邮件会损害你一分钟前赞扬我的生产力。",
+          "start": 247.82,
+          "end": 254.34
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s37",
+          "index": 36,
+          "speaker": "W",
+          "text": "And I already apologized if anyone was offended.",
+          "translationZh": "如果有人被冒犯了，我已经道歉了。",
+          "start": 254.34,
+          "end": 257.9
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-1--s38",
+          "index": 37,
+          "speaker": "W",
+          "text": "But to be perfectly honest, I think anyone who was offended was being a little too sensitive.",
+          "translationZh": "但说实话，我认为任何被冒犯的人都有点太敏感了。",
+          "start": 258.82,
+          "end": 264.08
+        }
+      ]
+    },
+    {
+      "id": "cet6-2024-12-set1--conversation-2",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "title": "长对话 2",
+      "sourceTitle": "Conversation Two",
+      "order": 2,
+      "start": 346,
+      "end": 464.22,
+      "questions": [
+        {
+          "id": "cet6-2024-12-set1--q5",
+          "number": 5,
+          "sectionId": "cet6-2024-12-set1--conversation-2",
+          "type": "long-conversation",
+          "typeLabel": "长对话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Provide medical service to the community"
+            },
+            {
+              "letter": "B",
+              "text": "Make healthcare in her hometown the best"
+            },
+            {
+              "letter": "C",
+              "text": "Obtain a doctoral degree in internal medicine"
+            },
+            {
+              "letter": "D",
+              "text": "Have a profound impact on people around her"
+            }
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "cet6-2024-12-set1--q6",
+          "number": 6,
+          "sectionId": "cet6-2024-12-set1--conversation-2",
+          "type": "long-conversation",
+          "typeLabel": "长对话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "They have constantly urged her to study hard"
+            },
+            {
+              "letter": "B",
+              "text": "They have worked hard to finance her education"
+            },
+            {
+              "letter": "C",
+              "text": "They have tried to create a positive learning environment"
+            },
+            {
+              "letter": "D",
+              "text": "They have pursued the family's dreams together with her"
+            }
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "cet6-2024-12-set1--q7",
+          "number": 7,
+          "sectionId": "cet6-2024-12-set1--conversation-2",
+          "type": "long-conversation",
+          "typeLabel": "长对话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "It is a key medical branch conducive to realizing her dreams"
+            },
+            {
+              "letter": "B",
+              "text": "It connects many other specialties with its broad coverage"
+            },
+            {
+              "letter": "C",
+              "text": "It has a long history in the man's prestigious institution"
+            },
+            {
+              "letter": "D",
+              "text": "It is a medical branch both of her parents specialize in"
+            }
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "cet6-2024-12-set1--q8",
+          "number": 8,
+          "sectionId": "cet6-2024-12-set1--conversation-2",
+          "type": "long-conversation",
+          "typeLabel": "长对话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Problematic"
+            },
+            {
+              "letter": "B",
+              "text": "Competitive"
+            },
+            {
+              "letter": "C",
+              "text": "Inconsistent"
+            },
+            {
+              "letter": "D",
+              "text": "Trustworthy"
+            }
+          ],
+          "correct": "C"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s1",
+          "index": 0,
+          "speaker": "M",
+          "text": "So tell me, why do you wish to study medicine?",
+          "translationZh": "那么告诉我，你为什么想学医？",
+          "start": 346,
+          "end": 349.04
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s2",
+          "index": 1,
+          "speaker": "W",
+          "text": "I've always wanted to be a doctor.",
+          "translationZh": "我一直想成为一名医生。",
+          "start": 349.72,
+          "end": 351.52
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s3",
+          "index": 2,
+          "speaker": "W",
+          "text": "I come from a small town where healthcare was never the best.",
+          "translationZh": "我来自一个小镇，那里的医疗保健从来都不是最好的。",
+          "start": 352.1,
+          "end": 355.46
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s4",
+          "index": 3,
+          "speaker": "W",
+          "text": "And I think that had a profound effect on me.",
+          "translationZh": "我认为这对我产生了深远的影响。",
+          "start": 355.78,
+          "end": 358.06
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s5",
+          "index": 4,
+          "speaker": "W",
+          "text": "As a child, I remember thinking how great it would be to serve the community and cure people!",
+          "translationZh": "当我还是个孩子的时候，我记得我曾想，如果能为社会服务、为人们治病该多好啊！",
+          "start": 358.84,
+          "end": 363.9
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s6",
+          "index": 5,
+          "speaker": "M",
+          "text": "What other people or events in your life have shaped your interest in becoming a doctor?",
+          "translationZh": "您生活中的哪些其他人或事件激发了您成为一名医生的兴趣？",
+          "start": 364.74,
+          "end": 369.58
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s7",
+          "index": 6,
+          "speaker": "W",
+          "text": "Well, that's hard to say.",
+          "translationZh": "嗯，这很难说。",
+          "start": 370.36,
+          "end": 371.78
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s8",
+          "index": 7,
+          "speaker": "W",
+          "text": "I would certainly say my parents have been a key factor.",
+          "translationZh": "我肯定会说我的父母是一个关键因素。",
+          "start": 372.32,
+          "end": 375.08
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s9",
+          "index": 8,
+          "speaker": "W",
+          "text": "They always pushed me to study hard.",
+          "translationZh": "他们总是督促我努力学习。",
+          "start": 375.08,
+          "end": 378.08
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s10",
+          "index": 9,
+          "speaker": "W",
+          "text": "And I certainly wouldn't be here without their support.",
+          "translationZh": "没有他们的支持我当然不会站在这里。",
+          "start": 378.18,
+          "end": 380.26
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s11",
+          "index": 10,
+          "speaker": "W",
+          "text": "I guess I was also immensely fortunate to have good teachers and friends around me.",
+          "translationZh": "我想我也非常幸运，身边有好老师和好朋友。",
+          "start": 381.26,
+          "end": 385.72
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s12",
+          "index": 11,
+          "speaker": "W",
+          "text": "At the end of the day, I've always been surrounded by a positive environment conducive to my working hard and pursuing my dreams.",
+          "translationZh": "归根结底，我总是被一个有利于我努力工作和追求梦想的积极环境所包围。",
+          "start": 386.44,
+          "end": 393.74
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s13",
+          "index": 12,
+          "speaker": "M",
+          "text": "Is there any medical branch that you would like to specialize in?",
+          "translationZh": "您有想专攻的医学分支吗？",
+          "start": 394.62,
+          "end": 397.9
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s14",
+          "index": 13,
+          "speaker": "W",
+          "text": "I haven't decided yet.",
+          "translationZh": "我还没决定。",
+          "start": 398.44,
+          "end": 399.54
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s15",
+          "index": 14,
+          "speaker": "W",
+          "text": "It's still early days.",
+          "translationZh": "现在还为时尚早。",
+          "start": 400.08,
+          "end": 401.4
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s16",
+          "index": 15,
+          "speaker": "W",
+          "text": "However, if I had to say, internal medicine.",
+          "translationZh": "然而，如果我不得不说，内科。",
+          "start": 402.06,
+          "end": 405.48
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s17",
+          "index": 16,
+          "speaker": "M",
+          "text": "Why internal medicine?",
+          "translationZh": "为什么是内科？",
+          "start": 405.48,
+          "end": 407.74
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s18",
+          "index": 17,
+          "speaker": "W",
+          "text": "I know it's no picnic.",
+          "translationZh": "我知道这不是野餐。",
+          "start": 407.74,
+          "end": 409.9
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s19",
+          "index": 18,
+          "speaker": "W",
+          "text": "But I find it the most intriguing, because it covers so much and ties together so many other specialties.",
+          "translationZh": "但我发现它是最有趣的，因为它涵盖了如此多的内容并将许多其他专业联系在一起。",
+          "start": 410,
+          "end": 416.08
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s20",
+          "index": 19,
+          "speaker": "M",
+          "text": "Thank you.",
+          "translationZh": "谢谢。",
+          "start": 416.84,
+          "end": 417.64
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s21",
+          "index": 20,
+          "speaker": "M",
+          "text": "Now I'd like to address your academic history and projected grades.",
+          "translationZh": "现在我想谈谈您的学术经历和预计成绩。",
+          "start": 417.76,
+          "end": 421.08
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s22",
+          "index": 21,
+          "speaker": "M",
+          "text": "We like to think of ourselves as a prestigious institution with a highly competitive and promising student body.",
+          "translationZh": "我们喜欢将自己视为一所享有盛誉的机构，拥有极具竞争力和有前途的学生群体。",
+          "start": 421.8,
+          "end": 429.6
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s23",
+          "index": 22,
+          "speaker": "M",
+          "text": "As you know, to get into our programmes, you need at least 85% score in the entrance exam.",
+          "translationZh": "如您所知，要进入我们的课程，您的入学考试成绩至少需要达到 85%。",
+          "start": 430.3,
+          "end": 436.3
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s24",
+          "index": 23,
+          "speaker": "M",
+          "text": "Do you think you can attain this?",
+          "translationZh": "你认为你能达到这个目标吗？",
+          "start": 436.3,
+          "end": 439.02
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s25",
+          "index": 24,
+          "speaker": "W",
+          "text": "I think so.",
+          "translationZh": "我想是的。",
+          "start": 439.12,
+          "end": 440.02
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s26",
+          "index": 25,
+          "speaker": "W",
+          "text": "Yes.",
+          "translationZh": "是的。",
+          "start": 440.22,
+          "end": 441.02
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s27",
+          "index": 26,
+          "speaker": "M",
+          "text": "I'm looking at your school grades now and I'll be honest.",
+          "translationZh": "我现在正在看你的学校成绩，我会说实话。",
+          "start": 441.18,
+          "end": 444.52
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s28",
+          "index": 27,
+          "speaker": "M",
+          "text": "It's a bit of a mixed bag.",
+          "translationZh": "这是一个鱼龙混杂的情况。",
+          "start": 445.28,
+          "end": 446.98
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s29",
+          "index": 28,
+          "speaker": "M",
+          "text": "You do get top grades here and there, but you are not very...",
+          "translationZh": "你确实到处都取得了最高的成绩，但你并不是很......",
+          "start": 447.52,
+          "end": 451.28
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s30",
+          "index": 29,
+          "speaker": "M",
+          "text": "Shall we say \"consistent\"?",
+          "translationZh": "我们应该说“一致”吗？",
+          "start": 451.28,
+          "end": 453.32
+        },
+        {
+          "id": "cet6-2024-12-set1--conversation-2--s31",
+          "index": 30,
+          "speaker": "M",
+          "text": "I see no problem in making you a conditional offer, but consider yourself warned, our entrance exam is, to use your own words, no picnic.",
+          "translationZh": "我认为向您提供有条件录取通知书没有问题，但请考虑一下自己受到的警告，用您自己的话来说，我们的入学考试是，没有野餐。",
+          "start": 453.32,
+          "end": 464.22
+        }
+      ]
+    },
+    {
+      "id": "cet6-2024-12-set1--passage-1",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "title": "篇章听力 1",
+      "sourceTitle": "Passage One",
+      "order": 3,
+      "start": 572.52,
+      "end": 669.26,
+      "questions": [
+        {
+          "id": "cet6-2024-12-set1--q9",
+          "number": 9,
+          "sectionId": "cet6-2024-12-set1--passage-1",
+          "type": "passage",
+          "typeLabel": "篇章",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "To prevent hackers from cracking our secret codes"
+            },
+            {
+              "letter": "B",
+              "text": "To show that all the guidelines are being followed"
+            },
+            {
+              "letter": "C",
+              "text": "To provide evidence that passwords are forgotten"
+            },
+            {
+              "letter": "D",
+              "text": "To convince our computer that we are human"
+            }
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "cet6-2024-12-set1--q10",
+          "number": 10,
+          "sectionId": "cet6-2024-12-set1--passage-1",
+          "type": "passage",
+          "typeLabel": "篇章",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Put an end to the hacking phenomenon"
+            },
+            {
+              "letter": "B",
+              "text": "Help people remember their passwords"
+            },
+            {
+              "letter": "C",
+              "text": "Reduce the intricacy of the password itself"
+            },
+            {
+              "letter": "D",
+              "text": "Explain the need for different email accounts"
+            }
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "cet6-2024-12-set1--q11",
+          "number": 11,
+          "sectionId": "cet6-2024-12-set1--passage-1",
+          "type": "passage",
+          "typeLabel": "篇章",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Innovate technologies to ensure the safety of users' accounts"
+            },
+            {
+              "letter": "B",
+              "text": "Provide incentives for the application of creative passwords"
+            },
+            {
+              "letter": "C",
+              "text": "Explore the possibility of using simpler secret codes"
+            },
+            {
+              "letter": "D",
+              "text": "Take steps to encourage users to log in more often"
+            }
+          ],
+          "correct": "D"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "cet6-2024-12-set1--passage-1--s1",
+          "index": 0,
+          "speaker": "",
+          "text": "Logging into your email account can sometimes feel like trying to hack into the Pentagon.",
+          "translationZh": "登录您的电子邮件帐户有时感觉就像试图侵入五角大楼。",
+          "start": 572.52,
+          "end": 577
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-1--s2",
+          "index": 1,
+          "speaker": "",
+          "text": "If you follow all of the guidelines, you need to use a different password for every one of your accounts; use an incomprehensible variety of letters, numbers, and symbols; sign up for two-step verification; and change every password every time one of them is compromised.",
+          "translationZh": "如果您遵循所有准则，则需要为每个帐户使用不同的密码；使用各种难以理解的字母、数字和符号；注册两步验证；并在每次其中一个密码被泄露时更改每个密码。",
+          "start": 577.78,
+          "end": 595.9
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-1--s3",
+          "index": 2,
+          "speaker": "",
+          "text": "More often than not, you then have to choose photos that include a street sign, as this apparently provides solid evidence to your computer that you are, in fact, a human being.",
+          "translationZh": "通常，您必须选择包含街道标志的照片，因为这显然为您的计算机提供了确凿的证据，表明您实际上是一个人。",
+          "start": 596.8,
+          "end": 608.54
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-1--s4",
+          "index": 3,
+          "speaker": "",
+          "text": "It's no small wonder most of us forget our passwords more often than our keys.",
+          "translationZh": "难怪我们大多数人忘记密码的次数比忘记钥匙的次数还要多。",
+          "start": 609.68,
+          "end": 615.02
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-1--s5",
+          "index": 4,
+          "speaker": "",
+          "text": "Now a new peer-reviewed study by researchers at Aalto University in Finland is attempting to figure out why we forget our passwords in order to help put an end to this frustrating phenomenon.",
+          "translationZh": "现在，芬兰阿尔托大学的研究人员进行的一项新的同行评审研究正试图找出我们忘记密码的原因，以帮助结束这种令人沮丧的现象。",
+          "start": 616.14,
+          "end": 629.22
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-1--s6",
+          "index": 5,
+          "speaker": "",
+          "text": "Their findings suggest that how likely you are to remember your password has less to do with the intricacy of the password itself and more to do with how often you anticipate using it.",
+          "translationZh": "他们的研究结果表明，您记住密码的可能性与密码本身的复杂性关系不大，而与您预计使用密码的频率有关。",
+          "start": 630.18,
+          "end": 642.28
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-1--s7",
+          "index": 6,
+          "speaker": "",
+          "text": "Which is to say: you are far more likely to remember a complicated password if you know you'll frequently be using it to log into an account than you are to remember a simple password for an account that you don't expect to log into very often.",
+          "translationZh": "也就是说：如果您知道自己会经常使用复杂的密码登录帐户，那么您更有可能记住复杂的密码，而不是记住您不希望经常登录的帐户的简单密码。",
+          "start": 642.28,
+          "end": 658.1
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-1--s8",
+          "index": 7,
+          "speaker": "",
+          "text": "The researchers advise websites to include more of an incentive for users to log in more often in order to help them remember their secret codes.",
+          "translationZh": "研究人员建议网站提供更多激励措施，鼓励用户更频繁地登录，以帮助他们记住密码。",
+          "start": 659.24,
+          "end": 669.26
+        }
+      ]
+    },
+    {
+      "id": "cet6-2024-12-set1--passage-2",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "title": "篇章听力 2",
+      "sourceTitle": "Passage Two",
+      "order": 4,
+      "start": 737.24,
+      "end": 864.84,
+      "questions": [
+        {
+          "id": "cet6-2024-12-set1--q12",
+          "number": 12,
+          "sectionId": "cet6-2024-12-set1--passage-2",
+          "type": "passage",
+          "typeLabel": "篇章",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Her work no longer interested her"
+            },
+            {
+              "letter": "B",
+              "text": "Her training app did not fit her"
+            },
+            {
+              "letter": "C",
+              "text": "Her fitness fell into a slump"
+            },
+            {
+              "letter": "D",
+              "text": "Her business deteriorated"
+            }
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "cet6-2024-12-set1--q13",
+          "number": 13,
+          "sectionId": "cet6-2024-12-set1--passage-2",
+          "type": "passage",
+          "typeLabel": "篇章",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Help users keep track of their fitness levels"
+            },
+            {
+              "letter": "B",
+              "text": "Design personalised training programmes"
+            },
+            {
+              "letter": "C",
+              "text": "Strengthen ties among users worldwide"
+            },
+            {
+              "letter": "D",
+              "text": "Select well-qualified human coaches"
+            }
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "cet6-2024-12-set1--q14",
+          "number": 14,
+          "sectionId": "cet6-2024-12-set1--passage-2",
+          "type": "passage",
+          "typeLabel": "篇章",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "They are never repeated"
+            },
+            {
+              "letter": "B",
+              "text": "They help enrich her life"
+            },
+            {
+              "letter": "C",
+              "text": "They are of no extreme intensity"
+            },
+            {
+              "letter": "D",
+              "text": "They keep her focused on her goal"
+            }
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "cet6-2024-12-set1--q15",
+          "number": 15,
+          "sectionId": "cet6-2024-12-set1--passage-2",
+          "type": "passage",
+          "typeLabel": "篇章",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "They will not be able to take the place of human personal trainers"
+            },
+            {
+              "letter": "B",
+              "text": "They will not be able to comprehend some of the profiles users put in"
+            },
+            {
+              "letter": "C",
+              "text": "They cannot lead to optimal results with their mathematical approach"
+            },
+            {
+              "letter": "D",
+              "text": "They cannot match humans in arranging meticulous workout schedules"
+            }
+          ],
+          "correct": "A"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "cet6-2024-12-set1--passage-2--s1",
+          "index": 0,
+          "speaker": "",
+          "text": "Four years ago, Jenny Weiner was in a fitness slump.",
+          "translationZh": "四年前，珍妮·韦纳的健康状况陷入低迷。",
+          "start": 737.24,
+          "end": 742.36
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-2--s2",
+          "index": 1,
+          "speaker": "",
+          "text": "She wanted to improve her physical and mental health.",
+          "translationZh": "她想改善自己的身心健康。",
+          "start": 742.84,
+          "end": 745.7
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-2--s3",
+          "index": 2,
+          "speaker": "",
+          "text": "However, her workouts lacked intensity without a proper training programme to follow.",
+          "translationZh": "然而，她的锻炼缺乏强度，没有适当的训练计划可供遵循。",
+          "start": 746.14,
+          "end": 751.48
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-2--s4",
+          "index": 3,
+          "speaker": "",
+          "text": "When she went to the gym, her daily ritual predominantly involved easy exercise options like jogging; she avoided more formidable exercises like lifting weights.",
+          "translationZh": "当她去健身房时，她的日常习惯主要包括慢跑等简单的运动选择；她避免进行举重等更艰巨的运动。",
+          "start": 751.48,
+          "end": 763.52
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-2--s5",
+          "index": 4,
+          "speaker": "",
+          "text": "A personal trainer who might push her was out of the question.",
+          "translationZh": "一个可能推动她的私人教练是不可能的。",
+          "start": 763.9,
+          "end": 767.66
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-2--s6",
+          "index": 5,
+          "speaker": "",
+          "text": "The extravagant cost was just unaffordable.",
+          "translationZh": "高昂的成本实在是难以承受。",
+          "start": 768.48,
+          "end": 771.06
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-2--s7",
+          "index": 6,
+          "speaker": "",
+          "text": "She then discovered the fitness phone app Slimmeretics.",
+          "translationZh": "然后她发现了健身手机应用程序 Slimmeretics。",
+          "start": 771.9,
+          "end": 775.52
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-2--s8",
+          "index": 7,
+          "speaker": "",
+          "text": "To use the app, you first input your profile about your previous training experiences and preferences, as well as your desired goals.",
+          "translationZh": "要使用该应用程序，您首先需要输入有关您之前的训练经历和偏好的个人资料，以及您想要的目标。",
+          "start": 776.18,
+          "end": 784.6
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-2--s9",
+          "index": 8,
+          "speaker": "",
+          "text": "A virtual coach then uses that information to suggest a personalised training regime.",
+          "translationZh": "然后，虚拟教练使用该信息来建议个性化的训练方案。",
+          "start": 785.4,
+          "end": 791.64
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-2--s10",
+          "index": 9,
+          "speaker": "",
+          "text": "After the workout, the app's artificial intelligence software system uses feedback from Ms. Weiner and its other 53 million users around the world to adjust future training sessions.",
+          "translationZh": "锻炼结束后，该应用程序的人工智能软件系统会根据韦纳女士及其全球其他 5300 万用户的反馈来调整未来的训练课程。",
+          "start": 792.68,
+          "end": 806.16
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-2--s11",
+          "index": 10,
+          "speaker": "",
+          "text": "Now Ms. Weiner finds the workouts exciting.",
+          "translationZh": "现在，韦纳女士发现这些锻炼令人兴奋。",
+          "start": 807,
+          "end": 810.36
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-2--s12",
+          "index": 11,
+          "speaker": "",
+          "text": "This is because no two are ever the same.",
+          "translationZh": "这是因为没有两个是相同的。",
+          "start": 810.98,
+          "end": 813.54
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-2--s13",
+          "index": 12,
+          "speaker": "",
+          "text": "As a result, the app has helped her to lose more than 25 kilograms.",
+          "translationZh": "结果，该应用程序帮助她减掉了超过 25 公斤。",
+          "start": 814.18,
+          "end": 818.78
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-2--s14",
+          "index": 13,
+          "speaker": "",
+          "text": "The app's mathematical approach can arrange a more meticulous workout schedule.",
+          "translationZh": "该应用程序的数学方法可以安排更细致的锻炼计划。",
+          "start": 819.84,
+          "end": 824.72
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-2--s15",
+          "index": 14,
+          "speaker": "",
+          "text": "This has led to optimal results.",
+          "translationZh": "这带来了最佳结果。",
+          "start": 825.4,
+          "end": 827.68
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-2--s16",
+          "index": 15,
+          "speaker": "",
+          "text": "However, some experts think that apps cannot replace human personal trainers.",
+          "translationZh": "然而，一些专家认为应用程序无法取代人类私人教练。",
+          "start": 828.68,
+          "end": 834.14
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-2--s17",
+          "index": 16,
+          "speaker": "",
+          "text": "An app cannot understand human behavior.",
+          "translationZh": "应用程序无法理解人类行为。",
+          "start": 834.7,
+          "end": 836.92
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-2--s18",
+          "index": 17,
+          "speaker": "",
+          "text": "It will not comprehend that there are competing interests outside of health and fitness.",
+          "translationZh": "它不会理解健康和健身之外还存在相互竞争的利益。",
+          "start": 838.24,
+          "end": 842.94
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-2--s19",
+          "index": 18,
+          "speaker": "",
+          "text": "Additionally, a human trainer can add compassion to the workout.",
+          "translationZh": "此外，人类教练可以为锻炼增添同情心。",
+          "start": 843.78,
+          "end": 848.42
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-2--s20",
+          "index": 19,
+          "speaker": "",
+          "text": "He can also make exercise fun and sustainable.",
+          "translationZh": "他还可以让锻炼变得有趣且可持续。",
+          "start": 849.16,
+          "end": 852.16
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-2--s21",
+          "index": 20,
+          "speaker": "",
+          "text": "Trainers can monitor whether a person is doing exercises correctly.",
+          "translationZh": "培训师可以监控一个人是否正确地进行锻炼。",
+          "start": 853.1,
+          "end": 857.22
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-2--s22",
+          "index": 21,
+          "speaker": "",
+          "text": "This can safeguard against injuries.",
+          "translationZh": "这可以防止受伤。",
+          "start": 858.36,
+          "end": 860.4
+        },
+        {
+          "id": "cet6-2024-12-set1--passage-2--s23",
+          "index": 22,
+          "speaker": "",
+          "text": "An app cannot perceive such subtleties.",
+          "translationZh": "应用程序无法感知这种微妙之处。",
+          "start": 861.26,
+          "end": 864.84
+        }
+      ]
+    },
+    {
+      "id": "cet6-2024-12-set1--recording-1",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "title": "讲座 1",
+      "sourceTitle": "Recording One",
+      "order": 5,
+      "start": 977.48,
+      "end": 1172.3,
+      "questions": [
+        {
+          "id": "cet6-2024-12-set1--q16",
+          "number": 16,
+          "sectionId": "cet6-2024-12-set1--recording-1",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "All societies are built upon the cornerstones of basic values"
+            },
+            {
+              "letter": "B",
+              "text": "Everyone everywhere demonstrates seven character traits"
+            },
+            {
+              "letter": "C",
+              "text": "All societies are kept together by seven basic moral rules"
+            },
+            {
+              "letter": "D",
+              "text": "Everyone everywhere shares a universal moral standard"
+            }
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "cet6-2024-12-set1--q17",
+          "number": 17,
+          "sectionId": "cet6-2024-12-set1--recording-1",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Ascertain whether deferring to authority was confined to right-wing people"
+            },
+            {
+              "letter": "B",
+              "text": "Find out whether different societies had different versions of morality"
+            },
+            {
+              "letter": "C",
+              "text": "Make clear whether all societies faced the same moral issues"
+            },
+            {
+              "letter": "D",
+              "text": "Find out whether left-wing people still had a group loyalty"
+            }
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "cet6-2024-12-set1--q18",
+          "number": 18,
+          "sectionId": "cet6-2024-12-set1--recording-1",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Make independent descriptions of cultures around the world"
+            },
+            {
+              "letter": "B",
+              "text": "Strive to understand the basic differences between peoples"
+            },
+            {
+              "letter": "C",
+              "text": "Appreciate the foundational value of the existing data"
+            },
+            {
+              "letter": "D",
+              "text": "Carry out systematic field studies to gather new data"
+            }
+          ],
+          "correct": "D"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "cet6-2024-12-set1--recording-1--s1",
+          "index": 0,
+          "speaker": "",
+          "text": "All societies are held together by seven universal moral rules, which include deferring to superiors and respecting the property of others, Oxford University has concluded.",
+          "translationZh": "牛津大学得出结论，所有社会都由七项普遍的道德规则维系在一起，其中包括服从上级和尊重他人的财产。",
+          "start": 977.48,
+          "end": 988.82
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-1--s2",
+          "index": 1,
+          "speaker": "",
+          "text": "Although many cultures are moving towards more liberal, less hierarchical organizations, the new research suggests that traditional power structures and basic values of charity and brotherhood are the cornerstones of successful societies.",
+          "translationZh": "尽管许多文化正在走向更加自由、等级制度更少的组织，但新的研究表明，传统的权力结构以及慈善和兄弟情谊的基本价值观是成功社会的基石。",
+          "start": 989.82,
+          "end": 1005.6
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-1--s3",
+          "index": 2,
+          "speaker": "",
+          "text": "The huge study of 60 different cultures around the world found that all communities operate under seven basic moral codes.",
+          "translationZh": "对世界各地 60 种不同文化的大规模研究发现，所有社区都遵循七项基本道德准则。",
+          "start": 1006.5,
+          "end": 1014.58
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-1--s4",
+          "index": 3,
+          "speaker": "",
+          "text": "Those universal rules are: help your family, help your group, return favors, be brave, defer to superiors, divide resources fairly, and respect the property of others.",
+          "translationZh": "这些普遍的规则是：帮助你的家人，帮助你的团体，回报他人，勇敢，服从上级，公平分配资源，尊重他人的财产。",
+          "start": 1015.4,
+          "end": 1028.86
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-1--s5",
+          "index": 4,
+          "speaker": "",
+          "text": "The character traits held for every kind of community, be they traditional hunter gatherers or advanced civilizations, helping to uphold civilized society and foster social cooperation, researchers found.",
+          "translationZh": "研究人员发现，各种社区的性格特征，无论是传统的狩猎采集者还是先进的文明，都有助于维护文明社会并促进社会合作。",
+          "start": 1029.88,
+          "end": 1044.38
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-1--s6",
+          "index": 5,
+          "speaker": "",
+          "text": "\"Everyone everywhere shares a common moral code,\" said Dr. Oliver Scott Curry, lead author and senior researcher at Oxford.",
+          "translationZh": "“世界各地的每个人都有共同的道德准则，”牛津大学高级研究员奥利弗·斯科特·库里博士说。",
+          "start": 1045.44,
+          "end": 1055.42
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-1--s7",
+          "index": 6,
+          "speaker": "",
+          "text": "\"These seven moral rules appear to be universal across cultures, because people face the same social problems.",
+          "translationZh": "“这七项道德规则似乎在不同文化中都是通用的，因为人们面临着相同的社会问题。",
+          "start": 1056.6,
+          "end": 1063.74
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-1--s8",
+          "index": 7,
+          "speaker": "",
+          "text": "Even if some of these traits look right-wing or conservative, for example, deferring to authority, left-wing people will still have a group loyalty and deference to someone or something.",
+          "translationZh": "即使其中一些特征看起来是右翼或保守的，例如，服从权威，左翼人士仍然会具有群体忠诚度并尊重某人或某事。",
+          "start": 1064.74,
+          "end": 1077.32
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-1--s9",
+          "index": 8,
+          "speaker": "",
+          "text": "This shows there really is more that unites us than divides us.\"",
+          "translationZh": "这表明，团结我们的因素确实多于分裂我们的因素。”",
+          "start": 1078.5,
+          "end": 1083.4
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-1--s10",
+          "index": 9,
+          "speaker": "",
+          "text": "The study published in Current Anthropology is the largest and most comprehensive and widespread survey of morals ever conducted and aimed to find out whether different societies had different versions of morality.",
+          "translationZh": "发表在《当代人类学》上的这项研究是迄今为止规模最大、最全面、最广泛的道德调查，旨在找出不同社会是否有不同版本的道德。",
+          "start": 1084.4,
+          "end": 1099.28
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-1--s11",
+          "index": 10,
+          "speaker": "",
+          "text": "The team accessed the world's best archives to analyze accounts from more than 600 sources of 60 societies around the world.",
+          "translationZh": "该团队访问了世界上最好的档案，分析了来自全球 60 个社团的 600 多个来源的账户。",
+          "start": 1100.06,
+          "end": 1109.42
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-1--s12",
+          "index": 11,
+          "speaker": "",
+          "text": "They found that the seven rules were considered morally good in all societies and were observed across all continents, religions and politics.",
+          "translationZh": "他们发现，这七项规则在所有社会中都被认为是道德良好的，并且在各大洲、宗教和政治领域都得到遵守。",
+          "start": 1110,
+          "end": 1119.2
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-1--s13",
+          "index": 12,
+          "speaker": "",
+          "text": "However, some communities valued certain rules more highly than others.",
+          "translationZh": "然而，一些社区比其他社区更重视某些规则。",
+          "start": 1120.26,
+          "end": 1124.9
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-1--s14",
+          "index": 13,
+          "speaker": "",
+          "text": "Dr. Curry hopes that this research helps to promote mutual understanding between people of different cultures and appreciation of what we have in common and how and why we differ.",
+          "translationZh": "库里博士希望这项研究有助于促进不同文化背景的人们之间的相互理解，并了解我们的共同点以及差异的方式和原因。",
+          "start": 1124.9,
+          "end": 1138.46
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-1--s15",
+          "index": 14,
+          "speaker": "",
+          "text": "Co-author professor Harvey Whitehouse said social scientists should now set about testing the theory in the field, rather than relying on old data.",
+          "translationZh": "合著者哈维·怀特豪斯教授表示，社会科学家现在应该着手在该领域测试该理论，而不是依赖旧数据。",
+          "start": 1140.2,
+          "end": 1149.98
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-1--s16",
+          "index": 15,
+          "speaker": "",
+          "text": "\"This study was based on historical descriptions of cultures around the world,\" he said.",
+          "translationZh": "“这项研究基于对世界各地文化的历史描述，”他说。",
+          "start": 1149.98,
+          "end": 1155.26
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-1--s17",
+          "index": 16,
+          "speaker": "",
+          "text": "\"These descriptions were made independent of and prior to the theory we're testing.",
+          "translationZh": "“这些描述独立于我们正在测试的理论，并且先于我们正在测试的理论。",
+          "start": 1155.98,
+          "end": 1161.54
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-1--s18",
+          "index": 17,
+          "speaker": "",
+          "text": "In future, if social scientists are serious about testing theories of morality, they will need to gather new data, more systematically, out in the field.\"",
+          "translationZh": "未来，如果社会科学家认真地检验道德理论，他们将需要在现场更系统地收集新数据。”",
+          "start": 1162.38,
+          "end": 1172.3
+        }
+      ]
+    },
+    {
+      "id": "cet6-2024-12-set1--recording-2",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "title": "讲座 2",
+      "sourceTitle": "Recording Two",
+      "order": 6,
+      "start": 1239.5,
+      "end": 1398.42,
+      "questions": [
+        {
+          "id": "cet6-2024-12-set1--q19",
+          "number": 19,
+          "sectionId": "cet6-2024-12-set1--recording-2",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "They might be the most important part of our eating experience"
+            },
+            {
+              "letter": "B",
+              "text": "They can activate our brain functions in a most direct fashion"
+            },
+            {
+              "letter": "C",
+              "text": "They can be viewed as the windows to our soul"
+            },
+            {
+              "letter": "D",
+              "text": "They could mislead us in more ways than one"
+            }
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "cet6-2024-12-set1--q20",
+          "number": 20,
+          "sectionId": "cet6-2024-12-set1--recording-2",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "It attracts food companies' growing attention"
+            },
+            {
+              "letter": "B",
+              "text": "It adversely impacts one's eating experience"
+            },
+            {
+              "letter": "C",
+              "text": "It invariably determines how food sells"
+            },
+            {
+              "letter": "D",
+              "text": "It changes the way people taste food"
+            }
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "cet6-2024-12-set1--q21",
+          "number": 21,
+          "sectionId": "cet6-2024-12-set1--recording-2",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Enhance the taste"
+            },
+            {
+              "letter": "B",
+              "text": "Make predictions"
+            },
+            {
+              "letter": "C",
+              "text": "Identify distinct flavors"
+            },
+            {
+              "letter": "D",
+              "text": "Enrich the eating experience"
+            }
+          ],
+          "correct": "B"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "cet6-2024-12-set1--recording-2--s1",
+          "index": 0,
+          "speaker": "",
+          "text": "When it comes to food, color is money.",
+          "translationZh": "对于食物来说，颜色就是金钱。",
+          "start": 1239.5,
+          "end": 1242.56
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-2--s2",
+          "index": 1,
+          "speaker": "",
+          "text": "Food companies know that better color gives better prices, so they ensure that their products are attractive in color to bolster earnings.",
+          "translationZh": "食品公司知道更好的颜色可以带来更好的价格，因此他们确保其产品在颜色上具有吸引力以增加收入。",
+          "start": 1243.16,
+          "end": 1251.46
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-2--s3",
+          "index": 2,
+          "speaker": "",
+          "text": "Oranges, for example, have to meet specific color standards.",
+          "translationZh": "例如，橙子必须满足特定的颜色标准。",
+          "start": 1252.68,
+          "end": 1256.46
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-2--s4",
+          "index": 3,
+          "speaker": "",
+          "text": "And oranges are just the beginning.",
+          "translationZh": "橙子只是一个开始。",
+          "start": 1256.96,
+          "end": 1258.72
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-2--s5",
+          "index": 4,
+          "speaker": "",
+          "text": "There are color standards for foods including French fries, tomatoes, pumpkins, olives, honey and cherries.",
+          "translationZh": "炸薯条、西红柿、南瓜、橄榄、蜂蜜和樱桃等食品都有颜色标准。",
+          "start": 1259.54,
+          "end": 1268.32
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-2--s6",
+          "index": 5,
+          "speaker": "",
+          "text": "The attention to color is for good reason.",
+          "translationZh": "对颜色的关注是有充分理由的。",
+          "start": 1269.2,
+          "end": 1271.4
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-2--s7",
+          "index": 6,
+          "speaker": "",
+          "text": "For all the talk of the tongue, our eyes really might be the most important part of the eating experience.",
+          "translationZh": "对于所有的舌头谈话来说，我们的眼睛确实可能是饮食体验中最重要的部分。",
+          "start": 1272.26,
+          "end": 1278.3
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-2--s8",
+          "index": 7,
+          "speaker": "",
+          "text": "A great number of our brain functions are dedicated to processing vision, while only a percent or two is given over to taste faculties, and the result is that color actually changes how we taste food.",
+          "translationZh": "我们的大量大脑功能专门用于处理视觉，而只有百分之一或百分之二的功能用于味觉功能，其结果是颜色实际上改变了我们品尝食物的方式。",
+          "start": 1278.98,
+          "end": 1292.92
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-2--s9",
+          "index": 8,
+          "speaker": "",
+          "text": "Scientists have demonstrated many times the importance of color to taste.",
+          "translationZh": "科学家多次证明了颜色对味道的重要性。",
+          "start": 1294.36,
+          "end": 1299.1
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-2--s10",
+          "index": 9,
+          "speaker": "",
+          "text": "In a 1980s study, for example, test participants were asked to name the flavor of the beverage they were drinking without being able to see that beverage.",
+          "translationZh": "例如，在 20 世纪 80 年代的一项研究中，测试参与者被要求说出他们正在喝的饮料的味道，而无法看到该饮料。",
+          "start": 1299.66,
+          "end": 1308.76
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-2--s11",
+          "index": 10,
+          "speaker": "",
+          "text": "Only one in five was able to identify it as orange.",
+          "translationZh": "只有五分之一的人能够识别出它是橙色的。",
+          "start": 1309.78,
+          "end": 1313.32
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-2--s12",
+          "index": 11,
+          "speaker": "",
+          "text": "But when they were allowed to see what they were drinking which was orange in color, each of them identified the orange flavor.",
+          "translationZh": "但当他们看到自己喝的橙色液体时，每个人都辨认出了橙色的味道。",
+          "start": 1314.04,
+          "end": 1320.5
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-2--s13",
+          "index": 12,
+          "speaker": "",
+          "text": "And when a drink that was lime flavor was colored orange, nearly half of respondents identified the flavor of the beverage as orange.",
+          "translationZh": "当酸橙味饮料变成橙色时，近一半的受访者认为该饮料的味道是橙色。",
+          "start": 1321.1,
+          "end": 1329.18
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-2--s14",
+          "index": 13,
+          "speaker": "",
+          "text": "None made that mistake when the beverage was green in color.",
+          "translationZh": "当饮料是绿色时，没有人犯这个错误。",
+          "start": 1329.82,
+          "end": 1332.9
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-2--s15",
+          "index": 14,
+          "speaker": "",
+          "text": "What's happening when someone fails to identify the flavor of a beverage they can't see or that has an abnormal color?",
+          "translationZh": "当有人无法识别他们看不到的饮料的味道或颜色异常时，会发生什么？",
+          "start": 1333.76,
+          "end": 1340.2
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-2--s16",
+          "index": 15,
+          "speaker": "",
+          "text": "Is it that participants can't discern what the flavor is, and so rely on visual cues?",
+          "translationZh": "是不是参与者无法辨别味道，只能依靠视觉线索？",
+          "start": 1341.14,
+          "end": 1346.08
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-2--s17",
+          "index": 16,
+          "speaker": "",
+          "text": "Or does color actually change the experience of taste?",
+          "translationZh": "或者颜色真的会改变味觉体验吗？",
+          "start": 1346.88,
+          "end": 1350.04
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-2--s18",
+          "index": 17,
+          "speaker": "",
+          "text": "The key to these questions is the effect of color on expectation.",
+          "translationZh": "这些问题的关键是颜色对期望的影响。",
+          "start": 1351.34,
+          "end": 1355
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-2--s19",
+          "index": 18,
+          "speaker": "",
+          "text": "The brain makes predictions using color.",
+          "translationZh": "大脑利用颜色进行预测。",
+          "start": 1356.26,
+          "end": 1358.46
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-2--s20",
+          "index": 19,
+          "speaker": "",
+          "text": "These predictions rely on expectations that come from experience.",
+          "translationZh": "这些预测依赖于来自经验的期望。",
+          "start": 1358.46,
+          "end": 1363.54
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-2--s21",
+          "index": 20,
+          "speaker": "",
+          "text": "Research shows that we're all born liking sweet things and desire to eat them, but we aren't born knowing what the sweet things we crave look like.",
+          "translationZh": "研究表明，我们生来就喜欢甜食并渴望吃它们，但我们并不是生来就知道我们渴望的甜食是什么样的。",
+          "start": 1364.4,
+          "end": 1373.64
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-2--s22",
+          "index": 21,
+          "speaker": "",
+          "text": "So we need to learn this over time.",
+          "translationZh": "所以我们需要随着时间的推移来学习这一点。",
+          "start": 1374.04,
+          "end": 1376.06
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-2--s23",
+          "index": 22,
+          "speaker": "",
+          "text": "The brain gets information from the environment.",
+          "translationZh": "大脑从环境中获取信息。",
+          "start": 1377.26,
+          "end": 1379.84
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-2--s24",
+          "index": 23,
+          "speaker": "",
+          "text": "And we learn, for example, that fruits go from green and sour to red and ripe and sweet.",
+          "translationZh": "例如，我们了解到水果会从绿色、酸味变成红色、成熟、甜美。",
+          "start": 1380.4,
+          "end": 1386.62
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-2--s25",
+          "index": 24,
+          "speaker": "",
+          "text": "Thus, if we see a green berry, we equate its color with a sour taste, and just looking at a red fruit will activate our expectations that it will taste sweet and delicious.",
+          "translationZh": "因此，如果我们看到绿色浆果，我们就会将其颜色等同于酸味，而仅仅看到红色水果就会激发我们对它味道香甜可口的期望。",
+          "start": 1387.48,
+          "end": 1398.42
+        }
+      ]
+    },
+    {
+      "id": "cet6-2024-12-set1--recording-3",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "title": "讲座 3",
+      "sourceTitle": "Recording Three",
+      "order": 7,
+      "start": 1462.9,
+      "end": 1669.02,
+      "questions": [
+        {
+          "id": "cet6-2024-12-set1--q22",
+          "number": 22,
+          "sectionId": "cet6-2024-12-set1--recording-3",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Social status"
+            },
+            {
+              "letter": "B",
+              "text": "Financial resources"
+            },
+            {
+              "letter": "C",
+              "text": "Meaning"
+            },
+            {
+              "letter": "D",
+              "text": "Happiness"
+            }
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "cet6-2024-12-set1--q23",
+          "number": 23,
+          "sectionId": "cet6-2024-12-set1--recording-3",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Their effect on people's happiness has long been overstated"
+            },
+            {
+              "letter": "B",
+              "text": "Their influence on people's life varies with social contexts"
+            },
+            {
+              "letter": "C",
+              "text": "They can affect people's experience of meaning"
+            },
+            {
+              "letter": "D",
+              "text": "They can ensure people's overall well-being"
+            }
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "cet6-2024-12-set1--q24",
+          "number": 24,
+          "sectionId": "cet6-2024-12-set1--recording-3",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "It used questions totally different from those in their first study"
+            },
+            {
+              "letter": "B",
+              "text": "It focused on the sense of meaning of French participants"
+            },
+            {
+              "letter": "C",
+              "text": "It analysed cases from a daily poll of US residents"
+            },
+            {
+              "letter": "D",
+              "text": "It examined data collected from multiple countries"
+            }
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "cet6-2024-12-set1--q25",
+          "number": 25,
+          "sectionId": "cet6-2024-12-set1--recording-3",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "They might have more access to external sources of happiness"
+            },
+            {
+              "letter": "B",
+              "text": "They might focus on an individual sense of satisfaction or meaning"
+            },
+            {
+              "letter": "C",
+              "text": "They might be less easily affected by a community's overall feeling"
+            },
+            {
+              "letter": "D",
+              "text": "They might be less adversely impacted by failure to achieve a purpose"
+            }
+          ],
+          "correct": "A"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "cet6-2024-12-set1--recording-3--s1",
+          "index": 0,
+          "speaker": "",
+          "text": "Searching for meaning is something many of us experience throughout our lives.",
+          "translationZh": "寻找意义是我们许多人一生都会经历的事情。",
+          "start": 1462.9,
+          "end": 1467.34
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-3--s2",
+          "index": 1,
+          "speaker": "",
+          "text": "For some, this meaning is religious, some political and some interpersonal.",
+          "translationZh": "对于某些人来说，这个意义是宗教的，有些是政治的，有些是人际关系的。",
+          "start": 1467.34,
+          "end": 1472.6
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-3--s3",
+          "index": 2,
+          "speaker": "",
+          "text": "And having a sense of meaning can bring us happiness.",
+          "translationZh": "拥有意义感可以给我们带来幸福。",
+          "start": 1474.06,
+          "end": 1477.02
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-3--s4",
+          "index": 3,
+          "speaker": "",
+          "text": "A new study looks at the relationship between meaning and happiness in the context of financial resources.",
+          "translationZh": "一项新的研究着眼于财务资源背景下的意义和幸福之间的关系。",
+          "start": 1477.98,
+          "end": 1483.82
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-3--s5",
+          "index": 4,
+          "speaker": "",
+          "text": "Rhia Catapano from the University of Toronto and colleagues find meaning is a far weaker predictor of happiness for rich people than poorer people, suggesting economic resources can impact how we experience meaning.",
+          "translationZh": "多伦多大学的瑞亚·卡塔帕诺 (Rhia Catapano) 及其同事发现，与穷人相比，意义对富人幸福的预测作用要弱得多，这表明经济资源会影响我们体验意义的方式。",
+          "start": 1485.86,
+          "end": 1501.36
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-3--s6",
+          "index": 5,
+          "speaker": "",
+          "text": "The team analysed data from over 500,000 people across 123 countries.",
+          "translationZh": "该团队分析了来自 123 个国家/地区超过 500,000 人的数据。",
+          "start": 1502.72,
+          "end": 1509.02
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-3--s7",
+          "index": 6,
+          "speaker": "",
+          "text": "The first study used data from a daily poll of US residents collected between 2013 and 2015.",
+          "translationZh": "第一项研究使用了 2013 年至 2015 年间收集的美国居民每日民意调查数据。",
+          "start": 1509.86,
+          "end": 1518.12
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-3--s8",
+          "index": 7,
+          "speaker": "",
+          "text": "Well-being was tracked using measures of positive affect — whether, during the day before they were surveyed, participants had smiled or laughed a lot or experienced a lot of happiness.",
+          "translationZh": "幸福感是通过积极情绪的测量来追踪的——在接受调查的前一天，参与者是否经常微笑或大笑，或者经历了很多幸福。",
+          "start": 1519.62,
+          "end": 1532.94
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-3--s9",
+          "index": 8,
+          "speaker": "",
+          "text": "Meaning was measured through a daily \"purpose index\", which explored the extent to which participants felt that they like what they do every day and are motivated to achieve their goals.",
+          "translationZh": "意义是通过每日“目的指数”来衡量的，该指数探讨了参与者感觉自己喜欢每天所做的事情以及实现目标的动力的程度。",
+          "start": 1534.44,
+          "end": 1548.42
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-3--s10",
+          "index": 9,
+          "speaker": "",
+          "text": "Finally, income levels were assessed.",
+          "translationZh": "最后，评估了收入水平。",
+          "start": 1549.4,
+          "end": 1552.26
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-3--s11",
+          "index": 10,
+          "speaker": "",
+          "text": "The results showed that the correlation between meaning and happiness was strongest among those in lower income brackets.",
+          "translationZh": "结果表明，在低收入阶层中，意义和幸福感之间的相关性最强。",
+          "start": 1553.14,
+          "end": 1562.18
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-3--s12",
+          "index": 11,
+          "speaker": "",
+          "text": "But as income levels increased, the correlation became weaker.",
+          "translationZh": "但随着收入水平的提高，相关性变得更弱。",
+          "start": 1563.14,
+          "end": 1567.82
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-3--s13",
+          "index": 12,
+          "speaker": "",
+          "text": "The second study looked at worldwide data.",
+          "translationZh": "第二项研究考察了全球数据。",
+          "start": 1567.82,
+          "end": 1572.42
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-3--s14",
+          "index": 13,
+          "speaker": "",
+          "text": "Happiness was measured using the same questions as in the first study, while meaning was measured using the single question: \"Do you feel your life has an important purpose or meaning?\".",
+          "translationZh": "幸福感是使用与第一项研究中相同的问题来衡量的，而意义则是使用一个问题来衡量的：“你觉得你的生活有重要的目的或意义吗？”。",
+          "start": 1572.98,
+          "end": 1585.84
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-3--s15",
+          "index": 14,
+          "speaker": "",
+          "text": "Again, the strength of the relationship between meaning and happiness depended on participants' income: meaning had a greater influence on happiness for those on lower incomes compared to those in higher brackets.",
+          "translationZh": "同样，意义和幸福之间关系的强度取决于参与者的收入：与高收入群体相比，意义对低收入群体的幸福影响更大。",
+          "start": 1586.86,
+          "end": 1601.5
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-3--s16",
+          "index": 15,
+          "speaker": "",
+          "text": "In the final study, French participants indicated the extent to which they felt they led a purposeful and meaningful life and how much they considered themselves a happy person.",
+          "translationZh": "在最终研究中，法国参与者表明了他们认为自己过着有目标、有意义的生活的程度，以及他们认为自己是一个幸福的人的程度。",
+          "start": 1602.56,
+          "end": 1616.3
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-3--s17",
+          "index": 16,
+          "speaker": "",
+          "text": "Finally, rather than using specific income brackets, they placed themselves on a \"social ladder\", representing where they stand in society with regard to wealth, education, and career.",
+          "translationZh": "最后，他们没有使用特定的收入等级，而是将自己置于“社会阶梯”上，代表他们在财富、教育和职业方面在社会中的地位。",
+          "start": 1617.44,
+          "end": 1631.88
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-3--s18",
+          "index": 17,
+          "speaker": "",
+          "text": "The results from the study duplicated those of the first two.",
+          "translationZh": "该研究的结果与前两项重复。",
+          "start": 1632.7,
+          "end": 1637.48
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-3--s19",
+          "index": 18,
+          "speaker": "",
+          "text": "So overall, meaning and happiness had a stronger relationship in those with fewer resources than those with more.",
+          "translationZh": "因此，总体而言，资源较少的人比资源较多的人的意义和幸福感之间的关系更紧密。",
+          "start": 1638.58,
+          "end": 1647.86
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-3--s20",
+          "index": 19,
+          "speaker": "",
+          "text": "This might be the case because rich individuals have more access to other sources of happiness — many of which will be external, like lack of stress or community.",
+          "translationZh": "情况可能如此，因为富人有更多机会获得其他幸福来源——其中许多是外部的，比如没有压力或缺乏社区。",
+          "start": 1647.86,
+          "end": 1660.4
+        },
+        {
+          "id": "cet6-2024-12-set1--recording-3--s21",
+          "index": 20,
+          "speaker": "",
+          "text": "Thus, a focus on an internal sense of satisfaction, purpose or meaning is less important.",
+          "translationZh": "因此，关注内在的满足感、目的或意义就不那么重要了。",
+          "start": 1661.24,
+          "end": 1669.02
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "cet6-2024-12-set1--q1",
+      "number": 1,
+      "sectionId": "cet6-2024-12-set1--conversation-1",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Preparing for a job interview"
+        },
+        {
+          "letter": "B",
+          "text": "Writing a work report together"
+        },
+        {
+          "letter": "C",
+          "text": "Going through a couple of issues the company faces"
+        },
+        {
+          "letter": "D",
+          "text": "Discussing the woman's annual performance review"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cet6-2024-12-set1--q2",
+      "number": 2,
+      "sectionId": "cet6-2024-12-set1--conversation-1",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "The overall culture of the company"
+        },
+        {
+          "letter": "B",
+          "text": "The instruction from her supervisor"
+        },
+        {
+          "letter": "C",
+          "text": "The honesty of the manager"
+        },
+        {
+          "letter": "D",
+          "text": "The recognition of her merits"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cet6-2024-12-set1--q3",
+      "number": 3,
+      "sectionId": "cet6-2024-12-set1--conversation-1",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Her inadequate language proficiency"
+        },
+        {
+          "letter": "B",
+          "text": "Her inability to interact with colleagues properly"
+        },
+        {
+          "letter": "C",
+          "text": "Her inappropriate behavior at company meetings"
+        },
+        {
+          "letter": "D",
+          "text": "Her simplistic approach to dealing with others"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cet6-2024-12-set1--q4",
+      "number": 4,
+      "sectionId": "cet6-2024-12-set1--conversation-1",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "To avoid offending the recipients"
+        },
+        {
+          "letter": "B",
+          "text": "To show her unique writing style"
+        },
+        {
+          "letter": "C",
+          "text": "To save time"
+        },
+        {
+          "letter": "D",
+          "text": "To be frank"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cet6-2024-12-set1--q5",
+      "number": 5,
+      "sectionId": "cet6-2024-12-set1--conversation-2",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Provide medical service to the community"
+        },
+        {
+          "letter": "B",
+          "text": "Make healthcare in her hometown the best"
+        },
+        {
+          "letter": "C",
+          "text": "Obtain a doctoral degree in internal medicine"
+        },
+        {
+          "letter": "D",
+          "text": "Have a profound impact on people around her"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cet6-2024-12-set1--q6",
+      "number": 6,
+      "sectionId": "cet6-2024-12-set1--conversation-2",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "They have constantly urged her to study hard"
+        },
+        {
+          "letter": "B",
+          "text": "They have worked hard to finance her education"
+        },
+        {
+          "letter": "C",
+          "text": "They have tried to create a positive learning environment"
+        },
+        {
+          "letter": "D",
+          "text": "They have pursued the family's dreams together with her"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cet6-2024-12-set1--q7",
+      "number": 7,
+      "sectionId": "cet6-2024-12-set1--conversation-2",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "It is a key medical branch conducive to realizing her dreams"
+        },
+        {
+          "letter": "B",
+          "text": "It connects many other specialties with its broad coverage"
+        },
+        {
+          "letter": "C",
+          "text": "It has a long history in the man's prestigious institution"
+        },
+        {
+          "letter": "D",
+          "text": "It is a medical branch both of her parents specialize in"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cet6-2024-12-set1--q8",
+      "number": 8,
+      "sectionId": "cet6-2024-12-set1--conversation-2",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Problematic"
+        },
+        {
+          "letter": "B",
+          "text": "Competitive"
+        },
+        {
+          "letter": "C",
+          "text": "Inconsistent"
+        },
+        {
+          "letter": "D",
+          "text": "Trustworthy"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cet6-2024-12-set1--q9",
+      "number": 9,
+      "sectionId": "cet6-2024-12-set1--passage-1",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "To prevent hackers from cracking our secret codes"
+        },
+        {
+          "letter": "B",
+          "text": "To show that all the guidelines are being followed"
+        },
+        {
+          "letter": "C",
+          "text": "To provide evidence that passwords are forgotten"
+        },
+        {
+          "letter": "D",
+          "text": "To convince our computer that we are human"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cet6-2024-12-set1--q10",
+      "number": 10,
+      "sectionId": "cet6-2024-12-set1--passage-1",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Put an end to the hacking phenomenon"
+        },
+        {
+          "letter": "B",
+          "text": "Help people remember their passwords"
+        },
+        {
+          "letter": "C",
+          "text": "Reduce the intricacy of the password itself"
+        },
+        {
+          "letter": "D",
+          "text": "Explain the need for different email accounts"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cet6-2024-12-set1--q11",
+      "number": 11,
+      "sectionId": "cet6-2024-12-set1--passage-1",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Innovate technologies to ensure the safety of users' accounts"
+        },
+        {
+          "letter": "B",
+          "text": "Provide incentives for the application of creative passwords"
+        },
+        {
+          "letter": "C",
+          "text": "Explore the possibility of using simpler secret codes"
+        },
+        {
+          "letter": "D",
+          "text": "Take steps to encourage users to log in more often"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cet6-2024-12-set1--q12",
+      "number": 12,
+      "sectionId": "cet6-2024-12-set1--passage-2",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Her work no longer interested her"
+        },
+        {
+          "letter": "B",
+          "text": "Her training app did not fit her"
+        },
+        {
+          "letter": "C",
+          "text": "Her fitness fell into a slump"
+        },
+        {
+          "letter": "D",
+          "text": "Her business deteriorated"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cet6-2024-12-set1--q13",
+      "number": 13,
+      "sectionId": "cet6-2024-12-set1--passage-2",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Help users keep track of their fitness levels"
+        },
+        {
+          "letter": "B",
+          "text": "Design personalised training programmes"
+        },
+        {
+          "letter": "C",
+          "text": "Strengthen ties among users worldwide"
+        },
+        {
+          "letter": "D",
+          "text": "Select well-qualified human coaches"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cet6-2024-12-set1--q14",
+      "number": 14,
+      "sectionId": "cet6-2024-12-set1--passage-2",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "They are never repeated"
+        },
+        {
+          "letter": "B",
+          "text": "They help enrich her life"
+        },
+        {
+          "letter": "C",
+          "text": "They are of no extreme intensity"
+        },
+        {
+          "letter": "D",
+          "text": "They keep her focused on her goal"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cet6-2024-12-set1--q15",
+      "number": 15,
+      "sectionId": "cet6-2024-12-set1--passage-2",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "They will not be able to take the place of human personal trainers"
+        },
+        {
+          "letter": "B",
+          "text": "They will not be able to comprehend some of the profiles users put in"
+        },
+        {
+          "letter": "C",
+          "text": "They cannot lead to optimal results with their mathematical approach"
+        },
+        {
+          "letter": "D",
+          "text": "They cannot match humans in arranging meticulous workout schedules"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cet6-2024-12-set1--q16",
+      "number": 16,
+      "sectionId": "cet6-2024-12-set1--recording-1",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "All societies are built upon the cornerstones of basic values"
+        },
+        {
+          "letter": "B",
+          "text": "Everyone everywhere demonstrates seven character traits"
+        },
+        {
+          "letter": "C",
+          "text": "All societies are kept together by seven basic moral rules"
+        },
+        {
+          "letter": "D",
+          "text": "Everyone everywhere shares a universal moral standard"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cet6-2024-12-set1--q17",
+      "number": 17,
+      "sectionId": "cet6-2024-12-set1--recording-1",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Ascertain whether deferring to authority was confined to right-wing people"
+        },
+        {
+          "letter": "B",
+          "text": "Find out whether different societies had different versions of morality"
+        },
+        {
+          "letter": "C",
+          "text": "Make clear whether all societies faced the same moral issues"
+        },
+        {
+          "letter": "D",
+          "text": "Find out whether left-wing people still had a group loyalty"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cet6-2024-12-set1--q18",
+      "number": 18,
+      "sectionId": "cet6-2024-12-set1--recording-1",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Make independent descriptions of cultures around the world"
+        },
+        {
+          "letter": "B",
+          "text": "Strive to understand the basic differences between peoples"
+        },
+        {
+          "letter": "C",
+          "text": "Appreciate the foundational value of the existing data"
+        },
+        {
+          "letter": "D",
+          "text": "Carry out systematic field studies to gather new data"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cet6-2024-12-set1--q19",
+      "number": 19,
+      "sectionId": "cet6-2024-12-set1--recording-2",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "They might be the most important part of our eating experience"
+        },
+        {
+          "letter": "B",
+          "text": "They can activate our brain functions in a most direct fashion"
+        },
+        {
+          "letter": "C",
+          "text": "They can be viewed as the windows to our soul"
+        },
+        {
+          "letter": "D",
+          "text": "They could mislead us in more ways than one"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cet6-2024-12-set1--q20",
+      "number": 20,
+      "sectionId": "cet6-2024-12-set1--recording-2",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "It attracts food companies' growing attention"
+        },
+        {
+          "letter": "B",
+          "text": "It adversely impacts one's eating experience"
+        },
+        {
+          "letter": "C",
+          "text": "It invariably determines how food sells"
+        },
+        {
+          "letter": "D",
+          "text": "It changes the way people taste food"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cet6-2024-12-set1--q21",
+      "number": 21,
+      "sectionId": "cet6-2024-12-set1--recording-2",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Enhance the taste"
+        },
+        {
+          "letter": "B",
+          "text": "Make predictions"
+        },
+        {
+          "letter": "C",
+          "text": "Identify distinct flavors"
+        },
+        {
+          "letter": "D",
+          "text": "Enrich the eating experience"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cet6-2024-12-set1--q22",
+      "number": 22,
+      "sectionId": "cet6-2024-12-set1--recording-3",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Social status"
+        },
+        {
+          "letter": "B",
+          "text": "Financial resources"
+        },
+        {
+          "letter": "C",
+          "text": "Meaning"
+        },
+        {
+          "letter": "D",
+          "text": "Happiness"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cet6-2024-12-set1--q23",
+      "number": 23,
+      "sectionId": "cet6-2024-12-set1--recording-3",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Their effect on people's happiness has long been overstated"
+        },
+        {
+          "letter": "B",
+          "text": "Their influence on people's life varies with social contexts"
+        },
+        {
+          "letter": "C",
+          "text": "They can affect people's experience of meaning"
+        },
+        {
+          "letter": "D",
+          "text": "They can ensure people's overall well-being"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cet6-2024-12-set1--q24",
+      "number": 24,
+      "sectionId": "cet6-2024-12-set1--recording-3",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "It used questions totally different from those in their first study"
+        },
+        {
+          "letter": "B",
+          "text": "It focused on the sense of meaning of French participants"
+        },
+        {
+          "letter": "C",
+          "text": "It analysed cases from a daily poll of US residents"
+        },
+        {
+          "letter": "D",
+          "text": "It examined data collected from multiple countries"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cet6-2024-12-set1--q25",
+      "number": 25,
+      "sectionId": "cet6-2024-12-set1--recording-3",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "They might have more access to external sources of happiness"
+        },
+        {
+          "letter": "B",
+          "text": "They might focus on an individual sense of satisfaction or meaning"
+        },
+        {
+          "letter": "C",
+          "text": "They might be less easily affected by a community's overall feeling"
+        },
+        {
+          "letter": "D",
+          "text": "They might be less adversely impacted by failure to achieve a purpose"
+        }
+      ],
+      "correct": "A"
+    }
+  ]
+}

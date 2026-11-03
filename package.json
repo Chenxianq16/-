@@ -7,6 +7,7 @@
   "scripts": {
     "serve": "node scripts/serve.mjs",
     "build:data": "node scripts/build-content.mjs",
+    "fetch:audio": "node scripts/fetch-audio.mjs",
     "validate:data": "node scripts/validate-content.mjs",
     "test": "node --test"
   },

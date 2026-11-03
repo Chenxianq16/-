@@ -1,0 +1,97 @@
+{
+  "generatedAt": "2026-11-03",
+  "defaultExamId": "cet6-2025-12-set1",
+  "exams": [
+    {
+      "id": "cet6-2025-12-set1",
+      "title": "2025 年 12 月六级听力（第 1 套）",
+      "shortTitle": "2025.12 · 第 1 套",
+      "session": "2025-12",
+      "year": 2025,
+      "month": 12,
+      "setNumber": 1,
+      "duration": 1456.51,
+      "sentenceCount": 150,
+      "questionCount": 25,
+      "dataPath": "exams/cet6-2025-12-set1.json"
+    },
+    {
+      "id": "cet6-2025-06-set1",
+      "title": "2025 年 6 月六级听力（第 1 套）",
+      "shortTitle": "2025.06 · 第 1 套",
+      "session": "2025-06",
+      "year": 2025,
+      "month": 6,
+      "setNumber": 1,
+      "duration": 1122.61,
+      "sentenceCount": 159,
+      "questionCount": 25,
+      "dataPath": "exams/cet6-2025-06-set1.json"
+    },
+    {
+      "id": "cet6-2024-12-set1",
+      "title": "2024 年 12 月六级听力（第 1 套）",
+      "shortTitle": "2024.12 · 第 1 套",
+      "session": "2024-12",
+      "year": 2024,
+      "month": 12,
+      "setNumber": 1,
+      "duration": 1669.02,
+      "sentenceCount": 164,
+      "questionCount": 25,
+      "dataPath": "exams/cet6-2024-12-set1.json"
+    },
+    {
+      "id": "cet6-2024-06-set1",
+      "title": "2024 年 6 月六级听力（第 1 套）",
+      "shortTitle": "2024.06 · 第 1 套",
+      "session": "2024-06",
+      "year": 2024,
+      "month": 6,
+      "setNumber": 1,
+      "duration": 1558.46,
+      "sentenceCount": 145,
+      "questionCount": 25,
+      "dataPath": "exams/cet6-2024-06-set1.json"
+    },
+    {
+      "id": "cet6-2023-12-set1",
+      "title": "2023 年 12 月六级听力（第 1 套）",
+      "shortTitle": "2023.12 · 第 1 套",
+      "session": "2023-12",
+      "year": 2023,
+      "month": 12,
+      "setNumber": 1,
+      "duration": 1479.12,
+      "sentenceCount": 157,
+      "questionCount": 25,
+      "dataPath": "exams/cet6-2023-12-set1.json"
+    },
+    {
+      "id": "cet6-2023-06-set1",
+      "title": "2023 年 6 月六级听力（第 1 套）",
+      "shortTitle": "2023.06 · 第 1 套",
+      "session": "2023-06",
+      "year": 2023,
+      "month": 6,
+      "setNumber": 1,
+      "duration": 1563.67,
+      "sentenceCount": 148,
+      "questionCount": 25,
+      "dataPath": "exams/cet6-2023-06-set1.json"
+    },
+    {
+      "id": "cet6-2021-06-set1",
+      "title": "2021 年 6 月六级听力（第 1 套）",
+      "shortTitle": "2021.06 · 第 1 套",
+      "session": "2021-06",
+      "year": 2021,
+      "month": 6,
+      "setNumber": 1,
+      "duration": 1598.78,
+      "sentenceCount": 167,
+      "questionCount": 25,
+      "dataPath": "exams/cet6-2021-06-set1.json"
+    }
+  ]
+}

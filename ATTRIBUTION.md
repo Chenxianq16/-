@@ -1,9 +1,10 @@
 # Content attribution
 
-## CET-6 listening set
+## CET-6 listening sets
 
-The listening audio, transcript, question options, and answer key for the
-2021 June CET-6 listening set 1 used by this project are attributed to:
+The listening audio, transcripts, question options, and answer keys for the
+2021 June and 2023-2025 June/December CET-6 listening sets used by this project
+are attributed to:
 
 - **CET-6 Listening Resources & Analysis v1.0.0**
 - Creator: Leif / Ysoseri1224

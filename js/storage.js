@@ -4,6 +4,7 @@ function emptyStore() {
   return {
     version: 1,
     aiEndpoint: "",
+    lastExamId: "",
     attempts: [],
     sentenceProgress: {},
     quizAnswers: {},
@@ -99,14 +100,20 @@ export function clearLearningData(store) {
 }
 
 export function getSummary(exam, store) {
+  const progress = exam.sections.flatMap((section) =>
+    section.sentences.map(
+      (sentence) => store.sentenceProgress[`${section.id}:${sentence.id}`]
+    )
+  ).filter(Boolean);
   const total = exam.meta.sentenceCount;
-  const completed = Object.values(store.sentenceProgress).filter(
-    (item) => item.score >= 80
-  ).length;
-  const masteredScores = Object.values(store.sentenceProgress).map((item) => item.score);
+  const completed = progress.filter((item) => item.score >= 80).length;
+  const masteredScores = progress.map((item) => item.score);
   const averageScore = masteredScores.length
     ? Math.round(masteredScores.reduce((sum, score) => sum + score, 0) / masteredScores.length)
     : 0;
+  const questionAnswers = exam.questions
+    .map((question) => store.quizAnswers[question.id])
+    .filter(Boolean);
 
   return {
     total,
@@ -114,8 +121,8 @@ export function getSummary(exam, store) {
     completionRate: total ? Math.round((completed / total) * 100) : 0,
     averageScore,
     wrongWordCount: Object.keys(store.wrongWords).length,
-    quizCount: Object.keys(store.quizAnswers).length,
-    quizCorrect: Object.values(store.quizAnswers).filter((item) => item.correct).length
+    quizCount: questionAnswers.length,
+    quizCorrect: questionAnswers.filter((item) => item.correct).length
   };
 }
 

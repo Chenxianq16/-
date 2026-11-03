@@ -26,6 +26,9 @@ const aiEndpointInput = document.querySelector("#ai-endpoint");
 
 const store = loadStore();
 const state = {
+  exams: [],
+  examIndex: null,
+  examId: "",
   data: null,
   route: "home",
   mode: "passage",
@@ -178,6 +181,25 @@ function renderHome() {
       </aside>
     </section>
 
+    <section class="exam-switcher" aria-label="选择试卷">
+      <div>
+        <p class="eyebrow">PAPER LIBRARY</p>
+        <h2>近三年六级听力</h2>
+        <p>2023-2025 年 6 月与 12 月，共 6 套，并保留 2021 年练习套。</p>
+      </div>
+      <label class="exam-select-field">
+        <span>当前试卷</span>
+        <select id="exam-select">
+          ${state.exams
+            .map(
+              (exam) =>
+                `<option value="${exam.meta.id}" ${exam.meta.id === state.data.meta.id ? "selected" : ""}>${escapeHtml(exam.meta.title)}</option>`
+            )
+            .join("")}
+        </select>
+      </label>
+    </section>
+
     <div class="mode-switch" aria-label="训练模式">
       <button class="mode-tab ${state.mode === "passage" ? "active" : ""}" data-action="mode" data-mode="passage">
         完整篇章
@@ -302,7 +324,15 @@ function renderPractice() {
   const isQuestionMode = state.mode === "question";
   const stepLabels = ["1 盲听", "2 答题", "3 逐句默写", "4 复盘"];
   const activeStep =
-    isQuestionMode ? 1 : state.phase === "blind" ? 0 : state.phase === "quiz" ? 1 : 2;
+    isQuestionMode && state.phase === "quiz"
+      ? 1
+      : state.phase === "blind"
+        ? 0
+        : state.phase === "quiz"
+          ? 1
+          : state.phase === "dictation"
+            ? 2
+            : 3;
 
   app.innerHTML = `
     <div class="practice-top">
@@ -314,12 +344,18 @@ function renderPractice() {
       <button class="button-secondary" data-action="back-home">返回训练列表</button>
     </div>
 
-    <div class="stepper" aria-label="训练步骤">
+    <div class="stepper" aria-label="训练步骤，可随时跳转">
       ${stepLabels
-        .map(
-          (label, index) =>
-            `<div class="step ${index === activeStep ? "active" : ""}">${label}</div>`
-        )
+        .map((label, index) => {
+          const phases = ["blind", "quiz", "dictation", "review"];
+          return `
+            <button
+              class="step ${index === activeStep ? "active" : ""}"
+              data-action="go-phase"
+              data-phase="${phases[index]}"
+            >${label}</button>
+          `;
+        })
         .join("")}
     </div>
 
@@ -334,7 +370,9 @@ function renderPractice() {
               ? renderBlindStage(section)
               : state.phase === "quiz"
                 ? renderQuizStage(section.questions, section, false)
-                : renderDictationStage(section)
+                : state.phase === "dictation"
+                  ? renderDictationStage(section)
+                  : renderReviewStage(section)
         }
       </section>
       ${renderContextPanel(section, isQuestionMode)}
@@ -376,6 +414,7 @@ function renderBlindStage(section) {
       <div class="card-actions" style="justify-content:center">
         <button class="button" data-action="play-section">播放整段</button>
         <button class="button-secondary" data-action="begin-quiz">开始答题</button>
+        <button class="button-ghost" data-action="go-phase" data-phase="review">直接复盘</button>
       </div>
     </div>
   `;
@@ -410,8 +449,9 @@ function renderQuizStage(questions, section, single) {
       ${
         submitted
           ? `
-            <button class="button" data-action="${single ? "back-home" : "begin-dictation"}">
-              ${single ? "返回训练列表" : "进入逐句默写"}
+            <button class="button" data-action="begin-dictation">进入逐句默写</button>
+            <button class="button-secondary" data-action="go-phase" data-phase="review">
+              查看复盘
             </button>
             <button class="button-secondary" data-action="play-section">再听一遍</button>
           `
@@ -592,9 +632,10 @@ function renderDictationStage(section) {
       <button class="button-secondary" data-action="play-sentence">播放本句</button>
       ${
         diff
-          ? `<button class="button" data-action="next-sentence">${state.sentenceIndex === section.sentences.length - 1 ? "查看完成情况" : "下一句"}</button>`
+          ? `<button class="button" data-action="next-sentence">${state.sentenceIndex === section.sentences.length - 1 ? "查看复盘" : "下一句"}</button>`
           : `<button class="button" data-action="submit-sentence">提交本句</button>`
       }
+      <button class="button-ghost" data-action="go-phase" data-phase="review">进入复盘</button>
       ${
         state.sentenceIndex > 0
           ? `<button class="button-ghost" data-action="previous-sentence">上一句</button>`
@@ -634,6 +675,104 @@ function renderDictationStage(section) {
         `
         : ""
     }
+  `;
+}
+
+function renderReviewStage(section) {
+  const progress = sectionProgress(section);
+  const questionAnswers = section.questions.map((question) => ({
+    question,
+    answer: store.quizAnswers[question.id]
+  }));
+  const answered = questionAnswers.filter((item) => item.answer);
+  const correct = answered.filter((item) => item.answer.correct).length;
+  const attemptedSentences = section.sentences.filter(
+    (sentence) => store.sentenceProgress[`${section.id}:${sentence.id}`]
+  );
+  const average = attemptedSentences.length
+    ? Math.round(
+        attemptedSentences.reduce(
+          (sum, sentence) =>
+            sum +
+            (store.sentenceProgress[`${section.id}:${sentence.id}`]?.score || 0),
+          0
+        ) / attemptedSentences.length
+      )
+    : 0;
+
+  return `
+    <div class="panel-heading">
+      <div>
+        <p class="eyebrow">STEP 4</p>
+        <h2>篇章复盘</h2>
+        <p>查看答题和逐句默写结果，也可以随时回到任意一句重新练习。</p>
+      </div>
+      <button class="button" data-action="resume-dictation">从第一处未完成继续</button>
+    </div>
+
+    <div class="review-metrics">
+      <div class="review-metric">
+        <span>答题</span>
+        <strong>${answered.length ? `${correct}/${answered.length}` : "未作答"}</strong>
+      </div>
+      <div class="review-metric">
+        <span>逐句完成</span>
+        <strong>${progress.completed}/${progress.total}</strong>
+      </div>
+      <div class="review-metric">
+        <span>平均匹配</span>
+        <strong>${average}</strong>
+      </div>
+    </div>
+
+    <div class="review-subsection">
+      <h3>答题结果</h3>
+      <div class="review-question-list">
+        ${questionAnswers
+          .map(({ question, answer }) => {
+            const stateLabel = !answer
+              ? "未作答"
+              : answer.correct
+                ? "正确"
+                : `选择 ${answer.selected}，正确 ${question.correct}`;
+            return `
+              <div class="review-question ${answer ? (answer.correct ? "correct" : "wrong") : ""}">
+                <span>Q${question.number}</span>
+                <strong>${escapeHtml(stateLabel)}</strong>
+              </div>
+            `;
+          })
+          .join("")}
+      </div>
+    </div>
+
+    <div class="review-subsection">
+      <h3>逐句原文</h3>
+      <div class="review-sentence-list">
+        ${section.sentences
+          .map((sentence) => {
+            const sentenceResult = store.sentenceProgress[`${section.id}:${sentence.id}`];
+            return `
+              <article class="review-sentence">
+                <div class="review-sentence-main">
+                  <span class="review-sentence-number">${sentence.index + 1}</span>
+                  <div>
+                    <p>${escapeHtml(sentence.text)}</p>
+                    <small>${escapeHtml(sentence.translationZh)}</small>
+                  </div>
+                </div>
+                <div class="review-sentence-actions">
+                  <span class="status-pill">${sentenceResult ? `匹配 ${sentenceResult.score}` : "未练"}</span>
+                  <button class="text-button" data-action="jump-sentence" data-sentence-index="${sentence.index}">
+                    回默写
+                  </button>
+                </div>
+              </article>
+            `;
+          })
+          .join("")}
+      </div>
+    </div>
   `;
 }
 
@@ -912,12 +1051,71 @@ function startPassage(sectionId, phase = "blind") {
   render();
 }
 
+function firstIncompleteSentence(section) {
+  const index = section.sentences.findIndex((sentence) => {
+    const progress = store.sentenceProgress[`${section.id}:${sentence.id}`];
+    return !progress || progress.score < 80;
+  });
+  return index >= 0 ? index : 0;
+}
+
+function beginDictation(section = getSection()) {
+  state.mode = "passage";
+  state.questionId = null;
+  state.phase = "dictation";
+  state.sentenceIndex = firstIncompleteSentence(section);
+  state.dictationText = "";
+  state.currentDiff = null;
+  render();
+}
+
+function goToPhase(phase) {
+  const section = getSection();
+  if (!section) return;
+
+  if (phase === "quiz" && state.mode === "question") {
+    state.phase = "quiz";
+    render();
+    return;
+  }
+
+  if (phase !== "quiz") {
+    state.mode = "passage";
+    state.questionId = null;
+  }
+  state.phase = phase;
+  state.quizSubmitted = phase === "quiz" ? state.quizSubmitted : false;
+
+  if (phase === "dictation") {
+    state.sentenceIndex = firstIncompleteSentence(section);
+    state.dictationText = "";
+    state.currentDiff = null;
+  }
+  render();
+}
+
+function jumpToSentence(index) {
+  const section = getSection();
+  const sentenceIndex = Number(index);
+  if (!section || !Number.isInteger(sentenceIndex) || !section.sentences[sentenceIndex]) {
+    return;
+  }
+  state.mode = "passage";
+  state.questionId = null;
+  state.phase = "dictation";
+  state.sentenceIndex = sentenceIndex;
+  state.dictationText = "";
+  state.currentDiff = null;
+  render();
+}
+
 function startQuestion(questionId) {
   const question = getQuestion(questionId);
   state.route = "practice";
   state.mode = "question";
   state.sectionId = question.sectionId;
   state.questionId = questionId;
+  state.phase = "quiz";
   state.selectedAnswers = {};
   state.quizSubmitted = false;
   render();
@@ -1052,13 +1250,38 @@ function openSettings() {
 function nextSentence() {
   const section = getSection();
   if (state.sentenceIndex >= section.sentences.length - 1) {
-    state.sentenceIndex = section.sentences.length;
+    state.phase = "review";
+    state.dictationText = "";
+    state.currentDiff = null;
+    render();
+    return;
   } else {
     state.sentenceIndex += 1;
   }
   state.dictationText = "";
   state.currentDiff = null;
   render();
+}
+
+function selectExam(examId) {
+  const exam = state.exams.find((item) => item.meta.id === examId);
+  if (!exam) return;
+  audioEl.pause();
+  stopAt = null;
+  state.data = exam;
+  state.examId = exam.meta.id;
+  state.route = "home";
+  state.sectionId = null;
+  state.questionId = null;
+  state.phase = "blind";
+  state.selectedAnswers = {};
+  state.quizSubmitted = false;
+  state.dictationText = "";
+  state.currentDiff = null;
+  store.lastExamId = exam.meta.id;
+  saveStore(store);
+  setAudioSource();
+  renderHome();
 }
 
 function previousSentence() {
@@ -1102,16 +1325,24 @@ app.addEventListener("click", async (event) => {
     render();
     return;
   }
+  if (action === "go-phase") {
+    goToPhase(button.dataset.phase);
+    return;
+  }
   if (action === "submit-quiz") {
     await submitQuiz();
     return;
   }
   if (action === "begin-dictation") {
-    state.phase = "dictation";
-    state.sentenceIndex = 0;
-    state.dictationText = "";
-    state.currentDiff = null;
-    render();
+    beginDictation();
+    return;
+  }
+  if (action === "resume-dictation") {
+    beginDictation();
+    return;
+  }
+  if (action === "jump-sentence") {
+    jumpToSentence(button.dataset.sentenceIndex);
     return;
   }
   if (action === "play-sentence") {
@@ -1187,6 +1418,10 @@ app.addEventListener("input", (event) => {
 });
 
 app.addEventListener("change", (event) => {
+  if (event.target.id === "exam-select") {
+    selectExam(event.target.value);
+    return;
+  }
   const questionId = event.target.dataset.questionOption;
   if (questionId) {
     state.selectedAnswers[questionId] = event.target.value;
@@ -1231,13 +1466,66 @@ audioEl.addEventListener("ended", () => {
   stopAt = null;
 });
 
+function migrateLegacyProgress(exams) {
+  const legacyExam = exams.find((exam) => exam.meta.id === "cet6-2021-06-set1");
+  if (!legacyExam) return false;
+  let migrated = false;
+
+  for (const section of legacyExam.sections) {
+    const legacySectionId = section.id.split("--").slice(1).join("--");
+    for (const sentence of section.sentences) {
+      const legacyKey = `${legacySectionId}:${legacySectionId}-s${sentence.index + 1}`;
+      const currentKey = `${section.id}:${sentence.id}`;
+      if (store.sentenceProgress[legacyKey] && !store.sentenceProgress[currentKey]) {
+        store.sentenceProgress[currentKey] = store.sentenceProgress[legacyKey];
+        delete store.sentenceProgress[legacyKey];
+        migrated = true;
+      }
+    }
+  }
+
+  for (const question of legacyExam.questions) {
+    const legacyKey = `q${question.number}`;
+    if (store.quizAnswers[legacyKey] && !store.quizAnswers[question.id]) {
+      store.quizAnswers[question.id] = store.quizAnswers[legacyKey];
+      delete store.quizAnswers[legacyKey];
+      migrated = true;
+    }
+  }
+
+  if (migrated) {
+    saveStore(store);
+  }
+  return migrated;
+}
+
 async function init() {
   try {
-    const response = await fetch(new URL("../assets/data/exam.json", import.meta.url));
-    if (!response.ok) {
-      throw new Error(`题库加载失败：${response.status}`);
+    const dataRoot = new URL("../assets/data/", import.meta.url);
+    const indexResponse = await fetch(new URL("index.json", dataRoot));
+    if (!indexResponse.ok) {
+      throw new Error(`题库索引加载失败：${indexResponse.status}`);
     }
-    state.data = await response.json();
+    state.examIndex = await indexResponse.json();
+    state.exams = await Promise.all(
+      state.examIndex.exams.map(async (entry) => {
+        const response = await fetch(new URL(entry.dataPath, dataRoot));
+        if (!response.ok) {
+          throw new Error(`${entry.id} 加载失败：${response.status}`);
+        }
+        return response.json();
+      })
+    );
+
+    const migratedLegacy = migrateLegacyProgress(state.exams);
+    const savedExam = state.exams.find((exam) => exam.meta.id === store.lastExamId);
+    const fallbackExam = migratedLegacy
+      ? state.exams.find((exam) => exam.meta.id === "cet6-2021-06-set1")
+      : state.exams.find((exam) => exam.meta.id === state.examIndex.defaultExamId);
+    state.data = savedExam || fallbackExam || state.exams[0];
+    state.examId = state.data.meta.id;
+    store.lastExamId = state.examId;
+    saveStore(store);
     setAudioSource();
     document.title = `${state.data.meta.title} | CET6 精听`;
     renderHome();

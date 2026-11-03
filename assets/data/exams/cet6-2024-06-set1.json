@@ -1,0 +1,2782 @@
+{
+  "meta": {
+    "id": "cet6-2024-06-set1",
+    "sourceId": "cet6_2024.06_set1",
+    "title": "2024 年 6 月六级听力（第 1 套）",
+    "shortTitle": "2024.06 · 第 1 套",
+    "session": "2024-06",
+    "year": 2024,
+    "month": 6,
+    "setNumber": 1,
+    "subtitle": "真实六级听力 · 25 题 · 145 句逐句时间轴",
+    "audio": "assets/audio/cet6-2024-06-set1.mp3",
+    "sourceAudioPath": "resources/CET6_2024.06/CET6_2024.06_set1_listening.mp3",
+    "duration": 1558.46,
+    "sentenceCount": 145,
+    "questionCount": 25,
+    "sourceName": "CET-6 Listening Study",
+    "sourceUrl": "https://github.com/getfine333-ux/cet6-listening-study",
+    "upstreamName": "CET-6 Listening Resources & Analysis",
+    "upstreamUrl": "https://github.com/Ysoseri1224/CET-6-Listening-10-Years-Resources-and-Analysis",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "downloadedAt": "2026-11-03"
+  },
+  "sections": [
+    {
+      "id": "cet6-2024-06-set1--conversation-1",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "title": "长对话 1",
+      "sourceTitle": "Conversation One",
+      "order": 1,
+      "start": 49.84,
+      "end": 159.62,
+      "questions": [
+        {
+          "id": "cet6-2024-06-set1--q1",
+          "number": 1,
+          "sectionId": "cet6-2024-06-set1--conversation-1",
+          "type": "long-conversation",
+          "typeLabel": "长对话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Reply to the man’s last proposal within a short time"
+            },
+            {
+              "letter": "B",
+              "text": "Sign the agreement if one small change is made to it"
+            },
+            {
+              "letter": "C",
+              "text": "Make a sponsorship deal for her client at the meeting"
+            },
+            {
+              "letter": "D",
+              "text": "Give the man some good news regarding the contract"
+            }
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "cet6-2024-06-set1--q2",
+          "number": 2,
+          "sectionId": "cet6-2024-06-set1--conversation-1",
+          "type": "long-conversation",
+          "typeLabel": "长对话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "They are becoming impatient"
+            },
+            {
+              "letter": "B",
+              "text": "They are afraid time is running out"
+            },
+            {
+              "letter": "C",
+              "text": "They are used to making alterations"
+            },
+            {
+              "letter": "D",
+              "text": "They are concerned about the details"
+            }
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "cet6-2024-06-set1--q3",
+          "number": 3,
+          "sectionId": "cet6-2024-06-set1--conversation-1",
+          "type": "long-conversation",
+          "typeLabel": "长对话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "To prevent geographical discrimination"
+            },
+            {
+              "letter": "B",
+              "text": "To tap the food and beverage market"
+            },
+            {
+              "letter": "C",
+              "text": "To avoid any conflict of interest"
+            },
+            {
+              "letter": "D",
+              "text": "To reduce unfair competition"
+            }
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "cet6-2024-06-set1--q4",
+          "number": 4,
+          "sectionId": "cet6-2024-06-set1--conversation-1",
+          "type": "long-conversation",
+          "typeLabel": "长对话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "It is a potential market for food and beverage"
+            },
+            {
+              "letter": "B",
+              "text": "It is very attractive for real estate developers"
+            },
+            {
+              "letter": "C",
+              "text": "It is a negligible market for his company"
+            },
+            {
+              "letter": "D",
+              "text": "It is very different from other markets"
+            }
+          ],
+          "correct": "C"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s1",
+          "index": 0,
+          "speaker": "W",
+          "text": "Thank you for meeting with me, Stephen, at such a short notice.",
+          "translationZh": "斯蒂芬，谢谢你在这么短的时间内与我会面。",
+          "start": 49.84,
+          "end": 53.24
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s2",
+          "index": 1,
+          "speaker": "M",
+          "text": "Not a problem, Margaret.",
+          "translationZh": "没问题，玛格丽特。",
+          "start": 53.9,
+          "end": 55.44
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s3",
+          "index": 2,
+          "speaker": "M",
+          "text": "Now please give me some good news.",
+          "translationZh": "现在请给我一些好消息。",
+          "start": 56.04,
+          "end": 58.26
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s4",
+          "index": 3,
+          "speaker": "M",
+          "text": "Have you agreed to my last proposal?",
+          "translationZh": "你同意我上次的提议了吗？",
+          "start": 58.72,
+          "end": 60.46
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s5",
+          "index": 4,
+          "speaker": "W",
+          "text": "I have indeed and I wish to sign the agreement, pending one small change to be made to the contract.",
+          "translationZh": "我确实已经并且希望签署该协议，但等待对合同进行一些小的更改。",
+          "start": 60.86,
+          "end": 66.7
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s6",
+          "index": 5,
+          "speaker": "M",
+          "text": "Margaret, we've been through this for almost a year now, back and forth making alterations.",
+          "translationZh": "玛格丽特，我们已经经历了近一年的时间，来回做出改变。",
+          "start": 67.22,
+          "end": 72.7
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s7",
+          "index": 6,
+          "speaker": "M",
+          "text": "Are you sure you want to make a sponsorship deal for your clients or not?",
+          "translationZh": "您确定要为您的客户达成赞助协议吗？",
+          "start": 73.24,
+          "end": 76.7
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s8",
+          "index": 7,
+          "speaker": "M",
+          "text": "I ask this because frankly, some people at my end are running out of patience.",
+          "translationZh": "我问这个问题是因为坦白说，我这边的一些人已经失去了耐心。",
+          "start": 77.48,
+          "end": 82.02
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s9",
+          "index": 8,
+          "speaker": "W",
+          "text": "I understand your concerns, but as I'm sure you understand, we hold our clients' best interests to be of the utmost concern.",
+          "translationZh": "我理解您的担忧，但我相信您也理解，我们将客户的最大利益放在首位。",
+          "start": 82.02,
+          "end": 90.34
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s10",
+          "index": 9,
+          "speaker": "W",
+          "text": "We therefore comb through the fine details of all contracts.",
+          "translationZh": "因此，我们梳理了所有合同的细节。",
+          "start": 90.88,
+          "end": 94.24
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s11",
+          "index": 10,
+          "speaker": "W",
+          "text": "Rest assured we all appreciate your firm's patience.",
+          "translationZh": "请放心，我们都感谢贵公司的耐心。",
+          "start": 95.02,
+          "end": 98
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s12",
+          "index": 11,
+          "speaker": "M",
+          "text": "Okay, fine.",
+          "translationZh": "好吧，好吧。",
+          "start": 98.86,
+          "end": 99.96
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s13",
+          "index": 12,
+          "speaker": "M",
+          "text": "So what changes do you wish to make?",
+          "translationZh": "那么您希望做出哪些改变？",
+          "start": 100.6,
+          "end": 102.66
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s14",
+          "index": 13,
+          "speaker": "W",
+          "text": "Essentially, we would like the new deal to exclude the Middle East.",
+          "translationZh": "本质上，我们希望新协议将中东排除在外。",
+          "start": 103.3,
+          "end": 107.18
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s15",
+          "index": 14,
+          "speaker": "W",
+          "text": "That's all.",
+          "translationZh": "就这样。",
+          "start": 107.62,
+          "end": 108.42
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s16",
+          "index": 15,
+          "speaker": "M",
+          "text": "The Middle East?",
+          "translationZh": "中东？",
+          "start": 108.74,
+          "end": 109.54
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s17",
+          "index": 16,
+          "speaker": "M",
+          "text": "Why?",
+          "translationZh": "为什么？",
+          "start": 109.92,
+          "end": 110.72
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s18",
+          "index": 17,
+          "speaker": "W",
+          "text": "My client has a couple of other prospective marketing deals from companies in the Middle East.",
+          "translationZh": "我的客户还有一些来自中东公司的其他潜在营销交易。",
+          "start": 110.32,
+          "end": 116.24
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s19",
+          "index": 18,
+          "speaker": "W",
+          "text": "Those offers, should they materialize, would exclusively employ my client's image in the Middle East only.",
+          "translationZh": "这些报价一旦实现，将仅使用我客户在中东的形象。",
+          "start": 116.34,
+          "end": 122.94
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s20",
+          "index": 19,
+          "speaker": "W",
+          "text": "Therefore, in order to avoid any conflict, we would need to ensure that both marketing campaigns do not overlap geographically.",
+          "translationZh": "因此，为了避免任何冲突，我们需要确保两个营销活动在地理上不重叠。",
+          "start": 123.68,
+          "end": 131.96
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s21",
+          "index": 20,
+          "speaker": "M",
+          "text": "What business sector in the Middle East are we talking about here?",
+          "translationZh": "我们在这里谈论的是中东的哪些商业部门？",
+          "start": 132.66,
+          "end": 136.26
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s22",
+          "index": 21,
+          "speaker": "W",
+          "text": "Real estate.",
+          "translationZh": "房地产。",
+          "start": 136.74,
+          "end": 137.54
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s23",
+          "index": 22,
+          "speaker": "M",
+          "text": "Well, that should be okay then.",
+          "translationZh": "嗯，那就应该没问题了。",
+          "start": 137.86,
+          "end": 140.14
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s24",
+          "index": 23,
+          "speaker": "M",
+          "text": "So long as the product is very different from our food and beverage market, there should be no conflict of interest.",
+          "translationZh": "只要产品与我们的食品和饮料市场有很大不同，就不应该有利益冲突。",
+          "start": 140.82,
+          "end": 146.72
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s25",
+          "index": 24,
+          "speaker": "M",
+          "text": "Nevertheless, I will have to run this through my people.",
+          "translationZh": "尽管如此，我必须通过我的人民来贯彻这一点。",
+          "start": 147.48,
+          "end": 150.54
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s26",
+          "index": 25,
+          "speaker": "M",
+          "text": "I don't foresee any problem, though.",
+          "translationZh": "不过，我预计不会有任何问题。",
+          "start": 151.14,
+          "end": 153.26
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s27",
+          "index": 26,
+          "speaker": "M",
+          "text": "The Middle East is a negligible market for us.",
+          "translationZh": "中东对我们来说是一个可以忽略不计的市场。",
+          "start": 154,
+          "end": 156.4
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-1--s28",
+          "index": 27,
+          "speaker": "M",
+          "text": "But I still need to check this with a couple of departments.",
+          "translationZh": "但我仍然需要与几个部门核实这一点。",
+          "start": 156.9,
+          "end": 159.62
+        }
+      ]
+    },
+    {
+      "id": "cet6-2024-06-set1--conversation-2",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "title": "长对话 2",
+      "sourceTitle": "Conversation Two",
+      "order": 2,
+      "start": 240.32,
+      "end": 358.24,
+      "questions": [
+        {
+          "id": "cet6-2024-06-set1--q5",
+          "number": 5,
+          "sectionId": "cet6-2024-06-set1--conversation-2",
+          "type": "long-conversation",
+          "typeLabel": "长对话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "They are thrilled by a rare astronomic phenomenon"
+            },
+            {
+              "letter": "B",
+              "text": "They are celebrating a big event on mountain tops"
+            },
+            {
+              "letter": "C",
+              "text": "They are enthusiastic about big science-related stories"
+            },
+            {
+              "letter": "D",
+              "text": "They are joined by astronomers all across North America"
+            }
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "cet6-2024-06-set1--q6",
+          "number": 6,
+          "sectionId": "cet6-2024-06-set1--conversation-2",
+          "type": "long-conversation",
+          "typeLabel": "长对话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "It will be the most formidable of its kind in over a century"
+            },
+            {
+              "letter": "B",
+              "text": "It will come closest to Earth in more than one hundred years"
+            },
+            {
+              "letter": "C",
+              "text": "It will eclipse many other such events in human history"
+            },
+            {
+              "letter": "D",
+              "text": "It will be seen most clearly from Denver’s mountain tops"
+            }
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "cet6-2024-06-set1--q7",
+          "number": 7,
+          "sectionId": "cet6-2024-06-set1--conversation-2",
+          "type": "long-conversation",
+          "typeLabel": "长对话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "A blur"
+            },
+            {
+              "letter": "B",
+              "text": "Stars"
+            },
+            {
+              "letter": "C",
+              "text": "The edge of our galaxy"
+            },
+            {
+              "letter": "D",
+              "text": "An ordinary flying object"
+            }
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "cet6-2024-06-set1--q8",
+          "number": 8,
+          "sectionId": "cet6-2024-06-set1--conversation-2",
+          "type": "long-conversation",
+          "typeLabel": "长对话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Use professional equipment"
+            },
+            {
+              "letter": "B",
+              "text": "Climb to the nearby heights"
+            },
+            {
+              "letter": "C",
+              "text": "Fix their eyes due north"
+            },
+            {
+              "letter": "D",
+              "text": "Make use of phone apps"
+            }
+          ],
+          "correct": "D"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s1",
+          "index": 0,
+          "speaker": "M",
+          "text": "Next, we have a special science-related new story.",
+          "translationZh": "接下来，我们有一个特别的与科学相关的新故事。",
+          "start": 240.32,
+          "end": 244.64
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s2",
+          "index": 1,
+          "speaker": "M",
+          "text": "Paula Hancock is at the Denver Observatory.",
+          "translationZh": "保拉·汉考克在丹佛天文台。",
+          "start": 245.08,
+          "end": 248.28
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s3",
+          "index": 2,
+          "speaker": "M",
+          "text": "Paula, what is the big story over there?",
+          "translationZh": "宝拉，那边有什么大新闻吗？",
+          "start": 248.8,
+          "end": 251.42
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s4",
+          "index": 3,
+          "speaker": "W",
+          "text": "Hi, John.",
+          "translationZh": "嗨，约翰。",
+          "start": 252.32,
+          "end": 253.12
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s5",
+          "index": 4,
+          "speaker": "W",
+          "text": "Yes, all the astronomers on site here are very excited.",
+          "translationZh": "是的，在场的所有天文学家都非常兴奋。",
+          "start": 253.64,
+          "end": 257.06
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s6",
+          "index": 5,
+          "speaker": "W",
+          "text": "In fact, space enthusiasts all across North America and the rest of the Northern Hemisphere will be congregating on mountaintops tonight to watch the night's sky.",
+          "translationZh": "事实上，北美和北半球其他地区的太空爱好者今晚将聚集在山顶观看夜空。",
+          "start": 257.88,
+          "end": 268
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s7",
+          "index": 6,
+          "speaker": "M",
+          "text": "Why?",
+          "translationZh": "为什么？",
+          "start": 268.82,
+          "end": 269.62
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s8",
+          "index": 7,
+          "speaker": "M",
+          "text": "What's the big event?",
+          "translationZh": "有什么大事件？",
+          "start": 270,
+          "end": 270.98
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s9",
+          "index": 8,
+          "speaker": "M",
+          "text": "Is there an eclipse happening soon?",
+          "translationZh": "日食很快就会发生吗？",
+          "start": 271.7,
+          "end": 273.14
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s10",
+          "index": 9,
+          "speaker": "W",
+          "text": "Tonight, the Earth will come into close proximity with the Oppenheimer comet.",
+          "translationZh": "今晚，地球将与奥本海默彗星近距离接触。",
+          "start": 273.92,
+          "end": 278.36
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s11",
+          "index": 10,
+          "speaker": "W",
+          "text": "It is the closest our planet has been to such a phenomenon in over 100 years.",
+          "translationZh": "这是我们的星球一百多年来最接近这种现象的一次。",
+          "start": 279.08,
+          "end": 283.7
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s12",
+          "index": 11,
+          "speaker": "W",
+          "text": "For this reason, it is expected that thousands of people will gaze up at the sky tonight in order to see this formidable object.",
+          "translationZh": "因此，预计今晚将有成千上万的人抬头仰望天空，以便看到这个令人敬畏的物体。",
+          "start": 284.68,
+          "end": 292.92
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s13",
+          "index": 12,
+          "speaker": "M",
+          "text": "How far away is this comet?",
+          "translationZh": "这颗彗星距离我们有多远？",
+          "start": 293.62,
+          "end": 295.32
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s14",
+          "index": 13,
+          "speaker": "M",
+          "text": "Will people be able to see it with the naked eye?",
+          "translationZh": "人们能够用肉眼看到它吗？",
+          "start": 295.32,
+          "end": 298.98
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s15",
+          "index": 14,
+          "speaker": "W",
+          "text": "The Oppenheimer comet will still be millions of miles away on the edge of our galaxy.",
+          "translationZh": "奥本海默彗星仍将位于数百万英里之外的银河系边缘。",
+          "start": 299.08,
+          "end": 303.88
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s16",
+          "index": 15,
+          "speaker": "W",
+          "text": "But nevertheless, this is a relatively close distance, close enough for people to observe in good detail through a telescope.",
+          "translationZh": "但尽管如此，这是一个相对较近的距离，足以让人们通过望远镜进行详细观察。",
+          "start": 304.46,
+          "end": 312.16
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s17",
+          "index": 16,
+          "speaker": "W",
+          "text": "People will only see a blur without one.",
+          "translationZh": "人们只会看到一片模糊而没有看到。",
+          "start": 313.24,
+          "end": 315.52
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s18",
+          "index": 17,
+          "speaker": "W",
+          "text": "However, that does not mean one needs professional equipment.",
+          "translationZh": "然而，这并不意味着需要专业设备。",
+          "start": 315.52,
+          "end": 319.64
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s19",
+          "index": 18,
+          "speaker": "W",
+          "text": "Even the most ordinary of telescopes should be conducive for people to observe and wonder at this flying object.",
+          "translationZh": "即使是最普通的望远镜也应该有利于人们观察和惊叹这个飞行物体。",
+          "start": 320.3,
+          "end": 327.26
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s20",
+          "index": 19,
+          "speaker": "M",
+          "text": "Many of our viewers will be wondering how they too can take part in this once-in-a-lifetime event.",
+          "translationZh": "我们的许多观众都会想知道他们如何才能参加这个千载难逢的活动。",
+          "start": 327.94,
+          "end": 334.1
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s21",
+          "index": 20,
+          "speaker": "M",
+          "text": "Where will this comet be in the sky?",
+          "translationZh": "这颗彗星会在天空中的什么地方呢？",
+          "start": 334.7,
+          "end": 336.7
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s22",
+          "index": 21,
+          "speaker": "M",
+          "text": "How can people find it?",
+          "translationZh": "人们怎样才能找到它？",
+          "start": 337.42,
+          "end": 338.76
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s23",
+          "index": 22,
+          "speaker": "W",
+          "text": "The comet will be almost exactly due north, at 60 degrees above the equator.",
+          "translationZh": "彗星几乎正位于正北，赤道上空 60 度。",
+          "start": 338.76,
+          "end": 344.92
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s24",
+          "index": 23,
+          "speaker": "W",
+          "text": "However, finding the comet is indeed very tricky.",
+          "translationZh": "然而，寻找彗星确实非常棘手。",
+          "start": 345.6,
+          "end": 349.02
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s25",
+          "index": 24,
+          "speaker": "W",
+          "text": "And scientists here have told me there are plenty of phone apps that will facilitate this.",
+          "translationZh": "这里的科学家告诉我，有很多手机应用程序可以促进这一点。",
+          "start": 349.42,
+          "end": 354.82
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s26",
+          "index": 25,
+          "speaker": "M",
+          "text": "How fantastic!",
+          "translationZh": "多棒啊！",
+          "start": 354.82,
+          "end": 355.88
+        },
+        {
+          "id": "cet6-2024-06-set1--conversation-2--s27",
+          "index": 26,
+          "speaker": "M",
+          "text": "Thank you, Paula, for the information.",
+          "translationZh": "谢谢你，保拉，提供信息。",
+          "start": 356.52,
+          "end": 358.24
+        }
+      ]
+    },
+    {
+      "id": "cet6-2024-06-set1--passage-1",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "title": "篇章听力 1",
+      "sourceTitle": "Passage One",
+      "order": 3,
+      "start": 478.52,
+      "end": 607.58,
+      "questions": [
+        {
+          "id": "cet6-2024-06-set1--q9",
+          "number": 9,
+          "sectionId": "cet6-2024-06-set1--passage-1",
+          "type": "passage",
+          "typeLabel": "篇章",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Whether consumers should be warned against ultra-processed foods"
+            },
+            {
+              "letter": "B",
+              "text": "Whether there is sufficient scientific consensus on dietary guidelines"
+            },
+            {
+              "letter": "C",
+              "text": "Whether guidelines can form the basis for nutrition advice to consumers"
+            },
+            {
+              "letter": "D",
+              "text": "Whether food scientists will agree on the concept of ultra-processed foods"
+            }
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "cet6-2024-06-set1--q10",
+          "number": 10,
+          "sectionId": "cet6-2024-06-set1--passage-1",
+          "type": "passage",
+          "typeLabel": "篇章",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "By the labor cost for the final products"
+            },
+            {
+              "letter": "B",
+              "text": "By the degree of industrial processing"
+            },
+            {
+              "letter": "C",
+              "text": "By the extent of chemical alteration"
+            },
+            {
+              "letter": "D",
+              "text": "By the convention of classification"
+            }
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "cet6-2024-06-set1--q11",
+          "number": 11,
+          "sectionId": "cet6-2024-06-set1--passage-1",
+          "type": "passage",
+          "typeLabel": "篇章",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Increased consumers’ expenses"
+            },
+            {
+              "letter": "B",
+              "text": "Greater risk of chronic diseases"
+            },
+            {
+              "letter": "C",
+              "text": "People’s misunderstanding of nutrition"
+            },
+            {
+              "letter": "D",
+              "text": "Children’s dislike for unprocessed foods"
+            }
+          ],
+          "correct": "B"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "cet6-2024-06-set1--passage-1--s1",
+          "index": 0,
+          "speaker": "",
+          "text": "Dietary guidelines form the basis for nutrition advice and regulations around the world.",
+          "translationZh": "膳食指南构成了世界各地营养建议和法规的基础。",
+          "start": 478.52,
+          "end": 483.88
+        },
+        {
+          "id": "cet6-2024-06-set1--passage-1--s2",
+          "index": 1,
+          "speaker": "",
+          "text": "While there is strong scientific consensus around most existing guidelines, one question has recently stirred debate: should consumers be warned to avoid ultra-processed foods?",
+          "translationZh": "尽管大多数现有指南都已达成强烈的科学共识，但有一个问题最近引发了争论：是否应该警告消费者避免过度加工食品？",
+          "start": 484.48,
+          "end": 496.56
+        },
+        {
+          "id": "cet6-2024-06-set1--passage-1--s3",
+          "index": 2,
+          "speaker": "",
+          "text": "Two papers published today in the American Journal of Clinical Nutrition outline the case for and against using the concept of \"ultra-processed foods\" to help inform dietary guidelines, beyond conventional food classification systems.",
+          "translationZh": "今天发表在《美国临床营养学杂志》上的两篇论文概述了支持和反对使用“超加工食品”概念来帮助制定超越传统食品分类系统的饮食指南的理由。",
+          "start": 497.4,
+          "end": 513.16
+        },
+        {
+          "id": "cet6-2024-06-set1--passage-1--s4",
+          "index": 3,
+          "speaker": "",
+          "text": "The authors, Carlos Monteiro of the University of São Paulo and Arna Ostrup of Novo Nordisk Foundation, will discuss the issue in a live virtual debate, August 14th, during NUTRITION 2024 Live Online.",
+          "translationZh": "作者是圣保罗大学的 Carlos Monteiro 和诺和诺德基金会的 Arna Ostrup，他们将于 8 月 14 日 NUTRITION 2024 Live Online 期间的现场虚拟辩论中讨论这个问题。",
+          "start": 513.67,
+          "end": 530.3
+        },
+        {
+          "id": "cet6-2024-06-set1--passage-1--s5",
+          "index": 4,
+          "speaker": "",
+          "text": "The debate centers around a system developed by Monteiro and colleagues that classifies foods by their degree of industrial processing, ranging from unprocessed to ultra-processed.",
+          "translationZh": "争论的焦点是蒙泰罗及其同事开发的一个系统，该系统根据工业加工程度对食品进行分类，从未加工到超加工。",
+          "start": 531.3,
+          "end": 542.64
+        },
+        {
+          "id": "cet6-2024-06-set1--passage-1--s6",
+          "index": 5,
+          "speaker": "",
+          "text": "The system defines ultra-processed foods as those made using sequences of processes that extract substances from foods and alter them with chemicals in order to formulate the final product.",
+          "translationZh": "该系统将超加工食品定义为通过从食品中提取物质并用化学物质对其进行改变以配制最终产品的一系列工艺过程制成的食品。",
+          "start": 544.36,
+          "end": 557.62
+        },
+        {
+          "id": "cet6-2024-06-set1--passage-1--s7",
+          "index": 6,
+          "speaker": "",
+          "text": "Ultra-processed foods are characteristically designed to be cheap, tasty, and convenient.",
+          "translationZh": "超加工食品的特点是价格便宜、美味且方便。",
+          "start": 559.86,
+          "end": 564.24
+        },
+        {
+          "id": "cet6-2024-06-set1--passage-1--s8",
+          "index": 7,
+          "speaker": "",
+          "text": "Examples include soft drinks and candy, packaged snacks and pastries, ready to heat products, and reconstituted meat products.",
+          "translationZh": "例如软饮料和糖果、包装零食和糕点、即热产品以及复原肉制品。",
+          "start": 565,
+          "end": 574.9
+        },
+        {
+          "id": "cet6-2024-06-set1--passage-1--s9",
+          "index": 8,
+          "speaker": "",
+          "text": "Studies have linked consumption of ultra-processed foods, which are often high in salt, sugar, and fat, with weight gain and an increased risk of chronic diseases, even after adjusting for the amount of salt, sugar, and fat in the diet.",
+          "translationZh": "研究表明，即使在调整了饮食中盐、糖和脂肪的含量后，食用通常富含盐、糖和脂肪的超加工食品也会导致体重增加和患慢性病的风险增加。",
+          "start": 575.68,
+          "end": 591.26
+        },
+        {
+          "id": "cet6-2024-06-set1--passage-1--s10",
+          "index": 9,
+          "speaker": "",
+          "text": "While the mechanisms behind these associations are not fully understood, Monteiro argues that the existing evidence is sufficient to justify discouraging consumption of ultra-processed foods in dietary recommendations and government policies.",
+          "translationZh": "虽然这些关联背后的机制尚不完全清楚，但蒙泰罗认为，现有证据足以证明在饮食建议和政府政策中劝阻超加工食品的消费是合理的。",
+          "start": 591.92,
+          "end": 607.58
+        }
+      ]
+    },
+    {
+      "id": "cet6-2024-06-set1--passage-2",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "title": "篇章听力 2",
+      "sourceTitle": "Passage Two",
+      "order": 4,
+      "start": 676.08,
+      "end": 797.18,
+      "questions": [
+        {
+          "id": "cet6-2024-06-set1--q12",
+          "number": 12,
+          "sectionId": "cet6-2024-06-set1--passage-2",
+          "type": "passage",
+          "typeLabel": "篇章",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "They begin to think of the benefits of constraints"
+            },
+            {
+              "letter": "B",
+              "text": "They try to seek solutions from creative people"
+            },
+            {
+              "letter": "C",
+              "text": "They try hard to maximize their mental energy"
+            },
+            {
+              "letter": "D",
+              "text": "They begin to see the world in a different way"
+            }
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "cet6-2024-06-set1--q13",
+          "number": 13,
+          "sectionId": "cet6-2024-06-set1--passage-2",
+          "type": "passage",
+          "typeLabel": "篇章",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "It is characteristic of all creative people"
+            },
+            {
+              "letter": "B",
+              "text": "It is essential to pushing society forward"
+            },
+            {
+              "letter": "C",
+              "text": "It is a creative person’s response to limitation"
+            },
+            {
+              "letter": "D",
+              "text": "It is an impetus to socio-economic development"
+            }
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "cet6-2024-06-set1--q14",
+          "number": 14,
+          "sectionId": "cet6-2024-06-set1--passage-2",
+          "type": "passage",
+          "typeLabel": "篇章",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Scarcity or abundance of resources has little impact on people’s creativity"
+            },
+            {
+              "letter": "B",
+              "text": "Innovative people are not constrained in connecting unrelated concepts"
+            },
+            {
+              "letter": "C",
+              "text": "People have no incentive to use available resources in new ways"
+            },
+            {
+              "letter": "D",
+              "text": "Creative people tend to consume more available resources"
+            }
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "cet6-2024-06-set1--q15",
+          "number": 15,
+          "sectionId": "cet6-2024-06-set1--passage-2",
+          "type": "passage",
+          "typeLabel": "篇章",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "It is key to a company’s survival"
+            },
+            {
+              "letter": "B",
+              "text": "It shapes and focuses problems"
+            },
+            {
+              "letter": "C",
+              "text": "It is essential to meeting challenges"
+            },
+            {
+              "letter": "D",
+              "text": "It thrives best when constrained"
+            }
+          ],
+          "correct": "D"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "cet6-2024-06-set1--passage-2--s1",
+          "index": 0,
+          "speaker": "",
+          "text": "Believe it or not, human creativity benefits from constraints.",
+          "translationZh": "不管你相信与否，人类的创造力受益于限制。",
+          "start": 676.08,
+          "end": 680.16
+        },
+        {
+          "id": "cet6-2024-06-set1--passage-2--s2",
+          "index": 1,
+          "speaker": "",
+          "text": "According to psychologists, when you have less to work with, you actually begin to see the world differently.",
+          "translationZh": "根据心理学家的说法，当你的工作内容减少时，你实际上开始以不同的方式看待世界。",
+          "start": 680.92,
+          "end": 686.86
+        },
+        {
+          "id": "cet6-2024-06-set1--passage-2--s3",
+          "index": 2,
+          "speaker": "",
+          "text": "With constraints, you dedicate your mental energy to acting more resourcefully.",
+          "translationZh": "在受到限制的情况下，你可以将精力投入到更机智的行动上。",
+          "start": 686.86,
+          "end": 692.78
+        },
+        {
+          "id": "cet6-2024-06-set1--passage-2--s4",
+          "index": 3,
+          "speaker": "",
+          "text": "When challenged, you figure out new ways to be better.",
+          "translationZh": "当遇到挑战时，你会想出新的方法来变得更好。",
+          "start": 693.4,
+          "end": 696.72
+        },
+        {
+          "id": "cet6-2024-06-set1--passage-2--s5",
+          "index": 4,
+          "speaker": "",
+          "text": "The most successful creative people know that constraints give their minds the impetus to leap higher.",
+          "translationZh": "最成功的创意人士知道，约束会给他们的思想带来飞跃更高的动力。",
+          "start": 698.12,
+          "end": 704.66
+        },
+        {
+          "id": "cet6-2024-06-set1--passage-2--s6",
+          "index": 5,
+          "speaker": "",
+          "text": "People who invent new products are not limited by what they don't have or can't do.",
+          "translationZh": "发明新产品的人不会受到他们没有或不能做的事情的限制。",
+          "start": 705.62,
+          "end": 711.36
+        },
+        {
+          "id": "cet6-2024-06-set1--passage-2--s7",
+          "index": 6,
+          "speaker": "",
+          "text": "They leverage their limitations to push themselves even further.",
+          "translationZh": "他们利用自身的局限性来进一步推动自己。",
+          "start": 711.36,
+          "end": 716.16
+        },
+        {
+          "id": "cet6-2024-06-set1--passage-2--s8",
+          "index": 7,
+          "speaker": "",
+          "text": "Many products and services are created because the founders saw a limitation in what they use.",
+          "translationZh": "许多产品和服务的创建是因为创始人看到了他们使用的限制。",
+          "start": 716.98,
+          "end": 723.3
+        },
+        {
+          "id": "cet6-2024-06-set1--passage-2--s9",
+          "index": 8,
+          "speaker": "",
+          "text": "They created innovation based on what was not working for them at the moment.",
+          "translationZh": "他们根据目前不适合他们的方法进行创新。",
+          "start": 723.94,
+          "end": 728.72
+        },
+        {
+          "id": "cet6-2024-06-set1--passage-2--s10",
+          "index": 9,
+          "speaker": "",
+          "text": "Innovation is a creative person's response to limitation.",
+          "translationZh": "创新是有创造力的人对限制的反应。",
+          "start": 729.5,
+          "end": 733.66
+        },
+        {
+          "id": "cet6-2024-06-set1--passage-2--s11",
+          "index": 10,
+          "speaker": "",
+          "text": "In a 2015 study which examined how thinking about scarcity or abundance influences how creatively people use their resources, Ravi Mehta at the University of Illinois and Meng Zhu at Johns Hopkins University found that people simply have no incentive to use what's available to them in novel ways.",
+          "translationZh": "在 2015 年的一项研究中，伊利诺伊大学的拉维·梅塔 (Ravi Mehta) 和约翰·霍普金斯大学的朱萌 (Meng Zhu) 发现，人们根本没有动力以新颖的方式使用现有资源。",
+          "start": 734.76,
+          "end": 756.22
+        },
+        {
+          "id": "cet6-2024-06-set1--passage-2--s12",
+          "index": 11,
+          "speaker": "",
+          "text": "When people face scarcity, they give themselves the freedom to use resources in less conventional ways because they have to.",
+          "translationZh": "当人们面临稀缺时，他们会给予自己以非常规方式使用资源的自由，因为他们不得不这样做。",
+          "start": 757.04,
+          "end": 765.38
+        },
+        {
+          "id": "cet6-2024-06-set1--passage-2--s13",
+          "index": 12,
+          "speaker": "",
+          "text": "Obstacles can broaden your perception and open up your thinking processes.",
+          "translationZh": "障碍可以拓宽你的视野并打开你的思维过程。",
+          "start": 765.38,
+          "end": 771.38
+        },
+        {
+          "id": "cet6-2024-06-set1--passage-2--s14",
+          "index": 13,
+          "speaker": "",
+          "text": "Consistent constraints help you improve the connecting unrelated ideas and concepts.",
+          "translationZh": "一致的约束可以帮助您改进不相关的想法和概念的连接。",
+          "start": 772.02,
+          "end": 777.78
+        },
+        {
+          "id": "cet6-2024-06-set1--passage-2--s15",
+          "index": 14,
+          "speaker": "",
+          "text": "Marissa Meyer, former vice president for search products and user experience at Google, once wrote in a publication on Bloomberg, \"Constraints shape and focus problems and provide clear challenges to overcome; creativity thrives best when constrained.\"",
+          "translationZh": "谷歌负责搜索产品和用户体验的前副总裁玛丽莎·迈耶 (Marissa Meyer) 曾在彭博社的一篇出版物中写道：“限制会塑造和集中问题，并提供需要克服的明确挑战；创造力在受到限制时才能发挥最佳作用。”",
+          "start": 779.04,
+          "end": 797.18
+        }
+      ]
+    },
+    {
+      "id": "cet6-2024-06-set1--recording-1",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "title": "讲座 1",
+      "sourceTitle": "Recording One",
+      "order": 5,
+      "start": 906,
+      "end": 1076.16,
+      "questions": [
+        {
+          "id": "cet6-2024-06-set1--q16",
+          "number": 16,
+          "sectionId": "cet6-2024-06-set1--recording-1",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Because they are learned"
+            },
+            {
+              "letter": "B",
+              "text": "Because they come naturally"
+            },
+            {
+              "letter": "C",
+              "text": "Because they have to be properly personalized"
+            },
+            {
+              "letter": "D",
+              "text": "Because there can be more effective strategies"
+            }
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "cet6-2024-06-set1--q17",
+          "number": 17,
+          "sectionId": "cet6-2024-06-set1--recording-1",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "The extent of difference and of similarity between the two sides"
+            },
+            {
+              "letter": "B",
+              "text": "The knowledge of the specific expectation the other side holds"
+            },
+            {
+              "letter": "C",
+              "text": "The importance of one’s goals and of the relationship"
+            },
+            {
+              "letter": "D",
+              "text": "The approaches one adopts to conflict management"
+            }
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "cet6-2024-06-set1--q18",
+          "number": 18,
+          "sectionId": "cet6-2024-06-set1--recording-1",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "The fox"
+            },
+            {
+              "letter": "B",
+              "text": "The owl"
+            },
+            {
+              "letter": "C",
+              "text": "The shark"
+            },
+            {
+              "letter": "D",
+              "text": "The turtle"
+            }
+          ],
+          "correct": "B"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "cet6-2024-06-set1--recording-1--s1",
+          "index": 0,
+          "speaker": "",
+          "text": "Different people use different strategies for managing conflicts.",
+          "translationZh": "不同的人使用不同的策略来管理冲突。",
+          "start": 906,
+          "end": 909.64
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s2",
+          "index": 1,
+          "speaker": "",
+          "text": "These strategies are learned in childhood.",
+          "translationZh": "这些策略是在童年时习得的。",
+          "start": 910.1,
+          "end": 912.06
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s3",
+          "index": 2,
+          "speaker": "",
+          "text": "Usually we are not aware of how we act in conflict situations.",
+          "translationZh": "通常我们不知道自己在冲突情况下如何行事。",
+          "start": 913.02,
+          "end": 916.62
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s4",
+          "index": 3,
+          "speaker": "",
+          "text": "We just do whatever seems to come naturally.",
+          "translationZh": "我们只是做任何看起来自然而然的事情。",
+          "start": 917.36,
+          "end": 919.78
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s5",
+          "index": 4,
+          "speaker": "",
+          "text": "But we do have a personal strategy, and because it is learned, we can always change it by learning new and more effective ways of managing conflicts.",
+          "translationZh": "但我们确实有个人策略，而且因为它是后天习得的，我们总是可以通过学习新的、更有效的冲突管理方法来改变它。",
+          "start": 920.72,
+          "end": 929.54
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s6",
+          "index": 5,
+          "speaker": "",
+          "text": "When you get involved in a conflict, there are two major concerns you have to take into account: achieving your personal goals and keeping a good relationship with the other person.",
+          "translationZh": "当您卷入冲突时，您必须考虑两个主要问题：实现您的个人目标以及与他人保持良好的关系。",
+          "start": 930.38,
+          "end": 941.44
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s7",
+          "index": 6,
+          "speaker": "",
+          "text": "How important your personal goals are and how important the relationship is to you affect how you act in a conflict.",
+          "translationZh": "您的个人目标有多重要以及人际关系对您有多重要会影响您在冲突中的行为。",
+          "start": 942.04,
+          "end": 949.64
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s8",
+          "index": 7,
+          "speaker": "",
+          "text": "Given these two concerns, five styles of managing conflicts can be identified.",
+          "translationZh": "考虑到这两个问题，可以确定五种管理冲突的方式。",
+          "start": 950.54,
+          "end": 955.7
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s9",
+          "index": 8,
+          "speaker": "",
+          "text": "1. The turtle.",
+          "translationZh": "1.乌龟。",
+          "start": 957.08,
+          "end": 958.58
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s10",
+          "index": 9,
+          "speaker": "",
+          "text": "Turtles withdraw into their shells to avoid conflicts.",
+          "translationZh": "海龟会缩进壳里以避免冲突。",
+          "start": 959.26,
+          "end": 962.56
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s11",
+          "index": 10,
+          "speaker": "",
+          "text": "They give up their personal goals and relationships.",
+          "translationZh": "他们放弃个人目标和人际关系。",
+          "start": 962.96,
+          "end": 965.5
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s12",
+          "index": 11,
+          "speaker": "",
+          "text": "They believe it is easier to withdraw from a conflict than to face it.",
+          "translationZh": "他们认为，退出冲突比面对冲突更容易。",
+          "start": 966.28,
+          "end": 970.52
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s13",
+          "index": 12,
+          "speaker": "",
+          "text": "2. The shark.",
+          "translationZh": "2.鲨鱼。",
+          "start": 971.82,
+          "end": 972.94
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s14",
+          "index": 13,
+          "speaker": "",
+          "text": "Sharks try to overpower opponents by forcing them to accept their solution to the conflict.",
+          "translationZh": "鲨鱼试图通过迫使对手接受他们的冲突解决方案来压倒对手。",
+          "start": 973.8,
+          "end": 979.58
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s15",
+          "index": 14,
+          "speaker": "",
+          "text": "They seek to achieve their goals at all costs.",
+          "translationZh": "他们不惜一切代价寻求实现自己的目标。",
+          "start": 980.56,
+          "end": 983.54
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s16",
+          "index": 15,
+          "speaker": "",
+          "text": "Sharks assume that conflicts are settled by one person winning and one person losing.",
+          "translationZh": "鲨鱼认为冲突是通过一个人获胜和一个人失败来解决的。",
+          "start": 984.6,
+          "end": 989.4
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s17",
+          "index": 16,
+          "speaker": "",
+          "text": "Winning gives sharks a sense of pride and achievement.",
+          "translationZh": "胜利给鲨鱼带来自豪感和成就感。",
+          "start": 990.32,
+          "end": 993.46
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s18",
+          "index": 17,
+          "speaker": "",
+          "text": "Losing gives them a sense of weakness, inadequacy, and failure.",
+          "translationZh": "失败给了他们一种软弱、不足和失败的感觉。",
+          "start": 993.46,
+          "end": 998.44
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s19",
+          "index": 18,
+          "speaker": "",
+          "text": "3. The teddy bear.",
+          "translationZh": "3.泰迪熊。",
+          "start": 999.76,
+          "end": 1001.32
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s20",
+          "index": 19,
+          "speaker": "",
+          "text": "Teddy bears want to be accepted and liked by other people.",
+          "translationZh": "泰迪熊希望被别人接受和喜欢。",
+          "start": 1002.02,
+          "end": 1005.28
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s21",
+          "index": 20,
+          "speaker": "",
+          "text": "They think that conflict should be avoided in favor of harmony, and believe that conflicts cannot be discussed without damaging relationships.",
+          "translationZh": "他们认为应该避免冲突以促进和谐，并认为在不损害关系的情况下讨论冲突是不可能的。",
+          "start": 1005.9,
+          "end": 1013.7
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s22",
+          "index": 21,
+          "speaker": "",
+          "text": "They give up their goals to preserve the relationship.",
+          "translationZh": "他们为了维持关系而放弃自己的目标。",
+          "start": 1014.66,
+          "end": 1017.6
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s23",
+          "index": 22,
+          "speaker": "",
+          "text": "4. The fox.",
+          "translationZh": "4. 狐狸。",
+          "start": 1017.6,
+          "end": 1020.46
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s24",
+          "index": 23,
+          "speaker": "",
+          "text": "Foxes are moderately concerned with their own goals and about their relationships with other people.",
+          "translationZh": "狐狸适度关心自己的目标和与他人的关系。",
+          "start": 1021.38,
+          "end": 1026.88
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s25",
+          "index": 24,
+          "speaker": "",
+          "text": "They give up part of their goals and persuade the other person in a conflict to give up part of his goals.",
+          "translationZh": "他们放弃部分目标，并说服冲突中的其他人放弃部分目标。",
+          "start": 1027.5,
+          "end": 1033.3
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s26",
+          "index": 25,
+          "speaker": "",
+          "text": "They seek a solution to conflicts where both sides gain something.",
+          "translationZh": "他们寻求解决冲突的办法，让双方都有所收获。",
+          "start": 1034.12,
+          "end": 1038.02
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s27",
+          "index": 26,
+          "speaker": "",
+          "text": "5. The owl.",
+          "translationZh": "5.猫头鹰。",
+          "start": 1039.14,
+          "end": 1040.78
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s28",
+          "index": 27,
+          "speaker": "",
+          "text": "Owls view conflicts as problems to be solved.",
+          "translationZh": "猫头鹰将冲突视为需要解决的问题。",
+          "start": 1041.46,
+          "end": 1044.42
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s29",
+          "index": 28,
+          "speaker": "",
+          "text": "They see conflicts as improving relationships by reducing tension between two people.",
+          "translationZh": "他们认为冲突是通过减少两个人之间的紧张关系来改善关系。",
+          "start": 1044.86,
+          "end": 1050.02
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s30",
+          "index": 29,
+          "speaker": "",
+          "text": "They try to begin a discussion that identifies the conflict as a problem.",
+          "translationZh": "他们试图开始一场将冲突视为问题的讨论。",
+          "start": 1050.74,
+          "end": 1054.8
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s31",
+          "index": 30,
+          "speaker": "",
+          "text": "By seeking solutions that satisfy both themselves and the other person, owls maintain the relationship.",
+          "translationZh": "通过寻求既满足自己又满足他人的解决方案，猫头鹰可以维持这种关系。",
+          "start": 1055.7,
+          "end": 1062.48
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-1--s32",
+          "index": 31,
+          "speaker": "",
+          "text": "Owls are not satisfied until a solution is found that achieves their own goals and the other person's goals, and they are not satisfied until the tensions and negative feelings have been fully resolved.",
+          "translationZh": "猫头鹰在找到能够实现自己的目标和对方目标的解决方案之前不会满意，在紧张和消极情绪得到完全消除之前也不会满意。",
+          "start": 1063.72,
+          "end": 1076.16
+        }
+      ]
+    },
+    {
+      "id": "cet6-2024-06-set1--recording-2",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "title": "讲座 2",
+      "sourceTitle": "Recording Two",
+      "order": 6,
+      "start": 1144.3,
+      "end": 1318.26,
+      "questions": [
+        {
+          "id": "cet6-2024-06-set1--q19",
+          "number": 19,
+          "sectionId": "cet6-2024-06-set1--recording-2",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Help save species from extinction and boost human health"
+            },
+            {
+              "letter": "B",
+              "text": "Understand how plants and animals perished over the past"
+            },
+            {
+              "letter": "C",
+              "text": "Help gather information publicly available to researchers"
+            },
+            {
+              "letter": "D",
+              "text": "Find out the cause of extinction of Britain’s 66,000 species"
+            }
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "cet6-2024-06-set1--q20",
+          "number": 20,
+          "sectionId": "cet6-2024-06-set1--recording-2",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "It was once dominated by dinosaurs"
+            },
+            {
+              "letter": "B",
+              "text": "It has entered the sixth mass extinction"
+            },
+            {
+              "letter": "C",
+              "text": "Its prospects depend on future human behaviour"
+            },
+            {
+              "letter": "D",
+              "text": "Its climate change is aggravated by humans"
+            }
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "cet6-2024-06-set1--q21",
+          "number": 21,
+          "sectionId": "cet6-2024-06-set1--recording-2",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "It dwarfs all other efforts to conserve, protect and restore biodiversity on earth"
+            },
+            {
+              "letter": "B",
+              "text": "It is costly to get started and requires the joint efforts of thousands of scientists"
+            },
+            {
+              "letter": "C",
+              "text": "It can help to bring back the large numbers of plants and animals that have gone extinct"
+            },
+            {
+              "letter": "D",
+              "text": "It is the most exciting, most relevant, most timely and most internationally inspirational"
+            }
+          ],
+          "correct": "D"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "cet6-2024-06-set1--recording-2--s1",
+          "index": 0,
+          "speaker": "",
+          "text": "The genetic code of all 1.5 million known species of animals and plants living on Earth will be mapped to help save species from extinction and boost human health.",
+          "translationZh": "将绘制地球上所有150万种已知动植物的遗传密码，以帮助拯救物种免于灭绝并促进人类健康。",
+          "start": 1144.3,
+          "end": 1155.66
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-2--s2",
+          "index": 1,
+          "speaker": "",
+          "text": "Scientists hope that cracking the genetic code of plants and animals could help uncover new treatments for infectious diseases, slow aging, improve crops and agriculture, and create new bio-materials.",
+          "translationZh": "科学家们希望破解植物和动物的遗传密码可以帮助发现传染病的新疗法，减缓衰老，改善农作物和农业，并创造新的生物材料。",
+          "start": 1155.66,
+          "end": 1171.3
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-2--s3",
+          "index": 2,
+          "speaker": "",
+          "text": "In Britain, organisations including the Natural History Museum, the Royal Botanic Gardens at Kew and the Wellcome Sanger Institute have joined forces to sequence Britain's 66,000 species of animals and plants.",
+          "translationZh": "在英国，包括自然历史博物馆、基尤皇家植物园和威康桑格研究所在内的组织已联手对英国66,000种动植物进行测序。",
+          "start": 1172.04,
+          "end": 1187
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-2--s4",
+          "index": 3,
+          "speaker": "",
+          "text": "Dubbed the Darwin Tree of Life Project, it is expected to take 10 years and cost 100 million pounds.",
+          "translationZh": "它被称为达尔文生命之树项目，预计需要10年时间，耗资1亿英镑。",
+          "start": 1188.36,
+          "end": 1194.64
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-2--s5",
+          "index": 4,
+          "speaker": "",
+          "text": "Once completed, all the information will be publicly available to researchers.",
+          "translationZh": "完成后，所有信息将向研究人员公开。",
+          "start": 1195.2,
+          "end": 1199.46
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-2--s6",
+          "index": 5,
+          "speaker": "",
+          "text": "Many scientists believe that Earth has now entered the sixth mass extinction, with humans creating a toxic mix of habitation loss, pollution and climate change, which has already led to the loss of at least 77 species of mammals and 140 types of birds since 1500.",
+          "translationZh": "许多科学家认为，地球现在已经进入了第六次大规模灭绝，人类创造了栖息地丧失、污染和气候变化的有毒混合物，自1500年以来，这已经导致至少77种哺乳动物和140种鸟类灭绝。",
+          "start": 1200.38,
+          "end": 1218.28
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-2--s7",
+          "index": 6,
+          "speaker": "",
+          "text": "It is the biggest loss of species since the dinosaurs were wiped out 66 million years ago.",
+          "translationZh": "这是自6600万年前恐龙灭绝以来物种的最大损失。",
+          "start": 1219.44,
+          "end": 1224.98
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-2--s8",
+          "index": 7,
+          "speaker": "",
+          "text": "Scientists say that sequencing every species will revolutionize the understanding of biology and evolution, bolster efforts to conserve as well as protect and restore biodiversity.",
+          "translationZh": "科学家表示，对每个物种进行测序将彻底改变对生物学和进化的理解，加强保护以及保护和恢复生物多样性的努力。",
+          "start": 1225.94,
+          "end": 1237.3
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-2--s9",
+          "index": 8,
+          "speaker": "",
+          "text": "Dr. Tim Littlewood, head of Life Sciences Department at the Natural History Museum said, \"Whether you are interested in food or disease, the history of how every organism on the planet has adapted to its environment is recorded in its genetic makeup.",
+          "translationZh": "自然历史博物馆生命科学系主任Tim Littlewood博士说： “无论您对食物还是疾病感兴趣，地球上每个生物体如何适应其环境的历史都记录在其基因组成中。",
+          "start": 1238.44,
+          "end": 1254.1
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-2--s10",
+          "index": 9,
+          "speaker": "",
+          "text": "How you then harness that is dependent on your ability to understand it.",
+          "translationZh": "然后，您如何驾驭这取决于您理解它的能力。",
+          "start": 1254.78,
+          "end": 1259.32
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-2--s11",
+          "index": 10,
+          "speaker": "",
+          "text": "We will be using modern methods to get a really good window on the present and the past.",
+          "translationZh": "我们将使用现代方法来获得关于现在和过去的一个非常好的窗口。",
+          "start": 1259.76,
+          "end": 1265.7
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-2--s12",
+          "index": 11,
+          "speaker": "",
+          "text": "And of course, a window on the past gives you a prospective model on the future.\"",
+          "translationZh": "当然，过去的窗口为您提供了未来的前瞻性模型。”",
+          "start": 1265.7,
+          "end": 1271.16
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-2--s13",
+          "index": 12,
+          "speaker": "",
+          "text": "Sir Jim Smith, Director of Science at Wellcome said, \"Try as I might, I can't think of a more exciting, more relevant, more timely, or more internationally inspirational project.",
+          "translationZh": "Wellcome科学总监Jim Smith爵士说： “尽我所能，我想不出一个更令人兴奋、更相关、更及时或更具国际启发性的项目。",
+          "start": 1272.08,
+          "end": 1284.5
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-2--s14",
+          "index": 13,
+          "speaker": "",
+          "text": "Since 1970, humanity has wiped out 60 percent of animal populations.",
+          "translationZh": "自1970年以来，人类已经消灭了60%的动物种群。",
+          "start": 1284.5,
+          "end": 1290.8
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-2--s15",
+          "index": 14,
+          "speaker": "",
+          "text": "About 23,000 of 80,000 species surveyed are approaching extinction.",
+          "translationZh": "在接受调查的80,000种物种中，约有23,000种濒临灭绝。",
+          "start": 1291.48,
+          "end": 1296.94
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-2--s16",
+          "index": 15,
+          "speaker": "",
+          "text": "We are in the midst of the sixth great extinction event of life on our planet, which not only threatens wildlife species, but also imperils the global food supply.",
+          "translationZh": "我们正处于地球上生命的第六次大灭绝事件中，这不仅威胁到野生动物物种，也危及全球粮食供应。",
+          "start": 1297.76,
+          "end": 1309.14
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-2--s17",
+          "index": 16,
+          "speaker": "",
+          "text": "As scientists, we all realize we desperately need to catalogue life on our fragile planet now.",
+          "translationZh": "作为科学家，我们都意识到我们现在迫切需要对脆弱星球上的生命进行分类。",
+          "start": 1309.14,
+          "end": 1316.02
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-2--s18",
+          "index": 17,
+          "speaker": "",
+          "text": "I think we're making history.\"",
+          "translationZh": "我认为我们正在创造历史。”",
+          "start": 1316.72,
+          "end": 1318.26
+        }
+      ]
+    },
+    {
+      "id": "cet6-2024-06-set1--recording-3",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "title": "讲座 3",
+      "sourceTitle": "Recording Three",
+      "order": 7,
+      "start": 1389.56,
+      "end": 1558.46,
+      "questions": [
+        {
+          "id": "cet6-2024-06-set1--q22",
+          "number": 22,
+          "sectionId": "cet6-2024-06-set1--recording-3",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Cultural identity"
+            },
+            {
+              "letter": "B",
+              "text": "Social evolution"
+            },
+            {
+              "letter": "C",
+              "text": "The Copernican revolution"
+            },
+            {
+              "letter": "D",
+              "text": "Human individuality"
+            }
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "cet6-2024-06-set1--q23",
+          "number": 23,
+          "sectionId": "cet6-2024-06-set1--recording-3",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "It is a delusion to be disposed of"
+            },
+            {
+              "letter": "B",
+              "text": "It is prevalent even among academics"
+            },
+            {
+              "letter": "C",
+              "text": "It is a myth spread by John Donne’s poem"
+            },
+            {
+              "letter": "D",
+              "text": "It is rooted in the mindset of the 17th century"
+            }
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "cet6-2024-06-set1--q24",
+          "number": 24,
+          "sectionId": "cet6-2024-06-set1--recording-3",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "He believes in Copernican philosophical doctrines about the universe"
+            },
+            {
+              "letter": "B",
+              "text": "He has gained ample scientific evidence at the University of Reading"
+            },
+            {
+              "letter": "C",
+              "text": "He has found that our inner self and material self are interconnected"
+            },
+            {
+              "letter": "D",
+              "text": "He contends most of our body cells can only live a few days or weeks"
+            }
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "cet6-2024-06-set1--q25",
+          "number": 25,
+          "sectionId": "cet6-2024-06-set1--recording-3",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "By coming to see how disruptive such problems have got to be"
+            },
+            {
+              "letter": "B",
+              "text": "By realising that we all can do our own bit in such endeavours"
+            },
+            {
+              "letter": "C",
+              "text": "By becoming aware that we are part of a bigger world"
+            },
+            {
+              "letter": "D",
+              "text": "By making joint efforts resolutely and persistently"
+            }
+          ],
+          "correct": "C"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "cet6-2024-06-set1--recording-3--s1",
+          "index": 0,
+          "speaker": "",
+          "text": "John Donne, the English poet, wrote in the 17th century, \"No man is an island, entire of itself; every man is a piece of the continent, a part of the main.\"",
+          "translationZh": "英国诗人约翰·多恩（ John Donne ）在17世纪写道： “没有人是一个完整的岛屿；每个人都是大陆的一部分，是大陆的一部分。”",
+          "start": 1389.56,
+          "end": 1399.22
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-3--s2",
+          "index": 1,
+          "speaker": "",
+          "text": "Now, a British academic has claimed that human individuality is indeed just an illusion, because societies are far more interconnected at a mental, physical, and cultural level than people realize.",
+          "translationZh": "现在，一位英国学者声称，人类的个性确实只是一种幻觉，因为社会在心理、身体和文化层面上的相互联系比人们意识到的要多得多。",
+          "start": 1400.22,
+          "end": 1413.84
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-3--s3",
+          "index": 2,
+          "speaker": "",
+          "text": "In his new book, The Self Delusion, Professor Tom Oliver, a researcher in the Ecology and Evolution group at the University of Reading, argues there is no such thing as \"self\", and not even our bodies are truly \"us\".",
+          "translationZh": "雷丁大学生态与进化小组的研究员汤姆·奥利弗教授在他的新书《自我错觉》中认为，不存在“自我”这样的东西，甚至连我们的身体都不是真正的“我们”。",
+          "start": 1414.54,
+          "end": 1429.88
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-3--s4",
+          "index": 3,
+          "speaker": "",
+          "text": "Just as Copernicus realized the Earth is not the center of the universe, Professor Oliver said society urgently needs a Copernican-like revolution to understand people are not detached beings but rather part of one connected identity.",
+          "translationZh": "正如哥白尼意识到地球不是宇宙的中心一样，奥利弗教授说，社会迫切需要一场类似哥白尼式的革命来理解人类不是超然的生物，而是一个相互联系的身份的一部分。",
+          "start": 1431.2,
+          "end": 1447.34
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-3--s5",
+          "index": 4,
+          "speaker": "",
+          "text": "\"A significant milestone in the cultural evolution of human minds was the acceptance that the Earth is not the center of the universe, the so-called Copernican Revolution,\" he writes. \" However, we have one more big myth to dispose of: that we exist as independent selves at the center of a subjective universe.",
+          "translationZh": "他写道： “人类思想文化进化的一个重要里程碑是接受地球不是宇宙的中心，即所谓的哥白尼革命。” “然而，我们还有一个大神话要处理：我们作为独立的自我存在于主观宇宙的中心。",
+          "start": 1448,
+          "end": 1468.96
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-3--s6",
+          "index": 5,
+          "speaker": "",
+          "text": "You may feel as if you are an independent individual acting autonomously in the world; that you have unchanging inner self that persists throughout your lifetime, acting as a central anchor-point with the world changing around you.",
+          "translationZh": "你可能会觉得你是一个独立的个体，在世界上自主行事；你有不变的内在自我，在你的一生中持续存在，充当着世界变化的中心锚点。",
+          "start": 1469.9,
+          "end": 1484.16
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-3--s7",
+          "index": 6,
+          "speaker": "",
+          "text": "This is the illusion I seek to tackle.",
+          "translationZh": "这就是我想要解决的错觉。",
+          "start": 1484.9,
+          "end": 1486.92
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-3--s8",
+          "index": 7,
+          "speaker": "",
+          "text": "We are intimately connected to the world around us.\"",
+          "translationZh": "我们与周围的世界紧密相连。”",
+          "start": 1487.6,
+          "end": 1490.54
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-3--s9",
+          "index": 8,
+          "speaker": "",
+          "text": "Professor Oliver argues there are around 37 trillion cells in the body but most have a lifespan of just a few days or weeks, so the material \"us\" is constantly changing.",
+          "translationZh": "奥利弗教授认为，人体内大约有37万亿个细胞，但大多数细胞的寿命只有几天或几周，因此“我们”的物质在不断变化。",
+          "start": 1491.44,
+          "end": 1503.6
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-3--s10",
+          "index": 9,
+          "speaker": "",
+          "text": "In fact, there is no part of your body that has existed for more than ten years.",
+          "translationZh": "事实上，你身体的任何部分都没有存在超过十年的时间。",
+          "start": 1504.3,
+          "end": 1509.3
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-3--s11",
+          "index": 10,
+          "speaker": "",
+          "text": "Since our bodies are essentially made anew every few weeks, the material in them alone is clearly insufficient to explain the persistent thread of an identity.",
+          "translationZh": "由于我们的身体基本上每隔几周就会更新一次，因此仅凭身体中的材料显然不足以解释身份的持久线索。",
+          "start": 1510.3,
+          "end": 1521.06
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-3--s12",
+          "index": 11,
+          "speaker": "",
+          "text": "Professor Oliver claims that individualism is actually bad for society, and only by realizing we are part of a bigger entity can we solve pressing environmental and societal problems.",
+          "translationZh": "奥利弗教授声称，个人主义实际上对社会有害，只有意识到我们是更大实体的一部分，我们才能解决紧迫的环境和社会问题。",
+          "start": 1521.7,
+          "end": 1533.62
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-3--s13",
+          "index": 12,
+          "speaker": "",
+          "text": "Through selfish over-consumption we are destroying the natural world and using non-renewable resources at an accelerating rate.",
+          "translationZh": "通过自私的过度消费，我们正在摧毁自然世界，并加速使用不可再生资源。",
+          "start": 1534.46,
+          "end": 1543.04
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-3--s14",
+          "index": 13,
+          "speaker": "",
+          "text": "\"We are at a critical crossroads as a species where we must rapidly reform our mindsets and behavior to act in less selfish ways,\" he said.",
+          "translationZh": "他说： “作为一个物种，我们正处于一个关键的十字路口，我们必须迅速改变我们的心态和行为，以不那么自私的方式行事。”",
+          "start": 1543.48,
+          "end": 1553.36
+        },
+        {
+          "id": "cet6-2024-06-set1--recording-3--s15",
+          "index": 14,
+          "speaker": "",
+          "text": "\"So let's open our eyes to the hidden connections all around us.\"",
+          "translationZh": "“所以，让我们睁开眼睛，看看我们周围隐藏的联系。”",
+          "start": 1554.2,
+          "end": 1558.46
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "cet6-2024-06-set1--q1",
+      "number": 1,
+      "sectionId": "cet6-2024-06-set1--conversation-1",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Reply to the man’s last proposal within a short time"
+        },
+        {
+          "letter": "B",
+          "text": "Sign the agreement if one small change is made to it"
+        },
+        {
+          "letter": "C",
+          "text": "Make a sponsorship deal for her client at the meeting"
+        },
+        {
+          "letter": "D",
+          "text": "Give the man some good news regarding the contract"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cet6-2024-06-set1--q2",
+      "number": 2,
+      "sectionId": "cet6-2024-06-set1--conversation-1",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "They are becoming impatient"
+        },
+        {
+          "letter": "B",
+          "text": "They are afraid time is running out"
+        },
+        {
+          "letter": "C",
+          "text": "They are used to making alterations"
+        },
+        {
+          "letter": "D",
+          "text": "They are concerned about the details"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cet6-2024-06-set1--q3",
+      "number": 3,
+      "sectionId": "cet6-2024-06-set1--conversation-1",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "To prevent geographical discrimination"
+        },
+        {
+          "letter": "B",
+          "text": "To tap the food and beverage market"
+        },
+        {
+          "letter": "C",
+          "text": "To avoid any conflict of interest"
+        },
+        {
+          "letter": "D",
+          "text": "To reduce unfair competition"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cet6-2024-06-set1--q4",
+      "number": 4,
+      "sectionId": "cet6-2024-06-set1--conversation-1",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "It is a potential market for food and beverage"
+        },
+        {
+          "letter": "B",
+          "text": "It is very attractive for real estate developers"
+        },
+        {
+          "letter": "C",
+          "text": "It is a negligible market for his company"
+        },
+        {
+          "letter": "D",
+          "text": "It is very different from other markets"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cet6-2024-06-set1--q5",
+      "number": 5,
+      "sectionId": "cet6-2024-06-set1--conversation-2",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "They are thrilled by a rare astronomic phenomenon"
+        },
+        {
+          "letter": "B",
+          "text": "They are celebrating a big event on mountain tops"
+        },
+        {
+          "letter": "C",
+          "text": "They are enthusiastic about big science-related stories"
+        },
+        {
+          "letter": "D",
+          "text": "They are joined by astronomers all across North America"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cet6-2024-06-set1--q6",
+      "number": 6,
+      "sectionId": "cet6-2024-06-set1--conversation-2",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "It will be the most formidable of its kind in over a century"
+        },
+        {
+          "letter": "B",
+          "text": "It will come closest to Earth in more than one hundred years"
+        },
+        {
+          "letter": "C",
+          "text": "It will eclipse many other such events in human history"
+        },
+        {
+          "letter": "D",
+          "text": "It will be seen most clearly from Denver’s mountain tops"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cet6-2024-06-set1--q7",
+      "number": 7,
+      "sectionId": "cet6-2024-06-set1--conversation-2",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "A blur"
+        },
+        {
+          "letter": "B",
+          "text": "Stars"
+        },
+        {
+          "letter": "C",
+          "text": "The edge of our galaxy"
+        },
+        {
+          "letter": "D",
+          "text": "An ordinary flying object"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cet6-2024-06-set1--q8",
+      "number": 8,
+      "sectionId": "cet6-2024-06-set1--conversation-2",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Use professional equipment"
+        },
+        {
+          "letter": "B",
+          "text": "Climb to the nearby heights"
+        },
+        {
+          "letter": "C",
+          "text": "Fix their eyes due north"
+        },
+        {
+          "letter": "D",
+          "text": "Make use of phone apps"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cet6-2024-06-set1--q9",
+      "number": 9,
+      "sectionId": "cet6-2024-06-set1--passage-1",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Whether consumers should be warned against ultra-processed foods"
+        },
+        {
+          "letter": "B",
+          "text": "Whether there is sufficient scientific consensus on dietary guidelines"
+        },
+        {
+          "letter": "C",
+          "text": "Whether guidelines can form the basis for nutrition advice to consumers"
+        },
+        {
+          "letter": "D",
+          "text": "Whether food scientists will agree on the concept of ultra-processed foods"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cet6-2024-06-set1--q10",
+      "number": 10,
+      "sectionId": "cet6-2024-06-set1--passage-1",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "By the labor cost for the final products"
+        },
+        {
+          "letter": "B",
+          "text": "By the degree of industrial processing"
+        },
+        {
+          "letter": "C",
+          "text": "By the extent of chemical alteration"
+        },
+        {
+          "letter": "D",
+          "text": "By the convention of classification"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cet6-2024-06-set1--q11",
+      "number": 11,
+      "sectionId": "cet6-2024-06-set1--passage-1",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Increased consumers’ expenses"
+        },
+        {
+          "letter": "B",
+          "text": "Greater risk of chronic diseases"
+        },
+        {
+          "letter": "C",
+          "text": "People’s misunderstanding of nutrition"
+        },
+        {
+          "letter": "D",
+          "text": "Children’s dislike for unprocessed foods"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cet6-2024-06-set1--q12",
+      "number": 12,
+      "sectionId": "cet6-2024-06-set1--passage-2",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "They begin to think of the benefits of constraints"
+        },
+        {
+          "letter": "B",
+          "text": "They try to seek solutions from creative people"
+        },
+        {
+          "letter": "C",
+          "text": "They try hard to maximize their mental energy"
+        },
+        {
+          "letter": "D",
+          "text": "They begin to see the world in a different way"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cet6-2024-06-set1--q13",
+      "number": 13,
+      "sectionId": "cet6-2024-06-set1--passage-2",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "It is characteristic of all creative people"
+        },
+        {
+          "letter": "B",
+          "text": "It is essential to pushing society forward"
+        },
+        {
+          "letter": "C",
+          "text": "It is a creative person’s response to limitation"
+        },
+        {
+          "letter": "D",
+          "text": "It is an impetus to socio-economic development"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cet6-2024-06-set1--q14",
+      "number": 14,
+      "sectionId": "cet6-2024-06-set1--passage-2",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Scarcity or abundance of resources has little impact on people’s creativity"
+        },
+        {
+          "letter": "B",
+          "text": "Innovative people are not constrained in connecting unrelated concepts"
+        },
+        {
+          "letter": "C",
+          "text": "People have no incentive to use available resources in new ways"
+        },
+        {
+          "letter": "D",
+          "text": "Creative people tend to consume more available resources"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cet6-2024-06-set1--q15",
+      "number": 15,
+      "sectionId": "cet6-2024-06-set1--passage-2",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "It is key to a company’s survival"
+        },
+        {
+          "letter": "B",
+          "text": "It shapes and focuses problems"
+        },
+        {
+          "letter": "C",
+          "text": "It is essential to meeting challenges"
+        },
+        {
+          "letter": "D",
+          "text": "It thrives best when constrained"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cet6-2024-06-set1--q16",
+      "number": 16,
+      "sectionId": "cet6-2024-06-set1--recording-1",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Because they are learned"
+        },
+        {
+          "letter": "B",
+          "text": "Because they come naturally"
+        },
+        {
+          "letter": "C",
+          "text": "Because they have to be properly personalized"
+        },
+        {
+          "letter": "D",
+          "text": "Because there can be more effective strategies"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cet6-2024-06-set1--q17",
+      "number": 17,
+      "sectionId": "cet6-2024-06-set1--recording-1",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "The extent of difference and of similarity between the two sides"
+        },
+        {
+          "letter": "B",
+          "text": "The knowledge of the specific expectation the other side holds"
+        },
+        {
+          "letter": "C",
+          "text": "The importance of one’s goals and of the relationship"
+        },
+        {
+          "letter": "D",
+          "text": "The approaches one adopts to conflict management"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cet6-2024-06-set1--q18",
+      "number": 18,
+      "sectionId": "cet6-2024-06-set1--recording-1",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "The fox"
+        },
+        {
+          "letter": "B",
+          "text": "The owl"
+        },
+        {
+          "letter": "C",
+          "text": "The shark"
+        },
+        {
+          "letter": "D",
+          "text": "The turtle"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cet6-2024-06-set1--q19",
+      "number": 19,
+      "sectionId": "cet6-2024-06-set1--recording-2",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Help save species from extinction and boost human health"
+        },
+        {
+          "letter": "B",
+          "text": "Understand how plants and animals perished over the past"
+        },
+        {
+          "letter": "C",
+          "text": "Help gather information publicly available to researchers"
+        },
+        {
+          "letter": "D",
+          "text": "Find out the cause of extinction of Britain’s 66,000 species"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cet6-2024-06-set1--q20",
+      "number": 20,
+      "sectionId": "cet6-2024-06-set1--recording-2",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "It was once dominated by dinosaurs"
+        },
+        {
+          "letter": "B",
+          "text": "It has entered the sixth mass extinction"
+        },
+        {
+          "letter": "C",
+          "text": "Its prospects depend on future human behaviour"
+        },
+        {
+          "letter": "D",
+          "text": "Its climate change is aggravated by humans"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cet6-2024-06-set1--q21",
+      "number": 21,
+      "sectionId": "cet6-2024-06-set1--recording-2",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "It dwarfs all other efforts to conserve, protect and restore biodiversity on earth"
+        },
+        {
+          "letter": "B",
+          "text": "It is costly to get started and requires the joint efforts of thousands of scientists"
+        },
+        {
+          "letter": "C",
+          "text": "It can help to bring back the large numbers of plants and animals that have gone extinct"
+        },
+        {
+          "letter": "D",
+          "text": "It is the most exciting, most relevant, most timely and most internationally inspirational"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cet6-2024-06-set1--q22",
+      "number": 22,
+      "sectionId": "cet6-2024-06-set1--recording-3",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Cultural identity"
+        },
+        {
+          "letter": "B",
+          "text": "Social evolution"
+        },
+        {
+          "letter": "C",
+          "text": "The Copernican revolution"
+        },
+        {
+          "letter": "D",
+          "text": "Human individuality"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cet6-2024-06-set1--q23",
+      "number": 23,
+      "sectionId": "cet6-2024-06-set1--recording-3",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "It is a delusion to be disposed of"
+        },
+        {
+          "letter": "B",
+          "text": "It is prevalent even among academics"
+        },
+        {
+          "letter": "C",
+          "text": "It is a myth spread by John Donne’s poem"
+        },
+        {
+          "letter": "D",
+          "text": "It is rooted in the mindset of the 17th century"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cet6-2024-06-set1--q24",
+      "number": 24,
+      "sectionId": "cet6-2024-06-set1--recording-3",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "He believes in Copernican philosophical doctrines about the universe"
+        },
+        {
+          "letter": "B",
+          "text": "He has gained ample scientific evidence at the University of Reading"
+        },
+        {
+          "letter": "C",
+          "text": "He has found that our inner self and material self are interconnected"
+        },
+        {
+          "letter": "D",
+          "text": "He contends most of our body cells can only live a few days or weeks"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cet6-2024-06-set1--q25",
+      "number": 25,
+      "sectionId": "cet6-2024-06-set1--recording-3",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "By coming to see how disruptive such problems have got to be"
+        },
+        {
+          "letter": "B",
+          "text": "By realising that we all can do our own bit in such endeavours"
+        },
+        {
+          "letter": "C",
+          "text": "By becoming aware that we are part of a bigger world"
+        },
+        {
+          "letter": "D",
+          "text": "By making joint efforts resolutely and persistently"
+        }
+      ],
+      "correct": "C"
+    }
+  ]
+}

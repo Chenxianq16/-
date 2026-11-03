@@ -4,6 +4,7 @@ Thumbs.db
 .wrangler/
 .dev.vars
 .deepseek-key.txt
+.e2e-*
 .env
 .env.*
 tmp/

@@ -3,9 +3,20 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const sourcePath = process.argv[2] || path.resolve(root, "../getfine-data.js");
-const outputPath = process.argv[3] || path.join(root, "assets/data/exam.json");
-const paperId = process.argv[4] || "cet6_2021.06_set1";
+const sourcePath = process.argv[2] || path.resolve(root, "../_cet6-source-data.js");
+const outputDir = process.argv[3] || path.join(root, "assets/data");
+
+const selectedPaperIds = [
+  "cet6_2025.12_set1",
+  "cet6_2025.06_set1",
+  "cet6_2024.12_set1",
+  "cet6_2024.06_set1",
+  "cet6_2023.12_set1",
+  "cet6_2023.06_set1",
+  "cet6_2021.06_set1"
+];
+
+const m4aPaperIds = new Set(["cet6_2023.06_set1"]);
 
 const sectionDefinitions = [
   {
@@ -88,98 +99,154 @@ function round(value) {
 }
 
 const papers = loadSource(sourcePath);
-const paper = papers.find((item) => item.id === paperId);
-if (!paper) {
-  throw new Error(`Paper not found: ${paperId}`);
+
+function buildExam(paper) {
+  if (!Array.isArray(paper.quiz) || paper.quiz.length !== 25) {
+    throw new Error(`${paper.id} must contain 25 questions.`);
+  }
+  if (!Array.isArray(paper.sentences) || paper.sentences.length === 0) {
+    throw new Error(`${paper.id} has no sentence data.`);
+  }
+
+  const examId = paper.id.replaceAll("_", "-").replaceAll(".", "-");
+  const match = /^cet6_(\d{4})\.(\d{2})_set(\d+)$/.exec(paper.id);
+  if (!match) {
+    throw new Error(`Unexpected paper id: ${paper.id}`);
+  }
+  const [, year, month, setNumber] = match;
+  const prefix = `${examId}--`;
+
+  const questions = paper.quiz.map((question) => {
+    const definition = sectionDefinitions.find(
+      (section) =>
+        question.number >= section.questionStart &&
+        question.number <= section.questionEnd
+    );
+    if (!definition) {
+      throw new Error(`No section mapping for ${paper.id} question ${question.number}.`);
+    }
+    return {
+      id: `${prefix}q${question.number}`,
+      number: question.number,
+      sectionId: `${prefix}${definition.id}`,
+      type: definition.type,
+      typeLabel: definition.typeLabel,
+      prompt: "根据录音选择最符合的一项",
+      options: question.options,
+      correct: question.correct
+    };
+  });
+
+  const sections = sectionDefinitions.map((definition, sectionIndex) => {
+    const sourceSentences = paper.sentences
+      .filter((sentence) => sentence.section === definition.source)
+      .sort((a, b) => a.start - b.start);
+
+    if (sourceSentences.length === 0) {
+      throw new Error(`No ${definition.source} sentences found for ${paper.id}.`);
+    }
+
+    const sectionId = `${prefix}${definition.id}`;
+    const sentences = sourceSentences.map((sentence, index) => ({
+      id: `${sectionId}--s${index + 1}`,
+      index,
+      speaker: sentence.speaker || "",
+      text: sentence.text.trim(),
+      translationZh: (sentence.zh || "").trim(),
+      start: round(sentence.start),
+      end: round(sentence.end)
+    }));
+
+    return {
+      id: sectionId,
+      type: definition.type,
+      typeLabel: definition.typeLabel,
+      title: definition.title,
+      sourceTitle: definition.source,
+      order: sectionIndex + 1,
+      start: sentences[0].start,
+      end: sentences.at(-1).end,
+      questions: questions.filter((question) => question.sectionId === sectionId),
+      sentences
+    };
+  });
+
+  const duration = round(Math.max(...paper.sentences.map((sentence) => sentence.end)));
+  const displayMonth = String(Number(month));
+  const audioExtension = m4aPaperIds.has(paper.id) ? "m4a" : "mp3";
+  return {
+    meta: {
+      id: examId,
+      sourceId: paper.id,
+      title: `${year} 年 ${displayMonth} 月六级听力（第 ${setNumber} 套）`,
+      shortTitle: `${year}.${month} · 第 ${setNumber} 套`,
+      session: `${year}-${month}`,
+      year: Number(year),
+      month: Number(month),
+      setNumber: Number(setNumber),
+      subtitle: `真实六级听力 · 25 题 · ${paper.sentences.length} 句逐句时间轴`,
+      audio: `assets/audio/${examId}.${audioExtension}`,
+      sourceAudioPath: String(paper.audio || "").replace(/^\.\.\/\.\.\//, ""),
+      duration,
+      sentenceCount: paper.sentences.length,
+      questionCount: questions.length,
+      sourceName: "CET-6 Listening Study",
+      sourceUrl: "https://github.com/getfine333-ux/cet6-listening-study",
+      upstreamName: "CET-6 Listening Resources & Analysis",
+      upstreamUrl:
+        "https://github.com/Ysoseri1224/CET-6-Listening-10-Years-Resources-and-Analysis",
+      license: "CC BY 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+      downloadedAt: "2026-11-03"
+    },
+    sections,
+    questions
+  };
 }
 
-if (!Array.isArray(paper.quiz) || paper.quiz.length !== 25) {
-  throw new Error("The selected paper must contain 25 questions.");
-}
+const selectedPapers = selectedPaperIds.map((id) => {
+  const paper = papers.find((item) => item.id === id);
+  if (!paper) {
+    throw new Error(`Paper not found: ${id}`);
+  }
+  return buildExam(paper);
+});
 
-if (!Array.isArray(paper.sentences) || paper.sentences.length === 0) {
-  throw new Error("The selected paper has no sentence data.");
-}
+const examsDir = path.join(outputDir, "exams");
+fs.mkdirSync(examsDir, { recursive: true });
 
-const questions = paper.quiz.map((question) => {
-  const definition = sectionDefinitions.find(
-    (section) =>
-      question.number >= section.questionStart &&
-      question.number <= section.questionEnd
+for (const exam of selectedPapers) {
+  fs.writeFileSync(
+    path.join(examsDir, `${exam.meta.id}.json`),
+    `${JSON.stringify(exam, null, 2)}\n`,
+    "utf8"
   );
-  if (!definition) {
-    throw new Error(`No section mapping for question ${question.number}.`);
-  }
-  return {
-    id: `q${question.number}`,
-    number: question.number,
-    sectionId: definition.id,
-    type: definition.type,
-    typeLabel: definition.typeLabel,
-    prompt: "根据录音选择最符合的一项",
-    options: question.options,
-    correct: question.correct
-  };
-});
+}
 
-const sections = sectionDefinitions.map((definition, sectionIndex) => {
-  const sourceSentences = paper.sentences
-    .filter((sentence) => sentence.section === definition.source)
-    .sort((a, b) => a.start - b.start);
-
-  if (sourceSentences.length === 0) {
-    throw new Error(`No sentences found for ${definition.source}.`);
-  }
-
-  const sentences = sourceSentences.map((sentence, index) => ({
-    id: `${definition.id}-s${index + 1}`,
-    index,
-    speaker: sentence.speaker || "",
-    text: sentence.text.trim(),
-    translationZh: (sentence.zh || "").trim(),
-    start: round(sentence.start),
-    end: round(sentence.end)
-  }));
-
-  return {
-    id: definition.id,
-    type: definition.type,
-    typeLabel: definition.typeLabel,
-    title: definition.title,
-    sourceTitle: definition.source,
-    order: sectionIndex + 1,
-    start: sentences[0].start,
-    end: sentences.at(-1).end,
-    questions: questions.filter((question) => question.sectionId === definition.id),
-    sentences
-  };
-});
-
-const exam = {
-  meta: {
-    id: "cet6-2021-06-set1",
-    title: "2021 年 6 月六级听力（第 1 套）",
-    subtitle: "真实六级听力 · 25 题 · 167 句逐句时间轴",
-    audio: "assets/audio/cet6-2021-06-set1.mp3",
-    duration: round(Math.max(...paper.sentences.map((sentence) => sentence.end))),
-    sentenceCount: paper.sentences.length,
-    questionCount: questions.length,
-    sourceName: "CET-6 Listening Study",
-    sourceUrl: "https://github.com/getfine333-ux/cet6-listening-study",
-    upstreamName: "CET-6 Listening Resources & Analysis",
-    upstreamUrl:
-      "https://github.com/Ysoseri1224/CET-6-Listening-10-Years-Resources-and-Analysis",
-    license: "CC BY 4.0",
-    licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
-    downloadedAt: "2026-11-02"
-  },
-  sections,
-  questions
+const index = {
+  generatedAt: "2026-11-03",
+  defaultExamId: selectedPapers[0].meta.id,
+  exams: selectedPapers.map((exam) => ({
+    id: exam.meta.id,
+    title: exam.meta.title,
+    shortTitle: exam.meta.shortTitle,
+    session: exam.meta.session,
+    year: exam.meta.year,
+    month: exam.meta.month,
+    setNumber: exam.meta.setNumber,
+    duration: exam.meta.duration,
+    sentenceCount: exam.meta.sentenceCount,
+    questionCount: exam.meta.questionCount,
+    dataPath: `exams/${exam.meta.id}.json`
+  }))
 };
 
-fs.mkdirSync(path.dirname(outputPath), { recursive: true });
-fs.writeFileSync(outputPath, `${JSON.stringify(exam, null, 2)}\n`, "utf8");
+fs.writeFileSync(
+  path.join(outputDir, "index.json"),
+  `${JSON.stringify(index, null, 2)}\n`,
+  "utf8"
+);
 
 console.log(
-  `Wrote ${sections.length} sections, ${questions.length} questions, and ${exam.meta.sentenceCount} sentences to ${outputPath}`
+  `Wrote ${selectedPapers.length} exams and ${selectedPapers.length} index entries to ${outputDir}`
 );

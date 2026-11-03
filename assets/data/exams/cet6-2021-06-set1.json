@@ -1,9 +1,16 @@
 {
   "meta": {
     "id": "cet6-2021-06-set1",
+    "sourceId": "cet6_2021.06_set1",
     "title": "2021 年 6 月六级听力（第 1 套）",
+    "shortTitle": "2021.06 · 第 1 套",
+    "session": "2021-06",
+    "year": 2021,
+    "month": 6,
+    "setNumber": 1,
     "subtitle": "真实六级听力 · 25 题 · 167 句逐句时间轴",
     "audio": "assets/audio/cet6-2021-06-set1.mp3",
+    "sourceAudioPath": "resources/CET6_2021.06/CET6_2021.06_set1_listening.mp3",
     "duration": 1598.78,
     "sentenceCount": 167,
     "questionCount": 25,
@@ -13,11 +20,11 @@
     "upstreamUrl": "https://github.com/Ysoseri1224/CET-6-Listening-10-Years-Resources-and-Analysis",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-    "downloadedAt": "2026-11-02"
+    "downloadedAt": "2026-11-03"
   },
   "sections": [
     {
-      "id": "conversation-1",
+      "id": "cet6-2021-06-set1--conversation-1",
       "type": "long-conversation",
       "typeLabel": "长对话",
       "title": "长对话 1",
@@ -27,9 +34,9 @@
       "end": 159.06,
       "questions": [
         {
-          "id": "q1",
+          "id": "cet6-2021-06-set1--q1",
           "number": 1,
-          "sectionId": "conversation-1",
+          "sectionId": "cet6-2021-06-set1--conversation-1",
           "type": "long-conversation",
           "typeLabel": "长对话",
           "prompt": "根据录音选择最符合的一项",
@@ -54,9 +61,9 @@
           "correct": "A"
         },
         {
-          "id": "q2",
+          "id": "cet6-2021-06-set1--q2",
           "number": 2,
-          "sectionId": "conversation-1",
+          "sectionId": "cet6-2021-06-set1--conversation-1",
           "type": "long-conversation",
           "typeLabel": "长对话",
           "prompt": "根据录音选择最符合的一项",
@@ -81,9 +88,9 @@
           "correct": "C"
         },
         {
-          "id": "q3",
+          "id": "cet6-2021-06-set1--q3",
           "number": 3,
-          "sectionId": "conversation-1",
+          "sectionId": "cet6-2021-06-set1--conversation-1",
           "type": "long-conversation",
           "typeLabel": "长对话",
           "prompt": "根据录音选择最符合的一项",
@@ -108,9 +115,9 @@
           "correct": "D"
         },
         {
-          "id": "q4",
+          "id": "cet6-2021-06-set1--q4",
           "number": 4,
-          "sectionId": "conversation-1",
+          "sectionId": "cet6-2021-06-set1--conversation-1",
           "type": "long-conversation",
           "typeLabel": "长对话",
           "prompt": "根据录音选择最符合的一项",
@@ -137,7 +144,7 @@
       ],
       "sentences": [
         {
-          "id": "conversation-1-s1",
+          "id": "cet6-2021-06-set1--conversation-1--s1",
           "index": 0,
           "speaker": "M",
           "text": "It's my last day at work tomorrow.",
@@ -146,7 +153,7 @@
           "end": 46.72
         },
         {
-          "id": "conversation-1-s2",
+          "id": "cet6-2021-06-set1--conversation-1--s2",
           "index": 1,
           "speaker": "M",
           "text": "I start my new job in two weeks.",
@@ -155,7 +162,7 @@
           "end": 49.2
         },
         {
-          "id": "conversation-1-s3",
+          "id": "cet6-2021-06-set1--conversation-1--s3",
           "index": 2,
           "speaker": "M",
           "text": "My human resources manager wants to conduct an interview with me before I leave.",
@@ -164,7 +171,7 @@
           "end": 54
         },
         {
-          "id": "conversation-1-s4",
+          "id": "cet6-2021-06-set1--conversation-1--s4",
           "index": 3,
           "speaker": "W",
           "text": "Ah, an exit interview.",
@@ -173,7 +180,7 @@
           "end": 56.26
         },
         {
-          "id": "conversation-1-s5",
+          "id": "cet6-2021-06-set1--conversation-1--s5",
           "index": 4,
           "speaker": "W",
           "text": "Are you looking forward to it?",
@@ -182,7 +189,7 @@
           "end": 58.06
         },
         {
-          "id": "conversation-1-s6",
+          "id": "cet6-2021-06-set1--conversation-1--s6",
           "index": 5,
           "speaker": "M",
           "text": "I'm not sure how I feel about it.",
@@ -191,7 +198,7 @@
           "end": 60.18
         },
         {
-          "id": "conversation-1-s7",
+          "id": "cet6-2021-06-set1--conversation-1--s7",
           "index": 6,
           "speaker": "M",
           "text": "I resigned because I've been unhappy at that company for a long time, but I'm not sure if I should tell them how I really feel.",
@@ -200,7 +207,7 @@
           "end": 67.94
         },
         {
-          "id": "conversation-1-s8",
+          "id": "cet6-2021-06-set1--conversation-1--s8",
           "index": 7,
           "speaker": "W",
           "text": "To my way of thinking, there are two main potential benefits that come from unleashing an agitated stream of truth during an exit interview.",
@@ -209,7 +216,7 @@
           "end": 76.94
         },
         {
-          "id": "conversation-1-s9",
+          "id": "cet6-2021-06-set1--conversation-1--s9",
           "index": 8,
           "speaker": "W",
           "text": "The first is release.",
@@ -218,7 +225,7 @@
           "end": 78.88
         },
         {
-          "id": "conversation-1-s10",
+          "id": "cet6-2021-06-set1--conversation-1--s10",
           "index": 9,
           "speaker": "W",
           "text": "Unburdening yourself of frustration and perhaps even anger to someone who isn't a friend or close colleague can be wonderfully freeing.",
@@ -227,7 +234,7 @@
           "end": 88.4
         },
         {
-          "id": "conversation-1-s11",
+          "id": "cet6-2021-06-set1--conversation-1--s11",
           "index": 10,
           "speaker": "M",
           "text": "And let me guess.",
@@ -236,7 +243,7 @@
           "end": 89.44
         },
         {
-          "id": "conversation-1-s12",
+          "id": "cet6-2021-06-set1--conversation-1--s12",
           "index": 11,
           "speaker": "M",
           "text": "The second is that the criticism will, theoretically, help the organization I'm leaving to improve, making sure employees of the future are less likely to encounter what I did?",
@@ -245,7 +252,7 @@
           "end": 100.66
         },
         {
-          "id": "conversation-1-s13",
+          "id": "cet6-2021-06-set1--conversation-1--s13",
           "index": 12,
           "speaker": "W",
           "text": "That's right.",
@@ -254,7 +261,7 @@
           "end": 101.82
         },
         {
-          "id": "conversation-1-s14",
+          "id": "cet6-2021-06-set1--conversation-1--s14",
           "index": 13,
           "speaker": "W",
           "text": "But the problem with the company improvement part is that very often it doesn't happen.",
@@ -263,7 +270,7 @@
           "end": 106.82
         },
         {
-          "id": "conversation-1-s15",
+          "id": "cet6-2021-06-set1--conversation-1--s15",
           "index": 14,
           "speaker": "W",
           "text": "An exit interview is supposed to be private, but often isn't.",
@@ -272,7 +279,7 @@
           "end": 111.34
         },
         {
-          "id": "conversation-1-s16",
+          "id": "cet6-2021-06-set1--conversation-1--s16",
           "index": 15,
           "speaker": "W",
           "text": "In my company, the information gained from these interviews is often not confidential, and the information is used as dirt against another manager or can be traded among senior managers.",
@@ -281,7 +288,7 @@
           "end": 123.5
         },
         {
-          "id": "conversation-1-s17",
+          "id": "cet6-2021-06-set1--conversation-1--s17",
           "index": 16,
           "speaker": "M",
           "text": "Now you've got me rethinking what I'll disclose in the interview.",
@@ -290,7 +297,7 @@
           "end": 127.88
         },
         {
-          "id": "conversation-1-s18",
+          "id": "cet6-2021-06-set1--conversation-1--s18",
           "index": 17,
           "speaker": "M",
           "text": "There is always the chance that it could affect my reputation and my ability to network in the industry.",
@@ -299,7 +306,7 @@
           "end": 133.78
         },
         {
-          "id": "conversation-1-s19",
+          "id": "cet6-2021-06-set1--conversation-1--s19",
           "index": 18,
           "speaker": "M",
           "text": "It is a pretty small industry after all.",
@@ -308,7 +315,7 @@
           "end": 136.6
         },
         {
-          "id": "conversation-1-s20",
+          "id": "cet6-2021-06-set1--conversation-1--s20",
           "index": 19,
           "speaker": "W",
           "text": "Anything you initially gain from the instant satisfaction of telling it like it is, you might lose down the track by injuring your future career prospects.",
@@ -317,7 +324,7 @@
           "end": 146.04
         },
         {
-          "id": "conversation-1-s21",
+          "id": "cet6-2021-06-set1--conversation-1--s21",
           "index": 20,
           "speaker": "M",
           "text": "Right.",
@@ -326,7 +333,7 @@
           "end": 147.28
         },
         {
-          "id": "conversation-1-s22",
+          "id": "cet6-2021-06-set1--conversation-1--s22",
           "index": 21,
           "speaker": "M",
           "text": "Perhaps I would be better getting things off my chest by going to one of those rate-your-employer websites.",
@@ -335,7 +342,7 @@
           "end": 153.5
         },
         {
-          "id": "conversation-1-s23",
+          "id": "cet6-2021-06-set1--conversation-1--s23",
           "index": 22,
           "speaker": "W",
           "text": "You could, and don't do the interview at all.",
@@ -344,7 +351,7 @@
           "end": 156.56
         },
         {
-          "id": "conversation-1-s24",
+          "id": "cet6-2021-06-set1--conversation-1--s24",
           "index": 23,
           "speaker": "W",
           "text": "Exit interviews are not mandatory.",
@@ -355,7 +362,7 @@
       ]
     },
     {
-      "id": "conversation-2",
+      "id": "cet6-2021-06-set1--conversation-2",
       "type": "long-conversation",
       "typeLabel": "长对话",
       "title": "长对话 2",
@@ -365,9 +372,9 @@
       "end": 366.44,
       "questions": [
         {
-          "id": "q5",
+          "id": "cet6-2021-06-set1--q5",
           "number": 5,
-          "sectionId": "conversation-2",
+          "sectionId": "cet6-2021-06-set1--conversation-2",
           "type": "long-conversation",
           "typeLabel": "长对话",
           "prompt": "根据录音选择最符合的一项",
@@ -392,9 +399,9 @@
           "correct": "D"
         },
         {
-          "id": "q6",
+          "id": "cet6-2021-06-set1--q6",
           "number": 6,
-          "sectionId": "conversation-2",
+          "sectionId": "cet6-2021-06-set1--conversation-2",
           "type": "long-conversation",
           "typeLabel": "长对话",
           "prompt": "根据录音选择最符合的一项",
@@ -419,9 +426,9 @@
           "correct": "C"
         },
         {
-          "id": "q7",
+          "id": "cet6-2021-06-set1--q7",
           "number": 7,
-          "sectionId": "conversation-2",
+          "sectionId": "cet6-2021-06-set1--conversation-2",
           "type": "long-conversation",
           "typeLabel": "长对话",
           "prompt": "根据录音选择最符合的一项",
@@ -446,9 +453,9 @@
           "correct": "C"
         },
         {
-          "id": "q8",
+          "id": "cet6-2021-06-set1--q8",
           "number": 8,
-          "sectionId": "conversation-2",
+          "sectionId": "cet6-2021-06-set1--conversation-2",
           "type": "long-conversation",
           "typeLabel": "长对话",
           "prompt": "根据录音选择最符合的一项",
@@ -475,7 +482,7 @@
       ],
       "sentences": [
         {
-          "id": "conversation-2-s1",
+          "id": "cet6-2021-06-set1--conversation-2--s1",
           "index": 0,
           "speaker": "M",
           "text": "Today, I'm talking to the renowned botanist, Jane Forster.",
@@ -484,7 +491,7 @@
           "end": 246.62
         },
         {
-          "id": "conversation-2-s2",
+          "id": "cet6-2021-06-set1--conversation-2--s2",
           "index": 1,
           "speaker": "M",
           "text": "Thank you for inviting me to join you on the show, Henry.",
@@ -493,7 +500,7 @@
           "end": 250.76
         },
         {
-          "id": "conversation-2-s3",
+          "id": "cet6-2021-06-set1--conversation-2--s3",
           "index": 2,
           "speaker": "W",
           "text": "Recently, Jane, you've become quite a celebrity, since the release of your latest documentary.",
@@ -502,7 +509,7 @@
           "end": 256.54
         },
         {
-          "id": "conversation-2-s4",
+          "id": "cet6-2021-06-set1--conversation-2--s4",
           "index": 3,
           "speaker": "W",
           "text": "Can you tell us a little about it?",
@@ -511,7 +518,7 @@
           "end": 259.02
         },
         {
-          "id": "conversation-2-s5",
+          "id": "cet6-2021-06-set1--conversation-2--s5",
           "index": 4,
           "speaker": "W",
           "text": "Well, it follows my expedition to study the vegetation indigenous to the rainforest in equatorial areas of Southeast Asia.",
@@ -520,7 +527,7 @@
           "end": 267.9
         },
         {
-          "id": "conversation-2-s6",
+          "id": "cet6-2021-06-set1--conversation-2--s6",
           "index": 5,
           "speaker": "M",
           "text": "You certainly get to travel to some very exotic locations.",
@@ -529,7 +536,7 @@
           "end": 272.48
         },
         {
-          "id": "conversation-2-s7",
+          "id": "cet6-2021-06-set1--conversation-2--s7",
           "index": 6,
           "speaker": "W",
           "text": "It was far from glamorous, to be honest.",
@@ -538,7 +545,7 @@
           "end": 275.38
         },
         {
-          "id": "conversation-2-s8",
+          "id": "cet6-2021-06-set1--conversation-2--s8",
           "index": 7,
           "speaker": "W",
           "text": "The area we visited was accessible only by canoe, and the living conditions in the hut were primitive, to say the least.",
@@ -547,7 +554,7 @@
           "end": 283.7
         },
         {
-          "id": "conversation-2-s9",
+          "id": "cet6-2021-06-set1--conversation-2--s9",
           "index": 8,
           "speaker": "W",
           "text": "There was no electricity, and our water supply was a nearby stream.",
@@ -556,7 +563,7 @@
           "end": 288.18
         },
         {
-          "id": "conversation-2-s10",
+          "id": "cet6-2021-06-set1--conversation-2--s10",
           "index": 9,
           "speaker": "M",
           "text": "How were the weather conditions while you were there?",
@@ -565,7 +572,7 @@
           "end": 291.32
         },
         {
-          "id": "conversation-2-s11",
+          "id": "cet6-2021-06-set1--conversation-2--s11",
           "index": 10,
           "speaker": "W",
           "text": "The weather was not conducive to our work at all, since the humidity was almost unbearable.",
@@ -574,7 +581,7 @@
           "end": 297.46
         },
         {
-          "id": "conversation-2-s12",
+          "id": "cet6-2021-06-set1--conversation-2--s12",
           "index": 11,
           "speaker": "W",
           "text": "At midday, we stayed in the hut and did nothing.",
@@ -583,7 +590,7 @@
           "end": 300.4
         },
         {
-          "id": "conversation-2-s13",
+          "id": "cet6-2021-06-set1--conversation-2--s13",
           "index": 12,
           "speaker": "W",
           "text": "It was too humid to either work or sleep.",
@@ -592,7 +599,7 @@
           "end": 303.34
         },
         {
-          "id": "conversation-2-s14",
+          "id": "cet6-2021-06-set1--conversation-2--s14",
           "index": 13,
           "speaker": "M",
           "text": "How long did your team spend in the jungle?",
@@ -601,7 +608,7 @@
           "end": 306.18
         },
         {
-          "id": "conversation-2-s15",
+          "id": "cet6-2021-06-set1--conversation-2--s15",
           "index": 14,
           "speaker": "W",
           "text": "Originally, we planned to be there for a month, but in the end, we stayed for only two weeks.",
@@ -610,7 +617,7 @@
           "end": 312.22
         },
         {
-          "id": "conversation-2-s16",
+          "id": "cet6-2021-06-set1--conversation-2--s16",
           "index": 15,
           "speaker": "M",
           "text": "Why did you cut the expedition short?",
@@ -619,7 +626,7 @@
           "end": 314.84
         },
         {
-          "id": "conversation-2-s17",
+          "id": "cet6-2021-06-set1--conversation-2--s17",
           "index": 16,
           "speaker": "W",
           "text": "Halfway through the trip, we received news that a hurricane was approaching, and we had to evacuate at very short notice.",
@@ -628,7 +635,7 @@
           "end": 322.7
         },
         {
-          "id": "conversation-2-s18",
+          "id": "cet6-2021-06-set1--conversation-2--s18",
           "index": 17,
           "speaker": "M",
           "text": "That sounds like a fascinating anecdote.",
@@ -637,7 +644,7 @@
           "end": 325.58
         },
         {
-          "id": "conversation-2-s19",
+          "id": "cet6-2021-06-set1--conversation-2--s19",
           "index": 18,
           "speaker": "W",
           "text": "It was frightening.",
@@ -646,7 +653,7 @@
           "end": 327.02
         },
         {
-          "id": "conversation-2-s20",
+          "id": "cet6-2021-06-set1--conversation-2--s20",
           "index": 19,
           "speaker": "W",
           "text": "The fastest evacuation route was through river rapids.",
@@ -655,7 +662,7 @@
           "end": 331.26
         },
         {
-          "id": "conversation-2-s21",
+          "id": "cet6-2021-06-set1--conversation-2--s21",
           "index": 20,
           "speaker": "W",
           "text": "We had to navigate them carrying all of our equipment.",
@@ -664,7 +671,7 @@
           "end": 334.4
         },
         {
-          "id": "conversation-2-s22",
+          "id": "cet6-2021-06-set1--conversation-2--s22",
           "index": 21,
           "speaker": "M",
           "text": "So overall, was the journey unsuccessful?",
@@ -673,7 +680,7 @@
           "end": 337.96
         },
         {
-          "id": "conversation-2-s23",
+          "id": "cet6-2021-06-set1--conversation-2--s23",
           "index": 22,
           "speaker": "W",
           "text": "Absolutely not.",
@@ -682,7 +689,7 @@
           "end": 339.52
         },
         {
-          "id": "conversation-2-s24",
+          "id": "cet6-2021-06-set1--conversation-2--s24",
           "index": 23,
           "speaker": "W",
           "text": "We gathered a massive amount of data about the local plant life.",
@@ -691,7 +698,7 @@
           "end": 343.38
         },
         {
-          "id": "conversation-2-s25",
+          "id": "cet6-2021-06-set1--conversation-2--s25",
           "index": 24,
           "speaker": "M",
           "text": "Why do you put up with such adverse conditions?",
@@ -700,7 +707,7 @@
           "end": 347.1
         },
         {
-          "id": "conversation-2-s26",
+          "id": "cet6-2021-06-set1--conversation-2--s26",
           "index": 25,
           "speaker": "W",
           "text": "Botany is an obsession for me.",
@@ -709,7 +716,7 @@
           "end": 350
         },
         {
-          "id": "conversation-2-s27",
+          "id": "cet6-2021-06-set1--conversation-2--s27",
           "index": 26,
           "speaker": "W",
           "text": "Many of the destinations I visit have stunning scenery, and I get to meet a variety of people from all over the world.",
@@ -718,7 +725,7 @@
           "end": 357.22
         },
         {
-          "id": "conversation-2-s28",
+          "id": "cet6-2021-06-set1--conversation-2--s28",
           "index": 27,
           "speaker": "M",
           "text": "So where will your next destination be?",
@@ -727,7 +734,7 @@
           "end": 360.24
         },
         {
-          "id": "conversation-2-s29",
+          "id": "cet6-2021-06-set1--conversation-2--s29",
           "index": 28,
           "speaker": "W",
           "text": "I haven't decided yet.",
@@ -736,7 +743,7 @@
           "end": 361.98
         },
         {
-          "id": "conversation-2-s30",
+          "id": "cet6-2021-06-set1--conversation-2--s30",
           "index": 29,
           "speaker": "M",
           "text": "Then we can leave it for another occasion.",
@@ -745,7 +752,7 @@
           "end": 365
         },
         {
-          "id": "conversation-2-s31",
+          "id": "cet6-2021-06-set1--conversation-2--s31",
           "index": 30,
           "speaker": "M",
           "text": "Thanks.",
@@ -756,7 +763,7 @@
       ]
     },
     {
-      "id": "passage-1",
+      "id": "cet6-2021-06-set1--passage-1",
       "type": "passage",
       "typeLabel": "篇章",
       "title": "篇章听力 1",
@@ -766,9 +773,9 @@
       "end": 602.78,
       "questions": [
         {
-          "id": "q9",
+          "id": "cet6-2021-06-set1--q9",
           "number": 9,
-          "sectionId": "passage-1",
+          "sectionId": "cet6-2021-06-set1--passage-1",
           "type": "passage",
           "typeLabel": "篇章",
           "prompt": "根据录音选择最符合的一项",
@@ -793,9 +800,9 @@
           "correct": "C"
         },
         {
-          "id": "q10",
+          "id": "cet6-2021-06-set1--q10",
           "number": 10,
-          "sectionId": "passage-1",
+          "sectionId": "cet6-2021-06-set1--passage-1",
           "type": "passage",
           "typeLabel": "篇章",
           "prompt": "根据录音选择最符合的一项",
@@ -820,9 +827,9 @@
           "correct": "A"
         },
         {
-          "id": "q11",
+          "id": "cet6-2021-06-set1--q11",
           "number": 11,
-          "sectionId": "passage-1",
+          "sectionId": "cet6-2021-06-set1--passage-1",
           "type": "passage",
           "typeLabel": "篇章",
           "prompt": "根据录音选择最符合的一项",
@@ -849,7 +856,7 @@
       ],
       "sentences": [
         {
-          "id": "passage-1-s1",
+          "id": "cet6-2021-06-set1--passage-1--s1",
           "index": 0,
           "speaker": "",
           "text": "Scientists often use specialised jargon terms while communicating with laymen.",
@@ -858,7 +865,7 @@
           "end": 483.3
         },
         {
-          "id": "passage-1-s2",
+          "id": "cet6-2021-06-set1--passage-1--s2",
           "index": 1,
           "speaker": "",
           "text": "Most of them don't realise the harmful effects of this practice.",
@@ -867,7 +874,7 @@
           "end": 487.78
         },
         {
-          "id": "passage-1-s3",
+          "id": "cet6-2021-06-set1--passage-1--s3",
           "index": 2,
           "speaker": "",
           "text": "In a new study, people exposed to jargon when reading about subjects like autonomous vehicles and surgical robots later said they were less interested in science than others who read about the same topics but without the use of specialised terms.",
@@ -876,7 +883,7 @@
           "end": 503.92
         },
         {
-          "id": "passage-1-s4",
+          "id": "cet6-2021-06-set1--passage-1--s4",
           "index": 3,
           "speaker": "",
           "text": "They also felt less informed about science and less qualified to discuss science topics.",
@@ -885,7 +892,7 @@
           "end": 510.96
         },
         {
-          "id": "passage-1-s5",
+          "id": "cet6-2021-06-set1--passage-1--s5",
           "index": 4,
           "speaker": "",
           "text": "It's noteworthy that it made no difference if the jargon terms were defined in the text.",
@@ -894,7 +901,7 @@
           "end": 517.52
         },
         {
-          "id": "passage-1-s6",
+          "id": "cet6-2021-06-set1--passage-1--s6",
           "index": 5,
           "speaker": "",
           "text": "Even when the terms were defined, readers still felt the same lack of engagement as readers who read jargon that wasn't explained.",
@@ -903,7 +910,7 @@
           "end": 526.94
         },
         {
-          "id": "passage-1-s7",
+          "id": "cet6-2021-06-set1--passage-1--s7",
           "index": 6,
           "speaker": "",
           "text": "The problem is that the mere presence of jargon sends a discouraging message to readers.",
@@ -912,7 +919,7 @@
           "end": 534.5
         },
         {
-          "id": "passage-1-s8",
+          "id": "cet6-2021-06-set1--passage-1--s8",
           "index": 7,
           "speaker": "",
           "text": "Hilary Shulman, the author of the study, asserts that specialised words are a signal.",
@@ -921,7 +928,7 @@
           "end": 541.5
         },
         {
-          "id": "passage-1-s9",
+          "id": "cet6-2021-06-set1--passage-1--s9",
           "index": 8,
           "speaker": "",
           "text": "Jargon tells people that the message isn't for them.",
@@ -930,7 +937,7 @@
           "end": 546.24
         },
         {
-          "id": "passage-1-s10",
+          "id": "cet6-2021-06-set1--passage-1--s10",
           "index": 9,
           "speaker": "",
           "text": "There's an even darker side to how people react to jargon.",
@@ -939,7 +946,7 @@
           "end": 551.02
         },
         {
-          "id": "passage-1-s11",
+          "id": "cet6-2021-06-set1--passage-1--s11",
           "index": 10,
           "speaker": "",
           "text": "In another study, researchers found that reading scientific articles containing jargon led people to doubt the actual science.",
@@ -948,7 +955,7 @@
           "end": 560.6
         },
         {
-          "id": "passage-1-s12",
+          "id": "cet6-2021-06-set1--passage-1--s12",
           "index": 11,
           "speaker": "",
           "text": "They found the opposite when a text is easier to read.",
@@ -957,7 +964,7 @@
           "end": 565.94
         },
         {
-          "id": "passage-1-s13",
+          "id": "cet6-2021-06-set1--passage-1--s13",
           "index": 12,
           "speaker": "",
           "text": "Then, people are more persuaded.",
@@ -966,7 +973,7 @@
           "end": 569.32
         },
         {
-          "id": "passage-1-s14",
+          "id": "cet6-2021-06-set1--passage-1--s14",
           "index": 13,
           "speaker": "",
           "text": "Thus, it's important to communicate clearly when talking about complex science subjects.",
@@ -975,7 +982,7 @@
           "end": 576.52
         },
         {
-          "id": "passage-1-s15",
+          "id": "cet6-2021-06-set1--passage-1--s15",
           "index": 14,
           "speaker": "",
           "text": "This is especially true with issues related to public health, like the safety of new medications and the benefits of vaccines.",
@@ -984,7 +991,7 @@
           "end": 586.68
         },
         {
-          "id": "passage-1-s16",
+          "id": "cet6-2021-06-set1--passage-1--s16",
           "index": 15,
           "speaker": "",
           "text": "Shulman concedes that the use of jargon is appropriate with scientific audiences.",
@@ -993,7 +1000,7 @@
           "end": 593.5
         },
         {
-          "id": "passage-1-s17",
+          "id": "cet6-2021-06-set1--passage-1--s17",
           "index": 16,
           "speaker": "",
           "text": "But scientists who want to communicate with the general public need to modify their language.",
@@ -1002,7 +1009,7 @@
           "end": 599.9
         },
         {
-          "id": "passage-1-s18",
+          "id": "cet6-2021-06-set1--passage-1--s18",
           "index": 17,
           "speaker": "",
           "text": "They need to eliminate jargon.",
@@ -1013,7 +1020,7 @@
       ]
     },
     {
-      "id": "passage-2",
+      "id": "cet6-2021-06-set1--passage-2",
       "type": "passage",
       "typeLabel": "篇章",
       "title": "篇章听力 2",
@@ -1023,9 +1030,9 @@
       "end": 902.68,
       "questions": [
         {
-          "id": "q12",
+          "id": "cet6-2021-06-set1--q12",
           "number": 12,
-          "sectionId": "passage-2",
+          "sectionId": "cet6-2021-06-set1--passage-2",
           "type": "passage",
           "typeLabel": "篇章",
           "prompt": "根据录音选择最符合的一项",
@@ -1050,9 +1057,9 @@
           "correct": "B"
         },
         {
-          "id": "q13",
+          "id": "cet6-2021-06-set1--q13",
           "number": 13,
-          "sectionId": "passage-2",
+          "sectionId": "cet6-2021-06-set1--passage-2",
           "type": "passage",
           "typeLabel": "篇章",
           "prompt": "根据录音选择最符合的一项",
@@ -1077,9 +1084,9 @@
           "correct": "D"
         },
         {
-          "id": "q14",
+          "id": "cet6-2021-06-set1--q14",
           "number": 14,
-          "sectionId": "passage-2",
+          "sectionId": "cet6-2021-06-set1--passage-2",
           "type": "passage",
           "typeLabel": "篇章",
           "prompt": "根据录音选择最符合的一项",
@@ -1104,9 +1111,9 @@
           "correct": "B"
         },
         {
-          "id": "q15",
+          "id": "cet6-2021-06-set1--q15",
           "number": 15,
-          "sectionId": "passage-2",
+          "sectionId": "cet6-2021-06-set1--passage-2",
           "type": "passage",
           "typeLabel": "篇章",
           "prompt": "根据录音选择最符合的一项",
@@ -1133,7 +1140,7 @@
       ],
       "sentences": [
         {
-          "id": "passage-2-s1",
+          "id": "cet6-2021-06-set1--passage-2--s1",
           "index": 0,
           "speaker": "",
           "text": "At the beginning of the 20th century, on the Gulf Coast in the U.S. state of Texas, there was a hill where gas leakage was so noticeable that schoolboys would sometimes set the hill on fire.",
@@ -1142,7 +1149,7 @@
           "end": 686
         },
         {
-          "id": "passage-2-s2",
+          "id": "cet6-2021-06-set1--passage-2--s2",
           "index": 1,
           "speaker": "",
           "text": "Patio Higgins, a disreputable local businessman, became convinced that there was oil below the gassy hill.",
@@ -1151,7 +1158,7 @@
           "end": 694.26
         },
         {
-          "id": "passage-2-s3",
+          "id": "cet6-2021-06-set1--passage-2--s3",
           "index": 2,
           "speaker": "",
           "text": "Oil wells weren't drilled back then.",
@@ -1160,7 +1167,7 @@
           "end": 697.38
         },
         {
-          "id": "passage-2-s4",
+          "id": "cet6-2021-06-set1--passage-2--s4",
           "index": 3,
           "speaker": "",
           "text": "They were essentially dug.",
@@ -1169,7 +1176,7 @@
           "end": 699.28
         },
         {
-          "id": "passage-2-s5",
+          "id": "cet6-2021-06-set1--passage-2--s5",
           "index": 4,
           "speaker": "",
           "text": "The sand under the hill defeated several attempts by Higgins' workers to make a proper hole.",
@@ -1178,7 +1185,7 @@
           "end": 706.02
         },
         {
-          "id": "passage-2-s6",
+          "id": "cet6-2021-06-set1--passage-2--s6",
           "index": 5,
           "speaker": "",
           "text": "Higgins had forecast oil at 1,000 feet, a totally made-up figure.",
@@ -1187,7 +1194,7 @@
           "end": 711.74
         },
         {
-          "id": "passage-2-s7",
+          "id": "cet6-2021-06-set1--passage-2--s7",
           "index": 6,
           "speaker": "",
           "text": "Higgins subsequently hired a mining engineer, Captain Anthony Lucas.",
@@ -1196,7 +1203,7 @@
           "end": 717.26
         },
         {
-          "id": "passage-2-s8",
+          "id": "cet6-2021-06-set1--passage-2--s8",
           "index": 7,
           "speaker": "",
           "text": "After encountering several setbacks, Captain Lucas decided to use a drill, and his innovations created the modern oil drilling industry.",
@@ -1205,7 +1212,7 @@
           "end": 727.12
         },
         {
-          "id": "passage-2-s9",
+          "id": "cet6-2021-06-set1--passage-2--s9",
           "index": 8,
           "speaker": "",
           "text": "In January 1901, at 1,020 feet, almost precisely the depth predicted by Higgins' wild guess, the well roared and suddenly ejected mud and six tons of drilling pipe out of the ground, terrifying those present.",
@@ -1214,7 +1221,7 @@
           "end": 745.1
         },
         {
-          "id": "passage-2-s10",
+          "id": "cet6-2021-06-set1--passage-2--s10",
           "index": 9,
           "speaker": "",
           "text": "For the next nine days until the well was capped, the well poured out more oil than all the wells in America combined.",
@@ -1223,7 +1230,7 @@
           "end": 753.74
         },
         {
-          "id": "passage-2-s11",
+          "id": "cet6-2021-06-set1--passage-2--s11",
           "index": 10,
           "speaker": "",
           "text": "In those days, Texas was almost entirely rural, with no large cities and practically no industry.",
@@ -1232,7 +1239,7 @@
           "end": 761.64
         },
         {
-          "id": "passage-2-s12",
+          "id": "cet6-2021-06-set1--passage-2--s12",
           "index": 11,
           "speaker": "",
           "text": "Cotton and beef were the foundation of the economy.",
@@ -1241,7 +1248,7 @@
           "end": 765.22
         },
         {
-          "id": "passage-2-s13",
+          "id": "cet6-2021-06-set1--passage-2--s13",
           "index": 12,
           "speaker": "",
           "text": "Higgins' well changed that.",
@@ -1250,7 +1257,7 @@
           "end": 767.84
         },
         {
-          "id": "passage-2-s14",
+          "id": "cet6-2021-06-set1--passage-2--s14",
           "index": 13,
           "speaker": "",
           "text": "The boom made some prospectors millionaires, but the sudden surplus of petroleum was not entirely a blessing for Texas.",
@@ -1259,7 +1266,7 @@
           "end": 776.56
         },
         {
-          "id": "passage-2-s15",
+          "id": "cet6-2021-06-set1--passage-2--s15",
           "index": 14,
           "speaker": "",
           "text": "In the 1930s, prices crashed to the point that, in some parts of the country, oil was cheaper than water.",
@@ -1268,7 +1275,7 @@
           "end": 784.76
         },
         {
-          "id": "passage-2-s16",
+          "id": "cet6-2021-06-set1--passage-2--s16",
           "index": 15,
           "speaker": "",
           "text": "That would become a familiar pattern of the boom-or-bust Texas economy.",
@@ -1279,7 +1286,7 @@
       ]
     },
     {
-      "id": "recording-1",
+      "id": "cet6-2021-06-set1--recording-1",
       "type": "lecture",
       "typeLabel": "讲座/讲话",
       "title": "讲座 1",
@@ -1289,9 +1296,9 @@
       "end": 1089.1,
       "questions": [
         {
-          "id": "q16",
+          "id": "cet6-2021-06-set1--q16",
           "number": 16,
-          "sectionId": "recording-1",
+          "sectionId": "cet6-2021-06-set1--recording-1",
           "type": "lecture",
           "typeLabel": "讲座/讲话",
           "prompt": "根据录音选择最符合的一项",
@@ -1316,9 +1323,9 @@
           "correct": "D"
         },
         {
-          "id": "q17",
+          "id": "cet6-2021-06-set1--q17",
           "number": 17,
-          "sectionId": "recording-1",
+          "sectionId": "cet6-2021-06-set1--recording-1",
           "type": "lecture",
           "typeLabel": "讲座/讲话",
           "prompt": "根据录音选择最符合的一项",
@@ -1343,9 +1350,9 @@
           "correct": "C"
         },
         {
-          "id": "q18",
+          "id": "cet6-2021-06-set1--q18",
           "number": 18,
-          "sectionId": "recording-1",
+          "sectionId": "cet6-2021-06-set1--recording-1",
           "type": "lecture",
           "typeLabel": "讲座/讲话",
           "prompt": "根据录音选择最符合的一项",
@@ -1372,7 +1379,7 @@
       ],
       "sentences": [
         {
-          "id": "recording-1-s1",
+          "id": "cet6-2021-06-set1--recording-1--s1",
           "index": 0,
           "speaker": "",
           "text": "Most people dislike their jobs.",
@@ -1381,7 +1388,7 @@
           "end": 905.06
         },
         {
-          "id": "recording-1-s2",
+          "id": "cet6-2021-06-set1--recording-1--s2",
           "index": 1,
           "speaker": "",
           "text": "It's an astonishing but statistical fact.",
@@ -1390,7 +1397,7 @@
           "end": 909.08
         },
         {
-          "id": "recording-1-s3",
+          "id": "cet6-2021-06-set1--recording-1--s3",
           "index": 2,
           "speaker": "",
           "text": "A primary cause of employee dissatisfaction, according to fresh research, is that many believe they have terrible managers.",
@@ -1399,7 +1406,7 @@
           "end": 917.56
         },
         {
-          "id": "recording-1-s4",
+          "id": "cet6-2021-06-set1--recording-1--s4",
           "index": 3,
           "speaker": "",
           "text": "Few describe their managers as malicious or manipulative, though.",
@@ -1408,7 +1415,7 @@
           "end": 923.12
         },
         {
-          "id": "recording-1-s5",
+          "id": "cet6-2021-06-set1--recording-1--s5",
           "index": 4,
           "speaker": "",
           "text": "While those types certainly exist, they're a minority.",
@@ -1417,7 +1424,7 @@
           "end": 927.08
         },
         {
-          "id": "recording-1-s6",
+          "id": "cet6-2021-06-set1--recording-1--s6",
           "index": 5,
           "speaker": "",
           "text": "The majority of managers seemingly just don't know any better.",
@@ -1426,7 +1433,7 @@
           "end": 931.9
         },
         {
-          "id": "recording-1-s7",
+          "id": "cet6-2021-06-set1--recording-1--s7",
           "index": 6,
           "speaker": "",
           "text": "They're often emulating bad managers they've had in the past.",
@@ -1435,7 +1442,7 @@
           "end": 935.76
         },
         {
-          "id": "recording-1-s8",
+          "id": "cet6-2021-06-set1--recording-1--s8",
           "index": 7,
           "speaker": "",
           "text": "It's likely they've never read a management book or attended a management course.",
@@ -1444,7 +1451,7 @@
           "end": 940.9
         },
         {
-          "id": "recording-1-s9",
+          "id": "cet6-2021-06-set1--recording-1--s9",
           "index": 8,
           "speaker": "",
           "text": "They might not have even reflected on what good management looks like and how it would influence their own management style.",
@@ -1453,7 +1460,7 @@
           "end": 949.78
         },
         {
-          "id": "recording-1-s10",
+          "id": "cet6-2021-06-set1--recording-1--s10",
           "index": 9,
           "speaker": "",
           "text": "The researchers interviewed employees about their managers, beginning with a question about the worst manager they had ever had.",
@@ -1462,7 +1469,7 @@
           "end": 958.36
         },
         {
-          "id": "recording-1-s11",
+          "id": "cet6-2021-06-set1--recording-1--s11",
           "index": 10,
           "speaker": "",
           "text": "From this, the researchers came up with four main causes of why some managers are perceived as being simply awful at their jobs.",
@@ -1471,7 +1478,7 @@
           "end": 967.14
         },
         {
-          "id": "recording-1-s12",
+          "id": "cet6-2021-06-set1--recording-1--s12",
           "index": 11,
           "speaker": "",
           "text": "The first cause was company culture, which was seen by employees as enabling poor management practices.",
@@ -1480,7 +1487,7 @@
           "end": 975
         },
         {
-          "id": "recording-1-s13",
+          "id": "cet6-2021-06-set1--recording-1--s13",
           "index": 12,
           "speaker": "",
           "text": "It was specifically stressful work environments, minimal training, and a lack of accountability that were found to be the most blameworthy.",
@@ -1489,7 +1496,7 @@
           "end": 985.36
         },
         {
-          "id": "recording-1-s14",
+          "id": "cet6-2021-06-set1--recording-1--s14",
           "index": 13,
           "speaker": "",
           "text": "Often, a manager's superiors can effectively encourage a manager's distasteful behavior when they fail to discipline the person's wrongdoings.",
@@ -1498,7 +1505,7 @@
           "end": 993.5
         },
         {
-          "id": "recording-1-s15",
+          "id": "cet6-2021-06-set1--recording-1--s15",
           "index": 14,
           "speaker": "",
           "text": "Such workplaces are sometimes described as toxic.",
@@ -1507,7 +1514,7 @@
           "end": 998.14
         },
         {
-          "id": "recording-1-s16",
+          "id": "cet6-2021-06-set1--recording-1--s16",
           "index": 15,
           "speaker": "",
           "text": "The second cause was attributed to the manager's characteristics.",
@@ -1516,7 +1523,7 @@
           "end": 1003.58
         },
         {
-          "id": "recording-1-s17",
+          "id": "cet6-2021-06-set1--recording-1--s17",
           "index": 16,
           "speaker": "",
           "text": "Those deemed to be most destructive were odd people, those without drive, those who allow personal problems into the workplace, and those with an unpleasant temperament or personality in general.",
@@ -1525,7 +1532,7 @@
           "end": 1016.98
         },
         {
-          "id": "recording-1-s18",
+          "id": "cet6-2021-06-set1--recording-1--s18",
           "index": 17,
           "speaker": "",
           "text": "The third cause of poor management was associated with a deficiency of qualifications.",
@@ -1534,7 +1541,7 @@
           "end": 1022.8
         },
         {
-          "id": "recording-1-s19",
+          "id": "cet6-2021-06-set1--recording-1--s19",
           "index": 18,
           "speaker": "",
           "text": "Not so much the formal variety one obtains from a university, but the informal variety that comes from credible work experience and professional accomplishments.",
@@ -1543,7 +1550,7 @@
           "end": 1033.34
         },
         {
-          "id": "recording-1-s20",
+          "id": "cet6-2021-06-set1--recording-1--s20",
           "index": 19,
           "speaker": "",
           "text": "The fourth cause concerned managers who've been promoted for reasons other than potential.",
@@ -1552,7 +1559,7 @@
           "end": 1040.64
         },
         {
-          "id": "recording-1-s21",
+          "id": "cet6-2021-06-set1--recording-1--s21",
           "index": 20,
           "speaker": "",
           "text": "One reason in particular why these people had been promoted was that they had been around the longest.",
@@ -1561,7 +1568,7 @@
           "end": 1047.38
         },
         {
-          "id": "recording-1-s22",
+          "id": "cet6-2021-06-set1--recording-1--s22",
           "index": 21,
           "speaker": "",
           "text": "It wasn't their skill set or other merits that got them the job.",
@@ -1570,7 +1577,7 @@
           "end": 1052.5
         },
         {
-          "id": "recording-1-s23",
+          "id": "cet6-2021-06-set1--recording-1--s23",
           "index": 22,
           "speaker": "",
           "text": "It was their tenure.",
@@ -1579,7 +1586,7 @@
           "end": 1054.06
         },
         {
-          "id": "recording-1-s24",
+          "id": "cet6-2021-06-set1--recording-1--s24",
           "index": 23,
           "speaker": "",
           "text": "A point worth making is that the study was based only on the perspective of employees.",
@@ -1588,7 +1595,7 @@
           "end": 1060.76
         },
         {
-          "id": "recording-1-s25",
+          "id": "cet6-2021-06-set1--recording-1--s25",
           "index": 24,
           "speaker": "",
           "text": "The researchers didn't ask senior leaders what they thought of their frontline managers.",
@@ -1597,7 +1604,7 @@
           "end": 1067.88
         },
         {
-          "id": "recording-1-s26",
+          "id": "cet6-2021-06-set1--recording-1--s26",
           "index": 25,
           "speaker": "",
           "text": "It's quite possible they're content with how the individuals they promoted are now performing, merrily ignorant of the damage they're actually causing, which might explain why, as the researchers conclude, those same middle managers are usually unaware that they are a bad manager.",
@@ -1608,7 +1615,7 @@
       ]
     },
     {
-      "id": "recording-2",
+      "id": "cet6-2021-06-set1--recording-2",
       "type": "lecture",
       "typeLabel": "讲座/讲话",
       "title": "讲座 2",
@@ -1618,9 +1625,9 @@
       "end": 1342.62,
       "questions": [
         {
-          "id": "q19",
+          "id": "cet6-2021-06-set1--q19",
           "number": 19,
-          "sectionId": "recording-2",
+          "sectionId": "cet6-2021-06-set1--recording-2",
           "type": "lecture",
           "typeLabel": "讲座/讲话",
           "prompt": "根据录音选择最符合的一项",
@@ -1645,9 +1652,9 @@
           "correct": "B"
         },
         {
-          "id": "q20",
+          "id": "cet6-2021-06-set1--q20",
           "number": 20,
-          "sectionId": "recording-2",
+          "sectionId": "cet6-2021-06-set1--recording-2",
           "type": "lecture",
           "typeLabel": "讲座/讲话",
           "prompt": "根据录音选择最符合的一项",
@@ -1672,9 +1679,9 @@
           "correct": "A"
         },
         {
-          "id": "q21",
+          "id": "cet6-2021-06-set1--q21",
           "number": 21,
-          "sectionId": "recording-2",
+          "sectionId": "cet6-2021-06-set1--recording-2",
           "type": "lecture",
           "typeLabel": "讲座/讲话",
           "prompt": "根据录音选择最符合的一项",
@@ -1701,7 +1708,7 @@
       ],
       "sentences": [
         {
-          "id": "recording-2-s1",
+          "id": "cet6-2021-06-set1--recording-2--s1",
           "index": 0,
           "speaker": "",
           "text": "With the use of driverless vehicles seemingly inevitable, mining companies in the vast Australian desert state of Western Australia are definitely taking the lead.",
@@ -1710,7 +1717,7 @@
           "end": 1169.1
         },
         {
-          "id": "recording-2-s2",
+          "id": "cet6-2021-06-set1--recording-2--s2",
           "index": 1,
           "speaker": "",
           "text": "Iron ore is a key ingredient in steelmaking.",
@@ -1719,7 +1726,7 @@
           "end": 1172.22
         },
         {
-          "id": "recording-2-s3",
+          "id": "cet6-2021-06-set1--recording-2--s3",
           "index": 2,
           "speaker": "",
           "text": "The mining companies here produce almost 300 million tons of iron ore a year.",
@@ -1728,7 +1735,7 @@
           "end": 1179.1
         },
         {
-          "id": "recording-2-s4",
+          "id": "cet6-2021-06-set1--recording-2--s4",
           "index": 3,
           "speaker": "",
           "text": "The 240 giant autonomous trucks in use in the Western Australian mines can weigh 400 tons fully loaded and travel at speeds of up to 60 km per hour.",
@@ -1737,7 +1744,7 @@
           "end": 1191.86
         },
         {
-          "id": "recording-2-s5",
+          "id": "cet6-2021-06-set1--recording-2--s5",
           "index": 4,
           "speaker": "",
           "text": "They are a technological leap, transporting iron ore along routes which run for hundreds of kilometers from mines to their destinations.",
@@ -1746,7 +1753,7 @@
           "end": 1201.24
         },
         {
-          "id": "recording-2-s6",
+          "id": "cet6-2021-06-set1--recording-2--s6",
           "index": 5,
           "speaker": "",
           "text": "Here, when the truck arrives at its destination, staff in the operations center direct it precisely where to unload.",
@@ -1755,7 +1762,7 @@
           "end": 1209.36
         },
         {
-          "id": "recording-2-s7",
+          "id": "cet6-2021-06-set1--recording-2--s7",
           "index": 6,
           "speaker": "",
           "text": "Vast quantities of iron ore are then transported by autonomous trains to ocean ports.",
@@ -1764,7 +1771,7 @@
           "end": 1216.12
         },
         {
-          "id": "recording-2-s8",
+          "id": "cet6-2021-06-set1--recording-2--s8",
           "index": 7,
           "speaker": "",
           "text": "Advocates argue these automated vehicles will change mining forever.",
@@ -1773,7 +1780,7 @@
           "end": 1220.96
         },
         {
-          "id": "recording-2-s9",
+          "id": "cet6-2021-06-set1--recording-2--s9",
           "index": 8,
           "speaker": "",
           "text": "It may only be five years before the use of automation technology leads to a fully robotic mine.",
@@ -1782,7 +1789,7 @@
           "end": 1228.44
         },
         {
-          "id": "recording-2-s10",
+          "id": "cet6-2021-06-set1--recording-2--s10",
           "index": 9,
           "speaker": "",
           "text": "A range of factors has pushed Western Australia's desert region to the lead of this automation revolution.",
@@ -1791,7 +1798,7 @@
           "end": 1235.92
         },
         {
-          "id": "recording-2-s11",
+          "id": "cet6-2021-06-set1--recording-2--s11",
           "index": 10,
           "speaker": "",
           "text": "These include the huge size of the mines, the scale of equipment, and the repetitive nature of some of the work.",
@@ -1800,7 +1807,7 @@
           "end": 1243.42
         },
         {
-          "id": "recording-2-s12",
+          "id": "cet6-2021-06-set1--recording-2--s12",
           "index": 11,
           "speaker": "",
           "text": "Then there's the area's remoteness.",
@@ -1809,7 +1816,7 @@
           "end": 1246.42
         },
         {
-          "id": "recording-2-s13",
+          "id": "cet6-2021-06-set1--recording-2--s13",
           "index": 12,
           "speaker": "",
           "text": "At 502,000 square kilometers, it can sometimes make recruiting staff a challenge.",
@@ -1818,7 +1825,7 @@
           "end": 1252.82
         },
         {
-          "id": "recording-2-s14",
+          "id": "cet6-2021-06-set1--recording-2--s14",
           "index": 13,
           "speaker": "",
           "text": "Another consideration is the risks when humans interact with large machinery.",
@@ -1827,7 +1834,7 @@
           "end": 1257.72
         },
         {
-          "id": "recording-2-s15",
+          "id": "cet6-2021-06-set1--recording-2--s15",
           "index": 14,
           "speaker": "",
           "text": "There are also the financial imperatives.",
@@ -1836,7 +1843,7 @@
           "end": 1260.9
         },
         {
-          "id": "recording-2-s16",
+          "id": "cet6-2021-06-set1--recording-2--s16",
           "index": 15,
           "speaker": "",
           "text": "The ongoing push by the mining corporations to be more productive and more efficient is another powerful driver in embracing automation technology.",
@@ -1845,7 +1852,7 @@
           "end": 1270.46
         },
         {
-          "id": "recording-2-s17",
+          "id": "cet6-2021-06-set1--recording-2--s17",
           "index": 16,
           "speaker": "",
           "text": "The concept of a fully autonomous mine is a bit of a misleading term, however.",
@@ -1854,7 +1861,7 @@
           "end": 1276.22
         },
         {
-          "id": "recording-2-s18",
+          "id": "cet6-2021-06-set1--recording-2--s18",
           "index": 17,
           "speaker": "",
           "text": "This is because the more technology is put into the field, the more people are needed to deploy, maintain, and improve it.",
@@ -1863,7 +1870,7 @@
           "end": 1284.04
         },
         {
-          "id": "recording-2-s19",
+          "id": "cet6-2021-06-set1--recording-2--s19",
           "index": 18,
           "speaker": "",
           "text": "The automation and digitization of the industry is creating a need for different jobs.",
@@ -1872,7 +1879,7 @@
           "end": 1290.14
         },
         {
-          "id": "recording-2-s20",
+          "id": "cet6-2021-06-set1--recording-2--s20",
           "index": 19,
           "speaker": "",
           "text": "These include data scientists and engineers in automation and artificial intelligence.",
@@ -1881,7 +1888,7 @@
           "end": 1296.18
         },
         {
-          "id": "recording-2-s21",
+          "id": "cet6-2021-06-set1--recording-2--s21",
           "index": 20,
           "speaker": "",
           "text": "The mining companies claim automation and robotics present opportunities to make mining more sustainable and safer.",
@@ -1890,7 +1897,7 @@
           "end": 1304.68
         },
         {
-          "id": "recording-2-s22",
+          "id": "cet6-2021-06-set1--recording-2--s22",
           "index": 21,
           "speaker": "",
           "text": "Employees will be offered a career that is even more fulfilling and more rewarding.",
@@ -1899,7 +1906,7 @@
           "end": 1310.38
         },
         {
-          "id": "recording-2-s23",
+          "id": "cet6-2021-06-set1--recording-2--s23",
           "index": 22,
           "speaker": "",
           "text": "Workers' unions have accepted the inevitability of the introduction of new technology, but they still have reservations about the rise of automation technology.",
@@ -1908,7 +1915,7 @@
           "end": 1321.12
         },
         {
-          "id": "recording-2-s24",
+          "id": "cet6-2021-06-set1--recording-2--s24",
           "index": 23,
           "speaker": "",
           "text": "Their main concern is the potential impact on remote communities.",
@@ -1917,7 +1924,7 @@
           "end": 1325.84
         },
         {
-          "id": "recording-2-s25",
+          "id": "cet6-2021-06-set1--recording-2--s25",
           "index": 24,
           "speaker": "",
           "text": "As automation spreads further, the question is how these remote communities will survive when the old jobs are eliminated.",
@@ -1926,7 +1933,7 @@
           "end": 1334.58
         },
         {
-          "id": "recording-2-s26",
+          "id": "cet6-2021-06-set1--recording-2--s26",
           "index": 25,
           "speaker": "",
           "text": "And this may well prove to be the most significant impact of robotic technology in many places around the world.",
@@ -1937,7 +1944,7 @@
       ]
     },
     {
-      "id": "recording-3",
+      "id": "cet6-2021-06-set1--recording-3",
       "type": "lecture",
       "typeLabel": "讲座/讲话",
       "title": "讲座 3",
@@ -1947,9 +1954,9 @@
       "end": 1598.78,
       "questions": [
         {
-          "id": "q22",
+          "id": "cet6-2021-06-set1--q22",
           "number": 22,
-          "sectionId": "recording-3",
+          "sectionId": "cet6-2021-06-set1--recording-3",
           "type": "lecture",
           "typeLabel": "讲座/讲话",
           "prompt": "根据录音选择最符合的一项",
@@ -1974,9 +1981,9 @@
           "correct": "D"
         },
         {
-          "id": "q23",
+          "id": "cet6-2021-06-set1--q23",
           "number": 23,
-          "sectionId": "recording-3",
+          "sectionId": "cet6-2021-06-set1--recording-3",
           "type": "lecture",
           "typeLabel": "讲座/讲话",
           "prompt": "根据录音选择最符合的一项",
@@ -2001,9 +2008,9 @@
           "correct": "B"
         },
         {
-          "id": "q24",
+          "id": "cet6-2021-06-set1--q24",
           "number": 24,
-          "sectionId": "recording-3",
+          "sectionId": "cet6-2021-06-set1--recording-3",
           "type": "lecture",
           "typeLabel": "讲座/讲话",
           "prompt": "根据录音选择最符合的一项",
@@ -2028,9 +2035,9 @@
           "correct": "B"
         },
         {
-          "id": "q25",
+          "id": "cet6-2021-06-set1--q25",
           "number": 25,
-          "sectionId": "recording-3",
+          "sectionId": "cet6-2021-06-set1--recording-3",
           "type": "lecture",
           "typeLabel": "讲座/讲话",
           "prompt": "根据录音选择最符合的一项",
@@ -2057,7 +2064,7 @@
       ],
       "sentences": [
         {
-          "id": "recording-3-s1",
+          "id": "cet6-2021-06-set1--recording-3--s1",
           "index": 0,
           "speaker": "",
           "text": "According to official statistics, Thailand's annual road death rate is almost double the global average.",
@@ -2066,7 +2073,7 @@
           "end": 1416.86
         },
         {
-          "id": "recording-3-s2",
+          "id": "cet6-2021-06-set1--recording-3--s2",
           "index": 1,
           "speaker": "",
           "text": "Thai people know that their roads are dangerous, but they don't know this could easily be changed.",
@@ -2075,7 +2082,7 @@
           "end": 1425.02
         },
         {
-          "id": "recording-3-s3",
+          "id": "cet6-2021-06-set1--recording-3--s3",
           "index": 2,
           "speaker": "",
           "text": "Globally, road accidents kill more people every year than any infectious disease.",
@@ -2084,7 +2091,7 @@
           "end": 1431.68
         },
         {
-          "id": "recording-3-s4",
+          "id": "cet6-2021-06-set1--recording-3--s4",
           "index": 3,
           "speaker": "",
           "text": "Researchers at the Institute for Health Metrics and Evaluation in America put the death toll in 2017 at 1.24 million.",
@@ -2093,7 +2100,7 @@
           "end": 1442.16
         },
         {
-          "id": "recording-3-s5",
+          "id": "cet6-2021-06-set1--recording-3--s5",
           "index": 4,
           "speaker": "",
           "text": "According to the Institute, the overall number of deaths has been more or less static since the turn of the century.",
@@ -2102,7 +2109,7 @@
           "end": 1450.3
         },
         {
-          "id": "recording-3-s6",
+          "id": "cet6-2021-06-set1--recording-3--s6",
           "index": 5,
           "speaker": "",
           "text": "But that disguises a lot of changes in individual countries.",
@@ -2111,7 +2118,7 @@
           "end": 1455.1
         },
         {
-          "id": "recording-3-s7",
+          "id": "cet6-2021-06-set1--recording-3--s7",
           "index": 6,
           "speaker": "",
           "text": "In many poor countries, road accidents are killing more people than ever before.",
@@ -2120,7 +2127,7 @@
           "end": 1461.5
         },
         {
-          "id": "recording-3-s8",
+          "id": "cet6-2021-06-set1--recording-3--s8",
           "index": 7,
           "speaker": "",
           "text": "Those countries have swelling, young populations, a fast-growing fleet of cars and motorbikes, and a limited supply of surgeons.",
@@ -2129,7 +2136,7 @@
           "end": 1471.24
         },
         {
-          "id": "recording-3-s9",
+          "id": "cet6-2021-06-set1--recording-3--s9",
           "index": 8,
           "speaker": "",
           "text": "It is impossible to know for sure because official statistics are so inadequate.",
@@ -2138,7 +2145,7 @@
           "end": 1476.86
         },
         {
-          "id": "recording-3-s10",
+          "id": "cet6-2021-06-set1--recording-3--s10",
           "index": 9,
           "speaker": "",
           "text": "But deaths are thought to have risen by 40% since 1990 in many low-income countries.",
@@ -2147,7 +2154,7 @@
           "end": 1484.22
         },
         {
-          "id": "recording-3-s11",
+          "id": "cet6-2021-06-set1--recording-3--s11",
           "index": 10,
           "speaker": "",
           "text": "In many rich countries, by contrast, roads are becoming even safer.",
@@ -2156,7 +2163,7 @@
           "end": 1489.62
         },
         {
-          "id": "recording-3-s12",
+          "id": "cet6-2021-06-set1--recording-3--s12",
           "index": 11,
           "speaker": "",
           "text": "In Estonia and Ireland, for example, the number of deaths has fallen by about two-thirds since the late 1990s.",
@@ -2165,7 +2172,7 @@
           "end": 1499.52
         },
         {
-          "id": "recording-3-s13",
+          "id": "cet6-2021-06-set1--recording-3--s13",
           "index": 12,
           "speaker": "",
           "text": "But the most important and intriguing changes are taking place in middle-income countries, which contain most of the world's people and most dangerous roads.",
@@ -2174,7 +2181,7 @@
           "end": 1512.12
         },
         {
-          "id": "recording-3-s14",
+          "id": "cet6-2021-06-set1--recording-3--s14",
           "index": 13,
           "speaker": "",
           "text": "According to researchers, in China and South Africa, traffic deaths have been falling since 2000 and in India since 2012.",
@@ -2183,7 +2190,7 @@
           "end": 1523.44
         },
         {
-          "id": "recording-3-s15",
+          "id": "cet6-2021-06-set1--recording-3--s15",
           "index": 14,
           "speaker": "",
           "text": "And the Philippines reached its peak four years ago.",
@@ -2192,7 +2199,7 @@
           "end": 1527.58
         },
         {
-          "id": "recording-3-s16",
+          "id": "cet6-2021-06-set1--recording-3--s16",
           "index": 15,
           "speaker": "",
           "text": "The question is whether Thailand can soon follow suit.",
@@ -2201,7 +2208,7 @@
           "end": 1531.62
         },
         {
-          "id": "recording-3-s17",
+          "id": "cet6-2021-06-set1--recording-3--s17",
           "index": 16,
           "speaker": "",
           "text": "Rob McKinney, head of the International Road Assessment Program, says that all countries tend to go through three phases.",
@@ -2210,7 +2217,7 @@
           "end": 1542.4
         },
         {
-          "id": "recording-3-s18",
+          "id": "cet6-2021-06-set1--recording-3--s18",
           "index": 17,
           "speaker": "",
           "text": "They begin with poor, slow roads.",
@@ -2219,7 +2226,7 @@
           "end": 1545.88
         },
         {
-          "id": "recording-3-s19",
+          "id": "cet6-2021-06-set1--recording-3--s19",
           "index": 18,
           "speaker": "",
           "text": "In the second phase, as they grow wealthier, they pave the roads, allowing traffic to move faster and pushing up the death rate.",
@@ -2228,7 +2235,7 @@
           "end": 1554.98
         },
         {
-          "id": "recording-3-s20",
+          "id": "cet6-2021-06-set1--recording-3--s20",
           "index": 19,
           "speaker": "",
           "text": "Lastly, in the third phase, countries act to make their roads safer.",
@@ -2237,7 +2244,7 @@
           "end": 1561.6
         },
         {
-          "id": "recording-3-s21",
+          "id": "cet6-2021-06-set1--recording-3--s21",
           "index": 20,
           "speaker": "",
           "text": "The trick, then, is to reach the third stage sooner by focusing earlier and more closely on fatal accidents.",
@@ -2246,7 +2253,7 @@
           "end": 1570.46
         },
         {
-          "id": "recording-3-s22",
+          "id": "cet6-2021-06-set1--recording-3--s22",
           "index": 21,
           "speaker": "",
           "text": "How to do that?",
@@ -2255,7 +2262,7 @@
           "end": 1572.82
         },
         {
-          "id": "recording-3-s23",
+          "id": "cet6-2021-06-set1--recording-3--s23",
           "index": 22,
           "speaker": "",
           "text": "The solution lies not just in better infrastructure but in better social incentives.",
@@ -2264,7 +2271,7 @@
           "end": 1579.14
         },
         {
-          "id": "recording-3-s24",
+          "id": "cet6-2021-06-set1--recording-3--s24",
           "index": 23,
           "speaker": "",
           "text": "Safe driving habits are practices which people know they should follow but often don't.",
@@ -2273,7 +2280,7 @@
           "end": 1586.14
         },
         {
-          "id": "recording-3-s25",
+          "id": "cet6-2021-06-set1--recording-3--s25",
           "index": 24,
           "speaker": "",
           "text": "Dangerous driving is not a fixed cultural trait, as some imagine.",
@@ -2282,7 +2289,7 @@
           "end": 1592.46
         },
         {
-          "id": "recording-3-s26",
+          "id": "cet6-2021-06-set1--recording-3--s26",
           "index": 25,
           "speaker": "",
           "text": "People respond to incentives such as traffic laws that are actually enforced.",
@@ -2295,9 +2302,9 @@
   ],
   "questions": [
     {
-      "id": "q1",
+      "id": "cet6-2021-06-set1--q1",
       "number": 1,
-      "sectionId": "conversation-1",
+      "sectionId": "cet6-2021-06-set1--conversation-1",
       "type": "long-conversation",
       "typeLabel": "长对话",
       "prompt": "根据录音选择最符合的一项",
@@ -2322,9 +2329,9 @@
       "correct": "A"
     },
     {
-      "id": "q2",
+      "id": "cet6-2021-06-set1--q2",
       "number": 2,
-      "sectionId": "conversation-1",
+      "sectionId": "cet6-2021-06-set1--conversation-1",
       "type": "long-conversation",
       "typeLabel": "长对话",
       "prompt": "根据录音选择最符合的一项",
@@ -2349,9 +2356,9 @@
       "correct": "C"
     },
     {
-      "id": "q3",
+      "id": "cet6-2021-06-set1--q3",
       "number": 3,
-      "sectionId": "conversation-1",
+      "sectionId": "cet6-2021-06-set1--conversation-1",
       "type": "long-conversation",
       "typeLabel": "长对话",
       "prompt": "根据录音选择最符合的一项",
@@ -2376,9 +2383,9 @@
       "correct": "D"
     },
     {
-      "id": "q4",
+      "id": "cet6-2021-06-set1--q4",
       "number": 4,
-      "sectionId": "conversation-1",
+      "sectionId": "cet6-2021-06-set1--conversation-1",
       "type": "long-conversation",
       "typeLabel": "长对话",
       "prompt": "根据录音选择最符合的一项",
@@ -2403,9 +2410,9 @@
       "correct": "B"
     },
     {
-      "id": "q5",
+      "id": "cet6-2021-06-set1--q5",
       "number": 5,
-      "sectionId": "conversation-2",
+      "sectionId": "cet6-2021-06-set1--conversation-2",
       "type": "long-conversation",
       "typeLabel": "长对话",
       "prompt": "根据录音选择最符合的一项",
@@ -2430,9 +2437,9 @@
       "correct": "D"
     },
     {
-      "id": "q6",
+      "id": "cet6-2021-06-set1--q6",
       "number": 6,
-      "sectionId": "conversation-2",
+      "sectionId": "cet6-2021-06-set1--conversation-2",
       "type": "long-conversation",
       "typeLabel": "长对话",
       "prompt": "根据录音选择最符合的一项",
@@ -2457,9 +2464,9 @@
       "correct": "C"
     },
     {
-      "id": "q7",
+      "id": "cet6-2021-06-set1--q7",
       "number": 7,
-      "sectionId": "conversation-2",
+      "sectionId": "cet6-2021-06-set1--conversation-2",
       "type": "long-conversation",
       "typeLabel": "长对话",
       "prompt": "根据录音选择最符合的一项",
@@ -2484,9 +2491,9 @@
       "correct": "C"
     },
     {
-      "id": "q8",
+      "id": "cet6-2021-06-set1--q8",
       "number": 8,
-      "sectionId": "conversation-2",
+      "sectionId": "cet6-2021-06-set1--conversation-2",
       "type": "long-conversation",
       "typeLabel": "长对话",
       "prompt": "根据录音选择最符合的一项",
@@ -2511,9 +2518,9 @@
       "correct": "B"
     },
     {
-      "id": "q9",
+      "id": "cet6-2021-06-set1--q9",
       "number": 9,
-      "sectionId": "passage-1",
+      "sectionId": "cet6-2021-06-set1--passage-1",
       "type": "passage",
       "typeLabel": "篇章",
       "prompt": "根据录音选择最符合的一项",
@@ -2538,9 +2545,9 @@
       "correct": "C"
     },
     {
-      "id": "q10",
+      "id": "cet6-2021-06-set1--q10",
       "number": 10,
-      "sectionId": "passage-1",
+      "sectionId": "cet6-2021-06-set1--passage-1",
       "type": "passage",
       "typeLabel": "篇章",
       "prompt": "根据录音选择最符合的一项",
@@ -2565,9 +2572,9 @@
       "correct": "A"
     },
     {
-      "id": "q11",
+      "id": "cet6-2021-06-set1--q11",
       "number": 11,
-      "sectionId": "passage-1",
+      "sectionId": "cet6-2021-06-set1--passage-1",
       "type": "passage",
       "typeLabel": "篇章",
       "prompt": "根据录音选择最符合的一项",
@@ -2592,9 +2599,9 @@
       "correct": "D"
     },
     {
-      "id": "q12",
+      "id": "cet6-2021-06-set1--q12",
       "number": 12,
-      "sectionId": "passage-2",
+      "sectionId": "cet6-2021-06-set1--passage-2",
       "type": "passage",
       "typeLabel": "篇章",
       "prompt": "根据录音选择最符合的一项",
@@ -2619,9 +2626,9 @@
       "correct": "B"
     },
     {
-      "id": "q13",
+      "id": "cet6-2021-06-set1--q13",
       "number": 13,
-      "sectionId": "passage-2",
+      "sectionId": "cet6-2021-06-set1--passage-2",
       "type": "passage",
       "typeLabel": "篇章",
       "prompt": "根据录音选择最符合的一项",
@@ -2646,9 +2653,9 @@
       "correct": "D"
     },
     {
-      "id": "q14",
+      "id": "cet6-2021-06-set1--q14",
       "number": 14,
-      "sectionId": "passage-2",
+      "sectionId": "cet6-2021-06-set1--passage-2",
       "type": "passage",
       "typeLabel": "篇章",
       "prompt": "根据录音选择最符合的一项",
@@ -2673,9 +2680,9 @@
       "correct": "B"
     },
     {
-      "id": "q15",
+      "id": "cet6-2021-06-set1--q15",
       "number": 15,
-      "sectionId": "passage-2",
+      "sectionId": "cet6-2021-06-set1--passage-2",
       "type": "passage",
       "typeLabel": "篇章",
       "prompt": "根据录音选择最符合的一项",
@@ -2700,9 +2707,9 @@
       "correct": "A"
     },
     {
-      "id": "q16",
+      "id": "cet6-2021-06-set1--q16",
       "number": 16,
-      "sectionId": "recording-1",
+      "sectionId": "cet6-2021-06-set1--recording-1",
       "type": "lecture",
       "typeLabel": "讲座/讲话",
       "prompt": "根据录音选择最符合的一项",
@@ -2727,9 +2734,9 @@
       "correct": "D"
     },
     {
-      "id": "q17",
+      "id": "cet6-2021-06-set1--q17",
       "number": 17,
-      "sectionId": "recording-1",
+      "sectionId": "cet6-2021-06-set1--recording-1",
       "type": "lecture",
       "typeLabel": "讲座/讲话",
       "prompt": "根据录音选择最符合的一项",
@@ -2754,9 +2761,9 @@
       "correct": "C"
     },
     {
-      "id": "q18",
+      "id": "cet6-2021-06-set1--q18",
       "number": 18,
-      "sectionId": "recording-1",
+      "sectionId": "cet6-2021-06-set1--recording-1",
       "type": "lecture",
       "typeLabel": "讲座/讲话",
       "prompt": "根据录音选择最符合的一项",
@@ -2781,9 +2788,9 @@
       "correct": "B"
     },
     {
-      "id": "q19",
+      "id": "cet6-2021-06-set1--q19",
       "number": 19,
-      "sectionId": "recording-2",
+      "sectionId": "cet6-2021-06-set1--recording-2",
       "type": "lecture",
       "typeLabel": "讲座/讲话",
       "prompt": "根据录音选择最符合的一项",
@@ -2808,9 +2815,9 @@
       "correct": "B"
     },
     {
-      "id": "q20",
+      "id": "cet6-2021-06-set1--q20",
       "number": 20,
-      "sectionId": "recording-2",
+      "sectionId": "cet6-2021-06-set1--recording-2",
       "type": "lecture",
       "typeLabel": "讲座/讲话",
       "prompt": "根据录音选择最符合的一项",
@@ -2835,9 +2842,9 @@
       "correct": "A"
     },
     {
-      "id": "q21",
+      "id": "cet6-2021-06-set1--q21",
       "number": 21,
-      "sectionId": "recording-2",
+      "sectionId": "cet6-2021-06-set1--recording-2",
       "type": "lecture",
       "typeLabel": "讲座/讲话",
       "prompt": "根据录音选择最符合的一项",
@@ -2862,9 +2869,9 @@
       "correct": "C"
     },
     {
-      "id": "q22",
+      "id": "cet6-2021-06-set1--q22",
       "number": 22,
-      "sectionId": "recording-3",
+      "sectionId": "cet6-2021-06-set1--recording-3",
       "type": "lecture",
       "typeLabel": "讲座/讲话",
       "prompt": "根据录音选择最符合的一项",
@@ -2889,9 +2896,9 @@
       "correct": "D"
     },
     {
-      "id": "q23",
+      "id": "cet6-2021-06-set1--q23",
       "number": 23,
-      "sectionId": "recording-3",
+      "sectionId": "cet6-2021-06-set1--recording-3",
       "type": "lecture",
       "typeLabel": "讲座/讲话",
       "prompt": "根据录音选择最符合的一项",
@@ -2916,9 +2923,9 @@
       "correct": "B"
     },
     {
-      "id": "q24",
+      "id": "cet6-2021-06-set1--q24",
       "number": 24,
-      "sectionId": "recording-3",
+      "sectionId": "cet6-2021-06-set1--recording-3",
       "type": "lecture",
       "typeLabel": "讲座/讲话",
       "prompt": "根据录音选择最符合的一项",
@@ -2943,9 +2950,9 @@
       "correct": "B"
     },
     {
-      "id": "q25",
+      "id": "cet6-2021-06-set1--q25",
       "number": 25,
-      "sectionId": "recording-3",
+      "sectionId": "cet6-2021-06-set1--recording-3",
       "type": "lecture",
       "typeLabel": "讲座/讲话",
       "prompt": "根据录音选择最符合的一项",

@@ -1,0 +1,2809 @@
+{
+  "meta": {
+    "id": "cet6-2023-06-set1",
+    "sourceId": "cet6_2023.06_set1",
+    "title": "2023 年 6 月六级听力（第 1 套）",
+    "shortTitle": "2023.06 · 第 1 套",
+    "session": "2023-06",
+    "year": 2023,
+    "month": 6,
+    "setNumber": 1,
+    "subtitle": "真实六级听力 · 25 题 · 148 句逐句时间轴",
+    "audio": "assets/audio/cet6-2023-06-set1.m4a",
+    "sourceAudioPath": "resources/CET6_2023.06/CET6_2023.06_set1_listening.mp3",
+    "duration": 1563.67,
+    "sentenceCount": 148,
+    "questionCount": 25,
+    "sourceName": "CET-6 Listening Study",
+    "sourceUrl": "https://github.com/getfine333-ux/cet6-listening-study",
+    "upstreamName": "CET-6 Listening Resources & Analysis",
+    "upstreamUrl": "https://github.com/Ysoseri1224/CET-6-Listening-10-Years-Resources-and-Analysis",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "downloadedAt": "2026-11-03"
+  },
+  "sections": [
+    {
+      "id": "cet6-2023-06-set1--conversation-1",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "title": "长对话 1",
+      "sourceTitle": "Conversation One",
+      "order": 1,
+      "start": 0,
+      "end": 153,
+      "questions": [
+        {
+          "id": "cet6-2023-06-set1--q1",
+          "number": 1,
+          "sectionId": "cet6-2023-06-set1--conversation-1",
+          "type": "long-conversation",
+          "typeLabel": "长对话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "It was spacious and tranquil"
+            },
+            {
+              "letter": "B",
+              "text": "It was warm and comfortable"
+            },
+            {
+              "letter": "C",
+              "text": "It was shabby and solitary"
+            },
+            {
+              "letter": "D",
+              "text": "It was tiny and noisy"
+            }
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "cet6-2023-06-set1--q2",
+          "number": 2,
+          "sectionId": "cet6-2023-06-set1--conversation-1",
+          "type": "long-conversation",
+          "typeLabel": "长对话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "She no longer hates people talking loudly in the dorm"
+            },
+            {
+              "letter": "B",
+              "text": "She misses her roommates she used to complain about"
+            },
+            {
+              "letter": "C",
+              "text": "She begins to enjoy the movies she once found irritating"
+            },
+            {
+              "letter": "D",
+              "text": "She finds the crowded dorm as cozy as her new apartment"
+            }
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "cet6-2023-06-set1--q3",
+          "number": 3,
+          "sectionId": "cet6-2023-06-set1--conversation-1",
+          "type": "long-conversation",
+          "typeLabel": "长对话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "He found the apartment perfectly furnished"
+            },
+            {
+              "letter": "B",
+              "text": "He had a feeling of despair and frustration"
+            },
+            {
+              "letter": "C",
+              "text": "He had a similar feeling to the woman’s"
+            },
+            {
+              "letter": "D",
+              "text": "He felt the new place was like paradise"
+            }
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "cet6-2023-06-set1--q4",
+          "number": 4,
+          "sectionId": "cet6-2023-06-set1--conversation-1",
+          "type": "long-conversation",
+          "typeLabel": "长对话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Go to see the woman’s apartment"
+            },
+            {
+              "letter": "B",
+              "text": "Make a phone call to his parents"
+            },
+            {
+              "letter": "C",
+              "text": "Buy some furniture for the woman"
+            },
+            {
+              "letter": "D",
+              "text": "Decorate the woman’s apartment"
+            }
+          ],
+          "correct": "A"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "cet6-2023-06-set1--conversation-1--s1",
+          "index": 0,
+          "speaker": "M",
+          "text": "Hi, Lily, how's the new apartment?",
+          "translationZh": "嗨 Lily 新公寓怎么样?",
+          "start": 0,
+          "end": 39.36
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-1--s2",
+          "index": 1,
+          "speaker": "W",
+          "text": "It's okay.",
+          "translationZh": "没关系.",
+          "start": 39.46,
+          "end": 40.26
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-1--s3",
+          "index": 2,
+          "speaker": "M",
+          "text": "What?",
+          "translationZh": "什么？",
+          "start": 40.84,
+          "end": 41.64
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-1--s4",
+          "index": 3,
+          "speaker": "M",
+          "text": "How can it be just okay when last week you were thrilled about the place and kept posting photos of it online?",
+          "translationZh": "上周你对这个地方激动不已?",
+          "start": 41.78,
+          "end": 48.66
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-1--s5",
+          "index": 4,
+          "speaker": "W",
+          "text": "Well, last week when I moved in, the apartment seemed cozy, just the right size for one person.",
+          "translationZh": "上周我搬进来的时候 公寓看起来很舒适 适合一个人.",
+          "start": 49.2,
+          "end": 55.4
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-1--s6",
+          "index": 5,
+          "speaker": "W",
+          "text": "But now it just seems tiny, shabby and solitary.",
+          "translationZh": "但是现在它看起来很渺小,很虚弱,很孤独.",
+          "start": 55.98,
+          "end": 59.88
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-1--s7",
+          "index": 6,
+          "speaker": "M",
+          "text": "Ah, that's the problem.",
+          "translationZh": "这就是问题所在.",
+          "start": 60.64,
+          "end": 62.88
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-1--s8",
+          "index": 7,
+          "speaker": "M",
+          "text": "You miss your roommates from university, don't you?",
+          "translationZh": "你想念大学的室友吧?",
+          "start": 63.46,
+          "end": 66.12
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-1--s9",
+          "index": 8,
+          "speaker": "W",
+          "text": "I'm going to sound like an idiot, because I used to complain to you all the time about how crowded our dormitory room was, and about all the things they did to irritate me, like watching movies late at night without headphones, or talking loudly early in the morning.",
+          "translationZh": "我会听起来像个白痴,因为我经常向你们抱怨我们宿舍的拥挤程度,以及他们为激怒我所做的一切,比如半夜看电影时没有耳机,或者凌晨大声说话.",
+          "start": 66.58,
+          "end": 82.04
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-1--s10",
+          "index": 9,
+          "speaker": "W",
+          "text": "But now I miss them terribly.",
+          "translationZh": "但现在我非常想念他们.",
+          "start": 82.04,
+          "end": 84.5
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-1--s11",
+          "index": 10,
+          "speaker": "M",
+          "text": "Of course you do.",
+          "translationZh": "当然.",
+          "start": 84.5,
+          "end": 86.38
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-1--s12",
+          "index": 11,
+          "speaker": "M",
+          "text": "That's perfectly normal.",
+          "translationZh": "这是完全正常的.",
+          "start": 86.48,
+          "end": 87.52
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-1--s13",
+          "index": 12,
+          "speaker": "M",
+          "text": "When I got my first place I remember thinking I couldn't wait to live by myself and get away from my juvenile roommates and all their annoying habits.",
+          "translationZh": "当我得到我的第一个位置,我记得我想 我迫不及待地要一个人生活 远离我的少年室友 和他们所有的烦人的习惯.",
+          "start": 88.1,
+          "end": 96.84
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-1--s14",
+          "index": 13,
+          "speaker": "M",
+          "text": "But then I began missing them and feeling lonely and thinking that our dormitory was like paradise, even though there were six of us guys in one small room.",
+          "translationZh": "但后来我开始怀念他们,感到孤独,想着我们的宿舍就像天堂一样,尽管在一个小房间里我们有六个人.",
+          "start": 97.64,
+          "end": 108.02
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-1--s15",
+          "index": 14,
+          "speaker": "W",
+          "text": "I thought it was just me who felt like that.",
+          "translationZh": "我以为只有我这样觉得.",
+          "start": 108.02,
+          "end": 110.66
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-1--s16",
+          "index": 15,
+          "speaker": "M",
+          "text": "Look, you lived at home with us, and then you had three roommates, and this is your first time living alone.",
+          "translationZh": "听着 你和我们住在家里 然后你有三个室友 这是你第一次单独生活.",
+          "start": 110.76,
+          "end": 119.22
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-1--s17",
+          "index": 16,
+          "speaker": "M",
+          "text": "So it's hard.",
+          "translationZh": "故为难.",
+          "start": 119.64,
+          "end": 120.44
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-1--s18",
+          "index": 17,
+          "speaker": "M",
+          "text": "But your first apartment is a milestone in your life, and you should celebrate it.",
+          "translationZh": "但你的第一个公寓是人生的里程碑 你应该庆祝一下.",
+          "start": 121.02,
+          "end": 126.36
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-1--s19",
+          "index": 18,
+          "speaker": "M",
+          "text": "Tell me about the apartment.",
+          "translationZh": "告诉我公寓的事.",
+          "start": 126.98,
+          "end": 128.34
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-1--s20",
+          "index": 19,
+          "speaker": "W",
+          "text": "Actually, it's not bad.",
+          "translationZh": "其实不坏.",
+          "start": 128.88,
+          "end": 130.6
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-1--s21",
+          "index": 20,
+          "speaker": "W",
+          "text": "In fact, it's pretty adorable, now that I have decorated it and it has everything I need.",
+          "translationZh": "事实上,这是相当可爱的, 现在我已经装饰它, 它有我需要的一切.",
+          "start": 131.1,
+          "end": 136.06
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-1--s22",
+          "index": 21,
+          "speaker": "W",
+          "text": "I have a kitchen to cook in and a bathroom all to myself, and then another room with my bed at one end, and a sofa, a small table and chairs at the other end.",
+          "translationZh": "我有一个厨房 做饭 和浴室 全部给自己, 然后另一个房间 与我的床在一端, 和沙发, 小桌子和椅子 在另一端.",
+          "start": 136.06,
+          "end": 146.94
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-1--s23",
+          "index": 22,
+          "speaker": "M",
+          "text": "That does sound adorable and I can't wait to see it, and neither can mom and dad.",
+          "translationZh": "听起来很可爱 我迫不及待想看 父母也一样.",
+          "start": 147.74,
+          "end": 153
+        }
+      ]
+    },
+    {
+      "id": "cet6-2023-06-set1--conversation-2",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "title": "长对话 2",
+      "sourceTitle": "Conversation Two",
+      "order": 2,
+      "start": 235.04,
+      "end": 365.76,
+      "questions": [
+        {
+          "id": "cet6-2023-06-set1--q5",
+          "number": 5,
+          "sectionId": "cet6-2023-06-set1--conversation-2",
+          "type": "long-conversation",
+          "typeLabel": "长对话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "He works as a literary critic"
+            },
+            {
+              "letter": "B",
+              "text": "He hosts an educational program"
+            },
+            {
+              "letter": "C",
+              "text": "He has initiated a university reform"
+            },
+            {
+              "letter": "D",
+              "text": "He has published a book recently"
+            }
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "cet6-2023-06-set1--q6",
+          "number": 6,
+          "sectionId": "cet6-2023-06-set1--conversation-2",
+          "type": "long-conversation",
+          "typeLabel": "长对话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "It fails to keep up with the radical changes of society"
+            },
+            {
+              "letter": "B",
+              "text": "It fails to ensure universities get sufficient resources"
+            },
+            {
+              "letter": "C",
+              "text": "It has not prepared young people for the job market"
+            },
+            {
+              "letter": "D",
+              "text": "It has not fostered the growth of the arts disciplines"
+            }
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "cet6-2023-06-set1--q7",
+          "number": 7,
+          "sectionId": "cet6-2023-06-set1--conversation-2",
+          "type": "long-conversation",
+          "typeLabel": "长对话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "More of the budget should go to science and technology"
+            },
+            {
+              "letter": "B",
+              "text": "The underfunded music discipline should be prioritized"
+            },
+            {
+              "letter": "C",
+              "text": "Subdisciplines like sculpture should get more funding"
+            },
+            {
+              "letter": "D",
+              "text": "Literature should get as much funding as engineering"
+            }
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "cet6-2023-06-set1--q8",
+          "number": 8,
+          "sectionId": "cet6-2023-06-set1--conversation-2",
+          "type": "long-conversation",
+          "typeLabel": "长对话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Build a prosperous nation"
+            },
+            {
+              "letter": "B",
+              "text": "Make skilled professionals"
+            },
+            {
+              "letter": "C",
+              "text": "Create ingenious artists"
+            },
+            {
+              "letter": "D",
+              "text": "Cultivate better citizens"
+            }
+          ],
+          "correct": "D"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "cet6-2023-06-set1--conversation-2--s1",
+          "index": 0,
+          "speaker": "W",
+          "text": "Welcome to our program Book Talk.",
+          "translationZh": "欢迎来到我们的节目\"书谈\".",
+          "start": 235.04,
+          "end": 238.28
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-2--s2",
+          "index": 1,
+          "speaker": "W",
+          "text": "Our guest today is Frank Jones, a critic of our education system, and the author of a new book, How to Reform Our Universities.",
+          "translationZh": "我们今天的来宾是弗兰克·琼斯,他是对我们教育制度的批评家,也是新书\"如何改革我们的大学\"的作者.",
+          "start": 238.9,
+          "end": 248.58
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-2--s3",
+          "index": 2,
+          "speaker": "M",
+          "text": "Hello, Susan.",
+          "translationZh": "你好,苏珊.",
+          "start": 248.9,
+          "end": 250
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-2--s4",
+          "index": 3,
+          "speaker": "W",
+          "text": "Frank, you support radically changing universities in America?",
+          "translationZh": "弗兰克,你支持美国彻底改变的大学?",
+          "start": 250.8,
+          "end": 255.08
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-2--s5",
+          "index": 4,
+          "speaker": "M",
+          "text": "Yes, I believe that the purpose of higher education is to prepare young people to enter the workforce, and that our current system fails to do this.",
+          "translationZh": "是的,我认为高等教育的目的是让年轻人做好进入劳动力队伍的准备,而我们目前的制度未能做到这一点.",
+          "start": 255.08,
+          "end": 266.06
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-2--s6",
+          "index": 5,
+          "speaker": "M",
+          "text": "We're allocating too many resources to disciplines that don't match the needs of employers.",
+          "translationZh": "我们为不符合雇主需要的学科分配了太多的资源.",
+          "start": 266.96,
+          "end": 272.22
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-2--s7",
+          "index": 6,
+          "speaker": "W",
+          "text": "I think your attitude to education is a bit cynical, Frank.",
+          "translationZh": "我觉得你对教育的态度有点愤世嫉俗,弗兰克.",
+          "start": 272.74,
+          "end": 276.26
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-2--s8",
+          "index": 7,
+          "speaker": "W",
+          "text": "Surely the purpose of university is to prepare young people to participate fully in civic life, rather than just to find well-paid jobs.",
+          "translationZh": "大学的目的无疑是让年轻人做好准备,充分参与公民生活,而不是仅仅寻找报酬高的工作.",
+          "start": 277.02,
+          "end": 286.76
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-2--s9",
+          "index": 8,
+          "speaker": "M",
+          "text": "Susan, many young graduates struggle to find any job, let alone a good one.",
+          "translationZh": "苏珊,许多年轻的毕业生都为找到任何工作而挣扎,更不用说找一个好的工作了.",
+          "start": 287.14,
+          "end": 292.86
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-2--s10",
+          "index": 9,
+          "speaker": "M",
+          "text": "The job market is grim, particularly for students who study the arts.",
+          "translationZh": "就业市场是严峻的,特别是对学习艺术的学生而言.",
+          "start": 293.4,
+          "end": 297.38
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-2--s11",
+          "index": 10,
+          "speaker": "W",
+          "text": "I agree that it isn't easy for young people to find work, but you propose closing down all departments that aren't directly related to science and technology.",
+          "translationZh": "我同意,年轻人找工作并不容易,但你建议关闭所有与科学技术没有直接关系的部门.",
+          "start": 297.92,
+          "end": 308.38
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-2--s12",
+          "index": 11,
+          "speaker": "W",
+          "text": "Is that really the solution?",
+          "translationZh": "这是真的解决方案吗?",
+          "start": 309.1,
+          "end": 310.58
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-2--s13",
+          "index": 12,
+          "speaker": "M",
+          "text": "You're overstating my point.",
+          "translationZh": "你夸大了我的观点.",
+          "start": 311.26,
+          "end": 312.84
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-2--s14",
+          "index": 13,
+          "speaker": "M",
+          "text": "My argument is that we need to use more of our budget on areas like science and engineering.",
+          "translationZh": "我的论点是,我们需要在科学和工程等领域使用更多的预算.",
+          "start": 312.84,
+          "end": 319.46
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-2--s15",
+          "index": 14,
+          "speaker": "M",
+          "text": "To do that, we need to take money from subjects like literature and music.",
+          "translationZh": "要做到这一点,我们需要从文学和音乐等学科中取钱.",
+          "start": 320.1,
+          "end": 324.74
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-2--s16",
+          "index": 15,
+          "speaker": "W",
+          "text": "But the arts have value.",
+          "translationZh": "但艺术有价值.",
+          "start": 325.38,
+          "end": 326.9
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-2--s17",
+          "index": 16,
+          "speaker": "W",
+          "text": "They're an important part of our culture.",
+          "translationZh": "他们是我们文化的重要组成部分.",
+          "start": 327.24,
+          "end": 329.04
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-2--s18",
+          "index": 17,
+          "speaker": "W",
+          "text": "Studying literature or music or sculpture might not result in a job in that area, but it helps young people to think about the world in a deeper way, which makes them better citizens and makes for a better society.",
+          "translationZh": "学习文学或音乐或雕塑可能不会在这方面产生工作,但有助于年轻人更深入地思考世界,这使他们成为更好的公民并创造更美好的社会.",
+          "start": 329.82,
+          "end": 343.14
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-2--s19",
+          "index": 18,
+          "speaker": "M",
+          "text": "I agree that the arts are valuable to society, but it's naive to think that not only the most talented, but all students should study them at university level.",
+          "translationZh": "我同意,艺术对社会有价值,但天真地认为,不仅最有才华,所有学生都应该在大学一级学习.",
+          "start": 343.68,
+          "end": 354.98
+        },
+        {
+          "id": "cet6-2023-06-set1--conversation-2--s20",
+          "index": 19,
+          "speaker": "M",
+          "text": "The arts are very competitive, and most graduates will end up with a great deal of debt, obtaining a degree that has little value on the job market.",
+          "translationZh": "艺术竞争非常激烈,大多数毕业生最终会负债累累,获得在就业市场上几乎没有价值的学位.",
+          "start": 355.9,
+          "end": 365.76
+        }
+      ]
+    },
+    {
+      "id": "cet6-2023-06-set1--passage-1",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "title": "篇章听力 1",
+      "sourceTitle": "Passage One",
+      "order": 3,
+      "start": 474.8,
+      "end": 588.52,
+      "questions": [
+        {
+          "id": "cet6-2023-06-set1--q9",
+          "number": 9,
+          "sectionId": "cet6-2023-06-set1--passage-1",
+          "type": "passage",
+          "typeLabel": "篇章",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "It is quite common"
+            },
+            {
+              "letter": "B",
+              "text": "It is rarely noticed"
+            },
+            {
+              "letter": "C",
+              "text": "It seldom annoys people"
+            },
+            {
+              "letter": "D",
+              "text": "It occurs when one is alone"
+            }
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "cet6-2023-06-set1--q10",
+          "number": 10,
+          "sectionId": "cet6-2023-06-set1--passage-1",
+          "type": "passage",
+          "typeLabel": "篇章",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Seeing things in black and white"
+            },
+            {
+              "letter": "B",
+              "text": "Engaging in regular contemplation"
+            },
+            {
+              "letter": "C",
+              "text": "Having a special understanding of creativity"
+            },
+            {
+              "letter": "D",
+              "text": "Knowing how to make their mental batteries work"
+            }
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "cet6-2023-06-set1--q11",
+          "number": 11,
+          "sectionId": "cet6-2023-06-set1--passage-1",
+          "type": "passage",
+          "typeLabel": "篇章",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Engaging in intense activity"
+            },
+            {
+              "letter": "B",
+              "text": "Fantasizing in one’s down time"
+            },
+            {
+              "letter": "C",
+              "text": "Working on a particular project"
+            },
+            {
+              "letter": "D",
+              "text": "Reflecting during one’s relaxation"
+            }
+          ],
+          "correct": "D"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "cet6-2023-06-set1--passage-1--s1",
+          "index": 0,
+          "speaker": "",
+          "text": "Do you ever have the annoying feeling that you don't have time to really think anymore?",
+          "translationZh": "你有那种烦人的感觉吗 你没时间再想了?",
+          "start": 474.8,
+          "end": 479.76
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-1--s2",
+          "index": 1,
+          "speaker": "",
+          "text": "You're not alone.",
+          "translationZh": "你不是一个人.",
+          "start": 480.56,
+          "end": 481.42
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-1--s3",
+          "index": 2,
+          "speaker": "",
+          "text": "A variety of factors have conspired to rob us of time for reflection about ourselves and our lives.",
+          "translationZh": "各种因素合谋剥夺了我们思考自己和我们生活的时间.",
+          "start": 482.14,
+          "end": 488.96
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-1--s4",
+          "index": 3,
+          "speaker": "",
+          "text": "Today, our preoccupied minds are rarely silent.",
+          "translationZh": "今天,我们的心思很少沉默.",
+          "start": 489.38,
+          "end": 493.5
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-1--s5",
+          "index": 4,
+          "speaker": "",
+          "text": "The average person receives hundreds of texts and voice messages a day, and holidays for many of us are action-packed weeks, more likely full of family activities than opportunities for tranquility and contemplation.",
+          "translationZh": "普通人每天收到上百个短信和语音信息,我们许多人的假期都是行动周,比起安定和思考的机会,更有可能充满家庭活动.",
+          "start": 494.5,
+          "end": 509.1
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-1--s6",
+          "index": 5,
+          "speaker": "",
+          "text": "Regular reflection, however, underlies all great professionals.",
+          "translationZh": "然而,所有杰出的专业人员都必须经常思考.",
+          "start": 510.14,
+          "end": 514.08
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-1--s7",
+          "index": 6,
+          "speaker": "",
+          "text": "It's a prerequisite for you to recharge your mental batteries, see things in a new light and tap into your creativity.",
+          "translationZh": "这是你给精神电池充电的前提, 在新光中看到东西 并挖掘你的创造力.",
+          "start": 514.92,
+          "end": 522.94
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-1--s8",
+          "index": 7,
+          "speaker": "",
+          "text": "Almost all of the great advisors that I have studied have found ways to get away from it all and contemplate their life and work.",
+          "translationZh": "我所研究的几乎所有伟大的顾问都设法摆脱这一切并思考他们的生活和工作.",
+          "start": 523.7,
+          "end": 532.04
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-1--s9",
+          "index": 8,
+          "speaker": "",
+          "text": "Some researchers in the field of creativity, in fact, believe that insight occurs during the reflection and relaxation that follows a period of intense activity.",
+          "translationZh": "事实上,一些创作领域的研究者认为,在经历了一段激烈活动的时期之后的反思和放松中,洞察力会发生.",
+          "start": 532.86,
+          "end": 542.46
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-1--s10",
+          "index": 9,
+          "speaker": "",
+          "text": "Schedule time for reflection about your work, or a particular project you're engaged in.",
+          "translationZh": "考虑你的工作或你从事的某个项目的时间.",
+          "start": 544.7,
+          "end": 549.7
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-1--s11",
+          "index": 10,
+          "speaker": "",
+          "text": "I usually block out half an hour.",
+          "translationZh": "我通常会堵上半小时.",
+          "start": 550.4,
+          "end": 552.6
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-1--s12",
+          "index": 11,
+          "speaker": "",
+          "text": "Don't answer the phone; push your papers to the side; sketch; make lists; draw mind maps of ideas that come to you.",
+          "translationZh": "别接电话 把你的论文推到一边 草图 列表 给大家留下思想的地图.",
+          "start": 553.46,
+          "end": 562.64
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-1--s13",
+          "index": 12,
+          "speaker": "",
+          "text": "At the end, write down any emerging ideas.",
+          "translationZh": "最后,写下任何新出现的想法.",
+          "start": 563.42,
+          "end": 566.22
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-1--s14",
+          "index": 13,
+          "speaker": "",
+          "text": "When you're alone, stop worrying and think.",
+          "translationZh": "当你孤独的时候, 不要担心和思考.",
+          "start": 567.1,
+          "end": 570.66
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-1--s15",
+          "index": 14,
+          "speaker": "",
+          "text": "A lot of our down time is spent worrying about troublesome things in our lives or fantasizing about how we'd like our lives to be.",
+          "translationZh": "我们很多的消遣时间 都在担心我们生活中的麻烦 或者幻想我们如何生活.",
+          "start": 571.46,
+          "end": 579.56
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-1--s16",
+          "index": 15,
+          "speaker": "",
+          "text": "Revisit things during moments of relaxation, after a period of intense work.",
+          "translationZh": "在放松的时刻,经过一段时间的紧张工作,重新审视事物.",
+          "start": 580.6,
+          "end": 585.52
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-1--s17",
+          "index": 16,
+          "speaker": "",
+          "text": "This is when we are the most creative.",
+          "translationZh": "这是我们最有创意的时候.",
+          "start": 586.26,
+          "end": 588.52
+        }
+      ]
+    },
+    {
+      "id": "cet6-2023-06-set1--passage-2",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "title": "篇章听力 2",
+      "sourceTitle": "Passage Two",
+      "order": 4,
+      "start": 654.64,
+      "end": 798.26,
+      "questions": [
+        {
+          "id": "cet6-2023-06-set1--q12",
+          "number": 12,
+          "sectionId": "cet6-2023-06-set1--passage-2",
+          "type": "passage",
+          "typeLabel": "篇章",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Farmers helped Native Americans grow crops"
+            },
+            {
+              "letter": "B",
+              "text": "There were expansive university campuses"
+            },
+            {
+              "letter": "C",
+              "text": "There existed post offices"
+            },
+            {
+              "letter": "D",
+              "text": "Migrants found gold there"
+            }
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "cet6-2023-06-set1--q13",
+          "number": 13,
+          "sectionId": "cet6-2023-06-set1--passage-2",
+          "type": "passage",
+          "typeLabel": "篇章",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "It helped to boost the economy in the American West"
+            },
+            {
+              "letter": "B",
+              "text": "It provided job opportunities for many gold seekers"
+            },
+            {
+              "letter": "C",
+              "text": "It extended the influence of the federal government"
+            },
+            {
+              "letter": "D",
+              "text": "It kept people in the deserts and plains connected"
+            }
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "cet6-2023-06-set1--q14",
+          "number": 14,
+          "sectionId": "cet6-2023-06-set1--passage-2",
+          "type": "passage",
+          "typeLabel": "篇章",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "It employed Native Americans to work as postmen"
+            },
+            {
+              "letter": "B",
+              "text": "It commissioned private wagons to carry the mail"
+            },
+            {
+              "letter": "C",
+              "text": "It subsidized the locals who acted as postmasters"
+            },
+            {
+              "letter": "D",
+              "text": "It centralized postal services in its remote areas"
+            }
+          ],
+          "correct": "B"
+        },
+        {
+          "id": "cet6-2023-06-set1--q15",
+          "number": 15,
+          "sectionId": "cet6-2023-06-set1--passage-2",
+          "type": "passage",
+          "typeLabel": "篇章",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "He analyzed interactive maps of mail routes"
+            },
+            {
+              "letter": "B",
+              "text": "He read a large collection of books on the topic"
+            },
+            {
+              "letter": "C",
+              "text": "He examined its historical trends with data science"
+            },
+            {
+              "letter": "D",
+              "text": "He collected data about its impact on local business"
+            }
+          ],
+          "correct": "C"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "cet6-2023-06-set1--passage-2--s1",
+          "index": 0,
+          "speaker": "",
+          "text": "Even before Colorado was a state, it had post offices.",
+          "translationZh": "甚至在科罗拉多州成为一个州之前,它就设有邮局.",
+          "start": 654.64,
+          "end": 659.36
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-2--s2",
+          "index": 1,
+          "speaker": "",
+          "text": "The first opened in 1859 in a settlement founded by migrants searching for gold.",
+          "translationZh": "最早于1859年在移民寻找黄金所建立的定居点开放.",
+          "start": 660.06,
+          "end": 666.58
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-2--s3",
+          "index": 2,
+          "speaker": "",
+          "text": "Life could be unpredictable at West—gold failed to appear, drought ruined farmers and settlers clashed with Native Americans.",
+          "translationZh": "在西戈尔德,生活可能无法预测,干旱摧毁了农民,定居者与美洲原住民发生冲突.",
+          "start": 666.58,
+          "end": 677.68
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-2--s4",
+          "index": 3,
+          "speaker": "",
+          "text": "On the settlement's location, now stands a sprawling university campus.",
+          "translationZh": "在定居点的位置上,现在是一个无所不在的大学校园.",
+          "start": 678.74,
+          "end": 683.94
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-2--s5",
+          "index": 4,
+          "speaker": "",
+          "text": "Amid all the changes, one feature remained constant—the postal service.",
+          "translationZh": "在所有这些变化中,一个特点保持不变——邮政服务.",
+          "start": 684.74,
+          "end": 690.28
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-2--s6",
+          "index": 5,
+          "speaker": "",
+          "text": "The maps tracing America's westward expansion are telling.",
+          "translationZh": "追踪美国向西扩张的地图有说明.",
+          "start": 691.32,
+          "end": 695.4
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-2--s7",
+          "index": 6,
+          "speaker": "",
+          "text": "In 1864, there were few postal branches on land controlled by Native Americans, which still accounted for most of the West.",
+          "translationZh": "1864年,美洲原住民控制地上几乎没有邮政分行,这些分行仍然占了西方的大部分.",
+          "start": 696.32,
+          "end": 706.4
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-2--s8",
+          "index": 7,
+          "speaker": "",
+          "text": "Over the next 25 years, post offices grew quickly.",
+          "translationZh": "在接下来的25年中,邮局发展迅速.",
+          "start": 706.92,
+          "end": 711.7
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-2--s9",
+          "index": 8,
+          "speaker": "",
+          "text": "Colonization of the West could be regarded as a result of big government rather than pioneers.",
+          "translationZh": "西方的殖民可以被认为是大政府的结果,而不是先锋.",
+          "start": 712.54,
+          "end": 719.48
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-2--s10",
+          "index": 9,
+          "speaker": "",
+          "text": "As federal subsidies and land grants tempted people into the deserts and plains, the post kept them connected.",
+          "translationZh": "由于联邦补贴和土地赠与 诱惑人们进入沙漠和平原, 该职位保持了他们的联系.",
+          "start": 720.7,
+          "end": 728.8
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-2--s11",
+          "index": 10,
+          "speaker": "",
+          "text": "In the mid-19th century, the post office department was far from a centralized bureaucracy.",
+          "translationZh": "19世纪中叶,邮局部门远非中央集权的官僚机构.",
+          "start": 729.5,
+          "end": 736.68
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-2--s12",
+          "index": 11,
+          "speaker": "",
+          "text": "To keep up with migration patterns, postal services were added to existing businesses.",
+          "translationZh": "为跟上移徙模式,在现有企业中增加了邮政服务.",
+          "start": 737.64,
+          "end": 743.86
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-2--s13",
+          "index": 12,
+          "speaker": "",
+          "text": "The federal government commissioned private wagons to carry the mail.",
+          "translationZh": "联邦政府委托私人货车运送邮件.",
+          "start": 745.34,
+          "end": 749.12
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-2--s14",
+          "index": 13,
+          "speaker": "",
+          "text": "Short-term contracts were granted to local businessmen to act as postmasters.",
+          "translationZh": "短期合同被授予当地商人担任邮政局长.",
+          "start": 750.84,
+          "end": 755.32
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-2--s15",
+          "index": 14,
+          "speaker": "",
+          "text": "These partnerships enabled the mail to quickly follow migrants, helping knit together remote parts of the country.",
+          "translationZh": "这些伙伴关系使邮件能够迅速跟踪移徙者,帮助将该国偏远地区连接起来.",
+          "start": 756.18,
+          "end": 764.06
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-2--s16",
+          "index": 15,
+          "speaker": "",
+          "text": "Mr. Blevins, a digital historian, wrote a book on the history of the US postal service, he used data science to analyze historical trends.",
+          "translationZh": "数字历史学家布莱文斯先生写了一本关于美国邮政服务历史的书,他利用数据科学来分析历史趋势.",
+          "start": 765.14,
+          "end": 776.58
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-2--s17",
+          "index": 16,
+          "speaker": "",
+          "text": "Most strikingly, he built an accompanying website, complete with interactive maps.",
+          "translationZh": "最出人意料的是,他建立了一个配套网站,并配有交互式地图.",
+          "start": 777.42,
+          "end": 783.56
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-2--s18",
+          "index": 17,
+          "speaker": "",
+          "text": "They show readers how, within a generation, the postal service helped colonize a continent.",
+          "translationZh": "他们向读者展示,在一代人的时间里,邮政服务如何帮助大陆殖民化.",
+          "start": 784.64,
+          "end": 791.44
+        },
+        {
+          "id": "cet6-2023-06-set1--passage-2--s19",
+          "index": 18,
+          "speaker": "",
+          "text": "These online interactive maps illustrate the formative power of snail mail.",
+          "translationZh": "这些在线互动地图说明了蜗牛邮件的形成力.",
+          "start": 792.02,
+          "end": 798.26
+        }
+      ]
+    },
+    {
+      "id": "cet6-2023-06-set1--recording-1",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "title": "讲座 1",
+      "sourceTitle": "Recording One",
+      "order": 5,
+      "start": 913.34,
+      "end": 1086.9,
+      "questions": [
+        {
+          "id": "cet6-2023-06-set1--q16",
+          "number": 16,
+          "sectionId": "cet6-2023-06-set1--recording-1",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Higher levels of anxiety may improve people’s memory"
+            },
+            {
+              "letter": "B",
+              "text": "Some experiences are easier to remember than others"
+            },
+            {
+              "letter": "C",
+              "text": "Most people tend to remember things selectively"
+            },
+            {
+              "letter": "D",
+              "text": "Simple things may leave a deep impression on one’s memory"
+            }
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "cet6-2023-06-set1--q17",
+          "number": 17,
+          "sectionId": "cet6-2023-06-set1--recording-1",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "They classified the participants’ mindset"
+            },
+            {
+              "letter": "B",
+              "text": "They showed some photos to the participants"
+            },
+            {
+              "letter": "C",
+              "text": "They measured the participants’ anxiety levels"
+            },
+            {
+              "letter": "D",
+              "text": "They tested the size of the participants’ vocabulary"
+            }
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "cet6-2023-06-set1--q18",
+          "number": 18,
+          "sectionId": "cet6-2023-06-set1--recording-1",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Anxiety has become a serious problem for an increasing number of people"
+            },
+            {
+              "letter": "B",
+              "text": "Extreme levels of anxiety can adversely affect cognitive performance"
+            },
+            {
+              "letter": "C",
+              "text": "People diagnosed with anxiety disorder may forget things selectively"
+            },
+            {
+              "letter": "D",
+              "text": "There is no direct correlation between memory and levels of anxiety"
+            }
+          ],
+          "correct": "B"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "cet6-2023-06-set1--recording-1--s1",
+          "index": 0,
+          "speaker": "",
+          "text": "In last week's lecture, we discussed reasons why people forget things.",
+          "translationZh": "在上周的讲座中,我们讨论了人们忘记事情的原因.",
+          "start": 913.34,
+          "end": 917.9
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-1--s2",
+          "index": 1,
+          "speaker": "",
+          "text": "This week, we will discuss a surprising reason why we might remember some things—anxiety.",
+          "translationZh": "我们本周将讨论一个令人惊讶的原因.",
+          "start": 918.38,
+          "end": 923.04
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-1--s3",
+          "index": 2,
+          "speaker": "",
+          "text": "Think about something as simple as buying a coffee.",
+          "translationZh": "想想跟买咖啡一样简单的东西.",
+          "start": 925.64,
+          "end": 928.12
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-1--s4",
+          "index": 3,
+          "speaker": "",
+          "text": "That may not seem like an experience that would make a deep impression on your memory, but anxiety could change that.",
+          "translationZh": "这似乎不会给你的记忆留下深刻印象,但焦虑会改变这一点.",
+          "start": 928.78,
+          "end": 935.38
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-1--s5",
+          "index": 4,
+          "speaker": "",
+          "text": "In fact, a new study suggests that people with higher anxiety levels might remember certain information better than people with lower anxiety levels.",
+          "translationZh": "事实上,一项新的研究表明,焦虑程度较高的人可能比焦虑程度较低的人更能记住某些信息.",
+          "start": 935.38,
+          "end": 947.3
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-1--s6",
+          "index": 5,
+          "speaker": "",
+          "text": "That's because higher levels of anxiety may make people more susceptible to negative feelings, putting them in a more negative state of mind.",
+          "translationZh": "这是因为更高的焦虑程度可能会使人们更容易被负面的感情所感染,使他们陷入更消极的心态.",
+          "start": 948.38,
+          "end": 957.76
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-1--s7",
+          "index": 6,
+          "speaker": "",
+          "text": "That in turn may make them able to better remember some events.",
+          "translationZh": "这反过来又可能使他们能更好地回忆一些事件.",
+          "start": 958.34,
+          "end": 962.44
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-1--s8",
+          "index": 7,
+          "speaker": "",
+          "text": "Let's take a closer look at that new study now.",
+          "translationZh": "现在让我们仔细看看新的研究.",
+          "start": 963.38,
+          "end": 966.22
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-1--s9",
+          "index": 8,
+          "speaker": "",
+          "text": "In this study, the researchers started by giving 80 undergraduate students an anxiety test.",
+          "translationZh": "在这一研究中,研究人员首先为80名本科生进行了焦虑症测试.",
+          "start": 966.82,
+          "end": 973.28
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-1--s10",
+          "index": 9,
+          "speaker": "",
+          "text": "The test measured the participants' anxiety levels over the preceding two weeks.",
+          "translationZh": "测试测量了前两周参与者的焦虑程度.",
+          "start": 973.9,
+          "end": 978.42
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-1--s11",
+          "index": 10,
+          "speaker": "",
+          "text": "Then, to test memory, the participants were shown a series of neutral words, one at a time.",
+          "translationZh": "后为测试记忆,学员们被展示出一连串中性文字,一次一个.",
+          "start": 979.62,
+          "end": 986.08
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-1--s12",
+          "index": 11,
+          "speaker": "",
+          "text": "Some of the words were printed on to photos of negative scenes, meaning images that could affect their emotions negatively, such as a photo of a car accident or a cemetery.",
+          "translationZh": "部分文字被印入负面场景相片上,意为可能对其情绪产生消极影响的画面,如车祸相片或墓地相片.",
+          "start": 986.08,
+          "end": 998.56
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-1--s13",
+          "index": 12,
+          "speaker": "",
+          "text": "The rest of the words were printed on to photos of neutral scenes, such as a photo of a lake or trees.",
+          "translationZh": "其余的文字被打印到中性场景的照片上,如一幅湖或树木的照片.",
+          "start": 999.18,
+          "end": 1005.94
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-1--s14",
+          "index": 13,
+          "speaker": "",
+          "text": "Neutral words included words like \"table\" or \"desk\" that don't elicit emotion.",
+          "translationZh": "中性词包括\"表\"或\"表\"等不引起情绪的词.",
+          "start": 1007.02,
+          "end": 1012.8
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-1--s15",
+          "index": 14,
+          "speaker": "",
+          "text": "Later, the participants were asked to think back to the words they were shown earlier, which caused them to reenter either a negative or a neutral mindset.",
+          "translationZh": "后来,与会者被要求回想他们早些时候所展示的文字,这使他们重新进入了消极或中立的心态.",
+          "start": 1013.82,
+          "end": 1023.22
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-1--s16",
+          "index": 15,
+          "speaker": "",
+          "text": "The participants were then presented with another set of neutral words, and their memory of these new words was tested.",
+          "translationZh": "随后,学员们获得了另一套中性词,并对这些新词的记忆进行了测试.",
+          "start": 1024.16,
+          "end": 1031.26
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-1--s17",
+          "index": 16,
+          "speaker": "",
+          "text": "The researchers found that the new words presented to people in a negative mindset were better remembered by people with higher levels of anxiety than those with lower levels of anxiety.",
+          "translationZh": "研究者发现,以负面心态呈现给人们的新词被焦虑程度较高的人比焦虑程度较低的人更能记住.",
+          "start": 1032.24,
+          "end": 1043.54
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-1--s18",
+          "index": 17,
+          "speaker": "",
+          "text": "In other words, when highly anxious individuals took in otherwise emotionally neutral information that was presented to them, it became colored by their negative mindset, making them remember the information better.",
+          "translationZh": "换句话说,当极度焦虑的个人接受本来提供给他们的在情感上中立的信息时,就会被他们的负面心态所染色,使他们更清楚地记得这些信息.",
+          "start": 1044.7,
+          "end": 1058.26
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-1--s19",
+          "index": 18,
+          "speaker": "",
+          "text": "But these same effects were not seen in people with low levels of anxiety.",
+          "translationZh": "但这些同样的影响在焦虑程度低的人身上没有看到.",
+          "start": 1058.9,
+          "end": 1063.24
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-1--s20",
+          "index": 19,
+          "speaker": "",
+          "text": "Previous studies have found that extreme levels of anxiety, such as those experienced by people diagnosed with an anxiety disorder, can be quite detrimental to memory and cognitive performance.",
+          "translationZh": "之前的研究发现,极端的焦虑程度,如被诊断出有焦虑障碍的人所经历的焦虑程度,可能对记忆和认知表现相当有害.",
+          "start": 1064.12,
+          "end": 1076.66
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-1--s21",
+          "index": 20,
+          "speaker": "",
+          "text": "But the highly anxious people in this study represent individuals who are managing their anxiety and for whom anxiety is not a serious problem.",
+          "translationZh": "但是,本研究报告中的高度焦虑的人代表着正在处理其焦虑的个人,对于他们来说,焦虑不是一个严重的问题.",
+          "start": 1077.62,
+          "end": 1086.9
+        }
+      ]
+    },
+    {
+      "id": "cet6-2023-06-set1--recording-2",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "title": "讲座 2",
+      "sourceTitle": "Recording Two",
+      "order": 6,
+      "start": 1149.74,
+      "end": 1328.94,
+      "questions": [
+        {
+          "id": "cet6-2023-06-set1--q19",
+          "number": 19,
+          "sectionId": "cet6-2023-06-set1--recording-2",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "They compare products from different companies before making a choice"
+            },
+            {
+              "letter": "B",
+              "text": "They get information from other consumers’ postings and comments"
+            },
+            {
+              "letter": "C",
+              "text": "They lose patience when their phone call is no promptly answered"
+            },
+            {
+              "letter": "D",
+              "text": "They expect to get instantaneous responses to their inquiry"
+            }
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "cet6-2023-06-set1--q20",
+          "number": 20,
+          "sectionId": "cet6-2023-06-set1--recording-2",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Giving them rewards on the spot"
+            },
+            {
+              "letter": "B",
+              "text": "Broadening their scope of interest"
+            },
+            {
+              "letter": "C",
+              "text": "Speaking directly to their emotions"
+            },
+            {
+              "letter": "D",
+              "text": "Focusing on the details of the product"
+            }
+          ],
+          "correct": "C"
+        },
+        {
+          "id": "cet6-2023-06-set1--q21",
+          "number": 21,
+          "sectionId": "cet6-2023-06-set1--recording-2",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Change the rules of the game in the market every year"
+            },
+            {
+              "letter": "B",
+              "text": "Keep up with the latest technological developments"
+            },
+            {
+              "letter": "C",
+              "text": "Learn from technological innovators to do business"
+            },
+            {
+              "letter": "D",
+              "text": "Make greater efforts to build up consumers’ confidence"
+            }
+          ],
+          "correct": "B"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "cet6-2023-06-set1--recording-2--s1",
+          "index": 0,
+          "speaker": "",
+          "text": "Over the past 20 years, the internet has gradually become a dominant feature of our lives.",
+          "translationZh": "在过去20年里,互联网逐渐成为我们生活的主导特征.",
+          "start": 1149.74,
+          "end": 1156.24
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s2",
+          "index": 1,
+          "speaker": "",
+          "text": "It has changed how we communicate with each other, and it has definitely transformed the way we do business with each other.",
+          "translationZh": "它改变了我们彼此之间的交流方式,并确实改变了我们彼此之间的业务方式.",
+          "start": 1156.88,
+          "end": 1163.78
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s3",
+          "index": 2,
+          "speaker": "",
+          "text": "Marketing has also changed in a number of ways.",
+          "translationZh": "市场营销也在多方面发生了变化.",
+          "start": 1164.54,
+          "end": 1167.32
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s4",
+          "index": 3,
+          "speaker": "",
+          "text": "For instance, in the past consumers had to call a phone number and patiently wait on hold, in order to get the information they wanted.",
+          "translationZh": "例如,过去消费者必须拨打电话号码,耐心等待,以便获得他们想要的信息.",
+          "start": 1168.5,
+          "end": 1176.92
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s5",
+          "index": 4,
+          "speaker": "",
+          "text": "Today, they want the information immediately.",
+          "translationZh": "今天,他们要求立即得到信息.",
+          "start": 1177.88,
+          "end": 1180.24
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s6",
+          "index": 5,
+          "speaker": "",
+          "text": "They'll go to the company's social media page and post comments and questions, expecting to receive an immediate response.",
+          "translationZh": "他们会去公司社交媒体的网页,张贴评论和问题,期待立即得到回应.",
+          "start": 1181.08,
+          "end": 1188.28
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s7",
+          "index": 6,
+          "speaker": "",
+          "text": "If they don't get their questions answered soon, they'll move on to another company that will answer them quickly.",
+          "translationZh": "如果他们不能很快得到他们的问题的答案,他们就会转到另一家公司去迅速回答.",
+          "start": 1189.38,
+          "end": 1196.28
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s8",
+          "index": 7,
+          "speaker": "",
+          "text": "Marketing departments today need to follow technological development.",
+          "translationZh": "现今的营销部门要紧跟技术发展.",
+          "start": 1197.42,
+          "end": 1201.38
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s9",
+          "index": 8,
+          "speaker": "",
+          "text": "For example, this year's smartphone is smarter than last year's; self-driving cars are now on the road.",
+          "translationZh": "例如,今年的智能手机比去年更聪明;自驾车现在已经上路了.",
+          "start": 1202.2,
+          "end": 1209.42
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s10",
+          "index": 9,
+          "speaker": "",
+          "text": "Marketers have to do research on which technologies are coming into being.",
+          "translationZh": "市场商必须研究哪些技术正在形成.",
+          "start": 1209.8,
+          "end": 1214.96
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s11",
+          "index": 10,
+          "speaker": "",
+          "text": "Otherwise they risk being left behind in the virtual dust.",
+          "translationZh": "否则他们会冒被丢在虚拟尘埃中的风险.",
+          "start": 1215.46,
+          "end": 1219.4
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s12",
+          "index": 11,
+          "speaker": "",
+          "text": "Marketing has also changed due to the importance of video.",
+          "translationZh": "由于视频的重要性,营销也发生了变化.",
+          "start": 1220.48,
+          "end": 1224.38
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s13",
+          "index": 12,
+          "speaker": "",
+          "text": "People don't just want to read text; they want to watch things happening.",
+          "translationZh": "人们不只是想要阅读文字;他们想观看事物的发生.",
+          "start": 1225.16,
+          "end": 1229.92
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s14",
+          "index": 13,
+          "speaker": "",
+          "text": "Companies now have to explore how they can use video on a consistent basis to share information about their businesses.",
+          "translationZh": "公司现在必须探索如何在一致的基础上使用视频来分享有关其企业的信息.",
+          "start": 1230.78,
+          "end": 1238.58
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s15",
+          "index": 14,
+          "speaker": "",
+          "text": "Fortunately, it's extremely easy to shoot something these days.",
+          "translationZh": "幸运的是,现在拍摄一些东西是非常容易的.",
+          "start": 1239.5,
+          "end": 1243.64
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s16",
+          "index": 15,
+          "speaker": "",
+          "text": "All you need is a smartphone.",
+          "translationZh": "你只需要一个智能手机.",
+          "start": 1244.4,
+          "end": 1246.06
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s17",
+          "index": 16,
+          "speaker": "",
+          "text": "But what's the result of all this?",
+          "translationZh": "但这一切的结果是什么?",
+          "start": 1247.36,
+          "end": 1249.04
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s18",
+          "index": 17,
+          "speaker": "",
+          "text": "Shorter attention spans.",
+          "translationZh": "注意力比较短.",
+          "start": 1250.24,
+          "end": 1251.8
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s19",
+          "index": 18,
+          "speaker": "",
+          "text": "We are the same people that we were 20 years ago.",
+          "translationZh": "我们和20年前一样.",
+          "start": 1252.68,
+          "end": 1256.14
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s20",
+          "index": 19,
+          "speaker": "",
+          "text": "Not only have we grown accustomed to getting the information we want instantaneously, our attention spans are much shorter.",
+          "translationZh": "我们不仅已经习惯获得我们想要的信息, 我们的注意力跨度要短得多.",
+          "start": 1257,
+          "end": 1265.78
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s21",
+          "index": 20,
+          "speaker": "",
+          "text": "If something doesn't capture our attention within a few seconds, we're on to the next piece of content.",
+          "translationZh": "如果有东西在几秒钟内不能吸引我们的注意力,我们就可以进入下一个内容.",
+          "start": 1266.84,
+          "end": 1272.66
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s22",
+          "index": 21,
+          "speaker": "",
+          "text": "Marketers need to figure out ways to speak directly to the customer's emotions and they need to figure out how to do that as quickly as possible.",
+          "translationZh": "市场营销者需要想出直接与客户情绪交谈的方法,他们需要想出如何尽快做到这一点.",
+          "start": 1273.74,
+          "end": 1284.28
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s23",
+          "index": 22,
+          "speaker": "",
+          "text": "Once people are emotionally engaged, they'll stick with you.",
+          "translationZh": "一旦人们在情感上订婚 他们就会坚持你.",
+          "start": 1285.16,
+          "end": 1288.7
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s24",
+          "index": 23,
+          "speaker": "",
+          "text": "If marketing has changed this much in the past 20 years, imagine what the next 20 years will bring.",
+          "translationZh": "如果营销在过去20年中 已经改变了很多, 想象未来20年会带来什么.",
+          "start": 1289.66,
+          "end": 1296.68
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s25",
+          "index": 24,
+          "speaker": "",
+          "text": "In a recent survey, only 9% of marketers could say with confidence that their marketing efforts were actually working.",
+          "translationZh": "在最近的一次调查中,只有9%的营销者能够自信地说,他们的营销努力实际上奏效了.",
+          "start": 1297.26,
+          "end": 1306.46
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s26",
+          "index": 25,
+          "speaker": "",
+          "text": "Their confidence is being shaken, because the rules of the game change every year.",
+          "translationZh": "他们的信心正在被动摇,因为游戏规则每年都会改变.",
+          "start": 1307.12,
+          "end": 1313.64
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s27",
+          "index": 26,
+          "speaker": "",
+          "text": "That's why it's important for marketers to pay attention to the latest technological developments and consider collaborating with technological innovators.",
+          "translationZh": "这就是为什么市场营销者必须注意最新的技术发展,并考虑与技术革新者合作.",
+          "start": 1314.24,
+          "end": 1323.9
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-2--s28",
+          "index": 27,
+          "speaker": "",
+          "text": "That way, they'll be moving at the same pace as the tech industry.",
+          "translationZh": "这样,它们就会以与技术产业相同的速度前进.",
+          "start": 1324.44,
+          "end": 1328.94
+        }
+      ]
+    },
+    {
+      "id": "cet6-2023-06-set1--recording-3",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "title": "讲座 3",
+      "sourceTitle": "Recording Three",
+      "order": 7,
+      "start": 1394.54,
+      "end": 1563.67,
+      "questions": [
+        {
+          "id": "cet6-2023-06-set1--q22",
+          "number": 22,
+          "sectionId": "cet6-2023-06-set1--recording-3",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "People have only one social engagement per week"
+            },
+            {
+              "letter": "B",
+              "text": "Working together enhances friendship"
+            },
+            {
+              "letter": "C",
+              "text": "Few people have devoted friends"
+            },
+            {
+              "letter": "D",
+              "text": "Friendships benefit work"
+            }
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "cet6-2023-06-set1--q23",
+          "number": 23,
+          "sectionId": "cet6-2023-06-set1--recording-3",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "The impact of friends on people’s self-esteem"
+            },
+            {
+              "letter": "B",
+              "text": "How supportive friends can be in the workplace"
+            },
+            {
+              "letter": "C",
+              "text": "How to boost one’s sense of value and worthiness"
+            },
+            {
+              "letter": "D",
+              "text": "The role of family ties in people’s mental well-being"
+            }
+          ],
+          "correct": "A"
+        },
+        {
+          "id": "cet6-2023-06-set1--q24",
+          "number": 24,
+          "sectionId": "cet6-2023-06-set1--recording-3",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "They show little interest in their friends’ work"
+            },
+            {
+              "letter": "B",
+              "text": "They tend to be much more difficult to make"
+            },
+            {
+              "letter": "C",
+              "text": "They are more trustworthy and reliable"
+            },
+            {
+              "letter": "D",
+              "text": "They increase people’s job satisfaction"
+            }
+          ],
+          "correct": "D"
+        },
+        {
+          "id": "cet6-2023-06-set1--q25",
+          "number": 25,
+          "sectionId": "cet6-2023-06-set1--recording-3",
+          "type": "lecture",
+          "typeLabel": "讲座/讲话",
+          "prompt": "根据录音选择最符合的一项",
+          "options": [
+            {
+              "letter": "A",
+              "text": "Allow employees to have a flexible work schedule"
+            },
+            {
+              "letter": "B",
+              "text": "Encourage employees to be friends with colleagues"
+            },
+            {
+              "letter": "C",
+              "text": "Help employees balance work and family responsibilities"
+            },
+            {
+              "letter": "D",
+              "text": "Organize activities to nourish friendships outside of work"
+            }
+          ],
+          "correct": "A"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "cet6-2023-06-set1--recording-3--s1",
+          "index": 0,
+          "speaker": "",
+          "text": "You might be surprised to learn that the benefits of friendships extend beyond people's social life and into their work, which is interesting when considering the extent to which people sacrifice friendships, or at least the time they spend with friends, because of the extended hours they're devoting to work.",
+          "translationZh": "你可能会惊讶地得知友谊的好处超越了人们的社会生活和他们的工作,这在考虑人们牺牲友谊的程度,或者至少他们花在朋友身上的时间的时候,是很有趣的,因为他们投入工作的时间很长.",
+          "start": 1394.54,
+          "end": 1413.38
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-3--s2",
+          "index": 1,
+          "speaker": "",
+          "text": "Just last week, I was remarking to a colleague that I'm content with only one social engagement per week.",
+          "translationZh": "就在上周,我和一个同事说, 我满足于每周只有一个社交活动.",
+          "start": 1413.88,
+          "end": 1420.34
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-3--s3",
+          "index": 2,
+          "speaker": "",
+          "text": "But according to recent research, that's evidently not enough.",
+          "translationZh": "但根据最近的研究,这显然是不够的.",
+          "start": 1420.86,
+          "end": 1425.26
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-3--s4",
+          "index": 3,
+          "speaker": "",
+          "text": "In an initial study of more than 700 respondents, scholars from an American university analyzed the impact that friends, as opposed to family, have on self-esteem and well-being.",
+          "translationZh": "在对700多名受访者的初步研究中,美国一所大学的学者分析了朋友相对于家庭对自尊和福祉的影响.",
+          "start": 1426,
+          "end": 1437.14
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-3--s5",
+          "index": 4,
+          "speaker": "",
+          "text": "Friends came out substantially on top.",
+          "translationZh": "朋友们在顶上大显身手.",
+          "start": 1439.48,
+          "end": 1441.94
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-3--s6",
+          "index": 5,
+          "speaker": "",
+          "text": "That's because to be someone's mate is a voluntary act, unlike family who people rarely get to choose.",
+          "translationZh": "那是因为做一个人的伴侣是一种自愿的行为,与人们很少选择的家庭不同.",
+          "start": 1442.78,
+          "end": 1449.44
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-3--s7",
+          "index": 6,
+          "speaker": "",
+          "text": "The researchers found that when people choose to cultivate and maintain supportive friendships with an individual, it means that the person is valued and worthy of their limited time.",
+          "translationZh": "研究者发现,当人们选择培养和保持与个人的支持性友谊时,这意味着这个人受到重视并值得他们有限的时间.",
+          "start": 1449.44,
+          "end": 1460.92
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-3--s8",
+          "index": 7,
+          "speaker": "",
+          "text": "Such sentiments of value and worthiness boost our self-esteem.",
+          "translationZh": "这种价值和价值感增进了我们的自尊.",
+          "start": 1461.7,
+          "end": 1465.08
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-3--s9",
+          "index": 8,
+          "speaker": "",
+          "text": "The second study comprised more than 300 participants.",
+          "translationZh": "第二项研究有300多人参加.",
+          "start": 1466.94,
+          "end": 1470.86
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-3--s10",
+          "index": 9,
+          "speaker": "",
+          "text": "It proved that the better we feel about ourselves, the more likely we'll perform our job confidently and competently.",
+          "translationZh": "证明我们对自己越感觉越好 我们就越有可能有自信和胜任地完成任务.",
+          "start": 1471.54,
+          "end": 1478.42
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-3--s11",
+          "index": 10,
+          "speaker": "",
+          "text": "This follow-up study found that non-work friends even improve people's job satisfaction.",
+          "translationZh": "这项后续研究发现,非工作朋友甚至可以提高人们的工作满意度.",
+          "start": 1479.24,
+          "end": 1485.24
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-3--s12",
+          "index": 11,
+          "speaker": "",
+          "text": "They have as much of an impact on how much they love their jobs as do the friends they have at work, despite not actually being at our place of work.",
+          "translationZh": "尽管他们实际上不在我们的工作地点,但他们的工作与他们工作的朋友一样,对他们所热爱的工作有着同样多的影响.",
+          "start": 1485.88,
+          "end": 1495.36
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-3--s13",
+          "index": 12,
+          "speaker": "",
+          "text": "These types of friends tend to be our preferred outlet for venting about work-related matters.",
+          "translationZh": "这些类型的朋友往往成为我们处理与工作有关的问题的首选渠道.",
+          "start": 1496.1,
+          "end": 1502.1
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-3--s14",
+          "index": 13,
+          "speaker": "",
+          "text": "This is an avenue that may not be available at the office.",
+          "translationZh": "该办公室可能无法利用这一渠道.",
+          "start": 1502.94,
+          "end": 1506.56
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-3--s15",
+          "index": 14,
+          "speaker": "",
+          "text": "So even though friendships can be easy to neglect when confronted by pressures at work, or even pressures at home, neglecting our friends can turn out to be harmful and counterproductive.",
+          "translationZh": "因此,即使友谊在工作压力甚至国内压力面前容易被忽略,但忽视我们的朋友却可能有害而适得其反.",
+          "start": 1507.8,
+          "end": 1519.66
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-3--s16",
+          "index": 15,
+          "speaker": "",
+          "text": "That's why, when determining how to create a better work-life balance, we need to consider not only how to balance work and family demands, but also how to cultivate and sustain supportive friendships.",
+          "translationZh": "这就是为什么在决定如何建立更好的工作与生活平衡时,我们不仅需要考虑如何平衡工作与家庭需求,还要考虑如何培养并保持支持性的友谊.",
+          "start": 1520.54,
+          "end": 1534.77
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-3--s17",
+          "index": 16,
+          "speaker": "",
+          "text": "It's for this reason that managers should never discriminate when it comes to requests from employees for flexible work arrangements.",
+          "translationZh": "正是出于这个原因,在员工要求灵活工作安排时,管理人员绝不应当歧视.",
+          "start": 1535.47,
+          "end": 1543.13
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-3--s18",
+          "index": 17,
+          "speaker": "",
+          "text": "It's irrelevant whether their need for a desired schedule is due to, say, parenting responsibilities, or a craving to hang out with the best mate.",
+          "translationZh": "他们需要一个理想的日程 是因为,比如说, 养育的责任, 还是渴望和最好的伴侣在一起, 都无关紧要.",
+          "start": 1544.03,
+          "end": 1553.53
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-3--s19",
+          "index": 18,
+          "speaker": "",
+          "text": "What matters is the opportunity to engage in a nourishing activity outside of work.",
+          "translationZh": "重要的是有机会在工作之外从事营养活动.",
+          "start": 1554.21,
+          "end": 1559.57
+        },
+        {
+          "id": "cet6-2023-06-set1--recording-3--s20",
+          "index": 19,
+          "speaker": "",
+          "text": "That will definitely have a follow-on effect at work.",
+          "translationZh": "这肯定会在工作上产生后续效应.",
+          "start": 1560.25,
+          "end": 1563.67
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "cet6-2023-06-set1--q1",
+      "number": 1,
+      "sectionId": "cet6-2023-06-set1--conversation-1",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "It was spacious and tranquil"
+        },
+        {
+          "letter": "B",
+          "text": "It was warm and comfortable"
+        },
+        {
+          "letter": "C",
+          "text": "It was shabby and solitary"
+        },
+        {
+          "letter": "D",
+          "text": "It was tiny and noisy"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cet6-2023-06-set1--q2",
+      "number": 2,
+      "sectionId": "cet6-2023-06-set1--conversation-1",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "She no longer hates people talking loudly in the dorm"
+        },
+        {
+          "letter": "B",
+          "text": "She misses her roommates she used to complain about"
+        },
+        {
+          "letter": "C",
+          "text": "She begins to enjoy the movies she once found irritating"
+        },
+        {
+          "letter": "D",
+          "text": "She finds the crowded dorm as cozy as her new apartment"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cet6-2023-06-set1--q3",
+      "number": 3,
+      "sectionId": "cet6-2023-06-set1--conversation-1",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "He found the apartment perfectly furnished"
+        },
+        {
+          "letter": "B",
+          "text": "He had a feeling of despair and frustration"
+        },
+        {
+          "letter": "C",
+          "text": "He had a similar feeling to the woman’s"
+        },
+        {
+          "letter": "D",
+          "text": "He felt the new place was like paradise"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cet6-2023-06-set1--q4",
+      "number": 4,
+      "sectionId": "cet6-2023-06-set1--conversation-1",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Go to see the woman’s apartment"
+        },
+        {
+          "letter": "B",
+          "text": "Make a phone call to his parents"
+        },
+        {
+          "letter": "C",
+          "text": "Buy some furniture for the woman"
+        },
+        {
+          "letter": "D",
+          "text": "Decorate the woman’s apartment"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cet6-2023-06-set1--q5",
+      "number": 5,
+      "sectionId": "cet6-2023-06-set1--conversation-2",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "He works as a literary critic"
+        },
+        {
+          "letter": "B",
+          "text": "He hosts an educational program"
+        },
+        {
+          "letter": "C",
+          "text": "He has initiated a university reform"
+        },
+        {
+          "letter": "D",
+          "text": "He has published a book recently"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cet6-2023-06-set1--q6",
+      "number": 6,
+      "sectionId": "cet6-2023-06-set1--conversation-2",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "It fails to keep up with the radical changes of society"
+        },
+        {
+          "letter": "B",
+          "text": "It fails to ensure universities get sufficient resources"
+        },
+        {
+          "letter": "C",
+          "text": "It has not prepared young people for the job market"
+        },
+        {
+          "letter": "D",
+          "text": "It has not fostered the growth of the arts disciplines"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cet6-2023-06-set1--q7",
+      "number": 7,
+      "sectionId": "cet6-2023-06-set1--conversation-2",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "More of the budget should go to science and technology"
+        },
+        {
+          "letter": "B",
+          "text": "The underfunded music discipline should be prioritized"
+        },
+        {
+          "letter": "C",
+          "text": "Subdisciplines like sculpture should get more funding"
+        },
+        {
+          "letter": "D",
+          "text": "Literature should get as much funding as engineering"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cet6-2023-06-set1--q8",
+      "number": 8,
+      "sectionId": "cet6-2023-06-set1--conversation-2",
+      "type": "long-conversation",
+      "typeLabel": "长对话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Build a prosperous nation"
+        },
+        {
+          "letter": "B",
+          "text": "Make skilled professionals"
+        },
+        {
+          "letter": "C",
+          "text": "Create ingenious artists"
+        },
+        {
+          "letter": "D",
+          "text": "Cultivate better citizens"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cet6-2023-06-set1--q9",
+      "number": 9,
+      "sectionId": "cet6-2023-06-set1--passage-1",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "It is quite common"
+        },
+        {
+          "letter": "B",
+          "text": "It is rarely noticed"
+        },
+        {
+          "letter": "C",
+          "text": "It seldom annoys people"
+        },
+        {
+          "letter": "D",
+          "text": "It occurs when one is alone"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cet6-2023-06-set1--q10",
+      "number": 10,
+      "sectionId": "cet6-2023-06-set1--passage-1",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Seeing things in black and white"
+        },
+        {
+          "letter": "B",
+          "text": "Engaging in regular contemplation"
+        },
+        {
+          "letter": "C",
+          "text": "Having a special understanding of creativity"
+        },
+        {
+          "letter": "D",
+          "text": "Knowing how to make their mental batteries work"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cet6-2023-06-set1--q11",
+      "number": 11,
+      "sectionId": "cet6-2023-06-set1--passage-1",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Engaging in intense activity"
+        },
+        {
+          "letter": "B",
+          "text": "Fantasizing in one’s down time"
+        },
+        {
+          "letter": "C",
+          "text": "Working on a particular project"
+        },
+        {
+          "letter": "D",
+          "text": "Reflecting during one’s relaxation"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cet6-2023-06-set1--q12",
+      "number": 12,
+      "sectionId": "cet6-2023-06-set1--passage-2",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Farmers helped Native Americans grow crops"
+        },
+        {
+          "letter": "B",
+          "text": "There were expansive university campuses"
+        },
+        {
+          "letter": "C",
+          "text": "There existed post offices"
+        },
+        {
+          "letter": "D",
+          "text": "Migrants found gold there"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cet6-2023-06-set1--q13",
+      "number": 13,
+      "sectionId": "cet6-2023-06-set1--passage-2",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "It helped to boost the economy in the American West"
+        },
+        {
+          "letter": "B",
+          "text": "It provided job opportunities for many gold seekers"
+        },
+        {
+          "letter": "C",
+          "text": "It extended the influence of the federal government"
+        },
+        {
+          "letter": "D",
+          "text": "It kept people in the deserts and plains connected"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cet6-2023-06-set1--q14",
+      "number": 14,
+      "sectionId": "cet6-2023-06-set1--passage-2",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "It employed Native Americans to work as postmen"
+        },
+        {
+          "letter": "B",
+          "text": "It commissioned private wagons to carry the mail"
+        },
+        {
+          "letter": "C",
+          "text": "It subsidized the locals who acted as postmasters"
+        },
+        {
+          "letter": "D",
+          "text": "It centralized postal services in its remote areas"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cet6-2023-06-set1--q15",
+      "number": 15,
+      "sectionId": "cet6-2023-06-set1--passage-2",
+      "type": "passage",
+      "typeLabel": "篇章",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "He analyzed interactive maps of mail routes"
+        },
+        {
+          "letter": "B",
+          "text": "He read a large collection of books on the topic"
+        },
+        {
+          "letter": "C",
+          "text": "He examined its historical trends with data science"
+        },
+        {
+          "letter": "D",
+          "text": "He collected data about its impact on local business"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cet6-2023-06-set1--q16",
+      "number": 16,
+      "sectionId": "cet6-2023-06-set1--recording-1",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Higher levels of anxiety may improve people’s memory"
+        },
+        {
+          "letter": "B",
+          "text": "Some experiences are easier to remember than others"
+        },
+        {
+          "letter": "C",
+          "text": "Most people tend to remember things selectively"
+        },
+        {
+          "letter": "D",
+          "text": "Simple things may leave a deep impression on one’s memory"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cet6-2023-06-set1--q17",
+      "number": 17,
+      "sectionId": "cet6-2023-06-set1--recording-1",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "They classified the participants’ mindset"
+        },
+        {
+          "letter": "B",
+          "text": "They showed some photos to the participants"
+        },
+        {
+          "letter": "C",
+          "text": "They measured the participants’ anxiety levels"
+        },
+        {
+          "letter": "D",
+          "text": "They tested the size of the participants’ vocabulary"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cet6-2023-06-set1--q18",
+      "number": 18,
+      "sectionId": "cet6-2023-06-set1--recording-1",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Anxiety has become a serious problem for an increasing number of people"
+        },
+        {
+          "letter": "B",
+          "text": "Extreme levels of anxiety can adversely affect cognitive performance"
+        },
+        {
+          "letter": "C",
+          "text": "People diagnosed with anxiety disorder may forget things selectively"
+        },
+        {
+          "letter": "D",
+          "text": "There is no direct correlation between memory and levels of anxiety"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cet6-2023-06-set1--q19",
+      "number": 19,
+      "sectionId": "cet6-2023-06-set1--recording-2",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "They compare products from different companies before making a choice"
+        },
+        {
+          "letter": "B",
+          "text": "They get information from other consumers’ postings and comments"
+        },
+        {
+          "letter": "C",
+          "text": "They lose patience when their phone call is no promptly answered"
+        },
+        {
+          "letter": "D",
+          "text": "They expect to get instantaneous responses to their inquiry"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cet6-2023-06-set1--q20",
+      "number": 20,
+      "sectionId": "cet6-2023-06-set1--recording-2",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Giving them rewards on the spot"
+        },
+        {
+          "letter": "B",
+          "text": "Broadening their scope of interest"
+        },
+        {
+          "letter": "C",
+          "text": "Speaking directly to their emotions"
+        },
+        {
+          "letter": "D",
+          "text": "Focusing on the details of the product"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cet6-2023-06-set1--q21",
+      "number": 21,
+      "sectionId": "cet6-2023-06-set1--recording-2",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Change the rules of the game in the market every year"
+        },
+        {
+          "letter": "B",
+          "text": "Keep up with the latest technological developments"
+        },
+        {
+          "letter": "C",
+          "text": "Learn from technological innovators to do business"
+        },
+        {
+          "letter": "D",
+          "text": "Make greater efforts to build up consumers’ confidence"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cet6-2023-06-set1--q22",
+      "number": 22,
+      "sectionId": "cet6-2023-06-set1--recording-3",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "People have only one social engagement per week"
+        },
+        {
+          "letter": "B",
+          "text": "Working together enhances friendship"
+        },
+        {
+          "letter": "C",
+          "text": "Few people have devoted friends"
+        },
+        {
+          "letter": "D",
+          "text": "Friendships benefit work"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cet6-2023-06-set1--q23",
+      "number": 23,
+      "sectionId": "cet6-2023-06-set1--recording-3",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "The impact of friends on people’s self-esteem"
+        },
+        {
+          "letter": "B",
+          "text": "How supportive friends can be in the workplace"
+        },
+        {
+          "letter": "C",
+          "text": "How to boost one’s sense of value and worthiness"
+        },
+        {
+          "letter": "D",
+          "text": "The role of family ties in people’s mental well-being"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cet6-2023-06-set1--q24",
+      "number": 24,
+      "sectionId": "cet6-2023-06-set1--recording-3",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "They show little interest in their friends’ work"
+        },
+        {
+          "letter": "B",
+          "text": "They tend to be much more difficult to make"
+        },
+        {
+          "letter": "C",
+          "text": "They are more trustworthy and reliable"
+        },
+        {
+          "letter": "D",
+          "text": "They increase people’s job satisfaction"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cet6-2023-06-set1--q25",
+      "number": 25,
+      "sectionId": "cet6-2023-06-set1--recording-3",
+      "type": "lecture",
+      "typeLabel": "讲座/讲话",
+      "prompt": "根据录音选择最符合的一项",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Allow employees to have a flexible work schedule"
+        },
+        {
+          "letter": "B",
+          "text": "Encourage employees to be friends with colleagues"
+        },
+        {
+          "letter": "C",
+          "text": "Help employees balance work and family responsibilities"
+        },
+        {
+          "letter": "D",
+          "text": "Organize activities to nourish friendships outside of work"
+        }
+      ],
+      "correct": "A"
+    }
+  ]
+}
