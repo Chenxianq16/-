@@ -26,3 +26,8 @@ test("wrong-book entries preserve type and selected reason", () => {
   assert.equal(entry.reason, "固定搭配不熟悉");
   assert.equal(entry.meaningZh, "进行面试");
 });
+
+test("word lookup cache is part of local storage", () => {
+  const store = loadStore();
+  assert.deepEqual(store.wordLookup, {});
+});

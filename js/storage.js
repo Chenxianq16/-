@@ -9,6 +9,7 @@ function emptyStore() {
     sentenceProgress: {},
     quizAnswers: {},
     wrongWords: {},
+    wordLookup: {},
     tagCounts: {},
     reviewArticle: null
   };

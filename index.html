@@ -86,6 +86,23 @@
       </div>
     </dialog>
 
+    <dialog id="word-dialog" class="dialog word-dialog">
+      <div class="dialog-panel">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">WORD LOOKUP</p>
+            <h2 id="word-dialog-title">查词</h2>
+          </div>
+          <button class="icon-button" id="close-word-dialog" type="button" aria-label="关闭">×</button>
+        </div>
+        <div id="word-dialog-content" class="word-dialog-content"></div>
+        <div class="dialog-actions">
+          <button class="button-secondary" id="close-word-action" type="button">关闭</button>
+          <button class="button" id="add-looked-up-word" type="button">加入错词本</button>
+        </div>
+      </div>
+    </dialog>
+
     <script src="./assets/config.js"></script>
     <script type="module" src="./js/app.js"></script>
   </body>

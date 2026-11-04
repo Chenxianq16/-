@@ -871,6 +871,16 @@ audio.audio-element {
   align-items: center;
   padding: 14px 0;
   border-bottom: 1px solid var(--line);
+  cursor: pointer;
+}
+
+.review-sentence:hover {
+  background: rgba(15, 118, 110, 0.035);
+}
+
+.review-sentence:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .review-sentence-main {
@@ -1204,10 +1214,23 @@ audio.audio-element {
 }
 
 .vocab-word {
+  display: block;
+  width: fit-content;
   margin: 0;
+  padding: 0;
+  border: 0;
+  color: var(--ink);
+  background: transparent;
   font-size: 22px;
+  font-weight: 700;
   letter-spacing: -0.02em;
   overflow-wrap: anywhere;
+  text-align: left;
+  cursor: pointer;
+}
+
+.vocab-word:hover {
+  color: var(--accent);
 }
 
 .vocab-meaning {
@@ -1423,6 +1446,72 @@ audio.audio-element {
   background: #ffe66d;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
+}
+
+.lookup-word {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  line-height: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
+
+.lookup-word:hover,
+.lookup-word:focus-visible {
+  color: var(--accent-ink);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+}
+
+.word-dialog {
+  width: min(600px, calc(100% - 28px));
+}
+
+.word-dialog-content {
+  min-height: 150px;
+}
+
+.word-heading-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 14px;
+}
+
+.word-heading-row strong {
+  font-size: 28px;
+  letter-spacing: -0.03em;
+}
+
+.word-heading-row span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.word-definition {
+  margin-bottom: 10px;
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.word-definition small {
+  color: var(--muted);
+}
+
+.word-detail-list {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
 }
 
 .hidden {

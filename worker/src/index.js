@@ -31,8 +31,8 @@ function jsonResponse(body, status, request, env) {
 }
 
 function validateBody(body) {
-  if (!body || !["sentence", "question", "article"].includes(body.type)) {
-    throw new Error("Request type must be sentence, question, or article.");
+  if (!body || !["sentence", "question", "article", "word"].includes(body.type)) {
+    throw new Error("Request type must be sentence, question, article, or word.");
   }
   if (body.type === "sentence") {
     if (!String(body.reference || "").trim()) {
@@ -56,6 +56,14 @@ function validateBody(body) {
     }
     if (body.words.length > 20) {
       throw new Error("No more than 20 words can be used.");
+    }
+  }
+  if (body.type === "word") {
+    if (!String(body.word || "").trim()) {
+      throw new Error("A word or phrase is required.");
+    }
+    if (String(body.word).length > 120 || String(body.context || "").length > 1200) {
+      throw new Error("Word lookup input is too long.");
     }
   }
 }
@@ -146,6 +154,26 @@ Return only one valid JSON object with this shape:
 `;
 }
 
+function wordInstructions() {
+  return `
+You are an English dictionary for a Chinese learner preparing for CET-6.
+Explain the requested word or phrase in its supplied context.
+
+Return only one valid JSON object with this shape:
+{
+  "word": "normalized headword",
+  "phonetic": "IPA without slashes, or empty string",
+  "partOfSpeech": "noun / verb / phrase / etc.",
+  "meaningZh": "concise contextual Chinese meaning",
+  "meaningEn": "clear English definition",
+  "examples": ["one short English example"],
+  "collocations": ["one useful collocation"]
+}
+
+If the input is a phrase, use partOfSpeech "phrase" and explain the whole expression.
+`;
+}
+
 function parseModelJson(text) {
   const trimmed = String(text || "").trim();
   try {
@@ -210,7 +238,9 @@ export default {
         ? sentenceInstructions()
         : body.type === "question"
           ? questionInstructions()
-          : articleInstructions();
+          : body.type === "article"
+            ? articleInstructions()
+            : wordInstructions();
     const apiResponse = await fetch("https://api.deepseek.com/chat/completions", {
       method: "POST",
       headers: {

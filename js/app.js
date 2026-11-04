@@ -25,6 +25,10 @@ const settingsDialog = document.querySelector("#settings-dialog");
 const aiEndpointInput = document.querySelector("#ai-endpoint");
 const reasonDialog = document.querySelector("#reason-dialog");
 const reasonItemName = document.querySelector("#reason-item-name");
+const wordDialog = document.querySelector("#word-dialog");
+const wordDialogTitle = document.querySelector("#word-dialog-title");
+const wordDialogContent = document.querySelector("#word-dialog-content");
+const addLookedUpWordButton = document.querySelector("#add-looked-up-word");
 
 const store = loadStore();
 const state = {
@@ -46,6 +50,7 @@ const state = {
   questionAnalyses: {},
   loading: new Set(),
   pendingAdd: null,
+  lookupItem: null,
   articleLoading: false
 };
 
@@ -74,7 +79,7 @@ function highlightWrongBookTerms(text) {
     .filter(Boolean)
     .sort((a, b) => b.length - a.length);
   if (!terms.length) {
-    return escapeHtml(text);
+    return renderLookupWords(text);
   }
 
   const pattern = new RegExp(
@@ -84,8 +89,21 @@ function highlightWrongBookTerms(text) {
   let output = "";
   let cursor = 0;
   for (const match of text.matchAll(pattern)) {
+    output += renderLookupWords(text.slice(cursor, match.index));
+    output += `<mark class="wrong-word-highlight">${renderLookupWords(match[0])}</mark>`;
+    cursor = match.index + match[0].length;
+  }
+  output += renderLookupWords(text.slice(cursor));
+  return output;
+}
+
+function renderLookupWords(text) {
+  const pattern = /[A-Za-z]+(?:['’][A-Za-z]+)*/g;
+  let output = "";
+  let cursor = 0;
+  for (const match of text.matchAll(pattern)) {
     output += escapeHtml(text.slice(cursor, match.index));
-    output += `<mark class="wrong-word-highlight">${escapeHtml(match[0])}</mark>`;
+    output += `<span class="lookup-word" data-action="lookup-word" data-word="${escapeHtml(match[0])}" role="button" tabindex="0">${escapeHtml(match[0])}</span>`;
     cursor = match.index + match[0].length;
   }
   output += escapeHtml(text.slice(cursor));
@@ -523,7 +541,7 @@ function renderQuestionCard(question, submitted) {
                   ${checked}
                   ${submitted ? "disabled" : ""}
                 >
-                <span><strong>${option.letter}.</strong> ${escapeHtml(option.text)}</span>
+                <span><strong>${option.letter}.</strong> ${renderLookupWords(option.text)}</span>
               </label>
             `;
           })
@@ -689,7 +707,7 @@ function renderDictationStage(section) {
             </div>
             <h3>逐词对照</h3>
             <div class="diff-inline">${renderDiffTokens(diff)}</div>
-            <p class="translation-line"><strong>原文：</strong>${escapeHtml(sentence.text)}</p>
+            <p class="translation-line lookup-context" data-context-text="${escapeHtml(sentence.text)}"><strong>原文：</strong>${highlightWrongBookTerms(sentence.text)}</p>
             <p class="translation-line"><strong>中文：</strong>${escapeHtml(sentence.translationZh)}</p>
             ${renderWrongWordCandidates(diff)}
             <div class="analysis-actions">
@@ -784,11 +802,11 @@ function renderReviewStage(section) {
           .map((sentence) => {
             const sentenceResult = store.sentenceProgress[`${section.id}:${sentence.id}`];
             return `
-              <article class="review-sentence">
+              <article class="review-sentence" data-action="play-review-sentence" data-sentence-index="${sentence.index}" tabindex="0">
                 <div class="review-sentence-main">
                   <span class="review-sentence-number">${sentence.index + 1}</span>
                   <div>
-                    <p>${highlightWrongBookTerms(sentence.text)}</p>
+                    <p class="lookup-context" data-context-text="${escapeHtml(sentence.text)}">${highlightWrongBookTerms(sentence.text)}</p>
                     <small>${escapeHtml(sentence.translationZh)}</small>
                   </div>
                 </div>
@@ -874,13 +892,13 @@ function renderSentenceAnalysis(analysis) {
           ? `<div class="analysis-section"><h3>固定搭配</h3><ul>${collocations
               .map(
                 (item, index) =>
-                  `<li><strong>${escapeHtml(item.expression || item.phrase || item)}</strong>${
+                  `<li><strong>${renderLookupWords(item.expression || item.phrase || item)}</strong>${
                     item.meaning || item.meaningZh
                       ? ` — ${escapeHtml(item.meaning || item.meaningZh)}`
                       : ""
                   }${
                     item.example
-                      ? `<br><span>${escapeHtml(item.example)}</span>`
+                      ? `<br><span>${renderLookupWords(item.example)}</span>`
                       : ""
                   }<div class="analysis-actions"><button class="candidate-word" data-action="add-collocation" data-index="${index}" data-context="${escapeHtml(context)}">+ 加入错词本</button></div></li>`
               )
@@ -927,7 +945,7 @@ function renderGrammar(grammar, context = "") {
       ${grammar.explanation ? `<p>${escapeHtml(grammar.explanation)}</p>` : ""}
       ${
         examples.length
-          ? `<ul>${examples.map((example) => `<li>${escapeHtml(example)}</li>`).join("")}</ul>`
+          ? `<ul>${examples.map((example) => `<li>${renderLookupWords(example)}</li>`).join("")}</ul>`
           : ""
       }
       <div class="analysis-actions">
@@ -1002,12 +1020,18 @@ function renderVocabularyPage() {
                 <article class="vocab-item">
                   <div class="vocab-topline">
                     <div>
-                      <h2 class="vocab-word">${escapeHtml(item.word)}</h2>
-                      <p class="vocab-meaning">${escapeHtml(item.meaningZh || "暂未补充释义")}</p>
+                      <button
+                        type="button"
+                        class="vocab-word"
+                        data-action="lookup-word"
+                        data-word="${escapeHtml(item.word)}"
+                        data-context="${escapeHtml(item.context || "")}"
+                      >${escapeHtml(item.word)}</button>
+                      <p class="vocab-meaning">${escapeHtml(item.meaningZh || "点击单词获取释义")}</p>
                     </div>
                     <button class="text-button" data-action="remove-word" data-word="${escapeHtml(item.word)}">删除</button>
                   </div>
-                  ${item.context ? `<p class="vocab-context">${escapeHtml(item.context)}</p>` : ""}
+                  ${item.context ? `<p class="vocab-context lookup-context" data-context-text="${escapeHtml(item.context)}">${renderLookupWords(item.context)}</p>` : ""}
                   <div class="hero-meta" style="margin-top:10px">
                     <span class="meta-chip">${wrongItemKindLabels[item.kind] || "单词"}</span>
                     <span class="meta-chip">${escapeHtml(item.reason || "未记录错因")}</span>
@@ -1288,7 +1312,97 @@ function openSettings() {
   settingsDialog.showModal();
 }
 
+function renderWordLookup(data) {
+  const examples = Array.isArray(data.examples) ? data.examples : [];
+  const collocations = Array.isArray(data.collocations) ? data.collocations : [];
+  wordDialogContent.innerHTML = `
+    <div class="word-heading-row">
+      <strong>${escapeHtml(data.word || state.lookupItem?.word || "")}</strong>
+      ${data.partOfSpeech ? `<span>${escapeHtml(data.partOfSpeech)}</span>` : ""}
+      ${data.phonetic ? `<span>/${escapeHtml(data.phonetic)}/</span>` : ""}
+    </div>
+    <p class="word-definition">${escapeHtml(data.meaningZh || "暂无中文释义")}</p>
+    ${data.meaningEn ? `<p class="word-definition"><small>${escapeHtml(data.meaningEn)}</small></p>` : ""}
+    ${
+      examples.length
+        ? `<ul class="word-detail-list">${examples
+            .map((example) => `<li>${escapeHtml(example)}</li>`)
+            .join("")}</ul>`
+        : ""
+    }
+    ${
+      collocations.length
+        ? `<ul class="word-detail-list">${collocations
+            .map((item) => `<li>${escapeHtml(item)}</li>`)
+            .join("")}</ul>`
+        : ""
+    }
+  `;
+  state.lookupItem = {
+    ...state.lookupItem,
+    ...data,
+    meaningZh: data.meaningZh || ""
+  };
+  addLookedUpWordButton.disabled = false;
+}
+
+async function lookupWordData(word, context = "") {
+  const key = String(word || "").trim().toLowerCase();
+  if (!key) return null;
+  if (store.wordLookup[key]) {
+    const cached = store.wordLookup[key];
+    const entry = store.wrongWords[key];
+    if (entry && !entry.meaningZh && cached.meaningZh) {
+      entry.meaningZh = cached.meaningZh;
+      entry.meaningEn = cached.meaningEn || "";
+      entry.phonetic = cached.phonetic || "";
+      saveStore(store);
+    }
+    return cached;
+  }
+
+  const result = await requestAi(store, {
+    type: "word",
+    word,
+    context
+  });
+  if (!result || typeof result !== "object") {
+    throw new Error("没有取得单词释义");
+  }
+  store.wordLookup[key] = result;
+  const entry = store.wrongWords[key];
+  if (entry) {
+    entry.meaningZh = result.meaningZh || entry.meaningZh;
+    entry.meaningEn = result.meaningEn || entry.meaningEn;
+    entry.phonetic = result.phonetic || entry.phonetic;
+  }
+  saveStore(store);
+  return result;
+}
+
+async function openWordLookup(word, context = "") {
+  state.lookupItem = { word, context, kind: "word" };
+  wordDialogTitle.textContent = word;
+  wordDialogContent.innerHTML = `<p class="hint">正在查询释义…</p>`;
+  addLookedUpWordButton.disabled = true;
+  wordDialog.showModal();
+  try {
+    renderWordLookup(await lookupWordData(word, context));
+  } catch (error) {
+    wordDialogContent.innerHTML = `
+      <p class="word-definition">${escapeHtml(error.message)}</p>
+      <p class="hint">请确认 AI 接口设置后重试。</p>
+    `;
+    if (error.code === "CONFIG_REQUIRED") {
+      showToast("请先配置 AI 接口", "error");
+    }
+  }
+}
+
 function queueWrongBookItem(item) {
+  if (wordDialog.open) {
+    wordDialog.close();
+  }
   state.pendingAdd = item;
   reasonItemName.textContent = item.word;
   reasonDialog.showModal();
@@ -1348,6 +1462,16 @@ app.addEventListener("click", async (event) => {
   if (!button) return;
   const { action } = button.dataset;
 
+  if (action === "lookup-word") {
+    event.preventDefault();
+    event.stopPropagation();
+    const context =
+      button.closest("[data-context-text]")?.dataset.contextText ||
+      button.dataset.context ||
+      "";
+    await openWordLookup(button.dataset.word, context);
+    return;
+  }
   if (action === "mode") {
     state.mode = button.dataset.mode;
     renderHome();
@@ -1368,6 +1492,14 @@ app.addEventListener("click", async (event) => {
   if (action === "play-section") {
     const section = getSection();
     playRange(section.start, section.end);
+    return;
+  }
+  if (action === "play-review-sentence") {
+    const section = getSection();
+    const sentence = section?.sentences[Number(button.dataset.sentenceIndex)];
+    if (sentence) {
+      playRange(sentence.start - 0.08, sentence.end + 0.12);
+    }
     return;
   }
   if (action === "begin-quiz") {
@@ -1506,6 +1638,16 @@ app.addEventListener("change", (event) => {
   }
 });
 
+app.addEventListener("keydown", (event) => {
+  if (!["Enter", " "].includes(event.key)) return;
+  const target = event.target.closest(
+    '[data-action="lookup-word"], [data-action="play-review-sentence"]'
+  );
+  if (!target) return;
+  event.preventDefault();
+  target.click();
+});
+
 document.addEventListener("click", (event) => {
   const nav = event.target.closest("[data-nav]");
   if (!nav) return;
@@ -1536,7 +1678,7 @@ reasonDialog.addEventListener("click", (event) => {
   if (!reasonButton || !state.pendingAdd) return;
   const reason = reasonButton.dataset.reason;
   const item = state.pendingAdd;
-  addWrongWord(store, item.word, {
+  const entry = addWrongWord(store, item.word, {
     ...item,
     reason
   });
@@ -1544,10 +1686,43 @@ reasonDialog.addEventListener("click", (event) => {
   state.pendingAdd = null;
   reasonDialog.close();
   showToast(`已加入错词本：${item.word}`);
+  if (entry && !entry.meaningZh && item.kind !== "grammar") {
+    lookupWordData(item.word, item.context || "")
+      .then(() => {
+        if (state.route === "vocabulary") {
+          renderVocabularyPage();
+        }
+      })
+      .catch(() => {
+        showToast("已收藏，可在错词本中点击单词重试获取释义", "error");
+      });
+  }
 });
 
 reasonDialog.addEventListener("close", () => {
   state.pendingAdd = null;
+});
+
+document
+  .querySelector("#close-word-dialog")
+  .addEventListener("click", () => wordDialog.close());
+document
+  .querySelector("#close-word-action")
+  .addEventListener("click", () => wordDialog.close());
+
+addLookedUpWordButton.addEventListener("click", () => {
+  const item = state.lookupItem;
+  if (!item?.word) return;
+  const queued = {
+    word: item.word,
+    kind: "word",
+    meaningZh: item.meaningZh || "",
+    meaningEn: item.meaningEn || "",
+    phonetic: item.phonetic || "",
+    context: item.context || ""
+  };
+  wordDialog.close();
+  queueWrongBookItem(queued);
 });
 
 audioEl.addEventListener("timeupdate", () => {

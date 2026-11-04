@@ -31,3 +31,9 @@ test("review text highlights wrong-book terms in yellow", () => {
   assert.match(appSource, /highlightWrongBookTerms\(sentence\.text\)/);
   assert.match(cssSource, /\.wrong-word-highlight\s*\{[\s\S]*?background:\s*#ffe66d;/);
 });
+
+test("every review word can be looked up and the sentence can play", () => {
+  assert.match(appSource, /class="lookup-word" data-action="lookup-word"/);
+  assert.match(appSource, /data-action="play-review-sentence"/);
+  assert.match(appSource, /type:\s*"word"/);
+});
