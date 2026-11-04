@@ -32,6 +32,9 @@ npm run serve
 打开 `http://127.0.0.1:8080`。本地服务器支持音频 Range 请求，逐句跳转
 不需要预先生成切片。
 
+听力音频以 48 kbps 单声道 MP3 提供，并由 Cloudflare 静态资源域名分发，
+用于缩短首次播放等待时间。
+
 ```powershell
 npm test
 npm run validate:data

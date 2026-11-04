@@ -44,6 +44,6 @@ test("every exam has complete sections and questions", () => {
 test("all exam audio files are fully downloaded", () => {
   for (const exam of exams) {
     const stats = fs.statSync(path.join(root, exam.meta.audio));
-    assert.ok(stats.size > 10_000_000);
+    assert.ok(stats.size > 5_000_000);
   }
 });

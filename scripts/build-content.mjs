@@ -16,8 +16,6 @@ const selectedPaperIds = [
   "cet6_2021.06_set1"
 ];
 
-const m4aPaperIds = new Set(["cet6_2023.06_set1"]);
-
 const sectionDefinitions = [
   {
     source: "Conversation One",
@@ -173,7 +171,7 @@ function buildExam(paper) {
 
   const duration = round(Math.max(...paper.sentences.map((sentence) => sentence.end)));
   const displayMonth = String(Number(month));
-  const audioExtension = m4aPaperIds.has(paper.id) ? "m4a" : "mp3";
+  const audioExtension = "mp3";
   return {
     meta: {
       id: examId,

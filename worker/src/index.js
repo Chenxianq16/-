@@ -191,6 +191,65 @@ function parseModelJson(text) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.pathname.startsWith("/cet6-media/")) {
+      const assetUrl = new URL(request.url);
+      assetUrl.pathname = url.pathname.replace(/^\/cet6-media/, "");
+      const assetRequest = new Request(assetUrl.toString(), { method: request.method });
+      const assetResponse = await env.ASSETS.fetch(assetRequest);
+      const headers = new Headers(assetResponse.headers);
+      headers.set("Access-Control-Allow-Origin", "*");
+      headers.set("Accept-Ranges", "bytes");
+      headers.set("Cache-Control", "public, max-age=3600");
+      headers.set("Vary", "Range");
+
+      const rangeHeader = request.headers.get("Range");
+      if (request.method === "HEAD" || !rangeHeader) {
+        return new Response(request.method === "HEAD" ? null : assetResponse.body, {
+          status: assetResponse.status,
+          statusText: assetResponse.statusText,
+          headers
+        });
+      }
+
+      const bytes = await assetResponse.arrayBuffer();
+      const size = bytes.byteLength;
+      const match = /^bytes=(\d*)-(\d*)$/.exec(rangeHeader);
+      if (!match) {
+        headers.set("Content-Range", `bytes */${size}`);
+        return new Response(null, { status: 416, headers });
+      }
+
+      let start;
+      let end;
+      if (!match[1] && match[2]) {
+        const suffixLength = Math.min(Number(match[2]), size);
+        start = Math.max(0, size - suffixLength);
+        end = size - 1;
+      } else {
+        start = Number(match[1] || 0);
+        end = match[2] ? Math.min(Number(match[2]), size - 1) : size - 1;
+      }
+
+      if (
+        !Number.isFinite(start) ||
+        !Number.isFinite(end) ||
+        start < 0 ||
+        end < start ||
+        start >= size
+      ) {
+        headers.set("Content-Range", `bytes */${size}`);
+        return new Response(null, { status: 416, headers });
+      }
+
+      const chunk = bytes.slice(start, end + 1);
+      headers.set("Content-Length", String(chunk.byteLength));
+      headers.set("Content-Range", `bytes ${start}-${end}/${size}`);
+      return new Response(chunk, {
+        status: 206,
+        headers
+      });
+    }
+
     if (!url.pathname.endsWith("/api/analyze")) {
       return jsonResponse({ error: "Not found" }, 404, request, env);
     }

@@ -1,4 +1,6 @@
 node_modules/
+.tools/
+.audio-originals/
 .DS_Store
 Thumbs.db
 .wrangler/

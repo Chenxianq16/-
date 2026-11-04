@@ -32,7 +32,7 @@ for (const entry of index.exams) {
 
   const audioPath = path.join(root, exam.meta.audio);
   assert(fs.existsSync(audioPath), `${entry.id} audio file is missing.`);
-  assert(fs.statSync(audioPath).size > 10_000_000, `${entry.id} audio file is too small.`);
+  assert(fs.statSync(audioPath).size > 5_000_000, `${entry.id} audio file is too small.`);
 
   for (const section of exam.sections) {
     assert(!sectionIds.has(section.id), `Duplicate section id: ${section.id}`);

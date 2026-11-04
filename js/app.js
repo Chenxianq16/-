@@ -150,7 +150,13 @@ function questionRange(section) {
 }
 
 function setAudioSource() {
-  const source = new URL(`../${state.data.meta.audio}`, import.meta.url);
+  const configuredBase = window.CET6_CONFIG?.audioBaseUrl;
+  const source = configuredBase
+    ? new URL(
+        state.data.meta.audio.replace(/^assets\//, ""),
+        configuredBase
+      )
+    : new URL(`../${state.data.meta.audio}`, import.meta.url);
   if (audioEl.src !== source.href) {
     audioEl.src = source.href;
   }
