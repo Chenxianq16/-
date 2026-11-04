@@ -1686,11 +1686,16 @@ reasonDialog.addEventListener("click", (event) => {
   state.pendingAdd = null;
   reasonDialog.close();
   showToast(`已加入错词本：${item.word}`);
+  if (state.route === "practice" && state.phase === "review") {
+    render();
+  }
   if (entry && !entry.meaningZh && item.kind !== "grammar") {
     lookupWordData(item.word, item.context || "")
       .then(() => {
         if (state.route === "vocabulary") {
           renderVocabularyPage();
+        } else if (state.route === "practice" && state.phase === "review") {
+          render();
         }
       })
       .catch(() => {

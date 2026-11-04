@@ -30,6 +30,10 @@ test("grammar and collocations can be added from AI analysis", () => {
 test("review text highlights wrong-book terms in yellow", () => {
   assert.match(appSource, /highlightWrongBookTerms\(sentence\.text\)/);
   assert.match(cssSource, /\.wrong-word-highlight\s*\{[\s\S]*?background:\s*#ffe66d;/);
+  assert.match(
+    appSource,
+    /state\.route === "practice" && state\.phase === "review"\) \{\s*render\(\)/
+  );
 });
 
 test("every review word can be looked up and the sentence can play", () => {
