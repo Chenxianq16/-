@@ -1,109 +1,1718 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#f7f7f4">
-    <meta
-      name="description"
-      content="六级听力盲听、逐句默写、题目检测与 AI 错因分析。"
-    >
-    <title>CET6 精听</title>
-    <link rel="stylesheet" href="./assets/styles.css">
-  </head>
-  <body>
-    <header class="site-header">
-      <a class="brand" href="#home" aria-label="回到首页">
-        <span class="brand-mark">C6</span>
-        <span>CET6 精听</span>
-      </a>
-      <nav class="nav" aria-label="主导航">
-        <a href="#home" data-nav="home">训练</a>
-        <a href="#vocabulary" data-nav="vocabulary">错词本</a>
-        <button class="text-button" id="open-settings" type="button">AI 设置</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>C6 · 专属 CET-6 学习教练</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F7F7F5',
+            ink: '#111827',
+            muted: '#6B7280',
+            tealbrand: {
+              50: '#F0FDFA',
+              100: '#CCFBF1',
+              600: '#0D9488',
+              700: '#0F766E',
+              800: '#115E59',
+              900: '#134E4A'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', '"Noto Sans SC"', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #F7F7F5;
+      color: #111827;
+      font-family: 'Inter', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .tabular-nums { font-variant-numeric: tabular-nums; }
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E7EB;
+      border-radius: 1rem;
+    }
+    .micro-label {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #0F766E;
+      font-weight: 600;
+    }
+    .hl-sentence {
+      cursor: pointer;
+      border-radius: 0.25rem;
+      transition: background-color 0.15s ease;
+      padding: 1px 2px;
+    }
+    .hl-sentence:hover { background-color: #F0FDFA; }
+    .hl-sentence.active-hl {
+      background-color: #CCFBF1;
+      border-bottom: 2px solid #0F766E;
+    }
+    .vocab-chip {
+      border-bottom: 1.5px dashed #0D9488;
+      cursor: pointer;
+      color: #115E59;
+      font-weight: 500;
+      padding: 0 2px;
+      border-radius: 2px;
+    }
+    .vocab-chip:hover { background-color: #CCFBF1; }
+    /* Hide scrollbar for horizontal tab bar on narrow screens */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Top Navigation -->
+  <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-gray-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5 shrink-0">
+        <div class="w-8 h-8 rounded-lg bg-tealbrand-700 text-white font-mono font-semibold text-sm flex items-center justify-center tracking-tight">C6</div>
+        <div class="leading-tight">
+          <div class="text-sm font-bold text-ink">CET-6 专属教练</div>
+          <div class="text-[11px] text-muted hidden sm:block">庚金·水木清润破局版</div>
+        </div>
+      </div>
+
+      <nav id="main-nav" class="flex items-center gap-1 overflow-x-auto no-scrollbar py-1">
+        <button type="button" data-tab="dashboard" class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition">面板</button>
+        <button type="button" data-tab="listening" class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition">精听</button>
+        <button type="button" data-tab="reading" class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition">阅读</button>
+        <button type="button" data-tab="writing" class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition">写译</button>
+        <button type="button" data-tab="srs" class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition">词库 <span id="nav-srs-badge" class="ml-1 px-1.5 py-0.5 text-[10px] rounded-full bg-tealbrand-50 text-tealbrand-700 font-mono">0</span></button>
+        <button type="button" data-tab="mock" class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition">模考</button>
       </nav>
-    </header>
 
-    <main id="app" class="app-shell" aria-live="polite">
-      <section class="loading-state">
-        <p class="eyebrow">LOADING</p>
-        <h1>正在载入听力数据</h1>
-      </section>
-    </main>
+      <div class="flex items-center gap-2 shrink-0">
+        <span id="gamify-pill" class="hidden text-xs font-mono px-2.5 py-1 rounded-full bg-tealbrand-50 text-tealbrand-800 border border-tealbrand-100">Lv.1 · 0 XP</span>
+        <button type="button" id="open-settings-btn" class="px-2.5 py-1.5 rounded-lg border border-gray-200 text-xs font-medium text-gray-700 hover:bg-gray-50 transition">档案设置</button>
+      </div>
+    </div>
+  </header>
 
-    <audio id="audio" controls preload="auto"></audio>
-    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <!-- Main Content -->
+  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
 
-    <dialog id="settings-dialog" class="dialog">
-      <form method="dialog" class="dialog-panel">
-        <div class="dialog-heading">
-          <div>
-            <p class="eyebrow">DEEPSEEK PROXY</p>
-            <h2>AI 接口设置</h2>
+    <!-- ==================== TAB 1: DASHBOARD ==================== -->
+    <section id="view-dashboard" class="tab-view space-y-6">
+      <!-- Hero Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+        <!-- Left Hero -->
+        <div class="lg:col-span-8 card p-6 flex flex-col justify-between gap-5">
+          <div class="space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="micro-label">CET-6 SPRINT · 2026.12.12</span>
+              <span id="countdown-pill" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-mono font-medium bg-tealbrand-50 text-tealbrand-800 border border-tealbrand-100">距离开考 -- 天</span>
+            </div>
+            <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink">先听懂，再写对，最后看透错因。</h1>
+            <p id="coach-opening-text" class="text-sm text-gray-600 leading-relaxed"></p>
           </div>
-          <button class="icon-button" value="cancel" aria-label="关闭">×</button>
+
+          <!-- Energy / Time Mode Switcher -->
+          <div class="pt-4 border-t border-gray-100 space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="text-xs font-semibold text-gray-700">今日可用状态（随时切换，不固定作息）</span>
+              <div class="inline-flex rounded-xl bg-gray-100 p-1 gap-1" id="energy-switcher">
+                <button type="button" data-energy="35m" class="energy-btn px-3 py-1 rounded-lg text-xs font-medium transition">标准冲刺 35m</button>
+                <button type="button" data-energy="20m" class="energy-btn px-3 py-1 rounded-lg text-xs font-medium transition">轻量保持 20m</button>
+                <button type="button" data-energy="10m" class="energy-btn px-3 py-1 rounded-lg text-xs font-medium transition">低能量微任务 10m</button>
+              </div>
+            </div>
+            <div id="today-mission-box" class="rounded-xl bg-tealbrand-50/70 border border-tealbrand-100 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div class="space-y-1">
+                <div id="mission-title" class="text-sm font-semibold text-tealbrand-900"></div>
+                <div id="mission-desc" class="text-xs text-tealbrand-800/80"></div>
+              </div>
+              <button type="button" id="start-mission-btn" class="shrink-0 px-4 py-2 rounded-xl bg-tealbrand-700 hover:bg-tealbrand-800 text-white text-xs font-semibold transition">立即开始</button>
+            </div>
+          </div>
         </div>
-        <label class="field">
-          <span>Worker 地址</span>
-          <input
-            id="ai-endpoint"
-            type="url"
-            placeholder="https://your-worker.workers.dev/api/analyze"
-            autocomplete="off"
-          >
-        </label>
-        <p class="hint">
-          只填写代理地址，不要把 DeepSeek API Key 写入网页。配置后点击“保存”。
-        </p>
-        <div class="dialog-actions">
-          <button class="button button-secondary" value="cancel">取消</button>
-          <button class="button" id="save-settings" value="default">保存</button>
+
+        <!-- Right Local Progress -->
+        <div class="lg:col-span-4 card p-6 flex flex-col justify-between gap-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <div class="micro-label">LOCAL PROGRESS</div>
+              <h2 class="text-base font-bold text-ink mt-0.5">本机备考进度</h2>
+            </div>
+            <button type="button" id="checkin-btn" class="px-3 py-1.5 rounded-xl text-xs font-semibold transition"></button>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 text-center py-2">
+            <div class="rounded-xl bg-paper p-3">
+              <div id="stat-streak" class="text-xl font-bold font-mono text-tealbrand-700 tabular-nums">0</div>
+              <div class="text-[11px] text-muted mt-0.5">连续打卡</div>
+            </div>
+            <div class="rounded-xl bg-paper p-3">
+              <div id="stat-est-total" class="text-xl font-bold font-mono text-ink tabular-nums">489</div>
+              <div class="text-[11px] text-muted mt-0.5">当前估分</div>
+            </div>
+            <div class="rounded-xl bg-paper p-3">
+              <div id="stat-srs-due" class="text-xl font-bold font-mono text-ink tabular-nums">0</div>
+              <div class="text-[11px] text-muted mt-0.5">待复习词</div>
+            </div>
+          </div>
+
+          <!-- 14-Day Check-in Strip -->
+          <div>
+            <div class="flex items-center justify-between text-[11px] text-muted mb-1.5">
+              <span>近 14 天打卡轨迹</span>
+              <span id="missed-days-label"></span>
+            </div>
+            <div id="streak-grid" class="grid grid-cols-7 gap-1.5"></div>
+          </div>
         </div>
+      </div>
+
+      <!-- Score Leverage Chart + Error Pattern Log -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+        <div class="lg:col-span-5 card p-6 space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <div class="micro-label">SCORE LEVERAGE</div>
+              <h2 class="text-base font-bold text-ink mt-0.5">四级基线 → 六级目标拆解</h2>
+            </div>
+            <span id="target-badge" class="text-xs font-mono px-2.5 py-1 rounded-full bg-gray-100 text-gray-800">目标 545+</span>
+          </div>
+          <div class="relative h-64">
+            <canvas id="score-chart"></canvas>
+          </div>
+          <p class="text-xs text-muted leading-relaxed">
+            你的四级阅读已达 <strong class="text-ink">200/249</strong>，优势明显；而听力 <strong class="text-ink">140/249</strong> 处于常模约 12%–19% 分位，是当前提分空间最大的一环。
+          </p>
+        </div>
+
+        <div class="lg:col-span-7 card p-6 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <div class="micro-label">ERROR PATTERN LOG</div>
+              <h2 class="text-base font-bold text-ink mt-0.5">按错误模式归档的错题本</h2>
+            </div>
+            <button type="button" id="open-add-error-btn" class="px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-medium text-ink hover:bg-gray-50 transition">+ 记录错因</button>
+          </div>
+
+          <!-- Pattern Filter -->
+          <div id="error-filter-bar" class="flex flex-wrap gap-1.5"></div>
+
+          <!-- Error List -->
+          <div id="error-list" class="space-y-2.5 max-h-64 overflow-y-auto pr-1"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 2: LISTENING LAB ==================== -->
+    <section id="view-listening" class="tab-view hidden space-y-5">
+      <div class="card p-6 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <div class="micro-label">LISTENING LAB · 140 → 175+</div>
+            <h2 class="text-xl font-bold text-ink mt-0.5">六级听力精听与逐句听写</h2>
+            <a href="./listening.html" class="inline-block mt-2 text-xs font-semibold text-tealbrand-700 underline">打开完整真题精听（7 套真题与 AI 复盘）</a>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <select id="listening-passage-select" class="px-3 py-1.5 rounded-xl border border-gray-200 text-xs sm:text-sm bg-white text-ink"></select>
+            <select id="listening-speed-select" class="px-2.5 py-1.5 rounded-xl border border-gray-200 text-xs font-mono bg-white text-ink">
+              <option value="0.75">0.75x 慢速</option>
+              <option value="0.9">0.90x 精听</option>
+              <option value="1" selected>1.00x 原速</option>
+              <option value="1.15">1.15x 提速</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Step Switcher -->
+        <div class="inline-flex rounded-xl bg-gray-100 p-1 gap-1" id="listening-step-tabs">
+          <button type="button" data-lstep="blind" class="lstep-btn px-3 py-1.5 rounded-lg text-xs font-medium transition">1. 盲听答题</button>
+          <button type="button" data-lstep="dictation" class="lstep-btn px-3 py-1.5 rounded-lg text-xs font-medium transition">2. 逐句听写</button>
+          <button type="button" data-lstep="transcript" class="lstep-btn px-3 py-1.5 rounded-lg text-xs font-medium transition">3. 原文与错因</button>
+        </div>
+
+        <!-- Audio Control Bar -->
+        <div class="rounded-xl bg-paper border border-gray-200 p-4 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-2">
+            <button type="button" id="play-passage-btn" class="px-4 py-2 rounded-xl bg-tealbrand-700 hover:bg-tealbrand-800 text-white text-xs font-semibold transition">播放整段音频</button>
+            <button type="button" id="stop-audio-btn" class="px-3 py-2 rounded-xl border border-gray-200 bg-white text-xs font-medium text-gray-700 hover:bg-gray-50 transition">停止</button>
+          </div>
+          <div id="audio-status" class="text-xs font-mono text-muted">使用浏览器语音引擎实时合成 · 随时可调语速</div>
+        </div>
+
+        <!-- Step Content Container -->
+        <div id="listening-content" class="space-y-4"></div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 3: READING LAB ==================== -->
+    <section id="view-reading" class="tab-view hidden space-y-5">
+      <div class="card p-6 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <div class="micro-label">READING LAB · 200 → 215+</div>
+            <h2 class="text-xl font-bold text-ink mt-0.5">六级阅读高亮与生词提取</h2>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <select id="reading-passage-select" class="px-3 py-1.5 rounded-xl border border-gray-200 text-xs sm:text-sm bg-white text-ink"></select>
+            <button type="button" id="toggle-hl-mode-btn" class="px-3 py-1.5 rounded-xl border border-tealbrand-200 bg-tealbrand-50 text-tealbrand-800 text-xs font-semibold transition">高亮笔：开启</button>
+            <div class="px-3 py-1.5 rounded-xl bg-gray-100 font-mono text-xs text-ink tabular-nums" id="reading-timer-display">09:00</div>
+            <button type="button" id="reading-timer-btn" class="px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-medium hover:bg-gray-50 transition">开始计时</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Passage -->
+          <div class="lg:col-span-7 space-y-3">
+            <div class="text-xs text-muted">提示：点击任意句子可<span class="text-tealbrand-700 font-medium">高亮标记主干/转折句</span>；点击<span class="border-b border-dashed border-tealbrand-600 text-tealbrand-800">虚线词汇</span>可查看释义并加入 SRS 错词本。</div>
+            <div id="reading-passage-body" class="p-5 rounded-xl bg-paper border border-gray-200 space-y-3 text-sm leading-7 text-gray-800"></div>
+          </div>
+
+          <!-- Questions & Margin Notes -->
+          <div class="lg:col-span-5 space-y-4">
+            <div id="reading-questions-box" class="space-y-4"></div>
+            <div class="pt-3 border-t border-gray-100 space-y-2">
+              <label for="reading-note-input" class="text-xs font-semibold text-gray-700 block">本篇笔记（自动保存在本机）</label>
+              <textarea id="reading-note-input" rows="3" placeholder="记录干扰项特征、段落逻辑或长难句结构..." class="w-full rounded-xl border border-gray-200 p-3 text-xs focus:outline-none focus:ring-2 focus:ring-tealbrand-600"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 4: WRITING & TRANSLATION ==================== -->
+    <section id="view-writing" class="tab-view hidden space-y-5">
+      <div class="card p-6 space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <div class="micro-label">WRITING &amp; TRANSLATION · 149 → 165+</div>
+            <h2 class="text-xl font-bold text-ink mt-0.5">小步骤写作升格与段落翻译</h2>
+          </div>
+          <div class="inline-flex rounded-xl bg-gray-100 p-1 gap-1" id="writing-mode-tabs">
+            <button type="button" data-wmode="upgrade" class="wmode-btn px-3 py-1.5 rounded-lg text-xs font-medium transition">逐句升格训练</button>
+            <button type="button" data-wmode="translation" class="wmode-btn px-3 py-1.5 rounded-lg text-xs font-medium transition">六级段落汉译英</button>
+          </div>
+        </div>
+
+        <div id="writing-content" class="space-y-4"></div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 5: SRS VOCABULARY ==================== -->
+    <section id="view-srs" class="tab-view hidden space-y-5">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+        <div class="lg:col-span-7 card p-6 space-y-5">
+          <div class="flex items-center justify-between">
+            <div>
+              <div class="micro-label">SPACED REPETITION</div>
+              <h2 class="text-xl font-bold text-ink mt-0.5">错题驱动 SRS 词库</h2>
+            </div>
+            <span id="srs-queue-count" class="text-xs font-mono px-2.5 py-1 rounded-full bg-tealbrand-50 text-tealbrand-800">待复习 0</span>
+          </div>
+
+          <div id="srs-card-stage" class="rounded-2xl border border-gray-200 bg-paper p-6 min-h-[260px] flex flex-col justify-between"></div>
+        </div>
+
+        <div class="lg:col-span-5 card p-6 space-y-4">
+          <div class="micro-label">ADD CUSTOM WORD</div>
+          <h3 class="text-base font-bold text-ink">手动录入新词 / 听力盲词</h3>
+          <form id="add-srs-form" class="space-y-3">
+            <input type="text" id="new-srs-word" required placeholder="英文单词或短语（如 indispensable）" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-tealbrand-600" />
+            <input type="text" id="new-srs-meaning" required placeholder="中文释义（如 adj. 不可或缺的）" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-tealbrand-600" />
+            <input type="text" id="new-srs-note" placeholder="错因/易混提示（可选，如 听力易漏弱读前缀）" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-tealbrand-600" />
+            <button type="submit" class="w-full py-2.5 rounded-xl bg-tealbrand-700 hover:bg-tealbrand-800 text-white text-xs font-semibold transition">加入间隔重复队列</button>
+          </form>
+
+          <div class="pt-3 border-t border-gray-100">
+            <div class="text-xs font-semibold text-gray-700 mb-2">词库清单（最近添加）</div>
+            <div id="srs-word-list" class="space-y-1.5 max-h-44 overflow-y-auto text-xs"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 6: TIMED MOCK ==================== -->
+    <section id="view-mock" class="tab-view hidden space-y-5">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+        <div class="lg:col-span-6 card p-6 space-y-4">
+          <div class="micro-label">TIMED SECTION DRILL</div>
+          <h2 class="text-xl font-bold text-ink">六级官方限时沙盘</h2>
+          <p class="text-xs text-muted">严格匹配 CET-6 考场节奏（15:00–17:25）：写作 30 分、听力 25 分、阅读 40 分、翻译 30 分。</p>
+
+          <div class="flex flex-wrap gap-2" id="mock-preset-btns">
+            <button type="button" data-mins="30" data-label="短文写作" class="mock-preset px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-medium hover:bg-gray-50">写作 30:00</button>
+            <button type="button" data-mins="25" data-label="听力理解" class="mock-preset px-3 py-1.5 rounded-xl border border-tealbrand-200 bg-tealbrand-50 text-tealbrand-800 text-xs font-semibold">听力 25:00</button>
+            <button type="button" data-mins="40" data-label="阅读理解" class="mock-preset px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-medium hover:bg-gray-50">阅读 40:00</button>
+            <button type="button" data-mins="30" data-label="段落翻译" class="mock-preset px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-medium hover:bg-gray-50">翻译 30:00</button>
+          </div>
+
+          <div class="rounded-2xl bg-paper border border-gray-200 p-6 text-center space-y-4">
+            <div id="mock-section-label" class="text-xs font-semibold text-tealbrand-700">当前计时：听力理解</div>
+            <div id="mock-timer-display" class="text-5xl font-mono font-bold text-ink tabular-nums">25:00</div>
+            <div class="flex justify-center gap-2">
+              <button type="button" id="mock-start-btn" class="px-5 py-2 rounded-xl bg-tealbrand-700 hover:bg-tealbrand-800 text-white text-xs font-semibold transition">开始计时</button>
+              <button type="button" id="mock-reset-btn" class="px-4 py-2 rounded-xl border border-gray-200 bg-white text-xs font-medium text-gray-700 hover:bg-gray-50 transition">重置</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 card p-6 space-y-4">
+          <div class="micro-label">SCORE ESTIMATOR &amp; CHECKPOINT</div>
+          <h2 class="text-xl font-bold text-ink">模考估分与冲刺预警</h2>
+
+          <form id="mock-log-form" class="grid grid-cols-3 gap-3">
+            <div>
+              <label class="text-[11px] text-muted block mb-1">听力估分 (0-249)</label>
+              <input type="number" id="mock-in-listen" min="0" max="249" value="155" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm font-mono" />
+            </div>
+            <div>
+              <label class="text-[11px] text-muted block mb-1">阅读估分 (0-249)</label>
+              <input type="number" id="mock-in-read" min="0" max="249" value="205" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm font-mono" />
+            </div>
+            <div>
+              <label class="text-[11px] text-muted block mb-1">写译估分 (0-212)</label>
+              <input type="number" id="mock-in-write" min="0" max="212" value="152" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm font-mono" />
+            </div>
+            <button type="submit" class="col-span-3 py-2.5 rounded-xl bg-ink hover:bg-gray-800 text-white text-xs font-semibold transition">记录本次模考并更新面板估分</button>
+          </form>
+
+          <div id="mock-advice-box" class="rounded-xl p-4 text-xs leading-relaxed border"></div>
+          <div id="mock-history-list" class="space-y-2 max-h-40 overflow-y-auto text-xs"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Settings & Persona Modal -->
+  <div id="settings-modal" class="fixed inset-0 z-50 hidden bg-black/30 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl border border-gray-200 max-w-lg w-full p-6 space-y-5 shadow-xl max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between">
+        <div>
+          <div class="micro-label">COACH PROFILE</div>
+          <h3 class="text-lg font-bold text-ink">学习性格档案与目标设置</h3>
+        </div>
+        <button type="button" id="close-settings-btn" class="w-8 h-8 rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50">✕</button>
+      </div>
+
+      <div class="rounded-xl bg-tealbrand-50/70 border border-tealbrand-100 p-4 space-y-2 text-xs leading-relaxed text-tealbrand-900">
+        <div class="font-bold">性格档案：庚金·水木清润破局型</div>
+        <p><strong>特质与节奏：</strong>逻辑清晰、讲求效率，反感空泛说教与沉闷堆砌；最适合“短时高密度输入 + 即时正反馈”，一旦遇阻需要先做 10 分钟小任务破局。</p>
+        <p><strong>视觉与教练约定：</strong>采用深青绿（水木疏通）+ 暖米白留白，避开厚重土色与刺眼红；教练只用事实与错因说话，不灌鸡汤。</p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3 text-xs">
+        <div>
+          <label class="text-muted block mb-1">听力目标 (满分249)</label>
+          <input type="number" id="set-target-listen" min="100" max="249" class="w-full px-3 py-2 rounded-xl border border-gray-200 font-mono" />
+        </div>
+        <div>
+          <label class="text-muted block mb-1">阅读目标 (满分249)</label>
+          <input type="number" id="set-target-read" min="100" max="249" class="w-full px-3 py-2 rounded-xl border border-gray-200 font-mono" />
+        </div>
+        <div>
+          <label class="text-muted block mb-1">写译目标 (满分212)</label>
+          <input type="number" id="set-target-write" min="80" max="212" class="w-full px-3 py-2 rounded-xl border border-gray-200 font-mono" />
+        </div>
+        <div class="flex items-end">
+          <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl border border-gray-200 w-full">
+            <input type="checkbox" id="set-gamify" class="accent-teal-700 w-4 h-4" />
+            <span class="font-medium text-ink">开启积分与等级</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-gray-100">
+        <div class="flex gap-2">
+          <button type="button" id="export-json-btn" class="px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-medium hover:bg-gray-50">导出进度 JSON</button>
+          <button type="button" id="reset-demo-btn" class="px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-medium text-gray-600 hover:bg-gray-50">恢复初始</button>
+        </div>
+        <button type="button" id="save-settings-btn" class="px-4 py-2 rounded-xl bg-tealbrand-700 hover:bg-tealbrand-800 text-white text-xs font-semibold">保存设置</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Error Modal -->
+  <div id="error-modal" class="fixed inset-0 z-50 hidden bg-black/30 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl border border-gray-200 max-w-md w-full p-6 space-y-4 shadow-xl">
+      <div class="flex items-center justify-between">
+        <h3 class="text-base font-bold text-ink">记录新错因</h3>
+        <button type="button" id="close-error-modal-btn" class="w-8 h-8 rounded-lg border border-gray-200 text-gray-500">✕</button>
+      </div>
+      <form id="add-error-form" class="space-y-3 text-xs">
+        <select id="err-pattern" class="w-full px-3 py-2 rounded-xl border border-gray-200 bg-white">
+          <option value="连读弱读漏听">连读弱读漏听（听力）</option>
+          <option value="同义替换未识别">同义替换未识别（听/阅）</option>
+          <option value="长难句主干偏差">长难句主干偏差（阅读）</option>
+          <option value="中式表达直译">中式表达直译（写译）</option>
+          <option value="高级句式单一">高级句式单一（写作）</option>
+        </select>
+        <input type="text" id="err-note" required placeholder="具体错题点（如：把 take it for granted 听成 take it for grant）" class="w-full px-3 py-2 rounded-xl border border-gray-200" />
+        <input type="text" id="err-fix" required placeholder="修正策略（如：注意弱读 /fə/ 与过去分词尾音）" class="w-full px-3 py-2 rounded-xl border border-gray-200" />
+        <button type="submit" class="w-full py-2.5 rounded-xl bg-tealbrand-700 text-white font-semibold">保存到错题本</button>
       </form>
-    </dialog>
+    </div>
+  </div>
 
-    <dialog id="reason-dialog" class="dialog">
-      <div class="dialog-panel">
-        <div class="dialog-heading">
-          <div>
-            <p class="eyebrow">ERROR REASON</p>
-            <h2>为什么加入错词本？</h2>
-          </div>
-          <button class="icon-button" id="cancel-reason" type="button" aria-label="关闭">×</button>
-        </div>
-        <p class="reason-item-name" id="reason-item-name"></p>
-        <p class="hint">选择一个最接近的错误原因。该原因会和单词、原句一起保存在本机。</p>
-        <div class="reason-options">
-          <button type="button" class="reason-option" data-reason="不认识这个词">不认识这个词</button>
-          <button type="button" class="reason-option" data-reason="认识但没听出来">认识但没听出来</button>
-          <button type="button" class="reason-option" data-reason="连读、弱读或吞音">连读、弱读或吞音</button>
-          <button type="button" class="reason-option" data-reason="语法或句子结构">语法或句子结构</button>
-          <button type="button" class="reason-option" data-reason="固定搭配不熟悉">固定搭配不熟悉</button>
-          <button type="button" class="reason-option" data-reason="拼写或输入错误">拼写或输入错误</button>
-          <button type="button" class="reason-option" data-reason="注意力或记忆遗漏">注意力或记忆遗漏</button>
-          <button type="button" class="reason-option" data-reason="其他原因">其他原因</button>
-        </div>
+  <!-- Vocab Popover Modal -->
+  <div id="vocab-modal" class="fixed inset-0 z-50 hidden bg-black/20 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl border border-gray-200 max-w-sm w-full p-5 space-y-3 shadow-xl">
+      <div class="flex items-center justify-between">
+        <span id="vm-word" class="text-lg font-bold text-ink"></span>
+        <button type="button" id="close-vocab-modal-btn" class="text-gray-400 hover:text-gray-700">✕</button>
       </div>
-    </dialog>
-
-    <dialog id="word-dialog" class="dialog word-dialog">
-      <div class="dialog-panel">
-        <div class="dialog-heading">
-          <div>
-            <p class="eyebrow">WORD LOOKUP</p>
-            <h2 id="word-dialog-title">查词</h2>
-          </div>
-          <button class="icon-button" id="close-word-dialog" type="button" aria-label="关闭">×</button>
-        </div>
-        <div id="word-dialog-content" class="word-dialog-content"></div>
-        <div class="dialog-actions">
-          <button class="button-secondary" id="close-word-action" type="button">关闭</button>
-          <button class="button" id="add-looked-up-word" type="button">加入错词本</button>
-        </div>
+      <p id="vm-meaning" class="text-sm text-gray-700"></p>
+      <p id="vm-tip" class="text-xs text-muted bg-paper p-2.5 rounded-lg"></p>
+      <div class="flex gap-2 pt-1">
+        <button type="button" id="vm-speak-btn" class="px-3 py-2 rounded-xl border border-gray-200 text-xs font-medium hover:bg-gray-50">🔊 发音</button>
+        <button type="button" id="vm-add-srs-btn" class="flex-1 py-2 rounded-xl bg-tealbrand-700 text-white text-xs font-semibold hover:bg-tealbrand-800">+ 加入 SRS 词库</button>
       </div>
-    </dialog>
+    </div>
+  </div>
 
-    <script src="./assets/config.js"></script>
-    <script type="module" src="./js/app.js"></script>
-  </body>
+  <!-- Toast -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 hidden px-4 py-2.5 rounded-xl bg-ink text-white text-xs font-medium shadow-lg transition"></div>
+
+  <script>
+    (function () {
+      const STORAGE_KEY = 'cet6_coach_v1';
+
+      // ---------- Curated CET-6 Content Bank ----------
+      const LISTENING_PASSAGES = [
+        {
+          id: 'l1',
+          type: '长对话',
+          title: 'Long Conversation · 学术科研与时间管理',
+          sentences: [
+            "I've been drowning in lab reports since Monday, and the deadline for the literature review is already looming.",
+            "Have you considered breaking the reading list into twenty-five-minute sprints instead of marathon sessions?",
+            "I tried that last semester, yet I always got sidetracked whenever a dense journal article threw unfamiliar jargon at me.",
+            "That's actually why annotating only the topic sentences on the first pass saves nearly half the time."
+          ],
+          question: "What does the woman suggest the man do to handle dense journal articles?",
+          options: [
+            "A) Skip the literature review until lab reports are finished.",
+            "B) Annotate only topic sentences during the first reading.",
+            "C) Memorize all unfamiliar jargon before starting sprints.",
+            "D) Switch to longer marathon study sessions."
+          ],
+          answerIdx: 1,
+          explanation: "关键句在第四句：annotating only the topic sentences on the first pass saves nearly half the time。干扰项 D 与原文 instead of marathon sessions 相反。"
+        },
+        {
+          id: 'l2',
+          type: '听力篇章',
+          title: 'Listening Passage · 城市微气候与绿地降温',
+          sentences: [
+            "Urban planners used to assume that only massive central parks could meaningfully cool down overheated city centers.",
+            "Recent satellite measurements, however, reveal that scattered pocket gardens spaced every few blocks create a continuous cooling corridor.",
+            "Even more striking is that shaded vertical walls can lower adjacent indoor temperatures by up to three degrees Celsius.",
+            "Consequently, municipalities are shifting budgets from monumental plazas toward decentralized green infrastructure."
+          ],
+          question: "Why are municipalities adjusting their urban greening budgets?",
+          options: [
+            "A) Monumental plazas are too expensive to maintain in winter.",
+            "B) Satellite tools cannot measure temperatures in large parks.",
+            "C) Scattered pocket gardens effectively form continuous cooling corridors.",
+            "D) Vertical walls require less water than traditional street trees."
+          ],
+          answerIdx: 2,
+          explanation: "因果逻辑词 Consequently 引出结论，对应前文 scattered pocket gardens ... create a continuous cooling corridor。听力中转折词 however 与因果词 consequently 后常为考点。"
+        },
+        {
+          id: 'l3',
+          type: '讲座/讲话',
+          title: 'Lecture · 睡眠剥夺与工作记忆',
+          sentences: [
+            "When college students pull an all-nighter before an exam, they often believe coffee compensates for lost sleep.",
+            "While caffeine temporarily masks drowsiness, neuroimaging shows that the prefrontal cortex still struggles to filter out irrelevant details.",
+            "In other words, you may feel alert, yet your working memory quietly drops its accuracy on multi-step reasoning tasks.",
+            "A brief twenty-minute nap in the early afternoon restores far more cognitive precision than a double espresso."
+          ],
+          question: "According to the speaker, what is the limitation of drinking coffee after an all-nighter?",
+          options: [
+            "A) It prevents students from taking an afternoon nap.",
+            "B) It masks sleepiness without restoring prefrontal filtering accuracy.",
+            "C) It increases drowsiness during multi-step reasoning.",
+            "D) It damages long-term memory permanently."
+          ],
+          answerIdx: 1,
+          explanation: "讲座高频考“表面有效 vs 实际局限”：While caffeine temporarily masks drowsiness, the prefrontal cortex still struggles to filter out irrelevant details。"
+        }
+      ];
+
+      const READING_PASSAGES = [
+        {
+          id: 'r1',
+          title: '仔细阅读 · 算法推荐与认知窄化 (2026 六级预测热点)',
+          vocab: {
+            'ubiquitous': { meaning: 'adj. 无处不在的，普遍存在的', tip: '六级阅读高频词，常与 digital / technology 搭配' },
+            'inadvertently': { meaning: 'adv. 不经意地，无意中', tip: '注意词根 advert (转向) + in- 否定，易与 deliberately 考反义' },
+            'epistemic': { meaning: 'adj. 认识论的，认知的', tip: '学术阅读常见定语，如 epistemic bubble 认知茧房' },
+            'counterbalance': { meaning: 'v. 抵消，使平衡', tip: '合成词 counter(反) + balance(平衡)，常见于对策段' }
+          },
+          sentences: [
+            "Recommendation algorithms have become so ubiquitous that most readers barely notice how silently their curiosity is being curated.",
+            "By optimizing for immediate clicks, platforms inadvertently reward emotionally charged headlines over nuanced, evidence-based reporting.",
+            "Over time, this feedback loop constructs an epistemic bubble in which dissenting viewpoints feel not merely unfamiliar, but implausible.",
+            "Nevertheless, researchers argue that algorithmic curation itself is not inherently harmful if users deliberately counterbalance it with slow, long-form reading.",
+            "When readers pause to verify primary sources and trace structural arguments, they reclaim agency over what captures their attention."
+          ],
+          questions: [
+            {
+              q: "1. What is the unintended consequence of optimizing platforms for immediate clicks?",
+              options: [
+                "A) Readers lose interest in all forms of digital news.",
+                "B) Emotional headlines gain an advantage over nuanced reporting.",
+                "C) Primary sources become completely inaccessible online.",
+                "D) Platforms stop recommending long-form articles altogether."
+              ],
+              ans: 1,
+              exp: "定位第 2 句：reward emotionally charged headlines over nuanced, evidence-based reporting，同义替换为 gain an advantage over。"
+            },
+            {
+              q: "2. How can users mitigate the negative effect of algorithmic curation?",
+              options: [
+                "A) By abandoning all digital platforms permanently.",
+                "B) By reading only dissenting viewpoints.",
+                "C) By engaging intentionally in slow, long-form reading and source checking.",
+                "D) By relying on headlines to summarize structural arguments."
+              ],
+              ans: 2,
+              exp: "定位第 4–5 句转折词 Nevertheless 之后：deliberately counterbalance it with slow, long-form reading 及 verify primary sources。"
+            }
+          ]
+        },
+        {
+          id: 'r2',
+          title: '仔细阅读 · 模块化建筑与城市减碳',
+          vocab: {
+            'conventional': { meaning: 'adj. 传统的，常规的', tip: '常与 innovative / modular 构成对比' },
+            'standardized': { meaning: 'adj. 标准化的', tip: '注意动词 standardize 的被动与过去分词用法' },
+            'skepticism': { meaning: 'n. 怀疑态度', tip: '六级态度题高频词，对应 skeptical' },
+            'viable': { meaning: 'adj. 可行的，能存活的', tip: '常考 economically viable 经济上可行的' }
+          },
+          sentences: [
+            "Compared with conventional on-site construction, modular building assembles standardized room units inside climate-controlled factories.",
+            "This industrial shift cuts material waste by nearly thirty percent because leftover steel and timber are immediately recycled on the assembly line.",
+            "Despite early skepticism regarding monotonous appearances, modern architects now combine prefabricated modules with localized facades.",
+            "As urban housing shortages intensify, modular engineering offers a viable pathway to deliver low-carbon apartments on tight schedules."
+          ],
+          questions: [
+            {
+              q: "1. Why does modular construction reduce material waste significantly?",
+              options: [
+                "A) It eliminates the use of steel and timber entirely.",
+                "B) Surplus materials are directly reused on the factory line.",
+                "C) Construction workers spend less time on site.",
+                "D) Climate-controlled factories prevent weather damage to facades."
+              ],
+              ans: 1,
+              exp: "定位第 2 句：leftover steel and timber are immediately recycled on the assembly line。"
+            }
+          ]
+        }
+      ];
+
+      const WRITING_STEPS = [
+        {
+          id: 'w1',
+          topic: '话题 1 · AI 辅助学习与独立思考（六级议论文高频）',
+          raw: 'Nowadays many college students use AI to write essays, which is very convenient but also makes them lazy in thinking.',
+          diag: '诊断（约 149 分水平）：句意清晰，但 use AI / very convenient / makes them lazy 偏口语化，缺少学术词汇与让步结构。',
+          stepHint: '尝试将“方便”升级为 efficiency / indispensable，将“变懒”升级为 erode independent critical thinking，并用 While... 引导让步。',
+          upgraded: 'While generative AI undeniably streamlines information retrieval for undergraduates, over-reliance on automated drafts risks eroding their capacity for independent critical thinking.'
+        },
+        {
+          id: 'w2',
+          topic: '话题 2 · 校园低碳生活与环保实践',
+          raw: 'We should save electricity and avoid wasting food in our daily campus life so that we can protect the environment.',
+          diag: '诊断：We should + 动词原形过于平铺直叙；so that 从句略显单薄。',
+          stepHint: '尝试使用“非谓语/介词短语 + 倒装或强调句”，替换 protect the environment 为 foster sustainable campus habits。',
+          upgraded: 'Only by curbing energy consumption and minimizing food waste in daily routines can university communities foster genuinely sustainable campus habits.'
+        }
+      ];
+
+      const TRANSLATION_TASKS = [
+        {
+          id: 't1',
+          title: '六级汉译英 · 非物质文化遗产的数字化传承',
+          chinese: '近年来，越来越多的中国非物质文化遗产正借助数字技术焕发新生。通过高清影像记录与虚拟现实展示，年轻人不仅能够近距离感受传统手工艺的精妙，还可以参与线上互动体验。这既拓宽了传统文化的传播渠道，也为保护文化多样性提供了新的思路。',
+          keywords: ['intangible cultural heritage', 'revitalize / take on a new lease of life', 'high-definition', 'virtual reality', 'broaden the channels'],
+          reference: 'In recent years, a growing number of China\'s intangible cultural heritage items have been revitalized through digital technologies. With high-definition visual archiving and virtual reality exhibitions, young people can not only appreciate the ingenuity of traditional craftsmanship up close, but also participate in interactive online experiences. This both broadens the channels for disseminating traditional culture and offers fresh approaches to preserving cultural diversity.'
+        },
+        {
+          id: 't2',
+          title: '六级汉译英 · 绿色出行与城市慢行系统',
+          chinese: '随着绿色发展理念的深入人心，骑行和步行正重新成为许多城市居民的首选出行方式。各地政府不断完善专用自行车道与林荫步道，既缓解了高峰时段的交通拥堵，也有效降低了碳排放，让城市生活变得更加宜居。',
+          keywords: ['green development', 'dedicated bike lanes', 'alleviate traffic congestion', 'carbon emissions', 'more livable'],
+          reference: 'As the concept of green development takes deeper root, cycling and walking are once again becoming preferred modes of travel for many urban residents. Local governments have continuously upgraded dedicated bike lanes and tree-lined walkways, which not only alleviates traffic congestion during peak hours but also effectively lowers carbon emissions, making city life considerably more livable.'
+        }
+      ];
+
+      const ERROR_PATTERNS = ['全部', '连读弱读漏听', '同义替换未识别', '长难句主干偏差', '中式表达直译', '高级句式单一'];
+
+      function getDefaultState() {
+        return {
+          activeTab: 'dashboard',
+          energyMode: '35m',
+          gamify: false,
+          xp: 0,
+          targets: { listen: 175, read: 210, write: 160 },
+          currentEst: { listen: 140, read: 200, write: 149 },
+          checkedDates: [],
+          errorFilter: '全部',
+          errorLogs: [
+            { id: 'e1', pattern: '连读弱读漏听', note: '听力中 "sort of" / "kind of" 弱读成 /sɔːtə/ 导致整句语义断开', fix: '每日精听 3 句时专门标出介词/助动词弱读', date: '2026-11-16' },
+            { id: 'e2', pattern: '同义替换未识别', note: '原文 reward A over B 对应选项 gain an advantage over', fix: '做完阅读后单独对照题干与原文的动词替换对', date: '2026-11-16' },
+            { id: 'e3', pattern: '中式表达直译', note: '习惯写 "make them lazy" 或 "protect environment"', fix: '用 "erode capacity for..." 与 "foster sustainable habits" 替换', date: '2026-11-15' }
+          ],
+          srsCards: [
+            { id: 's1', word: 'deteriorate', meaning: 'v. 恶化，变坏', note: '听力讲座高频负向词，注意重音在第二音节', source: '听力错词', reps: 0, interval: 0, due: Date.now() },
+            { id: 's2', word: 'unprecedented', meaning: 'adj. 史无前例的', note: '阅读与翻译高频词，注意拼写 pre-ced-ent', source: '阅读提取', reps: 0, interval: 0, due: Date.now() },
+            { id: 's3', word: 'alleviate', meaning: 'v. 缓解，减轻', note: '翻译“缓解交通拥堵/压力”核心替换词', source: '写译升格', reps: 0, interval: 0, due: Date.now() },
+            { id: 's4', word: 'compensate for', meaning: 'v. phr. 弥补，补偿', note: '听力对话常考短语，注意介词搭配 for', source: '听力错词', reps: 0, interval: 0, due: Date.now() },
+            { id: 's5', word: 'ubiquitous', meaning: 'adj. 无处不在的', note: '六级阅读科技话题高频形容词', source: '阅读提取', reps: 0, interval: 0, due: Date.now() }
+          ],
+          highlights: {}, // { r1: [0, 2] }
+          readingNotes: {},
+          writingDrafts: {},
+          translationDrafts: {},
+          mockHistory: [],
+          listeningIdx: 0,
+          listeningStep: 'blind',
+          readingIdx: 0,
+          writingMode: 'upgrade'
+        };
+      }
+
+      function loadState() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return getDefaultState();
+          const parsed = JSON.parse(raw);
+          return Object.assign(getDefaultState(), parsed);
+        } catch (e) {
+          return getDefaultState();
+        }
+      }
+
+      function saveState() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        } catch (e) {
+          // Ignore storage quota / sandbox restrictions
+        }
+      }
+
+      let state = loadState();
+      let scoreChartInstance = null;
+      let readingTimerId = null;
+      let readingSecondsLeft = 540;
+      let mockTimerId = null;
+      let mockSecondsLeft = 1500;
+      let mockTotalMins = 25;
+      let currentVocabTarget = null;
+      let srsFlipped = false;
+
+      // ---------- Utilities ----------
+      function todayStr() {
+        const d = new Date();
+        const y = d.getFullYear();
+        const m = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        return y + '-' + m + '-' + day;
+      }
+
+      function showToast(msg) {
+        const el = document.getElementById('toast');
+        el.textContent = msg;
+        el.classList.remove('hidden');
+        clearTimeout(showToast._t);
+        showToast._t = setTimeout(() => el.classList.add('hidden'), 2600);
+      }
+
+      function addXP(pts) {
+        state.xp = (state.xp || 0) + pts;
+        saveState();
+        renderHeaderExtras();
+      }
+
+      function speakText(text, rate = 1.0, onEnd) {
+        if (!('speechSynthesis' in window)) {
+          showToast('当前浏览器不支持语音合成，请直接查看文本');
+          return;
+        }
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'en-US';
+        utter.rate = rate;
+        if (onEnd) utter.onend = onEnd;
+        window.speechSynthesis.speak(utter);
+      }
+
+      function computeStreak() {
+        const set = new Set(state.checkedDates || []);
+        let streak = 0;
+        const d = new Date();
+        // If not checked today, check from yesterday
+        const tStr = todayStr();
+        if (!set.has(tStr)) {
+          d.setDate(d.getDate() - 1);
+        }
+        while (true) {
+          const s = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+          if (set.has(s)) {
+            streak++;
+            d.setDate(d.getDate() - 1);
+          } else {
+            break;
+          }
+        }
+        return streak;
+      }
+
+      // ---------- Render Navigation & Header ----------
+      function renderHeaderExtras() {
+        const dueCount = state.srsCards.filter(c => c.due <= Date.now()).length;
+        document.getElementById('nav-srs-badge').textContent = String(dueCount);
+
+        const gPill = document.getElementById('gamify-pill');
+        if (state.gamify) {
+          const lv = Math.floor((state.xp || 0) / 100) + 1;
+          gPill.textContent = `Lv.${lv} · ${state.xp || 0} XP`;
+          gPill.classList.remove('hidden');
+        } else {
+          gPill.classList.add('hidden');
+        }
+      }
+
+      function switchTab(tab) {
+        state.activeTab = tab;
+        saveState();
+        document.querySelectorAll('.tab-view').forEach(sec => sec.classList.add('hidden'));
+        const activeSec = document.getElementById('view-' + tab);
+        if (activeSec) activeSec.classList.remove('hidden');
+
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+          const isCurrent = btn.dataset.tab === tab;
+          btn.className = isCurrent
+            ? 'nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold whitespace-nowrap bg-ink text-white transition'
+            : 'nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap text-gray-600 hover:bg-gray-100 transition';
+        });
+
+        if (tab === 'dashboard') renderDashboard();
+        if (tab === 'listening') renderListening();
+        if (tab === 'reading') renderReading();
+        if (tab === 'writing') renderWriting();
+        if (tab === 'srs') renderSRS();
+        if (tab === 'mock') renderMock();
+      }
+
+      // ---------- Render Dashboard ----------
+      function renderDashboard() {
+        // Countdown to 2026-12-12 15:00+08:00
+        const examDate = new Date('2026-12-12T15:00:00+08:00');
+        const diffDays = Math.max(0, Math.ceil((examDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24)));
+        document.getElementById('countdown-pill').textContent = `距 12 月 12 日六级开考 · ${diffDays} 天`;
+
+        // Streak & Check-in
+        const streak = computeStreak();
+        const checkedToday = (state.checkedDates || []).includes(todayStr());
+        document.getElementById('stat-streak').textContent = String(streak);
+
+        const estTotal = (state.currentEst.listen || 0) + (state.currentEst.read || 0) + (state.currentEst.write || 0);
+        document.getElementById('stat-est-total').textContent = String(estTotal);
+
+        const dueCount = state.srsCards.filter(c => c.due <= Date.now()).length;
+        document.getElementById('stat-srs-due').textContent = String(dueCount);
+
+        const targetTotal = (state.targets.listen || 0) + (state.targets.read || 0) + (state.targets.write || 0);
+        document.getElementById('target-badge').textContent = `目标 ${targetTotal}+`;
+
+        const checkinBtn = document.getElementById('checkin-btn');
+        if (checkedToday) {
+          checkinBtn.textContent = '✓ 今日已打卡';
+          checkinBtn.className = 'px-3 py-1.5 rounded-xl text-xs font-semibold bg-tealbrand-50 text-tealbrand-800 border border-tealbrand-200';
+        } else {
+          checkinBtn.textContent = '完成今日打卡';
+          checkinBtn.className = 'px-3 py-1.5 rounded-xl text-xs font-semibold bg-tealbrand-700 hover:bg-tealbrand-800 text-white transition';
+        }
+
+        // Coach Factual Opening
+        const opening = document.getElementById('coach-opening-text');
+        if (streak === 0) {
+          opening.textContent = `当前连续打卡 0 天。四级总分 489 中，阅读（200）已够用，听力（140）是唯一明显短板。今天不用追求长时间硬撑，先拿下一段精听或 10 分钟微任务即可。`;
+        } else {
+          opening.textContent = `已连续打卡 ${streak} 天。距离 12 月 12 日还剩 ${diffDays} 天，当前估分 ${estTotal}，距离目标 ${targetTotal} 差 ${Math.max(0, targetTotal - estTotal)} 分，重点盯住听力弱读与写译句式升格。`;
+        }
+
+        // Energy switcher
+        document.querySelectorAll('.energy-btn').forEach(btn => {
+          const active = btn.dataset.energy === state.energyMode;
+          btn.className = active
+            ? 'energy-btn px-3 py-1 rounded-lg text-xs font-semibold bg-white text-ink shadow-sm transition'
+            : 'energy-btn px-3 py-1 rounded-lg text-xs font-medium text-gray-600 hover:text-ink transition';
+        });
+
+        const missions = {
+          '35m': { title: '标准冲刺（约 35 分钟）', desc: '1 篇六级精听三步闭环（18m）+ 1 组写译句式升格（12m）+ 待复习 SRS 词卡（5m）。', targetTab: 'listening' },
+          '20m': { title: '轻量保持（约 20 分钟）', desc: '1 篇六级精听逐句听写（12m）+ 8 张高频错词卡片（8m）。', targetTab: 'listening' },
+          '10m': { title: '低能量微任务 · 10 分钟小胜利', desc: '不想学时的兜底方案：仅精听 2 句六级真题，或改写 1 个写作句子，保持手感不断档。', targetTab: 'writing' }
+        };
+        const curM = missions[state.energyMode] || missions['35m'];
+        document.getElementById('mission-title').textContent = curM.title;
+        document.getElementById('mission-desc').textContent = curM.desc;
+        document.getElementById('start-mission-btn').onclick = () => switchTab(curM.targetTab);
+
+        // 14-day grid
+        const grid = document.getElementById('streak-grid');
+        grid.innerHTML = '';
+        let missed = 0;
+        const checkedSet = new Set(state.checkedDates || []);
+        for (let i = 13; i >= 0; i--) {
+          const d = new Date();
+          d.setDate(d.getDate() - i);
+          const s = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+          const hit = checkedSet.has(s);
+          if (!hit && i > 0) missed++;
+          const cell = document.createElement('div');
+          cell.title = s + (hit ? ' · 已学习' : ' · 未记录');
+          cell.className = hit
+            ? 'h-5 rounded-md bg-tealbrand-700'
+            : 'h-5 rounded-md bg-gray-100 border border-gray-200';
+          grid.appendChild(cell);
+        }
+        document.getElementById('missed-days-label').textContent = `近两周漏学 ${missed} 天`;
+
+        // Chart
+        renderScoreChart();
+
+        // Error Patterns
+        const filterBar = document.getElementById('error-filter-bar');
+        filterBar.innerHTML = '';
+        ERROR_PATTERNS.forEach(p => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          const isSel = state.errorFilter === p;
+          btn.className = isSel
+            ? 'px-2.5 py-1 rounded-full text-xs font-semibold bg-tealbrand-700 text-white'
+            : 'px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600 hover:bg-gray-200';
+          btn.textContent = p;
+          btn.addEventListener('click', () => {
+            state.errorFilter = p;
+            saveState();
+            renderDashboard();
+          });
+          filterBar.appendChild(btn);
+        });
+
+        const errList = document.getElementById('error-list');
+        errList.innerHTML = '';
+        const filtered = state.errorFilter === '全部'
+          ? state.errorLogs
+          : state.errorLogs.filter(e => e.pattern === state.errorFilter);
+
+        if (filtered.length === 0) {
+          errList.innerHTML = '<div class="text-xs text-muted py-4 text-center">该错误模式下暂无记录，保持观察。</div>';
+        } else {
+          filtered.forEach(item => {
+            const row = document.createElement('div');
+            row.className = 'rounded-xl border border-gray-200 bg-paper p-3 space-y-1';
+            row.innerHTML = `
+              <div class="flex items-center justify-between gap-2">
+                <span class="px-2 py-0.5 rounded-md bg-tealbrand-50 text-tealbrand-800 text-[11px] font-semibold">${item.pattern}</span>
+                <span class="text-[11px] font-mono text-muted">${item.date}</span>
+              </div>
+              <div class="text-xs font-medium text-ink">${item.note}</div>
+              <div class="text-[11px] text-gray-600">对策：${item.fix}</div>
+            `;
+            errList.appendChild(row);
+          });
+        }
+      }
+
+      function renderScoreChart() {
+        const ctx = document.getElementById('score-chart');
+        if (!ctx || typeof Chart === 'undefined') return;
+        if (scoreChartInstance) scoreChartInstance.destroy();
+        scoreChartInstance = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['听力 (满分249)', '阅读 (满分249)', '写译 (满分212)'],
+            datasets: [
+              {
+                label: '四级基线 (489)',
+                data: [140, 200, 149],
+                backgroundColor: '#CBD5E1',
+                borderRadius: 6
+              },
+              {
+                label: '当前六级估分',
+                data: [state.currentEst.listen, state.currentEst.read, state.currentEst.write],
+                backgroundColor: '#0D9488',
+                borderRadius: 6
+              },
+              {
+                label: '六级目标线',
+                data: [state.targets.listen, state.targets.read, state.targets.write],
+                backgroundColor: '#134E4A',
+                borderRadius: 6
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 11 } } }
+            },
+            scales: {
+              y: { beginAtZero: true, max: 250, grid: { color: '#F1F5F9' } },
+              x: { grid: { display: false } }
+            }
+          }
+        });
+      }
+
+      // ---------- Render Listening Lab ----------
+      function renderListening() {
+        const sel = document.getElementById('listening-passage-select');
+        sel.innerHTML = '';
+        LISTENING_PASSAGES.forEach((p, idx) => {
+          const opt = document.createElement('option');
+          opt.value = String(idx);
+          opt.textContent = `[${p.type}] ${p.title}`;
+          if (idx === state.listeningIdx) opt.selected = true;
+          sel.appendChild(opt);
+        });
+
+        document.querySelectorAll('.lstep-btn').forEach(btn => {
+          const active = btn.dataset.lstep === state.listeningStep;
+          btn.className = active
+            ? 'lstep-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-ink shadow-sm transition'
+            : 'lstep-btn px-3 py-1.5 rounded-lg text-xs font-medium text-gray-600 hover:text-ink transition';
+        });
+
+        const passage = LISTENING_PASSAGES[state.listeningIdx] || LISTENING_PASSAGES[0];
+        const container = document.getElementById('listening-content');
+        container.innerHTML = '';
+
+        if (state.listeningStep === 'blind') {
+          const box = document.createElement('div');
+          box.className = 'space-y-4';
+          box.innerHTML = `
+            <div class="text-xs text-muted">第一步：先不看原文，点击上方“播放整段音频”完成盲听，再选出答案。</div>
+            <div class="p-4 rounded-xl border border-gray-200 space-y-3">
+              <div class="text-sm font-semibold text-ink">${passage.question}</div>
+              <div class="space-y-2" id="l-options"></div>
+              <div id="l-feedback" class="hidden rounded-xl p-3 text-xs"></div>
+            </div>
+          `;
+          container.appendChild(box);
+          const optWrap = box.querySelector('#l-options');
+          passage.options.forEach((optText, i) => {
+            const b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'w-full text-left px-4 py-2.5 rounded-xl border border-gray-200 text-xs sm:text-sm hover:bg-tealbrand-50/50 transition';
+            b.textContent = optText;
+            b.addEventListener('click', () => {
+              const fb = box.querySelector('#l-feedback');
+              fb.classList.remove('hidden');
+              if (i === passage.answerIdx) {
+                fb.className = 'rounded-xl p-3 text-xs bg-tealbrand-50 text-tealbrand-900 border border-tealbrand-200';
+                fb.innerHTML = `<strong>✓ 回答正确。</strong> ${passage.explanation}`;
+                addXP(15);
+              } else {
+                fb.className = 'rounded-xl p-3 text-xs bg-amber-50 text-amber-900 border border-amber-200';
+                fb.innerHTML = `<strong>× 答案应为 ${passage.options[passage.answerIdx].slice(0, 2)}。</strong> ${passage.explanation}`;
+              }
+            });
+            optWrap.appendChild(b);
+          });
+        } else if (state.listeningStep === 'dictation') {
+          const tip = document.createElement('div');
+          tip.className = 'text-xs text-muted';
+          tip.textContent = '第二步：逐句点击“单句朗读”，在输入框默写你听到的内容，点击“比对差异”检查漏听词。';
+          container.appendChild(tip);
+
+          passage.sentences.forEach((sent, idx) => {
+            const row = document.createElement('div');
+            row.className = 'p-4 rounded-xl border border-gray-200 space-y-2.5';
+            row.innerHTML = `
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-semibold text-tealbrand-700">Sentence ${idx + 1}</span>
+                <button type="button" class="play-sent-btn px-3 py-1 rounded-lg bg-tealbrand-50 text-tealbrand-800 text-xs font-semibold hover:bg-tealbrand-100">🔊 单句朗读</button>
+              </div>
+              <input type="text" class="dict-input w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-tealbrand-600" placeholder="输入你听到的英文句子..." />
+              <div class="flex items-center justify-between gap-2">
+                <button type="button" class="check-dict-btn px-3 py-1.5 rounded-lg bg-ink text-white text-xs font-medium">比对差异</button>
+                <span class="dict-score text-xs font-mono text-muted"></span>
+              </div>
+              <div class="dict-diff hidden text-xs leading-relaxed p-3 rounded-lg bg-paper border border-gray-200"></div>
+            `;
+            row.querySelector('.play-sent-btn').addEventListener('click', () => {
+              const rate = parseFloat(document.getElementById('listening-speed-select').value) || 1;
+              speakText(sent, rate);
+            });
+            row.querySelector('.check-dict-btn').addEventListener('click', () => {
+              const userVal = row.querySelector('.dict-input').value.trim();
+              const clean = s => s.toLowerCase().replace(/[^a-z0-9'\s]/g, '').split(/\s+/).filter(Boolean);
+              const targetWords = clean(sent);
+              const userWords = new Set(clean(userVal));
+              let hit = 0;
+              const diffHtml = sent.split(/\s+/).map(rawW => {
+                const key = rawW.toLowerCase().replace(/[^a-z0-9']/g, '');
+                if (userWords.has(key)) {
+                  hit++;
+                  return `<span class="text-tealbrand-800 font-medium">${rawW}</span>`;
+                }
+                return `<span class="bg-amber-100 text-amber-900 px-1 rounded underline decoration-amber-400 cursor-pointer missed-word" data-w="${key}">${rawW}</span>`;
+              }).join(' ');
+              const pct = Math.round((hit / Math.max(1, targetWords.length)) * 100);
+              row.querySelector('.dict-score').textContent = `匹配率 ${pct}%`;
+              const diffBox = row.querySelector('.dict-diff');
+              diffBox.classList.remove('hidden');
+              diffBox.innerHTML = `<div class="mb-1 text-[11px] text-muted">参考原文（点击黄色漏听词可一键加入 SRS 词库）：</div><div>${diffHtml}</div>`;
+              diffBox.querySelectorAll('.missed-word').forEach(span => {
+                span.addEventListener('click', () => {
+                  const w = span.dataset.w;
+                  if (!w) return;
+                  if (!state.srsCards.some(c => c.word.toLowerCase() === w)) {
+                    state.srsCards.unshift({
+                      id: 's_' + Date.now(),
+                      word: w,
+                      meaning: '（听力听写漏听词，待补充释义）',
+                      note: `来自精听：${passage.title}`,
+                      source: '听力漏听',
+                      reps: 0,
+                      interval: 0,
+                      due: Date.now()
+                    });
+                    saveState();
+                    renderHeaderExtras();
+                    showToast(`已将 "${w}" 加入 SRS 错词本`);
+                  } else {
+                    showToast(`"${w}" 已在词库中`);
+                  }
+                });
+              });
+              addXP(10);
+            });
+            container.appendChild(row);
+          });
+        } else {
+          const wrap = document.createElement('div');
+          wrap.className = 'p-5 rounded-xl bg-paper border border-gray-200 space-y-3';
+          wrap.innerHTML = `
+            <div class="text-xs font-semibold text-tealbrand-800">完整听力原文</div>
+            <div class="space-y-2 text-sm leading-7 text-gray-800">
+              ${passage.sentences.map((s, i) => `<p><span class="font-mono text-xs text-muted mr-2">${i + 1}.</span>${s}</p>`).join('')}
+            </div>
+            <div class="pt-3 border-t border-gray-200 text-xs text-gray-700">
+              <strong>解题与错因提示：</strong> ${passage.explanation}
+            </div>
+          `;
+          container.appendChild(wrap);
+        }
+      }
+
+      // ---------- Render Reading Lab ----------
+      let hlModeActive = true;
+      function renderReading() {
+        const sel = document.getElementById('reading-passage-select');
+        sel.innerHTML = '';
+        READING_PASSAGES.forEach((p, idx) => {
+          const opt = document.createElement('option');
+          opt.value = String(idx);
+          opt.textContent = p.title;
+          if (idx === state.readingIdx) opt.selected = true;
+          sel.appendChild(opt);
+        });
+
+        const passage = READING_PASSAGES[state.readingIdx] || READING_PASSAGES[0];
+        const body = document.getElementById('reading-passage-body');
+        body.innerHTML = '';
+        const hlSet = new Set(state.highlights[passage.id] || []);
+
+        passage.sentences.forEach((sent, idx) => {
+          const p = document.createElement('p');
+          p.className = 'hl-sentence ' + (hlSet.has(idx) ? 'active-hl' : '');
+          // Wrap known vocab chips
+          let html = sent;
+          Object.keys(passage.vocab).forEach(vKey => {
+            const re = new RegExp(`\\b(${vKey})\\b`, 'gi');
+            html = html.replace(re, `<span class="vocab-chip" data-vocab="${vKey}">$1</span>`);
+          });
+          p.innerHTML = html;
+          p.addEventListener('click', (e) => {
+            if (e.target.classList.contains('vocab-chip')) {
+              e.stopPropagation();
+              openVocabModal(e.target.dataset.vocab, passage.vocab[e.target.dataset.vocab]);
+              return;
+            }
+            if (!hlModeActive) return;
+            const list = state.highlights[passage.id] || [];
+            if (list.includes(idx)) {
+              state.highlights[passage.id] = list.filter(x => x !== idx);
+            } else {
+              state.highlights[passage.id] = [...list, idx];
+            }
+            saveState();
+            renderReading();
+          });
+          body.appendChild(p);
+        });
+
+        // Questions
+        const qBox = document.getElementById('reading-questions-box');
+        qBox.innerHTML = '';
+        passage.questions.forEach((qItem, qIdx) => {
+          const card = document.createElement('div');
+          card.className = 'p-4 rounded-xl border border-gray-200 space-y-2.5';
+          card.innerHTML = `
+            <div class="text-xs font-semibold text-ink">${qItem.q}</div>
+            <div class="space-y-1.5 rq-opts"></div>
+            <div class="rq-fb hidden text-xs p-2.5 rounded-lg"></div>
+          `;
+          const optsEl = card.querySelector('.rq-opts');
+          qItem.options.forEach((o, oi) => {
+            const b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'w-full text-left px-3 py-2 rounded-lg border border-gray-200 text-xs hover:bg-tealbrand-50/50 transition';
+            b.textContent = o;
+            b.addEventListener('click', () => {
+              const fb = card.querySelector('.rq-fb');
+              fb.classList.remove('hidden');
+              if (oi === qItem.ans) {
+                fb.className = 'rq-fb text-xs p-2.5 rounded-lg bg-tealbrand-50 text-tealbrand-900 border border-tealbrand-200';
+                fb.innerHTML = `<strong>✓ 正确。</strong> ${qItem.exp}`;
+                addXP(10);
+              } else {
+                fb.className = 'rq-fb text-xs p-2.5 rounded-lg bg-amber-50 text-amber-900 border border-amber-200';
+                fb.innerHTML = `<strong>× 正解为 ${qItem.options[qItem.ans].slice(0, 2)}。</strong> ${qItem.exp}`;
+              }
+            });
+            optsEl.appendChild(b);
+          });
+          qBox.appendChild(card);
+        });
+
+        const noteInput = document.getElementById('reading-note-input');
+        noteInput.value = state.readingNotes[passage.id] || '';
+        noteInput.oninput = () => {
+          state.readingNotes[passage.id] = noteInput.value;
+          saveState();
+        };
+      }
+
+      function openVocabModal(word, info) {
+        currentVocabTarget = { word, ...info };
+        document.getElementById('vm-word').textContent = word;
+        document.getElementById('vm-meaning').textContent = info.meaning;
+        document.getElementById('vm-tip').textContent = info.tip;
+        document.getElementById('vocab-modal').classList.remove('hidden');
+      }
+
+      // ---------- Render Writing & Translation ----------
+      function renderWriting() {
+        document.querySelectorAll('.wmode-btn').forEach(btn => {
+          const active = btn.dataset.wmode === state.writingMode;
+          btn.className = active
+            ? 'wmode-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-ink shadow-sm transition'
+            : 'wmode-btn px-3 py-1.5 rounded-lg text-xs font-medium text-gray-600 hover:text-ink transition';
+        });
+
+        const wrap = document.getElementById('writing-content');
+        wrap.innerHTML = '';
+
+        if (state.writingMode === 'upgrade') {
+          WRITING_STEPS.forEach(item => {
+            const box = document.createElement('div');
+            box.className = 'p-5 rounded-xl border border-gray-200 bg-paper space-y-3';
+            const savedVal = state.writingDrafts[item.id] || '';
+            box.innerHTML = `
+              <div class="text-xs font-semibold text-tealbrand-800">${item.topic}</div>
+              <div class="p-3 rounded-lg bg-white border border-gray-200 text-sm text-gray-800">
+                <span class="text-[11px] font-mono text-muted block mb-1">原始句（待升格）：</span>
+                ${item.raw}
+              </div>
+              <div class="text-xs text-gray-600">${item.diag}</div>
+              <div class="text-xs text-tealbrand-800 bg-tealbrand-50/70 p-2.5 rounded-lg border border-tealbrand-100">升格提示：${item.stepHint}</div>
+              <textarea rows="2" class="w-draft w-full rounded-xl border border-gray-200 p-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-tealbrand-600" placeholder="写下你的升格版本...">${savedVal}</textarea>
+              <div class="flex items-center justify-between">
+                <button type="button" class="toggle-ref-btn px-3 py-1.5 rounded-xl bg-tealbrand-700 text-white text-xs font-semibold">查看参考高分改写</button>
+              </div>
+              <div class="w-ref hidden p-3 rounded-xl bg-white border border-tealbrand-200 text-sm text-tealbrand-900">
+                <span class="text-[11px] font-mono text-tealbrand-700 block mb-1">高分升格参考：</span>
+                ${item.upgraded}
+              </div>
+            `;
+            box.querySelector('.w-draft').addEventListener('input', (e) => {
+              state.writingDrafts[item.id] = e.target.value;
+              saveState();
+            });
+            box.querySelector('.toggle-ref-btn').addEventListener('click', () => {
+              box.querySelector('.w-ref').classList.toggle('hidden');
+              addXP(10);
+            });
+            wrap.appendChild(box);
+          });
+        } else {
+          TRANSLATION_TASKS.forEach(t => {
+            const box = document.createElement('div');
+            box.className = 'p-5 rounded-xl border border-gray-200 bg-paper space-y-3';
+            const savedVal = state.translationDrafts[t.id] || '';
+            box.innerHTML = `
+              <div class="text-sm font-bold text-ink">${t.title}</div>
+              <p class="text-sm leading-7 text-gray-800 bg-white p-4 rounded-xl border border-gray-200">${t.chinese}</p>
+              <div class="flex flex-wrap gap-1.5">
+                ${t.keywords.map(k => `<span class="px-2 py-0.5 rounded-md bg-tealbrand-50 text-tealbrand-800 text-[11px] font-mono">${k}</span>`).join('')}
+              </div>
+              <textarea rows="4" class="t-draft w-full rounded-xl border border-gray-200 p-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-tealbrand-600" placeholder="在此完成整段英文翻译...">${savedVal}</textarea>
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <button type="button" class="toggle-tref-btn px-3 py-1.5 rounded-xl bg-tealbrand-700 text-white text-xs font-semibold">对照参考译文与自评</button>
+              </div>
+              <div class="t-ref hidden p-4 rounded-xl bg-white border border-tealbrand-200 space-y-2">
+                <div class="text-xs font-semibold text-tealbrand-800">参考译文：</div>
+                <p class="text-sm leading-6 text-gray-800">${t.reference}</p>
+                <div class="text-[11px] text-muted pt-2 border-t border-gray-100">自评标尺：13–15分（切题、无语法硬伤、准确用上核心词组）；10–12分（基本达意但句式偏平或有小错）。</div>
+              </div>
+            `;
+            box.querySelector('.t-draft').addEventListener('input', (e) => {
+              state.translationDrafts[t.id] = e.target.value;
+              saveState();
+            });
+            box.querySelector('.toggle-tref-btn').addEventListener('click', () => {
+              box.querySelector('.t-ref').classList.toggle('hidden');
+              addXP(15);
+            });
+            wrap.appendChild(box);
+          });
+        }
+      }
+
+      // ---------- Render SRS ----------
+      function renderSRS() {
+        const dueCards = state.srsCards.filter(c => c.due <= Date.now());
+        document.getElementById('srs-queue-count').textContent = `待复习 ${dueCards.length} / 总计 ${state.srsCards.length}`;
+
+        const stage = document.getElementById('srs-card-stage');
+        stage.innerHTML = '';
+
+        if (dueCards.length === 0) {
+          stage.innerHTML = `
+            <div class="flex-1 flex flex-col items-center justify-center text-center space-y-3 py-8">
+              <div class="text-2xl font-bold text-tealbrand-700">✓ 今日词库已清零</div>
+              <p class="text-xs text-muted max-w-xs">去精听或阅读模块中抓取新词，或点击下方按钮提前复习全部词卡。</p>
+              <button type="button" id="srs-review-all-btn" class="px-4 py-2 rounded-xl border border-gray-200 bg-white text-xs font-semibold hover:bg-gray-50">提前复习全部词卡</button>
+            </div>
+          `;
+          stage.querySelector('#srs-review-all-btn').addEventListener('click', () => {
+            state.srsCards.forEach(c => { c.due = Date.now(); });
+            saveState();
+            renderSRS();
+          });
+        } else {
+          const card = dueCards[0];
+          const top = document.createElement('div');
+          top.className = 'space-y-3';
+          top.innerHTML = `
+            <div class="flex items-center justify-between">
+              <span class="px-2 py-0.5 rounded-md bg-tealbrand-50 text-tealbrand-800 text-[11px] font-medium">${card.source}</span>
+              <button type="button" id="srs-speak-btn" class="px-2.5 py-1 rounded-lg border border-gray-200 bg-white text-xs hover:bg-gray-50">🔊 朗读</button>
+            </div>
+            <div class="text-3xl font-bold text-ink tracking-tight py-4">${card.word}</div>
+            ${srsFlipped ? `
+              <div class="p-4 rounded-xl bg-white border border-gray-200 space-y-1.5">
+                <div class="text-sm font-semibold text-tealbrand-900">${card.meaning}</div>
+                <div class="text-xs text-muted">${card.note || '无附加提示'}</div>
+              </div>
+            ` : `<div class="text-xs text-muted">先回忆词义与听觉发音，再点击下方翻面。</div>`}
+          `;
+          stage.appendChild(top);
+          top.querySelector('#srs-speak-btn').addEventListener('click', () => speakText(card.word, 0.95));
+
+          const actions = document.createElement('div');
+          actions.className = 'pt-4';
+          if (!srsFlipped) {
+            actions.innerHTML = `<button type="button" id="srs-flip-btn" class="w-full py-2.5 rounded-xl bg-ink text-white text-xs font-semibold">显示释义</button>`;
+            actions.querySelector('#srs-flip-btn').addEventListener('click', () => {
+              srsFlipped = true;
+              renderSRS();
+            });
+          } else {
+            actions.className = 'pt-4 grid grid-cols-4 gap-2';
+            const grades = [
+              { label: '忘记 (<1m)', days: 0 },
+              { label: '模糊 (1d)', days: 1 },
+              { label: '记得 (3d)', days: 3 },
+              { label: '熟练 (7d)', days: 7 }
+            ];
+            grades.forEach(g => {
+              const b = document.createElement('button');
+              b.type = 'button';
+              b.className = 'py-2 rounded-xl border border-gray-200 bg-white hover:bg-tealbrand-50 text-xs font-medium transition';
+              b.textContent = g.label;
+              b.addEventListener('click', () => {
+                card.reps = (card.reps || 0) + 1;
+                card.interval = g.days;
+                card.due = Date.now() + (g.days === 0 ? 60 * 1000 : g.days * 86400000);
+                srsFlipped = false;
+                addXP(5);
+                saveState();
+                renderHeaderExtras();
+                renderSRS();
+              });
+              actions.appendChild(b);
+            });
+          }
+          stage.appendChild(actions);
+        }
+
+        const listEl = document.getElementById('srs-word-list');
+        listEl.innerHTML = '';
+        state.srsCards.slice(0, 12).forEach(c => {
+          const item = document.createElement('div');
+          item.className = 'flex items-center justify-between py-1.5 border-b border-gray-100';
+          item.innerHTML = `
+            <div><span class="font-semibold text-ink">${c.word}</span> <span class="text-muted ml-1">${c.meaning}</span></div>
+            <span class="text-[10px] font-mono text-tealbrand-700">${c.source}</span>
+          `;
+          listEl.appendChild(item);
+        });
+      }
+
+      // ---------- Render Mock ----------
+      function renderMock() {
+        const adviseEl = document.getElementById('mock-advice-box');
+        const lGap = state.targets.listen - state.currentEst.listen;
+        const rGap = state.targets.read - state.currentEst.read;
+        const wGap = state.targets.write - state.currentEst.write;
+
+        if (lGap > 15 || rGap > 15 || wGap > 15) {
+          const lagging = [];
+          if (lGap > 15) lagging.push(`听力（差目标 ${lGap} 分）`);
+          if (rGap > 15) lagging.push(`阅读（差目标 ${rGap} 分）`);
+          if (wGap > 15) lagging.push(`写译（差目标 ${wGap} 分）`);
+          adviseEl.className = 'rounded-xl p-4 text-xs leading-relaxed border border-amber-200 bg-amber-50 text-amber-900';
+          adviseEl.innerHTML = `<strong>教练冷静预警：</strong> 当前 ${lagging.join('、')} 落后目标线超过 15 分。考前冲刺期建议把 70% 精力收拢到薄弱单项，不要平均用力。`;
+        } else {
+          adviseEl.className = 'rounded-xl p-4 text-xs leading-relaxed border border-tealbrand-200 bg-tealbrand-50 text-tealbrand-900';
+          adviseEl.innerHTML = `<strong>节奏稳定：</strong> 各单项与目标线差距均控制在 15 分以内，保持隔日 1 套限时分项训练即可。`;
+        }
+
+        const histEl = document.getElementById('mock-history-list');
+        histEl.innerHTML = '';
+        if (state.mockHistory.length === 0) {
+          histEl.innerHTML = '<div class="text-muted text-center py-3">尚无模考记录，完成一套计时后可在上方录入。</div>';
+        } else {
+          state.mockHistory.forEach(m => {
+            const row = document.createElement('div');
+            row.className = 'flex items-center justify-between p-2.5 rounded-lg bg-paper border border-gray-200';
+            row.innerHTML = `
+              <span class="font-mono text-muted">${m.date}</span>
+              <span>听 ${m.listen} / 阅 ${m.read} / 写译 ${m.write}</span>
+              <span class="font-mono font-bold text-tealbrand-700">总 ${m.total}</span>
+            `;
+            histEl.appendChild(row);
+          });
+        }
+      }
+
+      // ---------- Event Listeners ----------
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+      });
+
+      document.querySelectorAll('.energy-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.energyMode = btn.dataset.energy;
+          saveState();
+          renderDashboard();
+        });
+      });
+
+      document.getElementById('checkin-btn').addEventListener('click', () => {
+        const t = todayStr();
+        if (!state.checkedDates.includes(t)) {
+          state.checkedDates.push(t);
+          addXP(20);
+          saveState();
+          renderDashboard();
+          showToast('今日打卡已记录');
+        }
+      });
+
+      // Listening controls
+      document.getElementById('listening-passage-select').addEventListener('change', (e) => {
+        state.listeningIdx = parseInt(e.target.value, 10) || 0;
+        saveState();
+        renderListening();
+      });
+
+      document.querySelectorAll('.lstep-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.listeningStep = btn.dataset.lstep;
+          saveState();
+          renderListening();
+        });
+      });
+
+      document.getElementById('play-passage-btn').addEventListener('click', () => {
+        const p = LISTENING_PASSAGES[state.listeningIdx] || LISTENING_PASSAGES[0];
+        const rate = parseFloat(document.getElementById('listening-speed-select').value) || 1;
+        document.getElementById('audio-status').textContent = `正在播放：${p.title} (${rate}x)`;
+        speakText(p.sentences.join(' '), rate, () => {
+          document.getElementById('audio-status').textContent = '播放完毕';
+        });
+      });
+
+      document.getElementById('stop-audio-btn').addEventListener('click', () => {
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+        document.getElementById('audio-status').textContent = '已停止播放';
+      });
+
+      // Reading controls
+      document.getElementById('reading-passage-select').addEventListener('change', (e) => {
+        state.readingIdx = parseInt(e.target.value, 10) || 0;
+        saveState();
+        renderReading();
+      });
+
+      document.getElementById('toggle-hl-mode-btn').addEventListener('click', (e) => {
+        hlModeActive = !hlModeActive;
+        e.target.textContent = hlModeActive ? '高亮笔：开启' : '高亮笔：关闭';
+        e.target.className = hlModeActive
+          ? 'px-3 py-1.5 rounded-xl border border-tealbrand-200 bg-tealbrand-50 text-tealbrand-800 text-xs font-semibold transition'
+          : 'px-3 py-1.5 rounded-xl border border-gray-200 bg-white text-gray-600 text-xs font-medium transition';
+      });
+
+      document.getElementById('reading-timer-btn').addEventListener('click', (e) => {
+        if (readingTimerId) {
+          clearInterval(readingTimerId);
+          readingTimerId = null;
+          e.target.textContent = '继续计时';
+        } else {
+          e.target.textContent = '暂停';
+          readingTimerId = setInterval(() => {
+            if (readingSecondsLeft > 0) readingSecondsLeft--;
+            const m = String(Math.floor(readingSecondsLeft / 60)).padStart(2, '0');
+            const s = String(readingSecondsLeft % 60).padStart(2, '0');
+            document.getElementById('reading-timer-display').textContent = `${m}:${s}`;
+            if (readingSecondsLeft === 0) {
+              clearInterval(readingTimerId);
+              readingTimerId = null;
+              showToast('本篇 9 分钟阅读计时结束');
+            }
+          }, 1000);
+        }
+      });
+
+      // Writing mode switcher
+      document.querySelectorAll('.wmode-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.writingMode = btn.dataset.wmode;
+          saveState();
+          renderWriting();
+        });
+      });
+
+      // Add SRS form
+      document.getElementById('add-srs-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const word = document.getElementById('new-srs-word').value.trim();
+        const meaning = document.getElementById('new-srs-meaning').value.trim();
+        const note = document.getElementById('new-srs-note').value.trim();
+        if (!word || !meaning) return;
+        state.srsCards.unshift({
+          id: 's_' + Date.now(),
+          word,
+          meaning,
+          note,
+          source: '手动录入',
+          reps: 0,
+          interval: 0,
+          due: Date.now()
+        });
+        saveState();
+        e.target.reset();
+        renderHeaderExtras();
+        renderSRS();
+        showToast(`已添加 "${word}"`);
+      });
+
+      // Vocab Modal
+      document.getElementById('close-vocab-modal-btn').addEventListener('click', () => {
+        document.getElementById('vocab-modal').classList.add('hidden');
+      });
+      document.getElementById('vm-speak-btn').addEventListener('click', () => {
+        if (currentVocabTarget) speakText(currentVocabTarget.word, 0.95);
+      });
+      document.getElementById('vm-add-srs-btn').addEventListener('click', () => {
+        if (!currentVocabTarget) return;
+        if (!state.srsCards.some(c => c.word.toLowerCase() === currentVocabTarget.word.toLowerCase())) {
+          state.srsCards.unshift({
+            id: 's_' + Date.now(),
+            word: currentVocabTarget.word,
+            meaning: currentVocabTarget.meaning,
+            note: currentVocabTarget.tip,
+            source: '阅读提取',
+            reps: 0,
+            interval: 0,
+            due: Date.now()
+          });
+          saveState();
+          renderHeaderExtras();
+          showToast(`已将 "${currentVocabTarget.word}" 加入 SRS 词库`);
+        } else {
+          showToast('该词已在词库中');
+        }
+        document.getElementById('vocab-modal').classList.add('hidden');
+      });
+
+      // Mock Timer & Log
+      document.querySelectorAll('.mock-preset').forEach(btn => {
+        btn.addEventListener('click', () => {
+          clearInterval(mockTimerId);
+          mockTimerId = null;
+          mockTotalMins = parseInt(btn.dataset.mins, 10) || 25;
+          mockSecondsLeft = mockTotalMins * 60;
+          document.getElementById('mock-section-label').textContent = `当前计时：${btn.dataset.label}`;
+          document.getElementById('mock-timer-display').textContent = `${String(mockTotalMins).padStart(2, '0')}:00`;
+          document.getElementById('mock-start-btn').textContent = '开始计时';
+        });
+      });
+
+      document.getElementById('mock-start-btn').addEventListener('click', (e) => {
+        if (mockTimerId) {
+          clearInterval(mockTimerId);
+          mockTimerId = null;
+          e.target.textContent = '继续计时';
+        } else {
+          e.target.textContent = '暂停';
+          mockTimerId = setInterval(() => {
+            if (mockSecondsLeft > 0) mockSecondsLeft--;
+            const m = String(Math.floor(mockSecondsLeft / 60)).padStart(2, '0');
+            const s = String(mockSecondsLeft % 60).padStart(2, '0');
+            document.getElementById('mock-timer-display').textContent = `${m}:${s}`;
+            if (mockSecondsLeft === 0) {
+              clearInterval(mockTimerId);
+              mockTimerId = null;
+              e.target.textContent = '开始计时';
+              showToast('本模块限时结束');
+            }
+          }, 1000);
+        }
+      });
+
+      document.getElementById('mock-reset-btn').addEventListener('click', () => {
+        clearInterval(mockTimerId);
+        mockTimerId = null;
+        mockSecondsLeft = mockTotalMins * 60;
+        document.getElementById('mock-timer-display').textContent = `${String(mockTotalMins).padStart(2, '0')}:00`;
+        document.getElementById('mock-start-btn').textContent = '开始计时';
+      });
+
+      document.getElementById('mock-log-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const listen = Math.min(249, Math.max(0, parseInt(document.getElementById('mock-in-listen').value, 10) || 0));
+        const read = Math.min(249, Math.max(0, parseInt(document.getElementById('mock-in-read').value, 10) || 0));
+        const write = Math.min(212, Math.max(0, parseInt(document.getElementById('mock-in-write').value, 10) || 0));
+        const total = listen + read + write;
+        state.currentEst = { listen, read, write };
+        state.mockHistory.unshift({ date: todayStr(), listen, read, write, total });
+        addXP(30);
+        saveState();
+        renderMock();
+        showToast(`模考总分 ${total} 已更新至面板`);
+      });
+
+      // Error Modal
+      document.getElementById('open-add-error-btn').addEventListener('click', () => {
+        document.getElementById('error-modal').classList.remove('hidden');
+      });
+      document.getElementById('close-error-modal-btn').addEventListener('click', () => {
+        document.getElementById('error-modal').classList.add('hidden');
+      });
+      document.getElementById('add-error-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        state.errorLogs.unshift({
+          id: 'e_' + Date.now(),
+          pattern: document.getElementById('err-pattern').value,
+          note: document.getElementById('err-note').value.trim(),
+          fix: document.getElementById('err-fix').value.trim(),
+          date: todayStr()
+        });
+        saveState();
+        e.target.reset();
+        document.getElementById('error-modal').classList.add('hidden');
+        renderDashboard();
+        showToast('错因已归档');
+      });
+
+      // Settings Modal
+      document.getElementById('open-settings-btn').addEventListener('click', () => {
+        document.getElementById('set-target-listen').value = state.targets.listen;
+        document.getElementById('set-target-read').value = state.targets.read;
+        document.getElementById('set-target-write').value = state.targets.write;
+        document.getElementById('set-gamify').checked = Boolean(state.gamify);
+        document.getElementById('settings-modal').classList.remove('hidden');
+      });
+      document.getElementById('close-settings-btn').addEventListener('click', () => {
+        document.getElementById('settings-modal').classList.add('hidden');
+      });
+      document.getElementById('save-settings-btn').addEventListener('click', () => {
+        state.targets = {
+          listen: parseInt(document.getElementById('set-target-listen').value, 10) || 175,
+          read: parseInt(document.getElementById('set-target-read').value, 10) || 210,
+          write: parseInt(document.getElementById('set-target-write').value, 10) || 160
+        };
+        state.gamify = document.getElementById('set-gamify').checked;
+        saveState();
+        document.getElementById('settings-modal').classList.add('hidden');
+        renderHeaderExtras();
+        renderDashboard();
+        showToast('档案设置已保存');
+      });
+
+      document.getElementById('export-json-btn').addEventListener('click', () => {
+        const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `cet6-coach-backup-${todayStr()}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+
+      document.getElementById('reset-demo-btn').addEventListener('click', () => {
+        state = getDefaultState();
+        saveState();
+        document.getElementById('settings-modal').classList.add('hidden');
+        renderHeaderExtras();
+        switchTab('dashboard');
+        showToast('已恢复初始配置');
+      });
+
+      // ---------- Init ----------
+      renderHeaderExtras();
+      switchTab(state.activeTab || 'dashboard');
+    })();
+  </script>
+</body>
 </html>

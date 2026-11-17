@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const appSource = fs.readFileSync(path.join(root, "js/app.js"), "utf8");
-const htmlSource = fs.readFileSync(path.join(root, "index.html"), "utf8");
+const htmlSource = fs.readFileSync(path.join(root, "listening.html"), "utf8");
 const cssSource = fs.readFileSync(path.join(root, "assets/styles.css"), "utf8");
 
 test("dictation textarea requests an English keyboard layout", () => {
