@@ -81,6 +81,9 @@ input::placeholder, textarea::placeholder { color: #96a2ad; }
 #reading-passage-body { background: #fafbfc; border: 0; font-size: 16px; line-height: 2; padding: 24px; }
 #listening-content { padding-top: 12px; }
 #listening-content input { font-size: 15px; }
+#imagery-search-input { min-width: 0; }
+#srs-word-list .truncate { min-width: 0; }
+#mock-part-tabs { max-width: 100%; flex-wrap: wrap; }
 .hl-sentence { cursor: pointer; border-radius: 3px; transition: background-color .15s; padding: 1px 2px; }
 .hl-sentence:hover { background: #eff4f8; }
 .hl-sentence.active-hl { background: #e1eaf2; border-bottom: 2px solid #829eb7; }

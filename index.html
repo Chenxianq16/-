@@ -138,7 +138,7 @@
         <div class="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h2 class="text-xl font-bold text-ink mt-0.5">听力</h2>
-            <a href="./listening.html" class="inline-block mt-2 text-xs font-semibold text-accent-700 underline">真题精听 ↗</a>
+            <a href="./listening.html" class="practice-link">真题精听 ↗</a>
           </div>
           <div class="flex flex-wrap items-center gap-2">
             <select id="listening-passage-select" class="px-3 py-1.5 rounded-xl border border-gray-200 text-xs sm:text-sm bg-white text-ink"></select>
@@ -151,14 +151,12 @@
           </div>
         </div>
 
-        <!-- Step Switcher -->
         <div class="inline-flex rounded-xl bg-gray-100 p-1 gap-1" id="listening-step-tabs">
           <button type="button" data-lstep="blind" class="lstep-btn px-3 py-1.5 rounded-lg text-xs font-medium transition">1. 盲听答题</button>
           <button type="button" data-lstep="dictation" class="lstep-btn px-3 py-1.5 rounded-lg text-xs font-medium transition">2. 逐句听写</button>
           <button type="button" data-lstep="transcript" class="lstep-btn px-3 py-1.5 rounded-lg text-xs font-medium transition">3. 原文与错因</button>
         </div>
 
-        <!-- Audio Control Bar -->
         <div class="rounded-xl bg-paper border border-gray-200 p-4 flex flex-wrap items-center justify-between gap-3">
           <div class="flex items-center gap-2">
             <button type="button" id="play-passage-btn" class="px-4 py-2 rounded-xl bg-accent-700 hover:bg-accent-800 text-white text-xs font-semibold transition">播放整段音频</button>
@@ -167,12 +165,11 @@
           <div id="audio-status" class="text-xs font-mono text-muted"></div>
         </div>
 
-        <!-- Step Content Container -->
         <div id="listening-content" class="space-y-4"></div>
       </div>
     </section>
 
-    <!-- ==================== TAB 3: READING LAB ==================== -->
+    <!-- ==================== TAB 3: READING LAB (7 REAL PASSAGES) ==================== -->
     <section id="view-reading" class="tab-view hidden space-y-5">
       <div class="card p-6 space-y-4">
         <div class="flex flex-wrap items-center justify-between gap-3">
@@ -188,24 +185,22 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <!-- Passage -->
           <div class="lg:col-span-7 space-y-3">
-            <div id="reading-passage-body" class="p-5 rounded-xl bg-paper border border-gray-200 space-y-3 text-sm leading-7 text-gray-800"></div>
+            <div id="reading-passage-body" class="p-5 rounded-xl bg-paper border border-gray-200 space-y-3 text-sm leading-7 text-gray-800 max-h-[620px] overflow-y-auto"></div>
           </div>
 
-          <!-- Questions & Margin Notes -->
           <div class="lg:col-span-5 space-y-4">
-            <div id="reading-questions-box" class="space-y-4"></div>
+            <div id="reading-questions-box" class="space-y-4 max-h-[500px] overflow-y-auto pr-1"></div>
             <div class="pt-3 border-t border-gray-100 space-y-2">
               <label for="reading-note-input" class="text-xs font-semibold text-gray-700 block">笔记</label>
-              <textarea id="reading-note-input" rows="3" placeholder="写点笔记…" class="w-full rounded-xl border border-gray-200 p-3 text-xs focus:outline-none focus:ring-2 focus:ring-accent-600"></textarea>
+              <textarea id="reading-note-input" rows="3" placeholder="记录干扰项特征、同义替换对或长难句结构..." class="w-full rounded-xl border border-gray-200 p-3 text-xs focus:outline-none focus:ring-2 focus:ring-accent-600"></textarea>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== TAB 4: WRITING & TRANSLATION ==================== -->
+    <!-- ==================== TAB 4: WRITING & TRANSLATION (12 REAL ITEMS) ==================== -->
     <section id="view-writing" class="tab-view hidden space-y-5">
       <div class="card p-6 space-y-5">
         <div class="flex flex-wrap items-center justify-between gap-3">
@@ -222,63 +217,98 @@
       </div>
     </section>
 
-    <!-- ==================== TAB 5: SRS VOCABULARY ==================== -->
+    <!-- ==================== TAB 5: WORD IMAGERY + SRS VOCABULARY (40+ WORDS) ==================== -->
     <section id="view-srs" class="tab-view hidden space-y-5">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-        <div class="lg:col-span-7 card p-6 space-y-5">
-          <div class="flex items-center justify-between">
-            <div>
-              <h2 class="text-xl font-bold text-ink mt-0.5">词库</h2>
-            </div>
-            <span id="srs-queue-count" class="text-xs font-mono px-2.5 py-1 rounded-full bg-accent-50 text-accent-800">待复习 0</span>
+      <!-- Top Search Bar inspired by yoowen-ywl.github.io/word-imagery/ -->
+      <div class="card p-6 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 class="text-xl font-bold text-ink mt-0.5">单词意象</h2>
           </div>
-
-          <div id="srs-card-stage" class="rounded-2xl border border-gray-200 bg-paper p-6 min-h-[260px] flex flex-col justify-between"></div>
+          <button type="button" id="srs-review-all-btn" class="px-2.5 py-1 rounded-lg border border-gray-200 text-xs text-gray-600 hover:bg-gray-50">提前复习全部词卡</button><span id="srs-queue-count" class="text-xs font-mono px-2.5 py-1 rounded-full bg-accent-50 text-accent-800 border border-accent-100">待复习 0</span>
         </div>
 
+        <!-- Search & Autocomplete -->
+        <div class="relative max-w-xl">
+          <div class="flex gap-2">
+            <input type="text" id="imagery-search-input" placeholder="搜索单词" class="flex-1 px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-accent-600" autocomplete="off" />
+            <button type="button" id="imagery-search-btn" class="px-5 py-2.5 rounded-xl bg-accent-700 hover:bg-accent-800 text-white text-xs font-semibold transition">查询</button>
+          </div>
+          <div id="imagery-suggest-box" class="hidden absolute left-0 right-0 top-12 z-20 bg-white rounded-xl border border-gray-200 shadow-lg max-h-64 overflow-y-auto divide-y divide-gray-100"></div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+        <!-- Left: Word Imagery Card + SRS Grading -->
+        <div class="lg:col-span-7 card p-6 space-y-5">
+          <div id="srs-card-stage" class="rounded-2xl border border-gray-200 bg-paper p-6 min-h-[380px] flex flex-col justify-between"></div>
+        </div>
+
+        <!-- Right: Add Custom Word Imagery + Full Inventory -->
         <div class="lg:col-span-5 card p-6 space-y-4">
-          <h3 class="text-base font-bold text-ink">手动录入新词 / 听力盲词</h3>
-          <form id="add-srs-form" class="space-y-3">
-            <input type="text" id="new-srs-word" required placeholder="单词或短语" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-accent-600" />
-            <input type="text" id="new-srs-meaning" required placeholder="释义" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-accent-600" />
-            <input type="text" id="new-srs-note" placeholder="备注（可选）" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-accent-600" />
+          <h3 class="text-base font-bold text-ink">添加单词</h3>
+          <form id="add-srs-form" class="space-y-2.5">
+            <input type="text" id="new-srs-word" required placeholder="单词或短语" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-accent-600" />
+            <input type="text" id="new-srs-imagery" required placeholder="核心画面" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-accent-600" />
+            <input type="text" id="new-srs-meaning" required placeholder="释义（用逗号分隔）" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-accent-600" />
+            <input type="text" id="new-srs-note" placeholder="语感备注（可选）" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-accent-600" />
             <button type="submit" class="w-full py-2.5 rounded-xl bg-accent-700 hover:bg-accent-800 text-white text-xs font-semibold transition">加入词库</button>
           </form>
 
           <div class="pt-3 border-t border-gray-100">
-            <div class="text-xs font-semibold text-gray-700 mb-2">词库清单（最近添加）</div>
-            <div id="srs-word-list" class="space-y-1.5 max-h-44 overflow-y-auto text-xs"></div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-semibold text-gray-700">全部单词</span>
+              <span id="srs-total-count-label" class="text-[11px] font-mono text-muted"></span>
+            </div>
+            <div id="srs-word-list" class="space-y-1.5 max-h-56 overflow-y-auto text-xs pr-1"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== TAB 6: TIMED MOCK ==================== -->
+    <!-- ==================== TAB 6: DEC 5 FULL REAL PAPER MOCK ==================== -->
     <section id="view-mock" class="tab-view hidden space-y-5">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-        <div class="lg:col-span-6 card p-6 space-y-4">
-          <h2 class="text-xl font-bold text-ink">六级官方限时沙盘</h2>
-
-          <div class="flex flex-wrap gap-2" id="mock-preset-btns">
-            <button type="button" data-mins="30" data-label="短文写作" class="mock-preset px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-medium hover:bg-gray-50">写作 30:00</button>
-            <button type="button" data-mins="25" data-label="听力理解" class="mock-preset px-3 py-1.5 rounded-xl border border-accent-200 bg-accent-50 text-accent-800 text-xs font-semibold">听力 25:00</button>
-            <button type="button" data-mins="40" data-label="阅读理解" class="mock-preset px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-medium hover:bg-gray-50">阅读 40:00</button>
-            <button type="button" data-mins="30" data-label="段落翻译" class="mock-preset px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-medium hover:bg-gray-50">翻译 30:00</button>
+      <!-- Top Real Exam Simulator Banner -->
+      <div class="card p-6 space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h2 class="text-xl font-bold text-ink mt-0.5">模拟练习</h2>
           </div>
-
-          <div class="rounded-2xl bg-paper border border-gray-200 p-6 text-center space-y-4">
-            <div id="mock-section-label" class="text-xs font-semibold text-accent-700">当前计时：听力理解</div>
-            <div id="mock-timer-display" class="text-5xl font-mono font-bold text-ink tabular-nums">25:00</div>
-            <div class="flex justify-center gap-2">
-              <button type="button" id="mock-start-btn" class="px-5 py-2 rounded-xl bg-accent-700 hover:bg-accent-800 text-white text-xs font-semibold transition">开始计时</button>
-              <button type="button" id="mock-reset-btn" class="px-4 py-2 rounded-xl border border-gray-200 bg-white text-xs font-medium text-gray-700 hover:bg-gray-50 transition">重置</button>
-            </div>
+          <div class="flex items-center gap-2">
+            <div class="px-3.5 py-1.5 rounded-xl bg-paper border border-gray-200 font-mono text-base font-bold text-ink tabular-nums" id="mock-timer-display">25:00</div>
+            <button type="button" id="mock-start-btn" class="px-4 py-2 rounded-xl bg-accent-700 hover:bg-accent-800 text-white text-xs font-semibold transition">开始计时</button>
+            <button type="button" id="mock-reset-btn" class="px-3 py-2 rounded-xl border border-gray-200 bg-white text-xs font-medium text-gray-700 hover:bg-gray-50 transition">重置</button>
           </div>
         </div>
 
-        <div class="lg:col-span-6 card p-6 space-y-4">
-          <h2 class="text-xl font-bold text-ink">模考估分与冲刺预警</h2>
+        <!-- Section Switcher + Timer Presets -->
+        <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-gray-100" id="mock-preset-btns">
+          <div id="mock-section-label" class="text-xs font-semibold text-accent-700">当前计时：听力理解</div>
+          <div class="flex flex-wrap gap-1.5">
+            <button type="button" data-mins="30" data-label="短文写作" class="mock-preset px-2.5 py-1 rounded-lg border border-gray-200 text-xs">写作 30:00</button>
+            <button type="button" data-mins="25" data-label="听力理解" class="mock-preset px-2.5 py-1 rounded-lg border border-gray-200 text-xs">听力 25:00</button>
+            <button type="button" data-mins="40" data-label="阅读理解" class="mock-preset px-2.5 py-1 rounded-lg border border-gray-200 text-xs">阅读 40:00</button>
+            <button type="button" data-mins="30" data-label="段落翻译" class="mock-preset px-2.5 py-1 rounded-lg border border-gray-200 text-xs">翻译 30:00</button>
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-gray-100">
+          <div class="inline-flex rounded-xl bg-gray-100 p-1 gap-1" id="mock-part-tabs">
+            <button type="button" data-mpart="part1" data-mins="30" class="mpart-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-ink shadow-sm transition">写作</button>
+            <button type="button" data-mpart="part2" data-mins="25" class="mpart-btn px-3 py-1.5 rounded-lg text-xs font-medium text-gray-600 transition">听力</button>
+            <button type="button" data-mpart="part3" data-mins="40" class="mpart-btn px-3 py-1.5 rounded-lg text-xs font-medium text-gray-600 transition">阅读</button>
+            <button type="button" data-mpart="part4" data-mins="30" class="mpart-btn px-3 py-1.5 rounded-lg text-xs font-medium text-gray-600 transition">翻译</button>
+          </div>
+          <button type="button" id="submit-full-mock-btn" class="px-4 py-2 rounded-xl bg-ink hover:bg-gray-800 text-white text-xs font-semibold transition">交卷</button>
+        </div>
 
+        <!-- Interactive Real Paper Workspace -->
+        <div id="mock-paper-workspace" class="pt-2"></div>
+      </div>
+
+      <!-- Bottom Score Estimator & History -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+        <div class="lg:col-span-6 card p-6 space-y-4">
+          <h3 class="text-base font-bold text-ink">录入成绩</h3>
           <form id="mock-log-form" class="grid grid-cols-3 gap-3">
             <div>
               <label class="text-[11px] text-muted block mb-1">听力估分 (0-249)</label>
@@ -292,9 +322,13 @@
               <label class="text-[11px] text-muted block mb-1">写译估分 (0-212)</label>
               <input type="number" id="mock-in-write" min="0" max="212" value="152" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm font-mono" />
             </div>
-            <button type="submit" class="col-span-3 py-2.5 rounded-xl bg-ink hover:bg-gray-800 text-white text-xs font-semibold transition">记录本次模考并更新面板估分</button>
+            <button type="submit" class="col-span-3 py-2.5 rounded-xl bg-accent-700 hover:bg-accent-800 text-white text-xs font-semibold transition">保存成绩</button>
           </form>
-          <div id="mock-history-list" class="space-y-2 max-h-40 overflow-y-auto text-xs"></div>
+        </div>
+
+        <div class="lg:col-span-6 card p-6 space-y-4">
+          <h3 class="text-base font-bold text-ink">历史记录</h3>
+          <div id="mock-history-list" class="space-y-2 max-h-36 overflow-y-auto text-xs"></div>
         </div>
       </div>
     </section>
@@ -358,23 +392,24 @@
         </select>
         <input type="text" id="err-note" required placeholder="错题内容" class="w-full px-3 py-2 rounded-xl border border-gray-200" />
         <input type="text" id="err-fix" required placeholder="修正方法" class="w-full px-3 py-2 rounded-xl border border-gray-200" />
-        <button type="submit" class="w-full py-2.5 rounded-xl bg-accent-700 text-white font-semibold">保存</button>
+        <button type="submit" class="w-full py-2.5 rounded-xl bg-accent-700 text-white font-semibold">保存到错题本</button>
       </form>
     </div>
   </div>
 
-  <!-- Vocab Popover Modal -->
-  <div id="vocab-modal" class="fixed inset-0 z-50 hidden bg-black/20 flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl border border-gray-200 max-w-sm w-full p-5 space-y-3 shadow-xl">
+  <!-- Vocab Popover Modal (with Word Imagery) -->
+  <div id="vocab-modal" class="fixed inset-0 z-50 hidden bg-black/25 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl border border-gray-200 max-w-md w-full p-5 space-y-3.5 shadow-xl">
       <div class="flex items-center justify-between">
-        <span id="vm-word" class="text-lg font-bold text-ink"></span>
+        <span id="vm-word" class="text-xl font-bold text-ink"></span>
         <button type="button" id="close-vocab-modal-btn" class="text-gray-400 hover:text-gray-700">✕</button>
       </div>
-      <p id="vm-meaning" class="text-sm text-gray-700"></p>
-      <p id="vm-tip" class="text-xs text-muted bg-paper p-2.5 rounded-lg"></p>
+      <div id="vm-imagery" class="text-sm font-bold text-accent-700 leading-snug"></div>
+      <p id="vm-meaning" class="text-xs text-gray-700"></p>
+      <div id="vm-tip" class="text-xs text-amber-900 bg-amber-50/90 border border-amber-200 p-3 rounded-xl leading-relaxed"></div>
       <div class="flex gap-2 pt-1">
         <button type="button" id="vm-speak-btn" class="px-3 py-2 rounded-xl border border-gray-200 text-xs font-medium hover:bg-gray-50">发音</button>
-        <button type="button" id="vm-add-srs-btn" class="flex-1 py-2 rounded-xl bg-accent-700 text-white text-xs font-semibold hover:bg-accent-800">加入词库</button>
+        <button type="button" id="vm-add-srs-btn" class="flex-1 py-2 rounded-xl bg-accent-700 text-white text-xs font-semibold hover:bg-accent-800">+ 加入 SRS 词库</button>
       </div>
     </div>
   </div>
@@ -384,9 +419,811 @@
 
   <script>
     (function () {
-      const STORAGE_KEY = 'cet6_coach_v1';
+      const STORAGE_KEY = 'cet6_coach_v2';
 
-      // ---------- Curated CET-6 Content Bank ----------
+      // ---------- 1. Word Imagery Bank (40 High-Frequency CET-6 Words in yoowen-ywl/word-imagery format) ----------
+      const INITIAL_IMAGERY_WORDS = [
+        {
+          id: 's1', word: 'cling', source: '单词意象精选',
+          imagery: '东西紧紧贴在另一样东西上，死活不肯松开',
+          extensions: ['紧紧抓着、贴着：cling to the rope', '舍不得放手，死守着：cling to the old habit'],
+          translations: ['紧抱', '坚持', '附着'],
+          lostInTranslation: '中文“坚持”是夸人的词，cling 却常带“放不下、死抱着不撒手”的味道，像是怕失去依靠。',
+          exampleEn: 'Some people cling to outdated methods even when they stop working.',
+          exampleZh: '有些人明明老办法已经不管用了，还是死抱着不放。'
+        },
+        {
+          id: 's2', word: 'abandon', source: '单词意象精选',
+          imagery: '把原本归自己管的东西往地上一扔，转身就走，再也不管了',
+          extensions: ['半路甩手不干：abandon a project', '弃船/弃城逃离：abandon ship'],
+          translations: ['放弃', '抛弃', '遗弃'],
+          lostInTranslation: '中文“放弃”听起来很平静，abandon 却有“甩手不管、彻底断掉责任关系”的决绝感。',
+          exampleEn: 'Researchers had to abandon the experiment due to funding cuts.',
+          exampleZh: '由于经费削减，研究人员不得不彻底停掉这项实验。'
+        },
+        {
+          id: 's3', word: 'looming', source: '听力高频词',
+          imagery: '大雾里一座黑压压的大山或阴影正朝你逼近，越来越大',
+          extensions: ['期限/危机步步逼近：a looming deadline', '迫在眉睫的威胁：looming crisis'],
+          translations: ['迫近的', '迫在眉睫的', '若隐若现的'],
+          lostInTranslation: '翻成“即将到来的”太中性了，looming 带有一种悬在头顶、让人心里发紧的压迫感。',
+          exampleEn: 'The deadline for the literature review is already looming.',
+          exampleZh: '文献综述的截止日期已经黑压压地逼到眼前了。'
+        },
+        {
+          id: 's4', word: 'sidetrack', source: '听力高频词',
+          imagery: '火车本来在主轨上跑，咔嚓一下被扳道岔引到了旁边的小岔道上',
+          extensions: ['做事中途被带偏：get sidetracked by details', '转移话题焦点：sidetrack the discussion'],
+          translations: ['使分心', '偏离主题', '转移注意'],
+          lostInTranslation: '“分心”只是注意力散了，sidetrack 的画面是“整个人顺着岔路跑偏去干别的事了”。',
+          exampleEn: 'I always get sidetracked whenever a dense article throws unfamiliar jargon at me.',
+          exampleZh: '每当密集的论文抛出陌生术语，我就会被带偏到岔路上去。'
+        },
+        {
+          id: 's5', word: 'erode', source: '写译升格核心',
+          imagery: '河水日复一日冲刷河岸，把泥土一点点啃噬、掏空',
+          extensions: ['水土逐渐流失：erode the coastline', '信心/能力被慢慢消磨：erode critical thinking'],
+          translations: ['侵蚀', '腐蚀', '削弱'],
+          lostInTranslation: '翻成“削弱”看不出时间感，erode 是不知不觉、一点一滴被磨掉，等发现时已经空了一大块。',
+          exampleEn: 'Over-reliance on automated drafts risks eroding independent critical thinking.',
+          exampleZh: '过度依赖自动草稿，会像流水淘沙一样慢慢啃掉独立思辨能力。'
+        },
+        {
+          id: 'w_alleviate', word: 'alleviate', source: '写译升格核心',
+          imagery: '把压在肩膀上的沉重麻袋往上托一托，让人能喘口气',
+          extensions: ['减轻疼痛或负担：alleviate pain', '缓解拥堵或贫困：alleviate traffic congestion'],
+          translations: ['缓解', '减轻', '缓和'],
+          lostInTranslation: '它不是彻底解决问题（solve），而是词根 lev（轻）带来的“把重量托轻一点、没那么难受”。',
+          exampleEn: 'Dedicated bike lanes effectively alleviate traffic congestion during peak hours.',
+          exampleZh: '专用自行车道在高峰期有效托轻了交通拥堵的压力。'
+        },
+        {
+          id: 'w_ubiquitous', word: 'ubiquitous', source: '阅读真题核心',
+          imagery: '不管你扭头看哪个角落，它都已经在那儿盯着你了',
+          extensions: ['遍布每个角落的技术：ubiquitous smartphones', '无处不在的算法：ubiquitous algorithms'],
+          translations: ['无处不在的', '普遍存在的'],
+          lostInTranslation: '比 common 强烈得多，带着“怎么哪儿都有它、躲都躲不开”的铺天盖地感。',
+          exampleEn: 'Recommendation algorithms have become ubiquitous in daily reading.',
+          exampleZh: '推荐算法在日常阅读里已经到了无处不在的地步。'
+        },
+        {
+          id: 'w_inadvertently', word: 'inadvertently', source: '阅读真题核心',
+          imagery: '眼神没往那边看，手肘一抬不小心碰倒了桌上的水杯',
+          extensions: ['无意间造成后果：inadvertently leak data', '没留神触发：inadvertently reward clickbait'],
+          translations: ['不经意地', '无意中', '疏忽地'],
+          lostInTranslation: '核心是“视线和注意力没转过去（in-advert）”，不是故意使坏，而是压根没留神。',
+          exampleEn: 'Platforms inadvertently reward emotionally charged headlines.',
+          exampleZh: '平台在不知不觉间奖赏了煽动情绪的标题。'
+        },
+        {
+          id: 'w_deteriorate', word: 'deteriorate', source: '听力讲座核心',
+          imagery: '原本好好的苹果或房屋，一层层往下烂、品质往低处滑',
+          extensions: ['健康或局势恶化：health deteriorated rapidly', '关系变僵：relations deteriorated'],
+          translations: ['恶化', '变坏', '退化'],
+          lostInTranslation: '“变坏”太笼统，deteriorate 强调从原本还行的状态一步步往下掉（de-下）。',
+          exampleEn: 'Without maintenance, rural infrastructure will quickly deteriorate.',
+          exampleZh: '缺乏维护的话，乡村基础设施会迅速破败下去。'
+        },
+        {
+          id: 'w_unprecedented', word: 'unprecedented', source: '24.12真题词汇',
+          imagery: '往前翻遍所有的历史账本，从来没见过走在它前面的先例',
+          extensions: ['前所未有的峰值：an unprecedented peak', '史无前例的规模：unprecedented scale'],
+          translations: ['史无前例的', '空前的'],
+          lostInTranslation: '字面是“前面（pre）没有走过的脚印（ced）”，用在作文里比 very new 高级得多。',
+          exampleEn: 'In the last decade our obsession with looks has reached an unprecedented peak.',
+          exampleZh: '过去十年里，我们对容貌的执念达到了前所未有的顶峰。'
+        },
+        {
+          id: 'w_intervene', word: 'intervene', source: '24.06真题核心',
+          imagery: '两个人正要撞上或吵起来，你迈步走到他们中间拦一下',
+          extensions: ['出面干预危险行为：intervene in unsafe behavior', '居中调停：intervene in a dispute'],
+          translations: ['干预', '介入', '插手'],
+          lostInTranslation: 'inter（中间）+ vene（走来），画面是“主动跨进事态中间打断原来的滑坡”。',
+          exampleEn: 'Why don\'t more employees intervene when they see at-risk behavior?',
+          exampleZh: '为什么员工看到危险行为时，不走上前去拦一下呢？'
+        },
+        {
+          id: 'w_evade', word: 'evade', source: '24.06真题核心',
+          imagery: '看到迎面抓你的人，泥鳅一样侧身一滑溜走了',
+          extensions: ['逃避已知责任：evade responsibilities', '避开正面回答：evade the question'],
+          translations: ['逃避', '规避', '躲开'],
+          lostInTranslation: '比 avoid 多了一层“耍滑头、绕弯子躲开本该面对的事”的意味。',
+          exampleEn: 'This crowd mentality is strong enough for people to evade their known responsibilities.',
+          exampleZh: '这种从众心理足以让人顺势溜掉自己明知的责任。'
+        },
+        {
+          id: 'w_defer', word: 'defer', source: '24.06真题核心',
+          imagery: '把手里的活儿往后一推，或者往别人怀里一推，自己先不动',
+          extensions: ['把行动推给别人：defer action to someone else', '延期决定：defer a decision'],
+          translations: ['推迟', '延缓', '顺从/移交'],
+          lostInTranslation: '在六级阅读里既考“往后推时间（延期）”，也考“把决定权/行动权往别人那儿推”。',
+          exampleEn: 'They tend to prefer to defer that action to someone else.',
+          exampleZh: '他们往往更愿意把那个干预动作推给别人去做。'
+        },
+        {
+          id: 'w_desolation', word: 'desolation', source: '24.12真题核心',
+          imagery: '人都搬空了，只剩光秃秃的荒地和空房子在风里落灰',
+          extensions: ['陷入荒凉萧条：leave the countryside in desolation', '孤寂凄凉感：a sense of desolation'],
+          translations: ['荒凉', '荒芜', '凄凉'],
+          lostInTranslation: '不只是没植物，而是“原本有人气的地方空无一人（sol=alone）”的冷清破败感。',
+          exampleEn: 'Country dwellers are moving out, leaving the countryside in desolation.',
+          exampleZh: '乡村居民纷纷外迁，把乡村留在了一片人去楼空的荒凉里。'
+        },
+        {
+          id: 'w_intermittent', word: 'intermittent', source: '24.12真题核心',
+          imagery: '接触不良的灯泡，亮一下、灭一下，断断续续不连贯',
+          extensions: ['班次断断续续的公交：intermittent public transport', '零星阵雨：intermittent rain'],
+          translations: ['间歇的', '断断续续的'],
+          lostInTranslation: '重点不在“少”，而在“走走停停、中间老断档”。',
+          exampleEn: 'Due to intermittent public transport, rural residents are heavier car users.',
+          exampleZh: '由于公共交通断断续续，乡村居民更依赖开私家车。'
+        },
+        {
+          id: 'w_deplorable', word: 'deplorable', source: '24.12真题核心',
+          imagery: '看到好好的东西被糟蹋得不成样子，让人忍不住叹气摇头',
+          extensions: ['令人痛心/糟糕透顶的状况：deplorable living conditions', '应受谴责的：deplorable behavior'],
+          translations: ['令人痛心的', '可叹的', '极其糟糕的'],
+          lostInTranslation: '词根 plor 是“哭泣/叹息”，在阅读态度题里代表作者强烈的负面痛惜态度。',
+          exampleEn: 'For those who believe in rural preservation, this trend is deplorable.',
+          exampleZh: '对于支持乡村保护的人来说，这种趋势实在令人痛心。'
+        },
+        {
+          id: 'w_envisage', word: 'envisage', source: '24.12真题核心',
+          imagery: '在脑海的屏幕里，把未来可能发生的那幅图景先勾勒出来',
+          extensions: ['展望/预想未来：envisage the future', '设想方案：envisage a scenario'],
+          translations: ['设想', '展望', '预想'],
+          lostInTranslation: '中间藏着 vis（看），不是瞎猜，而是像看画面一样在脑子里预演未来。',
+          exampleEn: 'Compared with megacities, the future of the countryside is less easy to envisage.',
+          exampleZh: '相比特大城市，乡村的未来没那么容易在脑海中看清轮廓。'
+        },
+        {
+          id: 'w_orchestrate', word: 'orchestrate', source: '24.12真题核心',
+          imagery: '交响乐团指挥站在台上挥舞指挥棒，让几十种乐器严丝合缝地配合',
+          extensions: ['精心统筹安排：a carefully orchestrated plan', '策划活动：orchestrate a campaign'],
+          translations: ['精心安排', '统筹', '策划'],
+          lostInTranslation: '源于管弦乐队（orchestra），强调“多方复杂角色被调度得井井有条”。',
+          exampleEn: 'What looks at times like chaos is in fact a carefully orchestrated plan.',
+          exampleZh: '表面看起来像是一团乱麻，实际上是一套像交响乐一样精密调度的计划。'
+        },
+        {
+          id: 'w_overhaul', word: 'overhaul', source: '24.12真题核心',
+          imagery: '把整台发动机拆开来，零件挨个检修更换，彻底大修一遍',
+          extensions: ['彻底革新教学法：overhaul teaching approaches', '全面大修制度：overhaul the system'],
+          translations: ['彻底检修', '全面改革', '大修'],
+          lostInTranslation: '不是小修小补（adjust），而是拆筋动骨的全面翻新。',
+          exampleEn: 'Overhauling teaching approaches cannot fix all frustrations teachers have.',
+          exampleZh: '把教学方式彻底大改一遍，并不能解决老师们所有的挫败感。'
+        },
+        {
+          id: 'w_bewilder', word: 'bewilder', source: '24.12真题核心',
+          imagery: '把人丢进树林迷宫（wilderness）里，东南西北全转晕了',
+          extensions: ['让人一头雾水：bewilder the teammates', '感到迷茫不知所措：feel bewildered'],
+          translations: ['使迷惑', '使不知所措', '把…弄糊涂'],
+          lostInTranslation: '比 confuse 更有画面感：像在荒野里迷了路，脑子嗡嗡的找不着北。',
+          exampleEn: 'Her lecture on the central dogma of biology had bewildered her teammates.',
+          exampleZh: '她那堂关于生物学中心法则的课，把同事们全听懵了。'
+        },
+        {
+          id: 'w_thorny', word: 'thorny', source: '24.12真题核心',
+          imagery: '长满尖刺的荆棘条，从哪头下手抓都会扎手',
+          extensions: ['棘手的难题：thorny questions / issues', '麻烦的处境：a thorny situation'],
+          translations: ['棘手的', '多刺的', '麻烦的'],
+          lostInTranslation: '中文“棘手”恰好也是这个画面——全是刺（thorn），不好拿捏。',
+          exampleEn: 'There are thorny questions like how to evaluate four teachers at once.',
+          exampleZh: '这里头还有很扎手的问题，比如怎么同时评估四位老师。'
+        },
+        {
+          id: 'w_ascertain', word: 'ascertain', source: '24.12真题核心',
+          imagery: '本来心里犯嘀咕，亲自去查证核实，直到把事情彻底拍板定准',
+          extensions: ['查明事实真相：ascertain the truth', '弄清哪半脑占主导：ascertain which half is dominant'],
+          translations: ['查明', '弄清', '确定'],
+          lostInTranslation: '比 find out 更正式，核心是把不确定变成 certain（确凿无疑）。',
+          exampleEn: 'Online quizzes assert they can ascertain whether your left brain is dominant.',
+          exampleZh: '网上的测试声称能查明你的左脑是否占主导。'
+        },
+        {
+          id: 'w_categorically', word: 'categorically', source: '24.12真题核心',
+          imagery: '一刀切下去，黑就是黑、白就是白，不留半点含糊余地',
+          extensions: ['断然否定/完全错误：categorically false', '明确拒绝：categorically deny'],
+          translations: ['断然地', '绝对地', '毫不含糊地'],
+          lostInTranslation: '阅读态度题信号词：一旦出现 categorically false，说明作者或科学家给出了 100% 否定。',
+          exampleEn: 'The idea that personality is tied to left or right brain is categorically false.',
+          exampleZh: '性格与左右脑挂钩的这种说法，是彻头彻尾错误的。'
+        },
+        {
+          id: 'w_arousal', word: 'arousal', source: '24.12真题核心',
+          imagery: '原本趴着打盹的神经系统被一下子拍醒，心跳加快、汗毛竖起',
+          extensions: ['高度生理兴奋/警觉态：a state of high arousal', '情绪唤起：emotional arousal'],
+          translations: ['唤起', '兴奋', '警觉状态'],
+          lostInTranslation: '在心理学阅读里不是“开心”，而是心率飙升、全身感官被激活的紧绷状态。',
+          exampleEn: 'Watching the horror film, the audience are clearly in a state of high arousal.',
+          exampleZh: '看恐怖片时，观众明显处于生理高度紧绷兴奋的状态。'
+        },
+        {
+          id: 'w_appalling', word: 'appalling', source: '24.12真题核心',
+          imagery: '看到太骇人的场面，吓得脸色唰地一下变得惨白（pale）',
+          extensions: ['极其骇人/糟糕的经历：an appalling experience', '恶劣天气：appalling weather'],
+          translations: ['骇人听闻的', '令人震惊的', '极其恶劣的'],
+          lostInTranslation: '词源就是“让人脸发白”，程度比 bad 或 scary 重得多。',
+          exampleEn: 'You experience a strong sense of mastery after surviving an appalling experience.',
+          exampleZh: '挺过一场骇人的经历后，你会收获一种强烈的掌控感。'
+        },
+        {
+          id: 'w_conform', word: 'conform', source: '24.12真题核心',
+          imagery: '把一块软泥塞进现成的模具（form）里，压成跟大家一模一样的形状',
+          extensions: ['迎合审美标准：conform to a beauty ideal', '遵守规范：conform to rules'],
+          translations: ['顺应', '符合', '遵从'],
+          lostInTranslation: '常带有一点“迫于外部压力、削足适履去配合标准模板”的被动感。',
+          exampleEn: 'Women face underlying pressure to conform to an unrealistic beauty ideal.',
+          exampleZh: '女性面临着潜在压力，要把自己塞进一个不切实际的审美模子里。'
+        },
+        {
+          id: 'w_relentless', word: 'relentless', source: '24.12北斗翻译',
+          imagery: '像狂风暴雨或钻头一样，一下接一下往前顶，半点都不肯松劲',
+          extensions: ['不懈的努力：relentless efforts', '持续不断的压力：relentless pressure'],
+          translations: ['不懈的', '毫不松懈的', '残酷无情的'],
+          lostInTranslation: '翻译“经过不懈努力”时用 through relentless efforts，比 work very hard 有力量得多。',
+          exampleEn: 'Through relentless efforts, researchers overcame a series of technical challenges.',
+          exampleZh: '科研人员凭着一股死磕到底、毫不松劲的努力，攻克了一系列技术难关。'
+        },
+        {
+          id: 'w_resilience', word: 'resilience', source: '24.06竹子翻译',
+          imagery: '竹子被狂风压弯到地面，风一停，“嗖”地一下又弹回笔直的样子',
+          extensions: ['坚韧不拔的精神：the spirit of resilience', '心理抗挫力：cultivate resilience'],
+          translations: ['韧性', '坚韧不拔', '恢复力'],
+          lostInTranslation: '不是硬碰硬的坚硬（hard），而是“能弯而不折、受压后弹回来”的生命韧劲。',
+          exampleEn: 'Bamboo survives tenaciously in harsh environments, embodying the spirit of resilience.',
+          exampleZh: '竹子在恶劣环境中顽强生存， воплощает（体现）出能屈能伸的坚韧精神。'
+        },
+        {
+          id: 'w_tenaciously', word: 'tenaciously', source: '24.06竹子翻译',
+          imagery: '树根死死扒进岩石缝里，怎么拔都拔不出来',
+          extensions: ['顽强生存：survive tenaciously', '紧抓不放：hold on tenaciously'],
+          translations: ['顽强地', '坚韧地', '紧抓不放地'],
+          lostInTranslation: '词根 ten 是“拿住/握紧”，画面是咬定青山不放松的咬合力。',
+          exampleEn: 'Bamboo survives tenaciously no matter how harsh the environment is.',
+          exampleZh: '无论环境多么恶劣，竹子都能死死扎根、顽强生存。'
+        },
+        {
+          id: 'w_meticulously', word: 'meticulously', source: '24.06婚礼翻译',
+          imagery: '拿着小镊子和放大镜，连一毫米的边角细节都反复对齐，生怕出一点错',
+          extensions: ['精心装饰：meticulously decorated', '细致入微地检查：meticulously examined'],
+          translations: ['精心地', '一丝不苟地', '细致入微地'],
+          lostInTranslation: '翻六级“精心装饰/精心设计”时的王牌副词，比 carefully 细腻十倍。',
+          exampleEn: 'The wedding venue is meticulously decorated with red as the main theme.',
+          exampleZh: '婚礼场地经过一丝不苟的精心布置，以红色为主色调。'
+        },
+        {
+          id: 'w_bustling', word: 'bustling', source: '24.12洋山港翻译',
+          imagery: '码头或集市里车船穿梭、人来人往，到处都在热火朝天地忙活',
+          extensions: ['繁忙的港口：a bustling port', '熙熙攘攘的街道：bustling streets'],
+          translations: ['繁忙的', '熙熙攘攘的', '热闹的'],
+          lostInTranslation: 'busy 只是事情多，bustling 是充满动感、一片繁忙景象的画面词。',
+          exampleEn: 'Yangshan Port appears bustling, yet no manual operation can be seen on site.',
+          exampleZh: '洋山港看上去一片繁忙穿梭，现场却见不到人工操作。'
+        },
+        {
+          id: 'w_indispensable', word: 'indispensable', source: '写译高频核心',
+          imagery: '钟表里最核心的那枚齿轮，一旦拆掉整块表就彻底停摆',
+          extensions: ['不可或缺的组成部分：an indispensable component', '数字素养必不可少：digital literacy is indispensable'],
+          translations: ['不可或缺的', '必不可少的'],
+          lostInTranslation: '字面是“没法被免除/省掉（in-dispens-able）”，用于作文总结段替代 very important。',
+          exampleEn: 'Digital literacy and skills are indispensable in our increasingly digital world.',
+          exampleZh: '在日益数字化的世界里，数字素养与技能是拆不掉的关键齿轮。'
+        },
+        {
+          id: 'w_catalyst', word: 'catalyst', source: '写译高分亮点',
+          imagery: '化学烧杯里滴入的那一滴催化剂，瞬间让原本缓慢的反应沸腾起来',
+          extensions: ['把梦想化为现实的催化剂：the catalyst that transforms dreams into reality', '变革催化剂：a catalyst for change'],
+          translations: ['催化剂', '促使变化的人或事'],
+          lostInTranslation: '写作文说“A 促进了 B”时，用 A is the catalyst that... 画面感和学术感直接拉满。',
+          exampleEn: 'Persistent work is the catalyst that transforms dreams into reality.',
+          exampleZh: '持之以恒的努力，正是把梦想催化为现实的那一滴关键试剂。'
+        },
+        {
+          id: 'w_unwavering', word: 'unwavering', source: '写译高分亮点',
+          imagery: '狂风吹过来，火苗或旗杆纹丝不动、连晃都不晃一下',
+          extensions: ['坚定不移的投入：unwavering commitment', '毫不动摇的支持：unwavering support'],
+          translations: ['坚定不移的', '毫不动摇的'],
+          lostInTranslation: 'waver 是摇摆晃动，unwavering 就是“连一丝晃动都没有”，比 firm 更有定力。',
+          exampleEn: 'His unwavering commitment to his goal led him to eventual success.',
+          exampleZh: '他对目标纹丝不动的坚守，最终带他走向了成功。'
+        },
+        {
+          id: 'w_hone', word: 'hone', source: '24.06写作范文',
+          imagery: '把刀刃放在磨刀石上，来回推磨，直到刀锋亮得发光',
+          extensions: ['打磨数字技能：hone my digital skills', '磨练技艺：hone one\'s craft'],
+          translations: ['磨练', '打磨', '训练'],
+          lostInTranslation: '原意就是“磨刀石磨刀”，比 improve skills 多了反复练习、越磨越锋利的质感。',
+          exampleEn: 'As I honed my digital skills, I found myself more confident in academic research.',
+          exampleZh: '随着我把数字技能打磨得越来越锋利，我在学术研究中也越发自信。'
+        },
+        {
+          id: 'w_delve', word: 'delve', source: '24.06写作范文',
+          imagery: '拿着铲子往土层深处使劲往下挖，或者把双手伸进翻箱倒柜地掏',
+          extensions: ['深入钻研课本/课题：delve into textbooks', '深挖原因：delve deeper into the issue'],
+          translations: ['深入探究', '钻研', '深挖'],
+          lostInTranslation: '古英语里 delve 就是“用锹挖土”，delve into 比 study 更有“往深里刨”的劲头。',
+          exampleEn: 'In academic learning, students delve into textbooks to acquire foundational knowledge.',
+          exampleZh: '在学业学习中，学生深挖教材以获取奠基性的知识。'
+        },
+        {
+          id: 'w_impart', word: 'impart', source: '24.12写作范文',
+          imagery: '把自己手里端着的光或手艺，分出一份郑重地传给下一个人',
+          extensions: ['传授知识：the knowledge it imparts', '赋予风味：impart flavor'],
+          translations: ['传授', '赋予', '告知'],
+          lostInTranslation: '写教育话题时，用 education imparts knowledge 比 teaches 更庄重典雅。',
+          exampleEn: 'The value of college lies not only in the knowledge it imparts, but also in freedom.',
+          exampleZh: '大学的价值不仅在于它所传授的知识，还在于它赋予的探索自由。'
+        },
+        {
+          id: 'w_bestow', word: 'bestow', source: '24.12写作范文',
+          imagery: '长辈或上天从高处捧着珍贵的礼物，郑重地赐予你',
+          extensions: ['高等教育赋予的珍贵礼物：the most precious gift higher education can bestow', '授予荣誉：bestow an honor'],
+          translations: ['赋予', '赐予', '授予'],
+          lostInTranslation: '比 give 庄重得多，常用于作文结尾句升华主旨。',
+          exampleEn: 'Such exploration is the most precious gift higher education can bestow.',
+          exampleZh: '这种探索经历，是高等教育所能赐予的最珍贵礼物。'
+        },
+        {
+          id: 'w_compensate', word: 'compensate', source: '听力讲座高频',
+          imagery: '天平左边轻了，赶紧往左边盘子里加砝码，把两边重新配平',
+          extensions: ['弥补睡眠不足：compensate for lost sleep', '赔偿损失：compensate for damages'],
+          translations: ['弥补', '补偿', '抵消'],
+          lostInTranslation: 'pens 是“称重”，核心画面是“这边亏了，从那边补回来配平”。',
+          exampleEn: 'Students often believe coffee compensates for lost sleep.',
+          exampleZh: '学生们常常以为喝咖啡能把亏掉的睡眠给补平。'
+        },
+        {
+          id: 'w_tranquil', word: 'tranquil', source: '24.12阅读真题',
+          imagery: '没有一丝风的清晨湖面，平得像镜子一样，连涟漪都没有',
+          extensions: ['宁静的乡村生活：a simple, tranquil life', '静谧的湖泊：a tranquil lake'],
+          translations: ['宁静的', '平静的', '安宁的'],
+          lostInTranslation: 'quiet 只是没声音，tranquil 是连心境和环境都像静水一样安稳无波。',
+          exampleEn: 'Rural life is often associated with a simple, tranquil life.',
+          exampleZh: '乡村生活常常与简朴、如静水般安宁的日子联系在一起。'
+        }
+      ];
+
+      // ---------- 2. Real CET-6 Reading Passages Bank (7 Passages: 5 Real 2024.06-2024.12 + 2 High-Yield) ----------
+      const READING_PASSAGES = [
+        {
+          id: 'r1',
+          title: '【2024年12月六级真题·第1套 Passage 1】恐怖娱乐的心理学悖论 (Q46–Q50)',
+          vocab: {
+            'arousal': INITIAL_IMAGERY_WORDS.find(w => w.word === 'arousal'),
+            'appalling': INITIAL_IMAGERY_WORDS.find(w => w.word === 'appalling')
+          },
+          sentences: [
+            "Imagine you're an alien sent to Earth to document the behaviour of the mammals inhabiting the planet. You stumble into a movie theatre that's showing the latest Hollywood horror film.",
+            "Several dozen humans are gathered together in a dark, undecorated room. They're all staring at a rectangular area on which patterns of light change rapidly.",
+            "They are clearly in a state of high arousal. Their heart rate is elevated, they occasionally glance around nervously, and they sometimes jump collectively in their seats, and emit high-pitched warning calls.",
+            "Eventually, the lights come up and the rectangular screen goes black. The humans stand up and leave the room, chatting and laughing, and showing signs of pleasure.",
+            "Why do these humans voluntarily expose themselves to what appears to be a deeply unpleasant experience? And why do they react so strongly to those patterns of light on a screen?",
+            "I am fascinated with the paradox of horror—the strange fact that many people seek out scary entertainment. I think the answer to the puzzle lies in human nature.",
+            "My research suggests that we humans evolved to find pleasure in situations that allow us to experience negative emotions in a safe context. You can see these elements of horror in children's games. Take hide-and-seek for example, which is a simulation of a predator-prey interaction.",
+            "This simulation gives the child crucial information about how to avoid becoming prey, and children tend to find that kind of activity deeply satisfying, presumably because it gives them a safe experience of a potentially catastrophic scenario.",
+            "Horror is pleasurable to many people because it lets us play with negative emotions and develop coping strategies. We learn what it feels like to be truly afraid, and we learn how to handle negative emotion.",
+            "How, then, does horror work? My research suggests that horror works by exploiting an ancient set of biological defence mechanisms—an evolved fear system, which we share with other animals. But humans are uniquely imaginative, and we use our evolved imagination to travel into virtual worlds that are full of danger.",
+            "There are good reasons for watching a horror film, even if you're not a loyal horror fan. If you make it through the film in one piece, you'll probably experience a strong sense of mastery, a sense that you were able to make it through an appalling experience."
+          ],
+          questions: [
+            {
+              q: "46. The alien finds the audience in the movie theatre clearly in a state of ______.",
+              options: ["A) total mindfulness", "B) extreme excitement", "C) spiritual elevation", "D) intense curiosity"],
+              ans: 1,
+              exp: "定位第 3 句：in a state of high arousal，心率升高、集体惊跳尖叫，对应 extreme excitement。"
+            },
+            {
+              q: "47. Why do many people seek out scary entertainment, according to the author's research?",
+              options: ["A) They gain experience in overcoming horror in real life.", "B) They find joy in going through simulated horrible experiences.", "C) They have learned from hide-and-seek as kids the thrill involved.", "D) They have evolved to gain pleasure in escaping life-threatening situations."],
+              ans: 1,
+              exp: "定位第 7 句：find pleasure in situations that allow us to experience negative emotions in a safe context（在安全模拟情境中体验可怕经历获得乐趣）。"
+            },
+            {
+              q: "48. What do children learn from hide-and-seek?",
+              options: ["A) How to avoid falling prey to an attacker.", "B) How to simulate a predator-prey interaction.", "C) How to keep themselves from catastrophic errors.", "D) How to turn a dangerous scenario into a safe one."],
+              ans: 0,
+              exp: "定位第 8 句：crucial information about how to avoid becoming prey，同义改写为 avoid falling prey to an attacker。"
+            },
+            {
+              q: "49. Why is horror gratifying to many people?",
+              options: ["A) It reminds them of an ancient set of biological defence mechanisms.", "B) It triggers their imagination to travel into dangerous virtual worlds.", "C) It allows them to learn what fear feels like and how to tackle it.", "D) It activates their evolved fear system and their unique fantasy."],
+              ans: 2,
+              exp: "定位第 9 句：We learn what it feels like to be truly afraid, and we learn how to handle negative emotion。"
+            },
+            {
+              q: "50. What will one experience if they watch a horror film through without being hurt?",
+              options: ["A) A strong sense of clear relevance.", "B) A profound sense of good fortune.", "C) A profound sense of intense relief.", "D) A strong sense of being in control."],
+              ans: 3,
+              exp: "定位末句：experience a strong sense of mastery，mastery 同义对应 being in control。"
+            }
+          ]
+        },
+        {
+          id: 'r2',
+          title: '【2024年12月六级真题·第1套 Passage 2】社交媒体滤镜与容貌焦虑 (Q51–Q55)',
+          vocab: {
+            'conform': INITIAL_IMAGERY_WORDS.find(w => w.word === 'conform'),
+            'unprecedented': INITIAL_IMAGERY_WORDS.find(w => w.word === 'unprecedented'),
+            'alleviate': INITIAL_IMAGERY_WORDS.find(w => w.word === 'alleviate')
+          },
+          sentences: [
+            "An awakening has been taking place in the physical world against the beauty model that has been dictated to us for years. But in the digital arena, social media determines what is considered beautiful.",
+            "The two opposing struggles are taking place in parallel. In the physical world, the struggle goes against the underlying pressure exerted on women to conform to an unrealistic beauty ideal. As part of the struggle, various media outlets have presented women whose bodies don't correspond to the so-called ideal.",
+            "Technology has reshaped our beauty ideal and is doing a great job communicating that message to the masses. One of the bizarre legacies of the past decade is the popularity of the 'cyborg look.' Today, however, the Instagram face has become the new beauty ideal.",
+            "The internalization of accepted beauty norms is much more effective when there is active involvement in the learning process. The active involvement of users is reflected in the gamified interaction offered by the social media platforms—the ability to like, write a comment, compare, share.",
+            "Once the desired beauty ideal has been internalized, users are given tools or features to change their appearance to suit the accepted beauty ideal such as editing the image, choosing the ideal filter, the right background.",
+            "A survey conducted in the United States revealed that more than 50% filter the images before posting them. One of the significant consequences of obsessive filtering is the emerging tendency to treat oneself as an object to be observed and valued, in the same way another person observes and judges from the side.",
+            "The effect of the filters is already far beyond amiable amusement. Even though humanity has always cherished beauty, in the last decade our obsession with looks has reached an unprecedented peak. The time spent on social media creates an urge to achieve an impossible beauty ideal so powerful that the only thing that can fix it is not cosmetic intervention, but mental health care."
+          ],
+          questions: [
+            {
+              q: "51. What do we learn about beauty in the digital arena?",
+              options: ["A) It dictates the taste of digital media.", "B) It has been in the making for years.", "C) It has ushered in a new awakening.", "D) It is defined by social media."],
+              ans: 3,
+              exp: "定位第 1 段末句：But in the digital arena, social media determines what is considered beautiful。"
+            },
+            {
+              q: "52. What does the passage say about beauty in the physical world?",
+              options: ["A) Women are under constant pressure to keep up with beauty models.", "B) Women are encouraged to pursue a beauty ideal that has never existed.", "C) A fight is going on to remove pressure on women to conform to an absurd beauty ideal.", "D) Media outlets have begun to present as beauty models trendy women without any makeup."],
+              ans: 2,
+              exp: "定位第 2 段：In the physical world, the struggle goes against the underlying pressure exerted on women to conform to an unrealistic beauty ideal。"
+            },
+            {
+              q: "53. What do we learn from the passage about the Instagram face?",
+              options: ["A) It is now regarded as the new beauty ideal.", "B) It is what most women will go after in 2050.", "C) It is being much talked about on social media.", "D) It is a perfect illustration of the ultimate beauty."],
+              ans: 0,
+              exp: "定位第 3 段末句：Today, however, the Instagram face has become the new beauty ideal。"
+            },
+            {
+              q: "54. What has obsessive filtering resulted in?",
+              options: ["A) A good many women striving to reach an impossible level of perfection.", "B) An urge to turn the entire game played on the network to one's advantage.", "C) A tendency to regard one's body as an object of observation and judgment.", "D) An increasing number of women filtering their images before uploading them."],
+              ans: 2,
+              exp: "定位第 6 段：the emerging tendency to treat oneself as an object to be observed and valued, in the same way another person observes and judges。"
+            },
+            {
+              q: "55. What does the author want to emphasize at the end of the passage regarding Americans' obsession with looks?",
+              options: ["A) Cosmetic surgery should be made more accessible to the masses.", "B) Psychological intervention should be introduced to alleviate it.", "C) Their time spent on social media should be strictly controlled.", "D) Its root cause should be meticulously examined and analyzed."],
+              ans: 1,
+              exp: "定位末句：the only thing that can fix it is not cosmetic intervention, but mental health care（对应 Psychological intervention）。"
+            }
+          ]
+        },
+        {
+          id: 'r_2024_12_s2_p1',
+          title: '【2024年12月六级真题·第2套 Passage 1】全球城市化与乡村演变的困境 (Q46–Q50)',
+          vocab: {
+            'tranquil': INITIAL_IMAGERY_WORDS.find(w => w.word === 'tranquil'),
+            'desolation': INITIAL_IMAGERY_WORDS.find(w => w.word === 'desolation'),
+            'intermittent': INITIAL_IMAGERY_WORDS.find(w => w.word === 'intermittent'),
+            'deplorable': INITIAL_IMAGERY_WORDS.find(w => w.word === 'deplorable'),
+            'envisage': INITIAL_IMAGERY_WORDS.find(w => w.word === 'envisage')
+          },
+          sentences: [
+            "With population increases and global urbanisation ever accelerating, much attention is focused on the sustainability of our cities and scarce attention is paid to the countryside.",
+            "Rural life is associated with closely-knit communities, sense of belonging, and a simple, tranquil life. Yet whilst some or all of these elements exist in the countryside, so do conservatism and a lack of employment opportunities. Attracted by the improved economics of urban areas, country dwellers across the world are moving out, leaving the countryside in desolation.",
+            "Due to both the distance between residences and facilities and often intermittent public transport, those living in the countryside are heavier automobile users. We may be piled up like boxes in the city, but this brings energy efficiency that the countryside cannot match. Rural energy requirements result in higher carbon emissions per person than in the city.",
+            "Those who have made their fortunes in the city often buy second homes in the countryside, visiting intermittently for a sample of a supposedly simple life. The side-effect of this is that house prices are pushed up due to increased demand, leaving them unaffordable for local people. Market forces are further forcing residents out of the countryside. For those who believe in rural preservation, this is deplorable.",
+            "Whilst an idealised view of the countryside is common, the reality is that rural life has continuously evolved. Industrialisation brought an increase in divisions of labour, and the internet has introduced once foreign cultures into the countryside. Considering these changes, surely an evolving countryside is inevitable.",
+            "As the world continues to urbanise, the voices calling for rural preservation may well grow louder. We know that the world is going to see new cities emerging from the dust and current cities growing into megacities, but the future of the countryside is less clear."
+          ],
+          questions: [
+            {
+              q: "46. What has become of the rural areas nowadays?",
+              options: ["A) They are becoming somewhat deserted.", "B) They are being increasingly urbanised.", "C) They are closely-knit communities.", "D) They are haunted by conservation."],
+              ans: 0,
+              exp: "定位第 2 段末句：leaving the countryside in desolation，同义改写为 becoming somewhat deserted（变得荒芜）。"
+            },
+            {
+              q: "47. What does the author think of the rural lifestyle?",
+              options: ["A) It is unlikely to survive given the on-going changes.", "B) It is less energy-efficient compared to that in cities.", "C) It is highly dependent upon heavy automobiles.", "D) It is a choice more affluent people will endorse."],
+              ans: 1,
+              exp: "定位第 3 段：this brings energy efficiency that the countryside cannot match，说明乡村能源效率不如城市。"
+            },
+            {
+              q: "48. What does the author think of rich urban residents buying a second home in the countryside?",
+              options: ["A) It is bound to mar the traditional rural life.", "B) It adversely impacts rural social stability.", "C) It hinders rural economies' revitalisation.", "D) It is detrimental to rural preservation."],
+              ans: 3,
+              exp: "定位第 4 段：推高房价逼走本地居民，For those who believe in rural preservation, this is deplorable，对应 detrimental to rural preservation。"
+            },
+            {
+              q: "49. What do we learn about the countryside with industrialisation and technological advances?",
+              options: ["A) It is destined to change gradually.", "B) It will present an idealised way of life.", "C) It is likely to embrace foreign cultures.", "D) It will become increasingly diversified."],
+              ans: 0,
+              exp: "定位第 5 段末句：Considering these changes, surely an evolving countryside is inevitable（注定逐步演变）。"
+            },
+            {
+              q: "50. What does the author think of the future of the countryside compared with cities?",
+              options: ["A) It is going to be harder for the locals.", "B) It is going to resemble that of cities.", "C) It is less likely to stay static.", "D) It is less easy to envisage."],
+              ans: 3,
+              exp: "定位末段末句：but the future of the countryside is less clear，同义改写为 less easy to envisage（更难以预想）。"
+            }
+          ]
+        },
+        {
+          id: 'r_2024_12_s3_p1',
+          title: '【2024年12月六级真题·第3套 Passage 1】“左脑理性、右脑感性”的神经科学辟谣 (Q46–Q50)',
+          vocab: {
+            'ascertain': INITIAL_IMAGERY_WORDS.find(w => w.word === 'ascertain'),
+            'categorically': INITIAL_IMAGERY_WORDS.find(w => w.word === 'categorically')
+          },
+          sentences: [
+            "There are hundreds of personality quizzes online that assert they can ascertain whether the right or left half of your brain is dominant. Left-brained people are supposedly logical and excel at language and math while right-brained people are more imaginative. There's just one problem: That's not how brains work.",
+            "Despite this enduring belief, there's no such thing as being 'right-brained' or 'left-brained.' Whether you're someone who tends more towards creativity or logic has nothing to do with one hemisphere of your brain being dominant over the other. But the actual science of how the two halves of our brains work together is sometimes stranger than fiction.",
+            "The human brain is divided into two hemispheres, the left and right. In all vertebrate animals, the right hemisphere controls the left side of the body and vice versa. And scientists have long known that different areas of the brain do different things.",
+            "But many scientists struggled with this idea, because the very suggestion that the left and right halves of the brain operate differently disrupted the idea that nature tends toward perfect symmetry.",
+            "Work by neuroscientists has revealed the importance of different hemispheres of the brain for different activities. However, their research quickly saw some misinterpretations in the general public. The idea that we have left-dominant people and right-dominant people, and that this is related to personality, is categorically false. Neuroscientists don't believe that and never have.",
+            "When you come up with an online quiz that tells us something about ourselves, we're drawn to that. It's irresistible. But you have to take it with an enormous grain of salt."
+          ],
+          questions: [
+            {
+              q: "46. What do numerous personality quizzes online claim they are able to do?",
+              options: ["A) Distinguish between the two hemispheres of one's brain.", "B) Determine whether one is left-brained or right-brained.", "C) Tell if one is more of a linguist or of a mathematician.", "D) Ascertain how one's brain performs different tasks."],
+              ans: 1,
+              exp: "定位首句：assert they can ascertain whether the right or left half of your brain is dominant。"
+            },
+            {
+              q: "47. What does the author say is sometimes stranger than fiction?",
+              options: ["A) How one hemisphere of the brain impacts creativity.", "B) How the two halves of our brains work alternately.", "C) How the two hemispheres of our brains cooperate.", "D) How one half of the brain dominates the other."],
+              ans: 2,
+              exp: "定位第 2 段末句：how the two halves of our brains work together is sometimes stranger than fiction，work together 对应 cooperate。"
+            },
+            {
+              q: "48. Why did many scientists have difficulty endorsing the idea that different areas of the brain do different things?",
+              options: ["A) It contradicts the assumption that the two hemispheres of the brain are symmetrical.", "B) It dismisses the view that the universe has been evolving in a consistent manner.", "C) It is in conflict with the suggestion that the left and right halves of the brain work together.", "D) It disrupts the idea that the right hemisphere of the brain controls the left side of the body."],
+              ans: 0,
+              exp: "定位第 4 段：disrupted the idea that nature tends toward perfect symmetry（违背自然趋向完美对称的假设）。"
+            },
+            {
+              q: "49. What belief have neuroscientists long rejected according to the passage?",
+              options: ["A) There are left-dominant people and right-dominant people with different personalities.", "B) There are noticeable differences between the left and right hemispheres of the brain.", "C) One's personality is hardly related to the different halves of the brain.", "D) Different areas of the brain are responsible for different activities."],
+              ans: 0,
+              exp: "定位第 5 段：The idea that we have left-dominant people and right-dominant people, and that this is related to personality, is categorically false。"
+            },
+            {
+              q: "50. What are we advised to do with an online quiz that tells us something about ourselves?",
+              options: ["A) Challenge its authority.", "B) Scrutinize its originality.", "C) Evaluate its popularity.", "D) Question its reliability."],
+              ans: 3,
+              exp: "定位末句习语：take it with an enormous grain of salt（对其可靠性保持怀疑态度）。"
+            }
+          ]
+        },
+        {
+          id: 'r_2024_12_s3_p2',
+          title: '【2024年12月六级真题·第3套 Passage 2】打破教室围墙的团队教学模式 (Q51–Q55)',
+          vocab: {
+            'orchestrate': INITIAL_IMAGERY_WORDS.find(w => w.word === 'orchestrate'),
+            'overhaul': INITIAL_IMAGERY_WORDS.find(w => w.word === 'overhaul'),
+            'bewilder': INITIAL_IMAGERY_WORDS.find(w => w.word === 'bewilder'),
+            'thorny': INITIAL_IMAGERY_WORDS.find(w => w.word === 'thorny')
+          },
+          sentences: [
+            "One hundred thirty-five students, four teachers, one giant classroom: This is what 9th grade looks like at Westwood High School, in Mesa, Arizona's largest school system. Five years ago, faced with high teacher turnover and declining student enrollment, Westwood's leaders piloted a classroom model known as team teaching which allows teachers to dissolve the walls that separate their classes.",
+            "The teachers share large groups of students and rotate between group instruction, one-on-one interventions, and small study groups. What looks at times like chaos is in fact a carefully orchestrated plan: Each morning, the Westwood teams meet to hammer out a personalized program for every student the team will focus on that day.",
+            "By giving teachers more opportunity to collaborate, Mesa's administrators hoped to fill staffing gaps and boost teacher morale and retention. Initial research suggests the gamble could pay off.",
+            "\"Teachers are doing fantastic things, but it's very rare a teacher walks into another room to see what's happening,\" said Andi Fourlis, superintendent of Mesa Public Schools. \"Our profession is so slow to advance because we are working in isolation.\"",
+            "Of course, overhauling teaching approaches can't fix all the frustrations teachers have, such as low pay, but early results show team teaching may be helping to reverse low morale. Another benefit is that teachers can help each other improve their instruction. During one planning session, English teacher Jeff Hall shared with a science teacher that her recent lecture on 'the central dogma of biology' had bewildered him and their other teammates.",
+            "The model is not for everyone. Team teaching can also be a scheduling nightmare. There are also thorny questions like how to evaluate four teachers on the performance of 135 students. But for the time being, it seems to be working."
+          ],
+          questions: [
+            {
+              q: "51. What do we learn about team teaching from the passage?",
+              options: ["A) It is generally conducted in classrooms without walls.", "B) It allows students to choose teachers they favor most.", "C) It prioritizes peer work over classroom instruction.", "D) It is closely coordinated despite seeming confusion."],
+              ans: 3,
+              exp: "定位第 2 段：What looks at times like chaos is in fact a carefully orchestrated plan（表面混乱实则精密协调）。"
+            },
+            {
+              q: "52. What does initial research suggest regarding Westwood's innovative teaching model?",
+              options: ["A) It could help raise teachers' pay.", "B) It could turn out to be a success.", "C) It could cut down overall costs.", "D) It could end up like a gamble."],
+              ans: 1,
+              exp: "定位第 3 段末句：Initial research suggests the gamble could pay off（pay off 意为取得成功/收到回报）。"
+            },
+            {
+              q: "53. What did superintendent Andi Fourlis say about the teaching profession?",
+              options: ["A) Morale cannot be boosted until teaching models are overhauled.", "B) Teachers are simply too busy to visit classes of their colleagues.", "C) Progress is slow due to lack of collaboration among teachers.", "D) Teachers often do fantastic things without being noticed."],
+              ans: 2,
+              exp: "定位第 4 段：Our profession is so slow to advance because we are working in isolation（孤立工作、缺乏协作导致进步缓慢）。"
+            },
+            {
+              q: "54. What does the author want to show by citing English teacher Jeff Hall's experience?",
+              options: ["A) English teachers and science teachers are complementary in performing their tasks.", "B) A teacher of arts and letters is completely puzzled by what a science teacher teaches.", "C) The new teaching model helps inform the teacher how their instruction is received.", "D) Science teachers will hardly know the confusion they create without a performance appraisal."],
+              ans: 2,
+              exp: "定位第 5 段：通过队友反馈，科学老师才得知自己的讲课让听众困惑（帮助教师了解教学效果如何被接收）。"
+            },
+            {
+              q: "55. What does the author think is one of the difficult problems in implementing the new teaching model?",
+              options: ["A) What to do with teachers working alone.", "B) What to include in teaching schedules.", "C) How to recruit volunteers for a team.", "D) How to assess each teacher's performance."],
+              ans: 3,
+              exp: "定位末段：There are also thorny questions like how to evaluate four teachers on the performance of 135 students。"
+            }
+          ]
+        },
+        {
+          id: 'r_2024_06_s1_p1',
+          title: '【2024年6月六级真题·第1套 Passage 1】职场安全干预与旁观者效应 (Q46–Q50)',
+          vocab: {
+            'intervene': INITIAL_IMAGERY_WORDS.find(w => w.word === 'intervene'),
+            'evade': INITIAL_IMAGERY_WORDS.find(w => w.word === 'evade'),
+            'defer': INITIAL_IMAGERY_WORDS.find(w => w.word === 'defer'),
+            'alleviate': INITIAL_IMAGERY_WORDS.find(w => w.word === 'alleviate')
+          },
+          sentences: [
+            "It is irrefutable that employees know the difference between right and wrong. So why don't more employees intervene when they see someone exhibiting at-risk behavior in the workplace?",
+            "There are a number of factors that influence whether people intervene. First, they need to be able to see a risky situation beginning to unfold. Second, the company's culture needs to make them feel safe to speak up. And third, they need to have the communication skills to say something effectively.",
+            "Every day people witness things on the street and choose to stand idly by. This is known as the bystander effect—the more people who witness an event, the less likely anyone in that group is to help the victim. The psychology behind this is called diffusion of responsibility.",
+            "This crowd mentality is strong enough for people to evade their known responsibilities. When a group of employees sees unsafe behavior not being addressed at a leadership level it creates the precedent that this is how these situations should be addressed, thus defining the safety culture for everyone.",
+            "Despite the fact that workers are encouraged to intervene when they observe unsafe operations, this happens less than half of the time. Fear is the ultimate factor in not intervening. There is a fear of penalty, a fear that they'll have to do more work if they intervene. Unsuccessful attempts in the past are another strong contributing factor—they tend to prefer to defer that action to someone else.",
+            "Supervisors also play a critical role. Supervisors need a broad set of skills to not only identify and alleviate workplace hazards but also build a safety climate within their team that supports intervening and open communication among them."
+          ],
+          questions: [
+            {
+              q: "46. What is one of the factors contributing to failure of intervention in face of risky behavior in the workplace?",
+              options: ["A) Slack supervision style.", "B) Unfavorable workplace culture.", "C) Unforeseeable risk.", "D) Blocked communication."],
+              ans: 1,
+              exp: "定位第 2 段：Second, the company's culture needs to make them feel safe to speak up。"
+            },
+            {
+              q: "47. What does the author mean by 'diffusion of responsibility'?",
+              options: ["A) The more people are around, the more they need to worry about their personal safety.", "B) The more people who witness an event, the less likely anyone will venture to participate.", "C) The more people idling around on the street, the more likely they need taking care of.", "D) The more people are around, the less chance someone will step forward to intervene."],
+              ans: 3,
+              exp: "定位第 3 段：在场人数越多，越觉得别人会管，导致越少有人站出来干预（step forward to intervene）。"
+            },
+            {
+              q: "48. What happens when unsafe behavior at the workplace is not addressed by the leaders?",
+              options: ["A) No one will intervene when they see similar behaviors.", "B) Everyone will see it as the easiest way to deal with crisis.", "C) Workers have to take extra caution executing their duties.", "D) Workers are left to take care of the emergency themselves."],
+              ans: 0,
+              exp: "定位第 4 段：树立了消极先例（creates the precedent），大家遇到类似行为也不会去干预。"
+            },
+            {
+              q: "49. What is the ultimate reason workers won't act when they see unsafe operations?",
+              options: ["A) Preference of deferring the action to others.", "B) Anticipation of leadership intervention.", "C) Fear of being isolated by coworkers.", "D) Fear of having to do more work."],
+              ans: 3,
+              exp: "定位第 5 段：Fear is the ultimate factor in not intervening. There is a fear of penalty, a fear that they'll have to do more work if they intervene。"
+            },
+            {
+              q: "50. What is critical to ensuring workplace safety?",
+              options: ["A) Workers are trained to operate their equipment properly.", "B) Workers exhibiting at-risk behavior are strictly disciplined.", "C) Supervisors create a safety environment for timely intervention.", "D) Supervisors conduct effective communication with frontline workers."],
+              ans: 2,
+              exp: "定位末段：Supervisors also play a critical role... build a safety climate within their team that supports intervening。"
+            }
+          ]
+        },
+        {
+          id: 'r_algo_2026',
+          title: '【六级预测精选 Passage 7】算法推荐与认知窄化',
+          vocab: {
+            'ubiquitous': INITIAL_IMAGERY_WORDS.find(w => w.word === 'ubiquitous'),
+            'inadvertently': INITIAL_IMAGERY_WORDS.find(w => w.word === 'inadvertently'),
+            'erode': INITIAL_IMAGERY_WORDS.find(w => w.word === 'erode')
+          },
+          sentences: [
+            "Recommendation algorithms have become so ubiquitous that most readers barely notice how silently their curiosity is being curated.",
+            "By optimizing for immediate clicks, platforms inadvertently reward emotionally charged headlines over nuanced, evidence-based reporting.",
+            "Over time, this feedback loop erodes independent judgment and constructs an epistemic bubble in which dissenting viewpoints feel implausible.",
+            "Nevertheless, researchers argue that algorithmic curation itself is not inherently harmful if users deliberately counterbalance it with slow, long-form reading."
+          ],
+          questions: [
+            {
+              q: "1. What is the unintended consequence of optimizing platforms for immediate clicks?",
+              options: ["A) Readers lose interest in all forms of digital news.", "B) Emotional headlines gain an advantage over nuanced reporting.", "C) Primary sources become completely inaccessible online.", "D) Platforms stop recommending long-form articles altogether."],
+              ans: 1,
+              exp: "定位第 2 句：reward emotionally charged headlines over nuanced, evidence-based reporting。"
+            }
+          ]
+        }
+      ];
+
+      // ---------- 3. Real CET-6 Writing & Translation Bank (6 Writing + 6 Translation = 12 Real Sets) ----------
+      const WRITING_STEPS = [
+        {
+          id: 'w1',
+          topic: '【2024年12月六级真题·第1套】设定切合实际的目标并坚持努力',
+          prompt: 'Directions: Write an essay that begins with the sentence "To increase the likelihood of success, one should set realistic goals and work persistently towards them." (150–200 words)',
+          raw: 'Setting realistic goals is very important because it stops us from wasting time, and working hard every day helps us make our dreams come true.',
+          diag: '149分痛点诊断：very important / stops us from wasting time / make our dreams come true 全是初高中基础表达，缺乏六级学术质感。',
+          stepHint: '用 provide a clear direction and prevent one from wandering aimlessly 替换“不浪费时间”；用 catalyst（催化剂）和 unwavering commitment（坚定投入）升格“努力实现梦想”。',
+          upgraded: 'Setting realistic goals provides a clear direction and prevents one from wandering aimlessly, while persistent work serves as the catalyst that transforms aspirations into reality.',
+          fullEssay: 'To increase the likelihood of success, one should set realistic goals and work persistently towards them. This adage is not only a guiding principle but also a reflection of the journey to success. Setting realistic goals provides a clear direction and prevents one from wandering aimlessly. Moreover, persistent work is the catalyst that transforms dreams into reality.\n\nFor instance, when Thomas Edison invented the light bulb, he faced numerous failures. However, his unwavering commitment to his goal led him to eventual success. Similarly, in my own studies, breaking a target score into manageable weekly tasks and consistently striving to achieve them has significantly improved my academic performance.\n\nIn conclusion, setting realistic goals and working persistently towards them is the key to unlocking our potential.'
+        },
+        {
+          id: 'w2',
+          topic: '【2024年12月六级真题·第2套】自律在个人成长中的重要性',
+          prompt: 'Directions: Write an essay that begins with the sentence "Nowadays, more and more students have realized the importance of self-discipline in their personal growth." (150–200 words)',
+          raw: 'Today there are many temptations like short videos, so self-discipline is very important to help students study every day and become stronger when facing difficulties.',
+          diag: '149分痛点诊断：there are many temptations 句式松散；help students study every day 过于直白。',
+          stepHint: '用 In an age of endless distractions 开篇；用 transform vague intentions into consistent action 与 cultivate resilience（培养韧性）升格。',
+          upgraded: 'In an age of endless distractions, self-discipline transforms vague intentions into consistent action and cultivates the resilience needed to persevere through setbacks.',
+          fullEssay: 'Nowadays, more and more students have realized the importance of self-discipline in their personal growth. In an age of endless distractions, the ability to govern oneself has become a decisive factor that separates those who merely dream from those who genuinely achieve.\n\nSelf-discipline matters for two reasons. First, it transforms vague intentions into consistent action. A student who sticks to a schedule, even when tempted by short videos, gradually accumulates knowledge. Second, it cultivates resilience. By repeatedly choosing long-term goals over instant gratification, students build the mental strength to persevere through setbacks.\n\nIn conclusion, self-discipline is not a restriction but a form of freedom—the freedom to become who we aspire to be.'
+        },
+        {
+          id: 'w_2412_3',
+          topic: '【2024年12月六级真题·第3套】大学提供探索多种可能性的机会',
+          prompt: 'Directions: Write an essay that begins with the sentence "College provides a great opportunity for students to explore various possibilities and find the right path for themselves." (150–200 words)',
+          raw: 'Different from high school, college lets students try many different courses and clubs, which is the best gift that college gives to us.',
+          diag: '149分痛点诊断：Different from high school / try many different courses / best gift that college gives 偏口语化。',
+          stepHint: '用 Unlike the rigid structure of high school 对比；用 expose young people to a wide range of disciplines 与 the most precious gift higher education can bestow 升格。',
+          upgraded: 'Unlike the rigid structure of high school, university life exposes young people to a wide range of disciplines, which is the most precious gift higher education can bestow.',
+          fullEssay: 'College provides a great opportunity for students to explore various possibilities and find the right path for themselves. Unlike the rigid structure of high school, university life exposes young people to a wide range of disciplines, cultures and ideas, allowing them to discover where their genuine interests truly lie.\n\nTake my roommate as an example. He entered college as a computer science major, but after taking an elective in psychology and joining a debate club, he realized that human behavior fascinated him far more than coding. His story illustrates how a diverse campus environment can reshape one\'s life direction.\n\nIn conclusion, the value of college lies not only in the knowledge it imparts, but also in the freedom it offers students to choose a path that suits them best.'
+        },
+        {
+          id: 'w_2406_1',
+          topic: '【2024年6月六级真题·第1套】当今世界数字素养与技能的重要性',
+          prompt: 'Directions: Write an essay that begins with the sentence "There is a growing awareness of the importance of digital literacy and skills in today\'s world." (150–200 words)',
+          raw: 'As technology develops fast, digital skills are not just a good thing to have, but something we must have to do well in school and work.',
+          diag: '149分痛点诊断：not just a good thing, but something we must have 词汇匮乏。',
+          stepHint: '用 no longer a luxury but a necessity（不再是奢侈品而是必需品）以及 hone my digital skills（打磨数字技能）、indispensable（不可或缺）升格。',
+          upgraded: 'In the digital age, proficiency in digital skills is no longer a luxury but an indispensable necessity for both academic inquiry and professional success.',
+          fullEssay: 'There is a growing awareness of the importance of digital literacy and skills in today\'s world. In the digital age, being proficient in digital skills is no longer a luxury but a necessity.\n\nIn the workplace, digital skills enable employees to collaborate remotely and analyze data to make informed decisions. Moreover, digital literacy is essential for students who need to access online databases and conduct research. I remember struggling with data tools when I first started college, but as I honed my digital skills, I found myself far more capable in academic projects.\n\nIn conclusion, digital literacy and skills are indispensable in our increasingly digital world, empowering us to contribute meaningfully to society.'
+        },
+        {
+          id: 'w_2406_2',
+          topic: '【2024年6月六级真题·第2套】社会实践与学业学习同等重要',
+          prompt: 'Directions: Write an essay that begins with the sentence "Nowadays more and more college students have come to realize social practice and academic learning are equally important." (150–200 words)',
+          raw: 'Learning from books gives us basic knowledge, and social practice helps us use this knowledge in real life so we can connect theory with practice.',
+          diag: '149分痛点诊断：gives us basic knowledge / use this knowledge 表达平淡。',
+          stepHint: '用 delve into textbooks to acquire foundational knowledge 与 offer a complementary experience to bridge the gap between theory and practice 升格。',
+          upgraded: 'While delving into textbooks equips students with foundational knowledge, social practice offers a complementary experience that bridges the gap between theory and practice.',
+          fullEssay: 'Nowadays more and more college students have come to realize social practice and academic learning are equally important. This belief stems from the understanding that a well-rounded education involves both theoretical knowledge and practical skills.\n\nIn academic learning, students delve into textbooks and lectures, acquiring foundational knowledge. However, theory alone is often insufficient for the complexities of the real world. Social practice offers a complementary experience, allowing students to apply classroom theories to real-life scenarios. For instance, a business student truly grasps market dynamics only through internships.\n\nIn conclusion, balancing social practice and academic learning bridges the gap between theory and practice, equipping students to thrive in future careers.'
+        },
+        {
+          id: 'w_ai_2026',
+          topic: '【2026年12月六级高频预测】生成式 AI 辅助与独立学术思考',
+          prompt: 'Directions: Write an essay on the impact of generative AI on college students\' independent thinking. (150–200 words)',
+          raw: 'Nowadays many college students use AI to write essays, which is very convenient but also makes them lazy in thinking.',
+          diag: '149分痛点诊断：use AI / very convenient / makes them lazy 口语化严重。',
+          stepHint: '用 streamline information retrieval（简化信息检索）替换 convenient；用 erode independent critical thinking（侵蚀独立批判性思维）替换 make them lazy。',
+          upgraded: 'While generative AI undeniably streamlines information retrieval for undergraduates, over-reliance on automated drafts risks eroding their capacity for independent critical thinking.',
+          fullEssay: 'While generative AI undeniably streamlines information retrieval for undergraduates, over-reliance on automated drafts risks eroding their capacity for independent critical thinking.\n\nUsed wisely, AI tools act as an efficient research assistant, helping students organize literature and check grammar. Yet when students defer the entire reasoning process to algorithms, their ability to construct rigorous arguments gradually deteriorates. Real academic growth happens precisely when we wrestle with thorny questions ourselves.\n\nTherefore, students should treat AI as a reference rather than a replacement for human judgment, counterbalancing digital convenience with deep, independent reflection.'
+        }
+      ];
+
+      const TRANSLATION_TASKS = [
+        {
+          id: 't1',
+          title: '【2024年12月六级真题·第1套】北斗卫星导航系统 (Beidou)',
+          chinese: '北斗（Beidou）卫星导航系统的成功研制是中国自改革开放以来取得的一项重大科技成就。研发人员经过不懈努力，攻克了一系列技术难题，北斗系统最终实现了全球覆盖和高精度定位，使中国成为世界上少数几个独立拥有全球卫星导航系统的国家之一。北斗系统已广泛应用于交通运输、灾害救援、天气预报、公共安全等诸多领域。北斗系统现在已经在国际上得到广泛认可，开始为越来越多的国家和地区提供优质服务。',
+          keywords: ['reform and opening up (改革开放)', 'through relentless efforts (经过不懈努力)', 'global coverage and high-precision positioning (全球覆盖和高精度定位)', 'disaster relief (灾害救援)', 'gain widespread international recognition (得到国际广泛认可)'],
+          reference: 'The successful development of the Beidou satellite navigation system represents a significant scientific and technological achievement for China since its reform and opening up. Through relentless efforts, researchers have overcome a series of technical challenges, enabling the Beidou system to achieve global coverage and high-precision positioning. This has made China one of the few countries in the world with an independent global satellite navigation system. The Beidou system has been widely applied in various fields such as transportation, disaster relief, weather forecasting, and public security. It has now gained widespread international recognition and is providing quality services to an increasing number of countries and regions.'
+        },
+        {
+          id: 't2',
+          title: '【2024年12月六级真题·第2套】上海洋山深水港 (Yangshan Port)',
+          chinese: '洋山港(Yangshan Port)是上海航运中心的重要组成部分，是中国第一个深水港，也是世界上规模最大的深水港之一。经过近20年的发展，洋山港已实现高度自动化。数字技术和人工智能的使用大大减少了用工成本和碳排放。自主研发的码头管理系统可以在百公里之外对大型设备进行远程操控。洋山港看上去一片繁忙，现场却见不到人工操作，而且能够24小时不间断运作。洋山港将不断发展，为把上海建成一个全球航运中心做出更大贡献。',
+          keywords: ['deep-water port (深水港)', 'a high degree of automation (高度自动化)', 'labor costs and carbon emissions (用工成本和碳排放)', 'remotely control (远程操控)', 'run around the clock without interruption (24小时不间断运作)'],
+          reference: 'Yangshan Port, an important component of the Shanghai shipping center, is China\'s first deep-water port and one of the largest deep-water ports in the world. After nearly two decades of development, Yangshan Port has achieved a high degree of automation. The use of digital technology and artificial intelligence has greatly reduced labor costs and carbon emissions. Its independently developed terminal management system can remotely control large equipment from more than 100 kilometers away. Although Yangshan Port looks extremely bustling, no manual operation can be seen on site, and it is able to run around the clock without interruption. Yangshan Port will keep developing and make greater contributions to building Shanghai into a global shipping center.'
+        },
+        {
+          id: 't_2412_3',
+          title: '【2024年12月六级真题·第3套】中国航天与空间站建设',
+          chinese: '遨游太空历来是中华民族的梦想。2003年，神舟五号飞船发射成功，杨利伟成为第一个飞入太空的中国宇航员。2008年，神舟七号升空，翟志刚成为中国历史上首位进行太空行走的宇航员。近年来，中国航天进入创新发展“快车道”，太空基础设施建设稳步推进，中国空间站于2022年全面建成。中国航天事业的迅速发展在中华民族的历史上写下了辉煌一页，也为人类文明进步做出了巨大贡献。未来，中国探索太空的脚步将迈得更稳、更远。',
+          keywords: ['conduct a spacewalk (进行太空行走)', 'fast track of innovation (创新发展“快车道”)', 'space infrastructure (太空基础设施)', 'Chinese Space Station (中国空间站)', 'write a brilliant chapter (写下辉煌一页)'],
+          reference: 'Exploring space has always been a dream of the Chinese nation. In 2003, the successful launch of Shenzhou-5 marked Yang Liwei as the first Chinese astronaut to enter space. In 2008, with the Shenzhou-7 mission, Zhai Zhigang became the first Chinese astronaut to conduct a spacewalk in history. In recent years, China\'s space endeavors have entered a "fast track" of innovation and development, with steady progress in the construction of space infrastructure, and the completion of the Chinese Space Station in 2022. The rapid development of China\'s space program has written a brilliant chapter in the history of the Chinese nation and made a significant contribution to the progress of human civilization. In the future, China\'s steps in exploring space will be more stable and reach further.'
+        },
+        {
+          id: 't_2406_1',
+          title: '【2024年6月六级真题·第1套】中国传统中式婚礼习俗',
+          chinese: '中国的传统婚礼习俗历史悠久，从周朝开始就逐渐形成了一套完整的婚礼仪式，有些一直沿用至今。如今的中式婚礼习俗已有很大变化，但婚礼庆典仍然十分隆重。婚礼场地经过精心装饰，以象征喜庆（jubilance）的红色为主色调，摆放着许多祝愿新人幸福的物件。在婚礼上，新人要拜天地（bow to Heaven and Earth），拜父母和相互对拜，然后设宴招待宾客，并向宾客敬酒致谢。今天，许多年轻人依然钟情于传统的中式婚礼，体验独特而美好的中国式浪漫。',
+          keywords: ['a complete set of wedding ceremonies (一套完整的婚礼仪式)', 'meticulously decorated (精心装饰)', 'symbolizing jubilance (象征喜庆)', 'hold a banquet to entertain guests (设宴招待宾客)', 'have a fondness for (钟情于)'],
+          reference: 'China\'s traditional wedding customs have a long history, gradually forming a complete set of wedding ceremonies since the Zhou Dynasty, some of which are still in use today. Modern Chinese wedding customs have changed significantly, but the wedding celebrations remain very grand. The wedding venue is meticulously decorated, with the color red, symbolizing jubilance, as the main theme, and many objects are placed to wish the newlyweds happiness. At the wedding, the couple bow to Heaven and Earth, bow to their parents and each other, then hold a banquet to entertain guests and toast to thank them. Today, many young people still have a fondness for traditional Chinese weddings, experiencing a unique and beautiful Chinese romance.'
+        },
+        {
+          id: 't_2406_2',
+          title: '【2024年6月六级真题·第2套】中国的竹文化与坚韧品格',
+          chinese: '中国盛产竹子，是最早开发利用竹资源的国家。竹子在中国分布广泛，品种丰富。竹子实用性强，用于生产和生活的许多方面，如筷子、桌椅的制作和桥梁、房屋的建造。中国人爱竹，自古以来就有无数文人以竹为主题，创作了绚丽多彩的文学和绘画作品。竹子主干(stem)笔直，象征正直的品格。竹子具有强大的生命力和适应能力，无论环境多么恶劣，都能够顽强生存，因而寓意坚韧不拔的精神。几千年来，竹子一直被视为中华民族品格的象征。',
+          keywords: ['be rich/abundant in bamboo (盛产竹子)', 'countless literati (无数文人)', 'upright character (正直的品格)', 'survive tenaciously (顽强生存)', 'the spirit of resilience (坚韧不拔的精神)'],
+          reference: 'China is rich in bamboo and is the first country to develop and utilize bamboo resources. Bamboo is widely distributed and diverse in varieties across China. It is highly practical and used in many aspects of production and daily life, such as the making of chopsticks, tables and chairs, and the construction of bridges and houses. The Chinese have a fondness for bamboo; since ancient times, countless literati have used bamboo as a theme to create a rich and colorful array of literature and paintings. The bamboo\'s stem is straight, symbolizing upright character. Bamboo possesses strong vitality and adaptability, surviving tenaciously no matter how harsh the environment is, thus embodying the spirit of resilience. For thousands of years, bamboo has been regarded as a symbol of the Chinese nation\'s character.'
+        },
+        {
+          id: 't_2306_3',
+          title: '【2023年6月六级真题·第3套】中国城市人居环境与高质量发展',
+          chinese: '近年来，中国城市加快发展，城市人居环境得到显著改善。许多城市努力探索中国特色的城市高质量发展之路，城市功能不断完善，治理水平明显提高。中国持续开展城市生态修复和功能修补，全面实施城镇老旧小区改造，大力推进城市园林绿化，消除污染；同时大力推进城市基础设施体系化建设，开展房屋建筑和市政设施普查以及安全隐患排查整治，努力为市民创造高品质的生活环境。',
+          keywords: ['urban living environment (城市人居环境)', 'high-quality urban development (城市高质量发展)', 'ecological restoration (生态修复)', 'renovation of old urban residential communities (城镇老旧小区改造)', 'urban infrastructure (城市基础设施)'],
+          reference: 'In recent years, with the accelerated development of Chinese cities, the urban living environment has been significantly improved. Many cities have striven to explore a path of high-quality urban development with Chinese characteristics, continuously improving urban functions and governance. China has persistently carried out urban ecological restoration and functional upgrading, comprehensively implemented the renovation of old urban residential communities, and vigorously promoted urban landscaping to eliminate pollution. Meanwhile, it has advanced the systematic construction of urban infrastructure and conducted safety hazard inspections to create a high-quality living environment for citizens.'
+        }
+      ];
+
+      // ---------- 4. Listening Passages ----------
       const LISTENING_PASSAGES = [
         {
           id: 'l1',
@@ -426,7 +1263,7 @@
             "D) Vertical walls require less water than traditional street trees."
           ],
           answerIdx: 2,
-          explanation: "因果逻辑词 Consequently 引出结论，对应前文 scattered pocket gardens ... create a continuous cooling corridor。听力中转折词 however 与因果词 consequently 后常为考点。"
+          explanation: "因果逻辑词 Consequently 引出结论，对应前文 scattered pocket gardens ... create a continuous cooling corridor。"
         },
         {
           id: 'l3',
@@ -450,116 +1287,26 @@
         }
       ];
 
-      const READING_PASSAGES = [
-        {
-          id: 'r1',
-          title: '仔细阅读 · 算法推荐与认知窄化 (2026 六级预测热点)',
-          vocab: {
-            'ubiquitous': { meaning: 'adj. 无处不在的，普遍存在的', tip: '六级阅读高频词，常与 digital / technology 搭配' },
-            'inadvertently': { meaning: 'adv. 不经意地，无意中', tip: '注意词根 advert (转向) + in- 否定，易与 deliberately 考反义' },
-            'epistemic': { meaning: 'adj. 认识论的，认知的', tip: '学术阅读常见定语，如 epistemic bubble 认知茧房' },
-            'counterbalance': { meaning: 'v. 抵消，使平衡', tip: '合成词 counter(反) + balance(平衡)，常见于对策段' }
-          },
-          sentences: [
-            "Recommendation algorithms have become so ubiquitous that most readers barely notice how silently their curiosity is being curated.",
-            "By optimizing for immediate clicks, platforms inadvertently reward emotionally charged headlines over nuanced, evidence-based reporting.",
-            "Over time, this feedback loop constructs an epistemic bubble in which dissenting viewpoints feel not merely unfamiliar, but implausible.",
-            "Nevertheless, researchers argue that algorithmic curation itself is not inherently harmful if users deliberately counterbalance it with slow, long-form reading.",
-            "When readers pause to verify primary sources and trace structural arguments, they reclaim agency over what captures their attention."
-          ],
-          questions: [
-            {
-              q: "1. What is the unintended consequence of optimizing platforms for immediate clicks?",
-              options: [
-                "A) Readers lose interest in all forms of digital news.",
-                "B) Emotional headlines gain an advantage over nuanced reporting.",
-                "C) Primary sources become completely inaccessible online.",
-                "D) Platforms stop recommending long-form articles altogether."
-              ],
-              ans: 1,
-              exp: "定位第 2 句：reward emotionally charged headlines over nuanced, evidence-based reporting，同义替换为 gain an advantage over。"
-            },
-            {
-              q: "2. How can users mitigate the negative effect of algorithmic curation?",
-              options: [
-                "A) By abandoning all digital platforms permanently.",
-                "B) By reading only dissenting viewpoints.",
-                "C) By engaging intentionally in slow, long-form reading and source checking.",
-                "D) By relying on headlines to summarize structural arguments."
-              ],
-              ans: 2,
-              exp: "定位第 4–5 句转折词 Nevertheless 之后：deliberately counterbalance it with slow, long-form reading 及 verify primary sources。"
-            }
-          ]
-        },
-        {
-          id: 'r2',
-          title: '仔细阅读 · 模块化建筑与城市减碳',
-          vocab: {
-            'conventional': { meaning: 'adj. 传统的，常规的', tip: '常与 innovative / modular 构成对比' },
-            'standardized': { meaning: 'adj. 标准化的', tip: '注意动词 standardize 的被动与过去分词用法' },
-            'skepticism': { meaning: 'n. 怀疑态度', tip: '六级态度题高频词，对应 skeptical' },
-            'viable': { meaning: 'adj. 可行的，能存活的', tip: '常考 economically viable 经济上可行的' }
-          },
-          sentences: [
-            "Compared with conventional on-site construction, modular building assembles standardized room units inside climate-controlled factories.",
-            "This industrial shift cuts material waste by nearly thirty percent because leftover steel and timber are immediately recycled on the assembly line.",
-            "Despite early skepticism regarding monotonous appearances, modern architects now combine prefabricated modules with localized facades.",
-            "As urban housing shortages intensify, modular engineering offers a viable pathway to deliver low-carbon apartments on tight schedules."
-          ],
-          questions: [
-            {
-              q: "1. Why does modular construction reduce material waste significantly?",
-              options: [
-                "A) It eliminates the use of steel and timber entirely.",
-                "B) Surplus materials are directly reused on the factory line.",
-                "C) Construction workers spend less time on site.",
-                "D) Climate-controlled factories prevent weather damage to facades."
-              ],
-              ans: 1,
-              exp: "定位第 2 句：leftover steel and timber are immediately recycled on the assembly line。"
-            }
-          ]
-        }
-      ];
-
-      const WRITING_STEPS = [
-        {
-          id: 'w1',
-          topic: '话题 1 · AI 辅助学习与独立思考（六级议论文高频）',
-          raw: 'Nowadays many college students use AI to write essays, which is very convenient but also makes them lazy in thinking.',
-          diag: '诊断（约 149 分水平）：句意清晰，但 use AI / very convenient / makes them lazy 偏口语化，缺少学术词汇与让步结构。',
-          stepHint: '尝试将“方便”升级为 efficiency / indispensable，将“变懒”升级为 erode independent critical thinking，并用 While... 引导让步。',
-          upgraded: 'While generative AI undeniably streamlines information retrieval for undergraduates, over-reliance on automated drafts risks eroding their capacity for independent critical thinking.'
-        },
-        {
-          id: 'w2',
-          topic: '话题 2 · 校园低碳生活与环保实践',
-          raw: 'We should save electricity and avoid wasting food in our daily campus life so that we can protect the environment.',
-          diag: '诊断：We should + 动词原形过于平铺直叙；so that 从句略显单薄。',
-          stepHint: '尝试使用“非谓语/介词短语 + 倒装或强调句”，替换 protect the environment 为 foster sustainable campus habits。',
-          upgraded: 'Only by curbing energy consumption and minimizing food waste in daily routines can university communities foster genuinely sustainable campus habits.'
-        }
-      ];
-
-      const TRANSLATION_TASKS = [
-        {
-          id: 't1',
-          title: '六级汉译英 · 非物质文化遗产的数字化传承',
-          chinese: '近年来，越来越多的中国非物质文化遗产正借助数字技术焕发新生。通过高清影像记录与虚拟现实展示，年轻人不仅能够近距离感受传统手工艺的精妙，还可以参与线上互动体验。这既拓宽了传统文化的传播渠道，也为保护文化多样性提供了新的思路。',
-          keywords: ['intangible cultural heritage', 'revitalize / take on a new lease of life', 'high-definition', 'virtual reality', 'broaden the channels'],
-          reference: 'In recent years, a growing number of China\'s intangible cultural heritage items have been revitalized through digital technologies. With high-definition visual archiving and virtual reality exhibitions, young people can not only appreciate the ingenuity of traditional craftsmanship up close, but also participate in interactive online experiences. This both broadens the channels for disseminating traditional culture and offers fresh approaches to preserving cultural diversity.'
-        },
-        {
-          id: 't2',
-          title: '六级汉译英 · 绿色出行与城市慢行系统',
-          chinese: '随着绿色发展理念的深入人心，骑行和步行正重新成为许多城市居民的首选出行方式。各地政府不断完善专用自行车道与林荫步道，既缓解了高峰时段的交通拥堵，也有效降低了碳排放，让城市生活变得更加宜居。',
-          keywords: ['green development', 'dedicated bike lanes', 'alleviate traffic congestion', 'carbon emissions', 'more livable'],
-          reference: 'As the concept of green development takes deeper root, cycling and walking are once again becoming preferred modes of travel for many urban residents. Local governments have continuously upgraded dedicated bike lanes and tree-lined walkways, which not only alleviates traffic congestion during peak hours but also effectively lowers carbon emissions, making city life considerably more livable.'
-        }
-      ];
-
       const ERROR_PATTERNS = ['全部', '连读弱读漏听', '同义替换未识别', '长难句主干偏差', '中式表达直译', '高级句式单一'];
+
+      function buildInitialSrsCards() {
+        return INITIAL_IMAGERY_WORDS.map((item, idx) => ({
+          id: item.id,
+          word: item.word,
+          imagery: item.imagery,
+          extensions: item.extensions || [],
+          translations: item.translations || [],
+          meaning: (item.translations || []).join(' / '),
+          lostInTranslation: item.lostInTranslation || '',
+          exampleEn: item.exampleEn || '',
+          exampleZh: item.exampleZh || '',
+          note: item.lostInTranslation || '',
+          source: item.source || '六级核心',
+          reps: 0,
+          interval: 0,
+          due: Date.now() - (40 - idx) * 1000
+        }));
+      }
 
       function getDefaultState() {
         return {
@@ -573,21 +1320,18 @@
           errorFilter: '全部',
           errorLogs: [
             { id: 'e1', pattern: '连读弱读漏听', note: '听力中 "sort of" / "kind of" 弱读成 /sɔːtə/ 导致整句语义断开', fix: '每日精听 3 句时专门标出介词/助动词弱读', date: '2026-11-16' },
-            { id: 'e2', pattern: '同义替换未识别', note: '原文 reward A over B 对应选项 gain an advantage over', fix: '做完阅读后单独对照题干与原文的动词替换对', date: '2026-11-16' },
-            { id: 'e3', pattern: '中式表达直译', note: '习惯写 "make them lazy" 或 "protect environment"', fix: '用 "erode capacity for..." 与 "foster sustainable habits" 替换', date: '2026-11-15' }
+            { id: 'e2', pattern: '同义替换未识别', note: '24年12月真题 in desolation 对应选项 becoming somewhat deserted', fix: '做完真题阅读后把题干与原文同义改写词对加入意象词库', date: '2026-11-16' },
+            { id: 'e3', pattern: '中式表达直译', note: '习惯写 "work hard" 或 "make them lazy"', fix: '用 "relentless efforts" 与 "erode capacity for..." 替换', date: '2026-11-15' }
           ],
-          srsCards: [
-            { id: 's1', word: 'deteriorate', meaning: 'v. 恶化，变坏', note: '听力讲座高频负向词，注意重音在第二音节', source: '听力错词', reps: 0, interval: 0, due: Date.now() },
-            { id: 's2', word: 'unprecedented', meaning: 'adj. 史无前例的', note: '阅读与翻译高频词，注意拼写 pre-ced-ent', source: '阅读提取', reps: 0, interval: 0, due: Date.now() },
-            { id: 's3', word: 'alleviate', meaning: 'v. 缓解，减轻', note: '翻译“缓解交通拥堵/压力”核心替换词', source: '写译升格', reps: 0, interval: 0, due: Date.now() },
-            { id: 's4', word: 'compensate for', meaning: 'v. phr. 弥补，补偿', note: '听力对话常考短语，注意介词搭配 for', source: '听力错词', reps: 0, interval: 0, due: Date.now() },
-            { id: 's5', word: 'ubiquitous', meaning: 'adj. 无处不在的', note: '六级阅读科技话题高频形容词', source: '阅读提取', reps: 0, interval: 0, due: Date.now() }
-          ],
-          highlights: {}, // { r1: [0, 2] }
+          srsCards: buildInitialSrsCards(),
+          selectedSrsWordId: 's1',
+          highlights: {},
           readingNotes: {},
           writingDrafts: {},
           translationDrafts: {},
           mockHistory: [],
+          mockPart: 'part1',
+          mockAnswers: { listen: {}, read: {}, writeText: '', transText: '' },
           listeningIdx: 0,
           listeningStep: 'blind',
           readingIdx: 0,
@@ -596,22 +1340,46 @@
       }
 
       function loadState() {
+        const def = getDefaultState();
         try {
-          const raw = localStorage.getItem(STORAGE_KEY);
-          if (!raw) return getDefaultState();
+          const saved = localStorage.getItem(STORAGE_KEY);
+          const raw = saved || localStorage.getItem('cet6_coach_v1');
+          if (!raw) return def;
           const parsed = JSON.parse(raw);
-          return Object.assign(getDefaultState(), parsed);
-        } catch (e) {
-          return getDefaultState();
+          const existing = Array.isArray(parsed.srsCards) ? parsed.srsCards : [];
+          const words = new Set();
+          const merged = [];
+          for (const old of existing) {
+            if (!old.word) continue;
+            const key = old.word.toLowerCase();
+            if (words.has(key)) continue;
+            const base = def.srsCards.find(c => c.word.toLowerCase() === key);
+            merged.push({...base, ...old});
+            words.add(key);
+          }
+          for (const card of def.srsCards) {
+            if (!words.has(card.word.toLowerCase())) {
+              const id = merged.some(c => c.id === card.id) ? 'imagery_' + card.id : card.id;
+              merged.push({...card, id});
+            }
+          }
+          const result = {...def, ...parsed, srsCards: merged};
+          result.mockAnswers = {...def.mockAnswers, ...parsed.mockAnswers};
+          if (!saved) {
+            // These drafts refer to the previous set of passages; the v1 backup remains intact.
+            for (const key of ['readingIdx','readingNotes','writingDrafts','translationDrafts','highlights']) result[key] = def[key];
+          }
+          if (!merged.some(c => c.id === result.selectedSrsWordId)) result.selectedSrsWordId = merged[0]?.id;
+          return result;
+        } catch {
+          return def;
         }
       }
 
       function saveState() {
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-        } catch (e) {
-          // Ignore storage quota / sandbox restrictions
-        }
+        } catch (e) {}
       }
 
       let state = loadState();
@@ -619,18 +1387,15 @@
       let readingTimerId = null;
       let readingSecondsLeft = 540;
       let mockTimerId = null;
-      let mockSecondsLeft = 1500;
-      let mockTotalMins = 25;
+      let mockTotalMins = {part1:30, part2:25, part3:40, part4:30}[state.mockPart] || 30;
+      let mockSecondsLeft = mockTotalMins * 60;
       let currentVocabTarget = null;
-      let srsFlipped = false;
+      let srsFlipped = true; // Show full Word Imagery card by default when searching/browsing
 
       // ---------- Utilities ----------
       function todayStr() {
         const d = new Date();
-        const y = d.getFullYear();
-        const m = String(d.getMonth() + 1).padStart(2, '0');
-        const day = String(d.getDate()).padStart(2, '0');
-        return y + '-' + m + '-' + day;
+        return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
       }
 
       function showToast(msg) {
@@ -664,11 +1429,7 @@
         const set = new Set(state.checkedDates || []);
         let streak = 0;
         const d = new Date();
-        // If not checked today, check from yesterday
-        const tStr = todayStr();
-        if (!set.has(tStr)) {
-          d.setDate(d.getDate() - 1);
-        }
+        if (!set.has(todayStr())) d.setDate(d.getDate() - 1);
         while (true) {
           const s = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
           if (set.has(s)) {
@@ -681,7 +1442,7 @@
         return streak;
       }
 
-      // ---------- Render Navigation & Header ----------
+      // ---------- Header & Navigation ----------
       function renderHeaderExtras() {
         const dueCount = state.srsCards.filter(c => c.due <= Date.now()).length;
         document.getElementById('nav-srs-badge').textContent = String(dueCount);
@@ -719,14 +1480,12 @@
         if (tab === 'mock') renderMock();
       }
 
-      // ---------- Render Dashboard ----------
+      // ---------- TAB 1: Dashboard ----------
       function renderDashboard() {
-        // Countdown to 2026-12-12 15:00+08:00
         const examDate = new Date('2026-12-12T15:00:00+08:00');
-        const diffDays = Math.max(0, Math.ceil((examDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24)));
-        document.getElementById('countdown-pill').textContent = `距考试 ${diffDays} 天`;
+        const examDiff = Math.max(0, Math.ceil((examDate.getTime() - Date.now()) / 86400000));
+        document.getElementById('countdown-pill').textContent = `距考试 ${examDiff} 天`;
 
-        // Streak & Check-in
         const streak = computeStreak();
         const checkedToday = (state.checkedDates || []).includes(todayStr());
         document.getElementById('stat-streak').textContent = String(streak);
@@ -749,7 +1508,6 @@
           checkinBtn.className = 'px-3 py-1.5 rounded-xl text-xs font-semibold bg-accent-700 hover:bg-accent-800 text-white transition';
         }
 
-        // Energy switcher
         document.querySelectorAll('.energy-btn').forEach(btn => {
           const active = btn.dataset.energy === state.energyMode;
           btn.setAttribute('aria-pressed', String(active));
@@ -759,15 +1517,14 @@
         });
 
         const missions = {
-          '35m': { title: '精听 · 写作 · 词汇', targetTab: 'listening' },
+          '35m': { title: '阅读 · 写作 · 词汇', targetTab: 'reading' },
           '20m': { title: '精听 · 词汇', targetTab: 'listening' },
-          '10m': { title: '句子练习', targetTab: 'writing' }
+          '10m': { title: '词汇练习', targetTab: 'srs' }
         };
         const curM = missions[state.energyMode] || missions['35m'];
         document.getElementById('mission-title').textContent = curM.title;
         document.getElementById('start-mission-btn').onclick = () => switchTab(curM.targetTab);
 
-        // 14-day grid
         const grid = document.getElementById('streak-grid');
         grid.innerHTML = '';
         let missed = 0;
@@ -780,16 +1537,12 @@
           if (!hit && i > 0) missed++;
           const cell = document.createElement('div');
           cell.title = s + (hit ? ' · 已学习' : ' · 未记录');
-          cell.className = hit
-            ? 'h-5 rounded-md bg-accent-700'
-            : 'h-5 rounded-md bg-gray-100 border border-gray-200';
+          cell.className = hit ? 'h-5 rounded-md bg-accent-700' : 'h-5 rounded-md bg-gray-100 border border-gray-200';
           grid.appendChild(cell);
         }
 
-        // Chart
         renderScoreChart();
 
-        // Error Patterns
         const filterBar = document.getElementById('error-filter-bar');
         filterBar.innerHTML = '';
         ERROR_PATTERNS.forEach(p => {
@@ -840,34 +1593,17 @@
         scoreChartInstance = new Chart(ctx, {
           type: 'bar',
           data: {
-            labels: ['听力', '阅读', '写译'],
+            labels: ['听力 (满分249)', '阅读 (满分249)', '写译 (满分212)'],
             datasets: [
-              {
-                label: '基线',
-                data: [140, 200, 149],
-                backgroundColor: '#E1E6EC',
-                borderRadius: 6
-              },
-              {
-                label: '当前',
-                data: [state.currentEst.listen, state.currentEst.read, state.currentEst.write],
-                backgroundColor: '#7D9BB5',
-                borderRadius: 6
-              },
-              {
-                label: '目标',
-                data: [state.targets.listen, state.targets.read, state.targets.write],
-                backgroundColor: '#344E65',
-                borderRadius: 6
-              }
+              { label: '四级基线 (489)', data: [140, 200, 149], backgroundColor: '#CBD5E1', borderRadius: 6 },
+              { label: '当前六级估分', data: [state.currentEst.listen, state.currentEst.read, state.currentEst.write], backgroundColor: '#7D9BB5', borderRadius: 6 },
+              { label: '六级目标线', data: [state.targets.listen, state.targets.read, state.targets.write], backgroundColor: '#344E65', borderRadius: 6 }
             ]
           },
           options: {
             responsive: true,
             maintainAspectRatio: false,
-            plugins: {
-              legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 11 } } }
-            },
+            plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 11 } } } },
             scales: {
               y: { beginAtZero: true, max: 250, grid: { color: '#F1F5F9' } },
               x: { grid: { display: false } }
@@ -876,7 +1612,7 @@
         });
       }
 
-      // ---------- Render Listening Lab ----------
+      // ---------- TAB 2: Listening Lab ----------
       function renderListening() {
         const sel = document.getElementById('listening-passage-select');
         sel.innerHTML = '';
@@ -978,8 +1714,13 @@
                     state.srsCards.unshift({
                       id: 's_' + Date.now(),
                       word: w,
-                      meaning: '（听力听写漏听词，待补充释义）',
-                      note: `来自精听：${passage.title}`,
+                      imagery: '从听力真题中捕获的漏听词，留意它在连读中的声音轮廓',
+                      extensions: [`出自：${passage.title}`],
+                      translations: ['待补充常用译法'],
+                      meaning: '听力漏听词',
+                      lostInTranslation: '在语流中容易因为弱读或连读被耳朵滑过去。',
+                      exampleEn: sent,
+                      exampleZh: '（来自当前精听句子）',
                       source: '听力漏听',
                       reps: 0,
                       interval: 0,
@@ -987,7 +1728,7 @@
                     });
                     saveState();
                     renderHeaderExtras();
-                    showToast(`已将 "${w}" 加入 SRS 错词本`);
+                    showToast(`已将 "${w}" 加入意象词库`);
                   } else {
                     showToast(`"${w}" 已在词库中`);
                   }
@@ -1013,7 +1754,7 @@
         }
       }
 
-      // ---------- Render Reading Lab ----------
+      // ---------- TAB 3: Reading Lab ----------
       let hlModeActive = true;
       function renderReading() {
         const sel = document.getElementById('reading-passage-select');
@@ -1034,17 +1775,20 @@
         passage.sentences.forEach((sent, idx) => {
           const p = document.createElement('p');
           p.className = 'hl-sentence ' + (hlSet.has(idx) ? 'active-hl' : '');
-          // Wrap known vocab chips
           let html = sent;
-          Object.keys(passage.vocab).forEach(vKey => {
-            const re = new RegExp(`\\b(${vKey})\\b`, 'gi');
-            html = html.replace(re, `<span class="vocab-chip" data-vocab="${vKey}">$1</span>`);
-          });
+          if (passage.vocab) {
+            Object.keys(passage.vocab).forEach(vKey => {
+              if (!passage.vocab[vKey]) return;
+              const re = new RegExp(`\\b(${vKey}[a-z]*)\\b`, 'gi');
+              html = html.replace(re, `<span class="vocab-chip" data-vocab="${vKey}">$1</span>`);
+            });
+          }
           p.innerHTML = html;
           p.addEventListener('click', (e) => {
             if (e.target.classList.contains('vocab-chip')) {
               e.stopPropagation();
-              openVocabModal(e.target.dataset.vocab, passage.vocab[e.target.dataset.vocab]);
+              const key = e.target.dataset.vocab;
+              openVocabModal(key, passage.vocab[key]);
               return;
             }
             if (!hlModeActive) return;
@@ -1060,10 +1804,9 @@
           body.appendChild(p);
         });
 
-        // Questions
         const qBox = document.getElementById('reading-questions-box');
         qBox.innerHTML = '';
-        passage.questions.forEach((qItem, qIdx) => {
+        passage.questions.forEach((qItem) => {
           const card = document.createElement('div');
           card.className = 'p-4 rounded-xl border border-gray-200 space-y-2.5';
           card.innerHTML = `
@@ -1103,14 +1846,16 @@
       }
 
       function openVocabModal(word, info) {
-        currentVocabTarget = { word, ...info };
-        document.getElementById('vm-word').textContent = word;
-        document.getElementById('vm-meaning').textContent = info.meaning;
-        document.getElementById('vm-tip').textContent = info.tip;
+        if (!info) return;
+        currentVocabTarget = info;
+        document.getElementById('vm-word').textContent = info.word || word;
+        document.getElementById('vm-imagery').textContent = info.imagery || '';
+        document.getElementById('vm-meaning').textContent = '常用释义：' + ((info.translations || []).join(' / ') || info.meaning || '');
+        document.getElementById('vm-tip').textContent = '语感：' + (info.lostInTranslation || info.tip || '');
         document.getElementById('vocab-modal').classList.remove('hidden');
       }
 
-      // ---------- Render Writing & Translation ----------
+      // ---------- TAB 4: Writing & Translation (12 Real Sets) ----------
       function renderWriting() {
         document.querySelectorAll('.wmode-btn').forEach(btn => {
           const active = btn.dataset.wmode === state.writingMode;
@@ -1128,20 +1873,29 @@
             box.className = 'p-5 rounded-xl border border-gray-200 bg-paper space-y-3';
             const savedVal = state.writingDrafts[item.id] || '';
             box.innerHTML = `
-              <div class="text-xs font-semibold text-accent-800">${item.topic}</div>
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <div class="text-sm font-bold text-ink">${item.topic}</div>
+              </div>
+              <div class="text-xs text-muted bg-white p-3 rounded-lg border border-gray-200 font-mono">${item.prompt}</div>
               <div class="p-3 rounded-lg bg-white border border-gray-200 text-sm text-gray-800">
-                <span class="text-[11px] font-mono text-muted block mb-1">原句</span>
+                <span class="text-[11px] font-mono text-muted block mb-1">149分常见原句（待升格）：</span>
                 ${item.raw}
               </div>
               <div class="text-xs text-gray-600">${item.diag}</div>
               <div class="text-xs text-accent-800 bg-accent-50/70 p-2.5 rounded-lg border border-accent-100">升格提示：${item.stepHint}</div>
-              <textarea rows="2" class="w-draft w-full rounded-xl border border-gray-200 p-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-accent-600" placeholder="输入改写…">${savedVal}</textarea>
-              <div class="flex items-center justify-between">
+              <textarea rows="3" class="w-draft w-full rounded-xl border border-gray-200 p-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-accent-600" placeholder="输入改写或作文…">${savedVal}</textarea>
+              <div class="flex flex-wrap items-center gap-2">
                 <button type="button" class="toggle-ref-btn px-3 py-1.5 rounded-xl bg-accent-700 text-white text-xs font-semibold">查看参考</button>
               </div>
-              <div class="w-ref hidden p-3 rounded-xl bg-white border border-accent-200 text-sm text-accent-900">
-                <span class="text-[11px] font-mono text-accent-700 block mb-1">参考改写</span>
-                ${item.upgraded}
+              <div class="w-ref hidden p-4 rounded-xl bg-white border border-accent-200 space-y-3">
+                <div>
+                  <span class="text-[11px] font-mono text-accent-700 block mb-1">高分升格句：</span>
+                  <p class="text-sm font-semibold text-accent-900">${item.upgraded}</p>
+                </div>
+                <div class="pt-2 border-t border-gray-100">
+                  <span class="text-[11px] font-mono text-muted block mb-1">参考范文</span>
+                  <p class="text-xs sm:text-sm leading-6 text-gray-800 whitespace-pre-line">${item.fullEssay}</p>
+                </div>
               </div>
             `;
             box.querySelector('.w-draft').addEventListener('input', (e) => {
@@ -1167,10 +1921,10 @@
               </div>
               <textarea rows="4" class="t-draft w-full rounded-xl border border-gray-200 p-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-accent-600" placeholder="输入翻译…">${savedVal}</textarea>
               <div class="flex flex-wrap items-center justify-between gap-2">
-                <button type="button" class="toggle-tref-btn px-3 py-1.5 rounded-xl bg-accent-700 text-white text-xs font-semibold">查看译文</button>
+                <button type="button" class="toggle-tref-btn px-3 py-1.5 rounded-xl bg-accent-700 text-white text-xs font-semibold">对照标准参考译文与评分标尺</button>
               </div>
               <div class="t-ref hidden p-4 rounded-xl bg-white border border-accent-200 space-y-2">
-                <div class="text-xs font-semibold text-accent-800">参考译文：</div>
+                <div class="text-xs font-semibold text-accent-800">真题参考译文：</div>
                 <p class="text-sm leading-6 text-gray-800">${t.reference}</p>
               </div>
             `;
@@ -1187,98 +1941,326 @@
         }
       }
 
-      // ---------- Render SRS ----------
+      // ---------- TAB 5: Word Imagery + SRS Vocabulary ----------
       function renderSRS() {
         const dueCards = state.srsCards.filter(c => c.due <= Date.now());
-        document.getElementById('srs-queue-count').textContent = `待复习 ${dueCards.length} / 总计 ${state.srsCards.length}`;
+        document.getElementById('srs-queue-count').textContent = `待复习 ${dueCards.length} / 总词库 ${state.srsCards.length} 词`;
+        document.getElementById('srs-total-count-label').textContent = `共 ${state.srsCards.length} 词`;
 
+        // Determine active card: either user-selected word from search/list or first due card
+        let card = state.srsCards.find(c => c.id === state.selectedSrsWordId) || dueCards[0] || state.srsCards[0];
         const stage = document.getElementById('srs-card-stage');
         stage.innerHTML = '';
 
-        if (dueCards.length === 0) {
-          stage.innerHTML = `
-            <div class="flex-1 flex flex-col items-center justify-center text-center space-y-3 py-8">
-              <div class="text-2xl font-bold text-accent-700">今日复习完成</div>
-              <button type="button" id="srs-review-all-btn" class="px-4 py-2 rounded-xl border border-gray-200 bg-white text-xs font-semibold hover:bg-gray-50">提前复习全部词卡</button>
+        if (!card) {
+          stage.innerHTML = `<div class="text-center py-12 text-xs text-muted">词库为空，请在右侧添加。</div>`;
+          return;
+        }
+
+        const extList = (card.extensions && card.extensions.length)
+          ? card.extensions.map(e => `<li class="text-xs text-gray-700 leading-relaxed">• ${e}</li>`).join('')
+          : `<li class="text-xs text-gray-700">• ${card.meaning || '核心六级高频词'}</li>`;
+
+        const transPills = (card.translations && card.translations.length)
+          ? card.translations.map(t => `<span class="px-2.5 py-0.5 rounded-full bg-accent-50 text-accent-800 border border-accent-100 text-xs font-medium">${t}</span>`).join('')
+          : `<span class="px-2.5 py-0.5 rounded-full bg-accent-50 text-accent-800 text-xs font-medium">${card.meaning || '常用释义'}</span>`;
+
+        const top = document.createElement('div');
+        top.className = 'space-y-4';
+        top.innerHTML = `
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-0.5 rounded-md bg-accent-50 text-accent-800 text-[11px] font-semibold">${card.source || '单词意象'}</span>
+            <div class="flex items-center gap-2">
+              <button type="button" id="srs-toggle-mask-btn" class="px-2.5 py-1 rounded-lg border border-gray-200 bg-white text-xs text-gray-600 hover:bg-gray-50">${srsFlipped ? '收起' : '展开'}</button>
+              <button type="button" id="srs-speak-btn" class="px-2.5 py-1 rounded-lg border border-gray-200 bg-white text-xs hover:bg-gray-50">发音</button>
             </div>
+          </div>
+
+          <!-- 1. Word Header -->
+          <div class="text-3xl sm:text-4xl font-bold text-ink tracking-tight">${card.word}</div>
+
+          ${srsFlipped ? `
+            <!-- 2. Core Imagery Line (Teal Bold, faithful to yoowen-ywl/word-imagery) -->
+            <div class="text-base sm:text-lg font-bold text-accent-700 leading-snug">
+              ${card.imagery || card.meaning}
+            </div>
+
+            <!-- 3. Extended Meanings with Left Vertical Border -->
+            <div class="pl-3.5 border-l-2 border-accent-600 space-y-1">
+              <div class="text-[11px] font-semibold text-muted">引申含义</div>
+              <ul class="space-y-1">${extList}</ul>
+            </div>
+
+            <!-- 4. Common Translations Pills -->
+            <div class="pl-3.5 border-l-2 border-gray-200 space-y-1.5">
+              <div class="text-[11px] font-semibold text-muted">常用释义</div>
+              <div class="flex flex-wrap gap-1.5">${transPills}</div>
+            </div>
+
+            <!-- 5. What is Lost in Translation (Warm Peach/Amber Callout Box) -->
+            <div class="rounded-xl bg-accent-50 border border-accent-100 p-3.5 space-y-1">
+              <div class="text-xs font-semibold text-accent-800">语感</div>
+              <p class="text-xs text-accent-800 leading-relaxed">${card.lostInTranslation || card.note || ''}</p>
+            </div>
+
+            <!-- 6. Example Sentence -->
+            ${card.exampleEn ? `
+              <div class="pl-3.5 border-l-2 border-gray-200 space-y-1">
+                <div class="text-[11px] font-semibold text-muted">真题语境例句</div>
+                <div class="text-xs sm:text-sm italic text-ink">${card.exampleEn}</div>
+                <div class="text-xs text-muted">${card.exampleZh || ''}</div>
+              </div>
+            ` : ''}
+          ` : `
+            <div class="py-10 text-center space-y-3">
+              <button type="button" id="srs-flip-btn" class="px-5 py-2.5 rounded-xl bg-ink text-white text-xs font-semibold">显示释义</button>
+            </div>
+          `}
+        `;
+        stage.appendChild(top);
+
+        top.querySelector('#srs-speak-btn').addEventListener('click', () => speakText(card.word, 0.95));
+        top.querySelector('#srs-toggle-mask-btn').addEventListener('click', () => {
+          srsFlipped = !srsFlipped;
+          renderSRS();
+        });
+        const unmaskBtn = top.querySelector('#srs-flip-btn');
+        if (unmaskBtn) {
+          unmaskBtn.addEventListener('click', () => {
+            srsFlipped = true;
+            renderSRS();
+          });
+        }
+
+        // SRS Rating Bar at bottom of card
+        const actions = document.createElement('div');
+        actions.className = 'pt-4 border-t border-gray-200/80 space-y-2';
+        actions.innerHTML = `<div class="text-[11px] text-muted flex items-center justify-between"><span>记忆程度</span><span class="font-mono">已复习 ${card.reps || 0} 次</span></div>`;
+        const btnGrid = document.createElement('div');
+        btnGrid.className = 'grid grid-cols-4 gap-2';
+        const grades = [
+          { label: '没画面 (<1m)', days: 0 },
+          { label: '有点印象 (1d)', days: 1 },
+          { label: '画面清晰 (3d)', days: 3 },
+          { label: '瞬间秒懂 (7d)', days: 7 }
+        ];
+        grades.forEach(g => {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'py-2 rounded-xl border border-gray-200 bg-white hover:bg-accent-50 text-xs font-medium transition';
+          b.textContent = g.label;
+          b.addEventListener('click', () => {
+            card.reps = (card.reps || 0) + 1;
+            card.interval = g.days;
+            card.due = Date.now() + (g.days === 0 ? 60 * 1000 : g.days * 86400000);
+            // Move to next card
+            const currentIdx = state.srsCards.findIndex(c => c.id === card.id);
+            const nextCard = state.srsCards[(currentIdx + 1) % state.srsCards.length];
+            if (nextCard) state.selectedSrsWordId = nextCard.id;
+            addXP(5);
+            saveState();
+            renderHeaderExtras();
+            renderSRS();
+          });
+          btnGrid.appendChild(b);
+        });
+        actions.appendChild(btnGrid);
+        stage.appendChild(actions);
+
+        // Render Right-hand Full Word List
+        const listEl = document.getElementById('srs-word-list');
+        listEl.innerHTML = '';
+        state.srsCards.forEach(c => {
+          const item = document.createElement('button');
+          item.type = 'button';
+          const isSelected = c.id === card.id;
+          item.className = isSelected
+            ? 'w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-accent-50 border border-accent-200 transition'
+            : 'w-full text-left flex items-center justify-between px-3 py-2 rounded-xl hover:bg-gray-50 border border-transparent transition';
+          item.innerHTML = `
+            <div class="truncate pr-2">
+              <span class="font-bold text-ink">${c.word}</span>
+              <span class="text-muted ml-1.5 text-[11px]">${c.imagery || c.meaning}</span>
+            </div>
+            <span class="shrink-0 text-[10px] font-mono text-accent-700">${(c.translations && c.translations[0]) || ''}</span>
           `;
-          stage.querySelector('#srs-review-all-btn').addEventListener('click', () => {
-            state.srsCards.forEach(c => { c.due = Date.now(); });
+          item.addEventListener('click', () => {
+            state.selectedSrsWordId = c.id;
+            srsFlipped = true;
             saveState();
             renderSRS();
           });
-        } else {
-          const card = dueCards[0];
-          const top = document.createElement('div');
-          top.className = 'space-y-3';
-          top.innerHTML = `
-            <div class="flex items-center justify-between">
-              <span class="px-2 py-0.5 rounded-md bg-accent-50 text-accent-800 text-[11px] font-medium">${card.source}</span>
-              <button type="button" id="srs-speak-btn" class="px-2.5 py-1 rounded-lg border border-gray-200 bg-white text-xs hover:bg-gray-50">朗读</button>
-            </div>
-            <div class="text-3xl font-bold text-ink tracking-tight py-4">${card.word}</div>
-            ${srsFlipped ? `
-              <div class="p-4 rounded-xl bg-white border border-gray-200 space-y-1.5">
-                <div class="text-sm font-semibold text-accent-900">${card.meaning}</div>
-                <div class="text-xs text-muted">${card.note || ''}</div>
-              </div>
-            ` : ''}
-          `;
-          stage.appendChild(top);
-          top.querySelector('#srs-speak-btn').addEventListener('click', () => speakText(card.word, 0.95));
-
-          const actions = document.createElement('div');
-          actions.className = 'pt-4';
-          if (!srsFlipped) {
-            actions.innerHTML = `<button type="button" id="srs-flip-btn" class="w-full py-2.5 rounded-xl bg-ink text-white text-xs font-semibold">显示释义</button>`;
-            actions.querySelector('#srs-flip-btn').addEventListener('click', () => {
-              srsFlipped = true;
-              renderSRS();
-            });
-          } else {
-            actions.className = 'pt-4 grid grid-cols-4 gap-2';
-            const grades = [
-              { label: '忘记 (<1m)', days: 0 },
-              { label: '模糊 (1d)', days: 1 },
-              { label: '记得 (3d)', days: 3 },
-              { label: '熟练 (7d)', days: 7 }
-            ];
-            grades.forEach(g => {
-              const b = document.createElement('button');
-              b.type = 'button';
-              b.className = 'py-2 rounded-xl border border-gray-200 bg-white hover:bg-accent-50 text-xs font-medium transition';
-              b.textContent = g.label;
-              b.addEventListener('click', () => {
-                card.reps = (card.reps || 0) + 1;
-                card.interval = g.days;
-                card.due = Date.now() + (g.days === 0 ? 60 * 1000 : g.days * 86400000);
-                srsFlipped = false;
-                addXP(5);
-                saveState();
-                renderHeaderExtras();
-                renderSRS();
-              });
-              actions.appendChild(b);
-            });
-          }
-          stage.appendChild(actions);
-        }
-
-        const listEl = document.getElementById('srs-word-list');
-        listEl.innerHTML = '';
-        state.srsCards.slice(0, 12).forEach(c => {
-          const item = document.createElement('div');
-          item.className = 'flex items-center justify-between py-1.5 border-b border-gray-100';
-          item.innerHTML = `
-            <div><span class="font-semibold text-ink">${c.word}</span> <span class="text-muted ml-1">${c.meaning}</span></div>
-            <span class="text-[10px] font-mono text-accent-700">${c.source}</span>
-          `;
           listEl.appendChild(item);
         });
       }
 
-      // ---------- Render Mock ----------
+      // ---------- TAB 6: Dec 5 Full Real Paper Mock ----------
       function renderMock() {
+        document.getElementById('mock-section-label').textContent = {part1:'写作', part2:'听力', part3:'阅读', part4:'翻译'}[state.mockPart] || '写作';
+        document.getElementById('mock-timer-display').textContent = `${String(Math.floor(mockSecondsLeft / 60)).padStart(2, '0')}:${String(mockSecondsLeft % 60).padStart(2, '0')}`;
+
+      document.querySelectorAll('.mpart-btn').forEach(btn => {
+          const active = btn.dataset.mpart === state.mockPart;
+          btn.className = active
+            ? 'mpart-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-ink shadow-sm transition'
+            : 'mpart-btn px-3 py-1.5 rounded-lg text-xs font-medium text-gray-600 hover:text-ink transition';
+        });
+
+        const ws = document.getElementById('mock-paper-workspace');
+        ws.innerHTML = '';
+
+        if (state.mockPart === 'part1') {
+          const wTask = WRITING_STEPS[0]; // 2024.12 Set 1 Real Writing
+          ws.innerHTML = `
+            <div class="p-5 rounded-xl bg-paper border border-gray-200 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-accent-800">Part I Writing (30 minutes) · 2024年12月六级真题（第1套）</span>
+                <span class="text-xs font-mono text-muted">占总分 15% (满分 106.5)</span>
+              </div>
+              <p class="text-xs sm:text-sm text-ink bg-white p-3.5 rounded-xl border border-gray-200 font-mono leading-relaxed">${wTask.prompt}</p>
+              <textarea id="mock-write-area" rows="7" class="w-full rounded-xl border border-gray-200 p-4 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-accent-600" placeholder="请先完整抄写题干给定首句：To increase the likelihood of success, one should set realistic goals and work persistently towards them. 然后展开 150-200 词论述...">${state.mockAnswers.writeText || ''}</textarea>
+              <div class="flex items-center justify-between text-xs text-muted">
+                <span id="mock-write-wordcount">当前词数：0 词（考场要求 150–200 词）</span>
+                <button type="button" id="mock-show-wref" class="text-accent-700 font-semibold hover:underline">查看本卷参考范文</button>
+              </div>
+              <div id="mock-wref-box" class="hidden p-4 rounded-xl bg-white border border-accent-200 text-xs leading-6 text-gray-800 whitespace-pre-line">${wTask.fullEssay}</div>
+            </div>
+          `;
+          const area = ws.querySelector('#mock-write-area');
+          const countEl = ws.querySelector('#mock-write-wordcount');
+          const updateCount = () => {
+            const words = area.value.trim().split(/\s+/).filter(Boolean).length;
+            countEl.textContent = `当前词数：${words} 词（考场要求 150–200 词）`;
+          };
+          updateCount();
+          area.addEventListener('input', () => {
+            state.mockAnswers.writeText = area.value;
+            updateCount();
+            saveState();
+          });
+          ws.querySelector('#mock-show-wref').addEventListener('click', () => {
+            ws.querySelector('#mock-wref-box').classList.toggle('hidden');
+          });
+        } else if (state.mockPart === 'part2') {
+          ws.innerHTML = `
+            <div class="p-5 rounded-xl bg-paper border border-gray-200 space-y-4">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="text-xs font-bold text-accent-800">Part II Listening Comprehension (25 minutes) · 模拟考场抽测（3段代表性真题语料）</span>
+                <button type="button" id="mock-play-all-listen" class="px-3.5 py-1.5 rounded-xl bg-accent-700 text-white text-xs font-semibold">🔊 依次连播全部听力音频</button>
+              </div>
+              <div id="mock-listen-qlist" class="space-y-3"></div>
+            </div>
+          `;
+          const qlist = ws.querySelector('#mock-listen-qlist');
+          LISTENING_PASSAGES.forEach((lp, idx) => {
+            const qCard = document.createElement('div');
+            qCard.className = 'p-4 rounded-xl bg-white border border-gray-200 space-y-2';
+            const selIdx = state.mockAnswers.listen[lp.id];
+            qCard.innerHTML = `
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-ink">Q${idx + 1}. [${lp.type}] ${lp.question}</span>
+                <button type="button" class="play-one-mock-l px-2.5 py-1 rounded-lg bg-accent-50 text-accent-800 text-xs font-medium">🔊 播放本段</button>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 mock-l-opts"></div>
+            `;
+            qCard.querySelector('.play-one-mock-l').addEventListener('click', () => {
+              speakText(lp.sentences.join(' '), 1.0);
+            });
+            const optWrap = qCard.querySelector('.mock-l-opts');
+            lp.options.forEach((optStr, oi) => {
+              const b = document.createElement('button');
+              b.type = 'button';
+              const chosen = selIdx === oi;
+              b.className = chosen
+                ? 'text-left px-3 py-2 rounded-lg border border-accent-600 bg-accent-50 text-accent-900 text-xs font-semibold'
+                : 'text-left px-3 py-2 rounded-lg border border-gray-200 hover:bg-gray-50 text-xs';
+              b.textContent = optStr;
+              b.addEventListener('click', () => {
+                state.mockAnswers.listen[lp.id] = oi;
+                saveState();
+                renderMock();
+              });
+              optWrap.appendChild(b);
+            });
+            qlist.appendChild(qCard);
+          });
+          ws.querySelector('#mock-play-all-listen').addEventListener('click', () => {
+            const fullText = LISTENING_PASSAGES.map(p => p.sentences.join(' ')).join(' Next passage. ');
+            speakText(fullText, 1.0);
+          });
+        } else if (state.mockPart === 'part3') {
+          const p1 = READING_PASSAGES[0]; // 2024.12 Set 1 Passage 1
+          const p2 = READING_PASSAGES[1]; // 2024.12 Set 1 Passage 2
+          ws.innerHTML = `
+            <div class="p-5 rounded-xl bg-paper border border-gray-200 space-y-6">
+              <div class="text-xs font-bold text-accent-800">Part III Reading Comprehension · 2024年12月六级真题（第1套）仔细阅读 Passage 1 &amp; Passage 2（共 10 题，Q46–Q55）</div>
+              <div id="mock-read-container" class="space-y-6"></div>
+            </div>
+          `;
+          const rCont = ws.querySelector('#mock-read-container');
+          [p1, p2].forEach((pass, pIdx) => {
+            const blk = document.createElement('div');
+            blk.className = 'p-4 rounded-xl bg-white border border-gray-200 space-y-4';
+            blk.innerHTML = `
+              <div class="text-sm font-bold text-ink">${pass.title}</div>
+              <div class="text-xs sm:text-sm leading-7 text-gray-800 space-y-2 bg-paper p-4 rounded-xl border border-gray-100 max-h-60 overflow-y-auto">
+                ${pass.sentences.map(s => `<p>${s}</p>`).join('')}
+              </div>
+              <div class="space-y-3 mr-qlist"></div>
+            `;
+            const mq = blk.querySelector('.mr-qlist');
+            pass.questions.forEach((qObj, qi) => {
+              const qKey = `${pass.id}_${qi}`;
+              const chosen = state.mockAnswers.read[qKey];
+              const qDiv = document.createElement('div');
+              qDiv.className = 'space-y-1.5';
+              qDiv.innerHTML = `<div class="text-xs font-semibold text-ink">${qObj.q}</div><div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 mr-opts"></div>`;
+              const oWrap = qDiv.querySelector('.mr-opts');
+              qObj.options.forEach((optText, oi) => {
+                const b = document.createElement('button');
+                b.type = 'button';
+                b.className = chosen === oi
+                  ? 'text-left px-3 py-1.5 rounded-lg border border-accent-600 bg-accent-50 text-accent-900 text-xs font-semibold'
+                  : 'text-left px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50 text-xs';
+                b.textContent = optText;
+                b.addEventListener('click', () => {
+                  state.mockAnswers.read[qKey] = oi;
+                  saveState();
+                  renderMock();
+                });
+                oWrap.appendChild(b);
+              });
+              mq.appendChild(qDiv);
+            });
+            rCont.appendChild(blk);
+          });
+        } else {
+          const tTask = TRANSLATION_TASKS[0]; // 2024.12 Set 1 Beidou
+          ws.innerHTML = `
+            <div class="p-5 rounded-xl bg-paper border border-gray-200 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-accent-800">Part IV Translation (30 minutes) · ${tTask.title}</span>
+                <span class="text-xs font-mono text-muted">占总分 15% (满分 106.5)</span>
+              </div>
+              <p class="text-sm leading-7 text-ink bg-white p-4 rounded-xl border border-gray-200">${tTask.chinese}</p>
+              <textarea id="mock-trans-area" rows="6" class="w-full rounded-xl border border-gray-200 p-4 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-accent-600" placeholder="在此输入你的考场汉译英作答...">${state.mockAnswers.transText || ''}</textarea>
+              <div class="flex items-center justify-between text-xs">
+                <button type="button" id="mock-show-tref" class="text-accent-700 font-semibold hover:underline">对照北斗真题官方参考译文</button>
+              </div>
+              <div id="mock-tref-box" class="hidden p-4 rounded-xl bg-white border border-accent-200 text-xs sm:text-sm leading-6 text-gray-800">${tTask.reference}</div>
+            </div>
+          `;
+          const tArea = ws.querySelector('#mock-trans-area');
+          tArea.addEventListener('input', () => {
+            state.mockAnswers.transText = tArea.value;
+            saveState();
+          });
+          ws.querySelector('#mock-show-tref').addEventListener('click', () => {
+            ws.querySelector('#mock-tref-box').classList.toggle('hidden');
+          });
+        }
+
+        // Render Diagnostic & History
         const histEl = document.getElementById('mock-history-list');
         histEl.innerHTML = '';
         if (state.mockHistory.length === 0) {
@@ -1297,7 +2279,7 @@
         }
       }
 
-      // ---------- Event Listeners ----------
+      // ---------- Event Bindings ----------
       document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.addEventListener('click', () => switchTab(btn.dataset.tab));
       });
@@ -1321,7 +2303,7 @@
         }
       });
 
-      // Listening controls
+      // Listening events
       document.getElementById('listening-passage-select').addEventListener('change', (e) => {
         state.listeningIdx = parseInt(e.target.value, 10) || 0;
         saveState();
@@ -1350,7 +2332,7 @@
         document.getElementById('audio-status').textContent = '已停止播放';
       });
 
-      // Reading controls
+      // Reading events
       document.getElementById('reading-passage-select').addEventListener('change', (e) => {
         state.readingIdx = parseInt(e.target.value, 10) || 0;
         saveState();
@@ -1395,28 +2377,107 @@
         });
       });
 
-      // Add SRS form
+      // Word Imagery Search & Autocomplete
+      const searchInput = document.getElementById('imagery-search-input');
+      const suggestBox = document.getElementById('imagery-suggest-box');
+
+      function runImagerySearch(query) {
+        const q = (query || '').trim().toLowerCase();
+        if (!q) return;
+        const found = state.srsCards.find(c => c.word.toLowerCase() === q) ||
+                      state.srsCards.find(c => c.word.toLowerCase().includes(q));
+        if (found) {
+          state.selectedSrsWordId = found.id;
+          srsFlipped = true;
+          suggestBox.classList.add('hidden');
+          saveState();
+          renderSRS();
+        } else {
+          showToast(`还没收录 “${query}”，可在右侧表单直接录入它的画面意象`);
+        }
+      }
+
+      searchInput.addEventListener('input', () => {
+        const q = searchInput.value.trim().toLowerCase();
+        if (!q) {
+          suggestBox.classList.add('hidden');
+          return;
+        }
+        const matches = state.srsCards.filter(c =>
+          c.word.toLowerCase().includes(q) ||
+          (c.imagery && c.imagery.includes(q)) ||
+          (c.meaning && c.meaning.includes(q))
+        ).slice(0, 8);
+
+        if (matches.length === 0) {
+          suggestBox.classList.add('hidden');
+          return;
+        }
+        suggestBox.innerHTML = '';
+        matches.forEach(m => {
+          const row = document.createElement('button');
+          row.type = 'button';
+          row.className = 'w-full text-left px-4 py-2.5 hover:bg-accent-50/60 flex items-center justify-between gap-3 text-xs';
+          row.innerHTML = `
+            <span class="font-bold text-ink">${m.word}</span>
+            <span class="text-muted truncate">${m.imagery || m.meaning}</span>
+          `;
+          row.addEventListener('click', () => {
+            searchInput.value = m.word;
+            state.selectedSrsWordId = m.id;
+            srsFlipped = true;
+            suggestBox.classList.add('hidden');
+            saveState();
+            renderSRS();
+          });
+          suggestBox.appendChild(row);
+        });
+        suggestBox.classList.remove('hidden');
+      });
+
+      searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          runImagerySearch(searchInput.value);
+        }
+      });
+
+      document.getElementById('imagery-search-btn').addEventListener('click', () => {
+        runImagerySearch(searchInput.value);
+      });
+
+      // Add Custom Word Imagery form
       document.getElementById('add-srs-form').addEventListener('submit', (e) => {
         e.preventDefault();
         const word = document.getElementById('new-srs-word').value.trim();
-        const meaning = document.getElementById('new-srs-meaning').value.trim();
-        const note = document.getElementById('new-srs-note').value.trim();
-        if (!word || !meaning) return;
+        const imagery = document.getElementById('new-srs-imagery').value.trim();
+        const meaningRaw = document.getElementById('new-srs-meaning').value.trim();
+        const lost = document.getElementById('new-srs-note').value.trim();
+        if (!word || !imagery || !meaningRaw) return;
+        const translations = meaningRaw.split(/[,，/]/).map(s => s.trim()).filter(Boolean);
+        const newId = 's_' + Date.now();
         state.srsCards.unshift({
-          id: 's_' + Date.now(),
+          id: newId,
           word,
-          meaning,
-          note,
-          source: '手动录入',
+          imagery,
+          extensions: [`核心释义：${meaningRaw}`],
+          translations,
+          meaning: translations.join(' / '),
+          lostInTranslation: lost || '直译会丢失原词的具体动作画面，建议结合画面记忆。',
+          exampleEn: '',
+          exampleZh: '',
+          source: '自定义意象',
           reps: 0,
           interval: 0,
           due: Date.now()
         });
+        state.selectedSrsWordId = newId;
+        srsFlipped = true;
         saveState();
         e.target.reset();
         renderHeaderExtras();
         renderSRS();
-        showToast(`已添加 "${word}"`);
+        showToast(`已添加 "${word}" 的单词意象`);
       });
 
       // Vocab Modal
@@ -1428,28 +2489,18 @@
       });
       document.getElementById('vm-add-srs-btn').addEventListener('click', () => {
         if (!currentVocabTarget) return;
-        if (!state.srsCards.some(c => c.word.toLowerCase() === currentVocabTarget.word.toLowerCase())) {
-          state.srsCards.unshift({
-            id: 's_' + Date.now(),
-            word: currentVocabTarget.word,
-            meaning: currentVocabTarget.meaning,
-            note: currentVocabTarget.tip,
-            source: '阅读提取',
-            reps: 0,
-            interval: 0,
-            due: Date.now()
-          });
+        const found = state.srsCards.find(c => c.word.toLowerCase() === currentVocabTarget.word.toLowerCase());
+        if (found) {
+          found.due = Date.now();
+          state.selectedSrsWordId = found.id;
           saveState();
           renderHeaderExtras();
-          showToast(`已将 "${currentVocabTarget.word}" 加入 SRS 词库`);
-        } else {
-          showToast('该词已在词库中');
+          showToast(`已将 "${found.word}" 置顶到今日待复习队列`);
         }
         document.getElementById('vocab-modal').classList.add('hidden');
       });
 
-      // Mock Timer & Log
-      document.querySelectorAll('.mock-preset').forEach(btn => {
+        document.querySelectorAll('.mock-preset').forEach(btn => {
         btn.addEventListener('click', () => {
           clearInterval(mockTimerId);
           mockTimerId = null;
@@ -1458,6 +2509,21 @@
           document.getElementById('mock-section-label').textContent = `当前计时：${btn.dataset.label}`;
           document.getElementById('mock-timer-display').textContent = `${String(mockTotalMins).padStart(2, '0')}:00`;
           document.getElementById('mock-start-btn').textContent = '开始计时';
+        });
+      });
+
+      // Mock Part Tabs & Timer
+      document.querySelectorAll('.mpart-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.mockPart = btn.dataset.mpart;
+          clearInterval(mockTimerId);
+          mockTimerId = null;
+          mockTotalMins = parseInt(btn.dataset.mins, 10) || 25;
+          mockSecondsLeft = mockTotalMins * 60;
+          document.getElementById('mock-timer-display').textContent = `${String(mockTotalMins).padStart(2, '0')}:00`;
+          document.getElementById('mock-start-btn').textContent = '开始计时';
+          saveState();
+          renderMock();
         });
       });
 
@@ -1477,7 +2543,7 @@
               clearInterval(mockTimerId);
               mockTimerId = null;
               e.target.textContent = '开始计时';
-              showToast('本模块限时结束');
+              showToast('当前模考分项计时结束');
             }
           }, 1000);
         }
@@ -1489,6 +2555,45 @@
         mockSecondsLeft = mockTotalMins * 60;
         document.getElementById('mock-timer-display').textContent = `${String(mockTotalMins).padStart(2, '0')}:00`;
         document.getElementById('mock-start-btn').textContent = '开始计时';
+      });
+
+      document.getElementById('submit-full-mock-btn').addEventListener('click', () => {
+        // Grade Listening (3 items)
+        let lCorrect = 0;
+        LISTENING_PASSAGES.forEach(lp => {
+          if (state.mockAnswers.listen[lp.id] === lp.answerIdx) lCorrect++;
+        });
+        const listenEst = Math.round(135 + (lCorrect / LISTENING_PASSAGES.length) * 85);
+
+        // Grade Reading (10 items from 2024.12 Set 1 P1 & P2)
+        let rCorrect = 0;
+        [READING_PASSAGES[0], READING_PASSAGES[1]].forEach(pass => {
+          pass.questions.forEach((qObj, qi) => {
+            if (state.mockAnswers.read[`${pass.id}_${qi}`] === qObj.ans) rCorrect++;
+          });
+        });
+        const readEst = Math.round(145 + (rCorrect / 10) * 95);
+
+        // Estimate Writing & Translation based on completion length & keywords
+        const wWords = (state.mockAnswers.writeText || '').trim().split(/\s+/).filter(Boolean).length;
+        const tWords = (state.mockAnswers.transText || '').trim().split(/\s+/).filter(Boolean).length;
+        const wScore = wWords >= 120 ? 82 : (wWords >= 50 ? 72 : 68);
+        const tScore = tWords >= 80 ? 82 : (tWords >= 30 ? 72 : 68);
+        const writeEst = wScore + tScore;
+        const total = listenEst + readEst + writeEst;
+
+        state.currentEst = { listen: listenEst, read: readEst, write: writeEst };
+        state.mockHistory.unshift({
+          date: todayStr() + ' (真题卷)',
+          listen: listenEst,
+          read: readEst,
+          write: writeEst,
+          total
+        });
+        addXP(50);
+        saveState();
+        renderMock();
+        showToast(`交卷完成！阅读答对 ${rCorrect}/10 题，710分制折算总分：${total}`);
       });
 
       document.getElementById('mock-log-form').addEventListener('submit', (e) => {
@@ -1550,7 +2655,7 @@
         document.getElementById('settings-modal').classList.add('hidden');
         renderHeaderExtras();
         renderDashboard();
-        showToast('设置已保存');
+        showToast('档案设置已保存');
       });
 
       document.getElementById('export-json-btn').addEventListener('click', () => {
@@ -1572,7 +2677,14 @@
         showToast('已恢复初始配置');
       });
 
-      // ---------- Init ----------
+      document.getElementById('srs-review-all-btn').addEventListener('click', () => {
+        state.srsCards.forEach(c => { c.due = Date.now(); });
+        saveState();
+        renderHeaderExtras();
+        renderSRS();
+        showToast('已重置全部 40 张意象词卡为待复习');
+      });
+      // Init
       renderHeaderExtras();
       switchTab(state.activeTab || 'dashboard');
     })();
