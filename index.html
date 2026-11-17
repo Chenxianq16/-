@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>C6 · 专属 CET-6 学习教练</title>
+  <title>C6 · 六级学习</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,16 +14,20 @@
       theme: {
         extend: {
           colors: {
-            paper: '#F7F7F5',
-            ink: '#111827',
-            muted: '#6B7280',
-            tealbrand: {
-              50: '#F0FDFA',
-              100: '#CCFBF1',
-              600: '#0D9488',
-              700: '#0F766E',
-              800: '#115E59',
-              900: '#134E4A'
+            paper: '#F6F8FA',
+            ink: '#293744',
+            muted: '#788591',
+            accent: {
+              50: '#EFF4F8',
+              100: '#E1EAF2',
+              200: '#CAD8E4',
+              300: '#B4C7D8',
+              400: '#9BB4C9',
+              500: '#829EB7',
+              600: '#7D9BB5',
+              700: '#536F88',
+              800: '#425F78',
+              900: '#344E65'
             }
           },
           fontFamily: {
@@ -34,51 +38,7 @@
       }
     };
   </script>
-  <style>
-    body {
-      background-color: #F7F7F5;
-      color: #111827;
-      font-family: 'Inter', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
-    .tabular-nums { font-variant-numeric: tabular-nums; }
-    .card {
-      background: #FFFFFF;
-      border: 1px solid #E5E7EB;
-      border-radius: 1rem;
-    }
-    .micro-label {
-      font-family: 'JetBrains Mono', ui-monospace, monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #0F766E;
-      font-weight: 600;
-    }
-    .hl-sentence {
-      cursor: pointer;
-      border-radius: 0.25rem;
-      transition: background-color 0.15s ease;
-      padding: 1px 2px;
-    }
-    .hl-sentence:hover { background-color: #F0FDFA; }
-    .hl-sentence.active-hl {
-      background-color: #CCFBF1;
-      border-bottom: 2px solid #0F766E;
-    }
-    .vocab-chip {
-      border-bottom: 1.5px dashed #0D9488;
-      cursor: pointer;
-      color: #115E59;
-      font-weight: 500;
-      padding: 0 2px;
-      border-radius: 2px;
-    }
-    .vocab-chip:hover { background-color: #CCFBF1; }
-    /* Hide scrollbar for horizontal tab bar on narrow screens */
-    .no-scrollbar::-webkit-scrollbar { display: none; }
-    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-  </style>
+  <link rel="stylesheet" href="./assets/coach.css" />
 </head>
 <body class="min-h-screen flex flex-col">
 
@@ -86,10 +46,9 @@
   <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-gray-200">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-3">
       <div class="flex items-center gap-2.5 shrink-0">
-        <div class="w-8 h-8 rounded-lg bg-tealbrand-700 text-white font-mono font-semibold text-sm flex items-center justify-center tracking-tight">C6</div>
+        <div class="w-8 h-8 rounded-lg bg-accent-700 text-white font-mono font-semibold text-sm flex items-center justify-center tracking-tight">C6</div>
         <div class="leading-tight">
-          <div class="text-sm font-bold text-ink">CET-6 专属教练</div>
-          <div class="text-[11px] text-muted hidden sm:block">庚金·水木清润破局版</div>
+          <div class="text-sm font-bold text-ink">六级学习</div>
         </div>
       </div>
 
@@ -98,13 +57,13 @@
         <button type="button" data-tab="listening" class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition">精听</button>
         <button type="button" data-tab="reading" class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition">阅读</button>
         <button type="button" data-tab="writing" class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition">写译</button>
-        <button type="button" data-tab="srs" class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition">词库 <span id="nav-srs-badge" class="ml-1 px-1.5 py-0.5 text-[10px] rounded-full bg-tealbrand-50 text-tealbrand-700 font-mono">0</span></button>
+        <button type="button" data-tab="srs" class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition">词库 <span id="nav-srs-badge" class="ml-1 px-1.5 py-0.5 text-[10px] rounded-full bg-accent-50 text-accent-700 font-mono">0</span></button>
         <button type="button" data-tab="mock" class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition">模考</button>
       </nav>
 
       <div class="flex items-center gap-2 shrink-0">
-        <span id="gamify-pill" class="hidden text-xs font-mono px-2.5 py-1 rounded-full bg-tealbrand-50 text-tealbrand-800 border border-tealbrand-100">Lv.1 · 0 XP</span>
-        <button type="button" id="open-settings-btn" class="px-2.5 py-1.5 rounded-lg border border-gray-200 text-xs font-medium text-gray-700 hover:bg-gray-50 transition">档案设置</button>
+        <span id="gamify-pill" class="hidden text-xs font-mono px-2.5 py-1 rounded-full bg-accent-50 text-accent-800 border border-accent-100">Lv.1 · 0 XP</span>
+        <button type="button" id="open-settings-btn" class="px-2.5 py-1.5 rounded-lg border border-gray-200 text-xs font-medium text-gray-700 hover:bg-gray-50 transition">设置</button>
       </div>
     </div>
   </header>
@@ -114,73 +73,32 @@
 
     <!-- ==================== TAB 1: DASHBOARD ==================== -->
     <section id="view-dashboard" class="tab-view space-y-6">
-      <!-- Hero Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-        <!-- Left Hero -->
-        <div class="lg:col-span-8 card p-6 flex flex-col justify-between gap-5">
-          <div class="space-y-3">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="micro-label">CET-6 SPRINT · 2026.12.12</span>
-              <span id="countdown-pill" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-mono font-medium bg-tealbrand-50 text-tealbrand-800 border border-tealbrand-100">距离开考 -- 天</span>
-            </div>
-            <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink">先听懂，再写对，最后看透错因。</h1>
-            <p id="coach-opening-text" class="text-sm text-gray-600 leading-relaxed"></p>
+      <div class="dashboard-top">
+        <div class="study-start">
+          <div class="hero-heading">
+            <h1>今日学习</h1>
+            <span id="countdown-pill"></span>
           </div>
-
-          <!-- Energy / Time Mode Switcher -->
-          <div class="pt-4 border-t border-gray-100 space-y-3">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="text-xs font-semibold text-gray-700">今日可用状态（随时切换，不固定作息）</span>
-              <div class="inline-flex rounded-xl bg-gray-100 p-1 gap-1" id="energy-switcher">
-                <button type="button" data-energy="35m" class="energy-btn px-3 py-1 rounded-lg text-xs font-medium transition">标准冲刺 35m</button>
-                <button type="button" data-energy="20m" class="energy-btn px-3 py-1 rounded-lg text-xs font-medium transition">轻量保持 20m</button>
-                <button type="button" data-energy="10m" class="energy-btn px-3 py-1 rounded-lg text-xs font-medium transition">低能量微任务 10m</button>
-              </div>
-            </div>
-            <div id="today-mission-box" class="rounded-xl bg-tealbrand-50/70 border border-tealbrand-100 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div class="space-y-1">
-                <div id="mission-title" class="text-sm font-semibold text-tealbrand-900"></div>
-                <div id="mission-desc" class="text-xs text-tealbrand-800/80"></div>
-              </div>
-              <button type="button" id="start-mission-btn" class="shrink-0 px-4 py-2 rounded-xl bg-tealbrand-700 hover:bg-tealbrand-800 text-white text-xs font-semibold transition">立即开始</button>
-            </div>
+          <div id="energy-switcher" class="duration-switch">
+            <button type="button" data-energy="10m" class="energy-btn">10 分钟</button>
+            <button type="button" data-energy="20m" class="energy-btn">20 分钟</button>
+            <button type="button" data-energy="35m" class="energy-btn">35 分钟</button>
           </div>
+          <div id="today-mission-box" class="study-action">
+            <span id="mission-title"></span>
+            <button type="button" id="start-mission-btn">开始学习 <span aria-hidden="true">↗</span></button>
+          </div>
+          <a class="practice-link" href="./listening.html">真题精听 <span aria-hidden="true">→</span></a>
         </div>
-
-        <!-- Right Local Progress -->
-        <div class="lg:col-span-4 card p-6 flex flex-col justify-between gap-4">
-          <div class="flex items-center justify-between">
-            <div>
-              <div class="micro-label">LOCAL PROGRESS</div>
-              <h2 class="text-base font-bold text-ink mt-0.5">本机备考进度</h2>
-            </div>
-            <button type="button" id="checkin-btn" class="px-3 py-1.5 rounded-xl text-xs font-semibold transition"></button>
+        <aside class="progress-panel">
+          <div class="progress-heading"><h2>学习记录</h2><button type="button" id="checkin-btn"></button></div>
+          <div class="progress-stats">
+            <div><strong id="stat-streak">0</strong><span>连续天数</span></div>
+            <div><strong id="stat-est-total">489</strong><span>当前估分</span></div>
+            <div><strong id="stat-srs-due">0</strong><span>待复习</span></div>
           </div>
-
-          <div class="grid grid-cols-3 gap-2 text-center py-2">
-            <div class="rounded-xl bg-paper p-3">
-              <div id="stat-streak" class="text-xl font-bold font-mono text-tealbrand-700 tabular-nums">0</div>
-              <div class="text-[11px] text-muted mt-0.5">连续打卡</div>
-            </div>
-            <div class="rounded-xl bg-paper p-3">
-              <div id="stat-est-total" class="text-xl font-bold font-mono text-ink tabular-nums">489</div>
-              <div class="text-[11px] text-muted mt-0.5">当前估分</div>
-            </div>
-            <div class="rounded-xl bg-paper p-3">
-              <div id="stat-srs-due" class="text-xl font-bold font-mono text-ink tabular-nums">0</div>
-              <div class="text-[11px] text-muted mt-0.5">待复习词</div>
-            </div>
-          </div>
-
-          <!-- 14-Day Check-in Strip -->
-          <div>
-            <div class="flex items-center justify-between text-[11px] text-muted mb-1.5">
-              <span>近 14 天打卡轨迹</span>
-              <span id="missed-days-label"></span>
-            </div>
-            <div id="streak-grid" class="grid grid-cols-7 gap-1.5"></div>
-          </div>
-        </div>
+          <div id="streak-grid" class="streak-grid"></div>
+        </aside>
       </div>
 
       <!-- Score Leverage Chart + Error Pattern Log -->
@@ -188,24 +106,19 @@
         <div class="lg:col-span-5 card p-6 space-y-4">
           <div class="flex items-center justify-between">
             <div>
-              <div class="micro-label">SCORE LEVERAGE</div>
-              <h2 class="text-base font-bold text-ink mt-0.5">四级基线 → 六级目标拆解</h2>
+              <h2 class="text-base font-bold text-ink mt-0.5">分数进度</h2>
             </div>
             <span id="target-badge" class="text-xs font-mono px-2.5 py-1 rounded-full bg-gray-100 text-gray-800">目标 545+</span>
           </div>
           <div class="relative h-64">
             <canvas id="score-chart"></canvas>
           </div>
-          <p class="text-xs text-muted leading-relaxed">
-            你的四级阅读已达 <strong class="text-ink">200/249</strong>，优势明显；而听力 <strong class="text-ink">140/249</strong> 处于常模约 12%–19% 分位，是当前提分空间最大的一环。
-          </p>
         </div>
 
         <div class="lg:col-span-7 card p-6 space-y-4">
           <div class="flex flex-wrap items-center justify-between gap-2">
             <div>
-              <div class="micro-label">ERROR PATTERN LOG</div>
-              <h2 class="text-base font-bold text-ink mt-0.5">按错误模式归档的错题本</h2>
+              <h2 class="text-base font-bold text-ink mt-0.5">错题记录</h2>
             </div>
             <button type="button" id="open-add-error-btn" class="px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-medium text-ink hover:bg-gray-50 transition">+ 记录错因</button>
           </div>
@@ -224,9 +137,8 @@
       <div class="card p-6 space-y-4">
         <div class="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <div class="micro-label">LISTENING LAB · 140 → 175+</div>
-            <h2 class="text-xl font-bold text-ink mt-0.5">六级听力精听与逐句听写</h2>
-            <a href="./listening.html" class="inline-block mt-2 text-xs font-semibold text-tealbrand-700 underline">打开完整真题精听（7 套真题与 AI 复盘）</a>
+            <h2 class="text-xl font-bold text-ink mt-0.5">听力</h2>
+            <a href="./listening.html" class="inline-block mt-2 text-xs font-semibold text-accent-700 underline">真题精听 ↗</a>
           </div>
           <div class="flex flex-wrap items-center gap-2">
             <select id="listening-passage-select" class="px-3 py-1.5 rounded-xl border border-gray-200 text-xs sm:text-sm bg-white text-ink"></select>
@@ -249,10 +161,10 @@
         <!-- Audio Control Bar -->
         <div class="rounded-xl bg-paper border border-gray-200 p-4 flex flex-wrap items-center justify-between gap-3">
           <div class="flex items-center gap-2">
-            <button type="button" id="play-passage-btn" class="px-4 py-2 rounded-xl bg-tealbrand-700 hover:bg-tealbrand-800 text-white text-xs font-semibold transition">播放整段音频</button>
+            <button type="button" id="play-passage-btn" class="px-4 py-2 rounded-xl bg-accent-700 hover:bg-accent-800 text-white text-xs font-semibold transition">播放整段音频</button>
             <button type="button" id="stop-audio-btn" class="px-3 py-2 rounded-xl border border-gray-200 bg-white text-xs font-medium text-gray-700 hover:bg-gray-50 transition">停止</button>
           </div>
-          <div id="audio-status" class="text-xs font-mono text-muted">使用浏览器语音引擎实时合成 · 随时可调语速</div>
+          <div id="audio-status" class="text-xs font-mono text-muted"></div>
         </div>
 
         <!-- Step Content Container -->
@@ -265,12 +177,11 @@
       <div class="card p-6 space-y-4">
         <div class="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <div class="micro-label">READING LAB · 200 → 215+</div>
-            <h2 class="text-xl font-bold text-ink mt-0.5">六级阅读高亮与生词提取</h2>
+            <h2 class="text-xl font-bold text-ink mt-0.5">阅读</h2>
           </div>
           <div class="flex flex-wrap items-center gap-2">
             <select id="reading-passage-select" class="px-3 py-1.5 rounded-xl border border-gray-200 text-xs sm:text-sm bg-white text-ink"></select>
-            <button type="button" id="toggle-hl-mode-btn" class="px-3 py-1.5 rounded-xl border border-tealbrand-200 bg-tealbrand-50 text-tealbrand-800 text-xs font-semibold transition">高亮笔：开启</button>
+            <button type="button" id="toggle-hl-mode-btn" class="px-3 py-1.5 rounded-xl border border-accent-200 bg-accent-50 text-accent-800 text-xs font-semibold transition">高亮笔：开启</button>
             <div class="px-3 py-1.5 rounded-xl bg-gray-100 font-mono text-xs text-ink tabular-nums" id="reading-timer-display">09:00</div>
             <button type="button" id="reading-timer-btn" class="px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-medium hover:bg-gray-50 transition">开始计时</button>
           </div>
@@ -279,7 +190,6 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
           <!-- Passage -->
           <div class="lg:col-span-7 space-y-3">
-            <div class="text-xs text-muted">提示：点击任意句子可<span class="text-tealbrand-700 font-medium">高亮标记主干/转折句</span>；点击<span class="border-b border-dashed border-tealbrand-600 text-tealbrand-800">虚线词汇</span>可查看释义并加入 SRS 错词本。</div>
             <div id="reading-passage-body" class="p-5 rounded-xl bg-paper border border-gray-200 space-y-3 text-sm leading-7 text-gray-800"></div>
           </div>
 
@@ -287,8 +197,8 @@
           <div class="lg:col-span-5 space-y-4">
             <div id="reading-questions-box" class="space-y-4"></div>
             <div class="pt-3 border-t border-gray-100 space-y-2">
-              <label for="reading-note-input" class="text-xs font-semibold text-gray-700 block">本篇笔记（自动保存在本机）</label>
-              <textarea id="reading-note-input" rows="3" placeholder="记录干扰项特征、段落逻辑或长难句结构..." class="w-full rounded-xl border border-gray-200 p-3 text-xs focus:outline-none focus:ring-2 focus:ring-tealbrand-600"></textarea>
+              <label for="reading-note-input" class="text-xs font-semibold text-gray-700 block">笔记</label>
+              <textarea id="reading-note-input" rows="3" placeholder="写点笔记…" class="w-full rounded-xl border border-gray-200 p-3 text-xs focus:outline-none focus:ring-2 focus:ring-accent-600"></textarea>
             </div>
           </div>
         </div>
@@ -300,8 +210,7 @@
       <div class="card p-6 space-y-5">
         <div class="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <div class="micro-label">WRITING &amp; TRANSLATION · 149 → 165+</div>
-            <h2 class="text-xl font-bold text-ink mt-0.5">小步骤写作升格与段落翻译</h2>
+            <h2 class="text-xl font-bold text-ink mt-0.5">写作与翻译</h2>
           </div>
           <div class="inline-flex rounded-xl bg-gray-100 p-1 gap-1" id="writing-mode-tabs">
             <button type="button" data-wmode="upgrade" class="wmode-btn px-3 py-1.5 rounded-lg text-xs font-medium transition">逐句升格训练</button>
@@ -319,23 +228,21 @@
         <div class="lg:col-span-7 card p-6 space-y-5">
           <div class="flex items-center justify-between">
             <div>
-              <div class="micro-label">SPACED REPETITION</div>
-              <h2 class="text-xl font-bold text-ink mt-0.5">错题驱动 SRS 词库</h2>
+              <h2 class="text-xl font-bold text-ink mt-0.5">词库</h2>
             </div>
-            <span id="srs-queue-count" class="text-xs font-mono px-2.5 py-1 rounded-full bg-tealbrand-50 text-tealbrand-800">待复习 0</span>
+            <span id="srs-queue-count" class="text-xs font-mono px-2.5 py-1 rounded-full bg-accent-50 text-accent-800">待复习 0</span>
           </div>
 
           <div id="srs-card-stage" class="rounded-2xl border border-gray-200 bg-paper p-6 min-h-[260px] flex flex-col justify-between"></div>
         </div>
 
         <div class="lg:col-span-5 card p-6 space-y-4">
-          <div class="micro-label">ADD CUSTOM WORD</div>
           <h3 class="text-base font-bold text-ink">手动录入新词 / 听力盲词</h3>
           <form id="add-srs-form" class="space-y-3">
-            <input type="text" id="new-srs-word" required placeholder="英文单词或短语（如 indispensable）" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-tealbrand-600" />
-            <input type="text" id="new-srs-meaning" required placeholder="中文释义（如 adj. 不可或缺的）" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-tealbrand-600" />
-            <input type="text" id="new-srs-note" placeholder="错因/易混提示（可选，如 听力易漏弱读前缀）" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-tealbrand-600" />
-            <button type="submit" class="w-full py-2.5 rounded-xl bg-tealbrand-700 hover:bg-tealbrand-800 text-white text-xs font-semibold transition">加入间隔重复队列</button>
+            <input type="text" id="new-srs-word" required placeholder="单词或短语" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-accent-600" />
+            <input type="text" id="new-srs-meaning" required placeholder="释义" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-accent-600" />
+            <input type="text" id="new-srs-note" placeholder="备注（可选）" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-accent-600" />
+            <button type="submit" class="w-full py-2.5 rounded-xl bg-accent-700 hover:bg-accent-800 text-white text-xs font-semibold transition">加入词库</button>
           </form>
 
           <div class="pt-3 border-t border-gray-100">
@@ -350,29 +257,26 @@
     <section id="view-mock" class="tab-view hidden space-y-5">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
         <div class="lg:col-span-6 card p-6 space-y-4">
-          <div class="micro-label">TIMED SECTION DRILL</div>
           <h2 class="text-xl font-bold text-ink">六级官方限时沙盘</h2>
-          <p class="text-xs text-muted">严格匹配 CET-6 考场节奏（15:00–17:25）：写作 30 分、听力 25 分、阅读 40 分、翻译 30 分。</p>
 
           <div class="flex flex-wrap gap-2" id="mock-preset-btns">
             <button type="button" data-mins="30" data-label="短文写作" class="mock-preset px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-medium hover:bg-gray-50">写作 30:00</button>
-            <button type="button" data-mins="25" data-label="听力理解" class="mock-preset px-3 py-1.5 rounded-xl border border-tealbrand-200 bg-tealbrand-50 text-tealbrand-800 text-xs font-semibold">听力 25:00</button>
+            <button type="button" data-mins="25" data-label="听力理解" class="mock-preset px-3 py-1.5 rounded-xl border border-accent-200 bg-accent-50 text-accent-800 text-xs font-semibold">听力 25:00</button>
             <button type="button" data-mins="40" data-label="阅读理解" class="mock-preset px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-medium hover:bg-gray-50">阅读 40:00</button>
             <button type="button" data-mins="30" data-label="段落翻译" class="mock-preset px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-medium hover:bg-gray-50">翻译 30:00</button>
           </div>
 
           <div class="rounded-2xl bg-paper border border-gray-200 p-6 text-center space-y-4">
-            <div id="mock-section-label" class="text-xs font-semibold text-tealbrand-700">当前计时：听力理解</div>
+            <div id="mock-section-label" class="text-xs font-semibold text-accent-700">当前计时：听力理解</div>
             <div id="mock-timer-display" class="text-5xl font-mono font-bold text-ink tabular-nums">25:00</div>
             <div class="flex justify-center gap-2">
-              <button type="button" id="mock-start-btn" class="px-5 py-2 rounded-xl bg-tealbrand-700 hover:bg-tealbrand-800 text-white text-xs font-semibold transition">开始计时</button>
+              <button type="button" id="mock-start-btn" class="px-5 py-2 rounded-xl bg-accent-700 hover:bg-accent-800 text-white text-xs font-semibold transition">开始计时</button>
               <button type="button" id="mock-reset-btn" class="px-4 py-2 rounded-xl border border-gray-200 bg-white text-xs font-medium text-gray-700 hover:bg-gray-50 transition">重置</button>
             </div>
           </div>
         </div>
 
         <div class="lg:col-span-6 card p-6 space-y-4">
-          <div class="micro-label">SCORE ESTIMATOR &amp; CHECKPOINT</div>
           <h2 class="text-xl font-bold text-ink">模考估分与冲刺预警</h2>
 
           <form id="mock-log-form" class="grid grid-cols-3 gap-3">
@@ -390,29 +294,20 @@
             </div>
             <button type="submit" class="col-span-3 py-2.5 rounded-xl bg-ink hover:bg-gray-800 text-white text-xs font-semibold transition">记录本次模考并更新面板估分</button>
           </form>
-
-          <div id="mock-advice-box" class="rounded-xl p-4 text-xs leading-relaxed border"></div>
           <div id="mock-history-list" class="space-y-2 max-h-40 overflow-y-auto text-xs"></div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Settings & Persona Modal -->
+  <!-- Settings -->
   <div id="settings-modal" class="fixed inset-0 z-50 hidden bg-black/30 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl border border-gray-200 max-w-lg w-full p-6 space-y-5 shadow-xl max-h-[90vh] overflow-y-auto">
       <div class="flex items-center justify-between">
         <div>
-          <div class="micro-label">COACH PROFILE</div>
-          <h3 class="text-lg font-bold text-ink">学习性格档案与目标设置</h3>
+          <h3 class="text-lg font-bold text-ink">学习设置</h3>
         </div>
         <button type="button" id="close-settings-btn" class="w-8 h-8 rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50">✕</button>
-      </div>
-
-      <div class="rounded-xl bg-tealbrand-50/70 border border-tealbrand-100 p-4 space-y-2 text-xs leading-relaxed text-tealbrand-900">
-        <div class="font-bold">性格档案：庚金·水木清润破局型</div>
-        <p><strong>特质与节奏：</strong>逻辑清晰、讲求效率，反感空泛说教与沉闷堆砌；最适合“短时高密度输入 + 即时正反馈”，一旦遇阻需要先做 10 分钟小任务破局。</p>
-        <p><strong>视觉与教练约定：</strong>采用深青绿（水木疏通）+ 暖米白留白，避开厚重土色与刺眼红；教练只用事实与错因说话，不灌鸡汤。</p>
       </div>
 
       <div class="grid grid-cols-2 gap-3 text-xs">
@@ -430,7 +325,7 @@
         </div>
         <div class="flex items-end">
           <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl border border-gray-200 w-full">
-            <input type="checkbox" id="set-gamify" class="accent-teal-700 w-4 h-4" />
+            <input type="checkbox" id="set-gamify" class="accent-slate-500 w-4 h-4" />
             <span class="font-medium text-ink">开启积分与等级</span>
           </label>
         </div>
@@ -438,10 +333,10 @@
 
       <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-gray-100">
         <div class="flex gap-2">
-          <button type="button" id="export-json-btn" class="px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-medium hover:bg-gray-50">导出进度 JSON</button>
+          <button type="button" id="export-json-btn" class="px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-medium hover:bg-gray-50">导出进度</button>
           <button type="button" id="reset-demo-btn" class="px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-medium text-gray-600 hover:bg-gray-50">恢复初始</button>
         </div>
-        <button type="button" id="save-settings-btn" class="px-4 py-2 rounded-xl bg-tealbrand-700 hover:bg-tealbrand-800 text-white text-xs font-semibold">保存设置</button>
+        <button type="button" id="save-settings-btn" class="px-4 py-2 rounded-xl bg-accent-700 hover:bg-accent-800 text-white text-xs font-semibold">保存设置</button>
       </div>
     </div>
   </div>
@@ -461,9 +356,9 @@
           <option value="中式表达直译">中式表达直译（写译）</option>
           <option value="高级句式单一">高级句式单一（写作）</option>
         </select>
-        <input type="text" id="err-note" required placeholder="具体错题点（如：把 take it for granted 听成 take it for grant）" class="w-full px-3 py-2 rounded-xl border border-gray-200" />
-        <input type="text" id="err-fix" required placeholder="修正策略（如：注意弱读 /fə/ 与过去分词尾音）" class="w-full px-3 py-2 rounded-xl border border-gray-200" />
-        <button type="submit" class="w-full py-2.5 rounded-xl bg-tealbrand-700 text-white font-semibold">保存到错题本</button>
+        <input type="text" id="err-note" required placeholder="错题内容" class="w-full px-3 py-2 rounded-xl border border-gray-200" />
+        <input type="text" id="err-fix" required placeholder="修正方法" class="w-full px-3 py-2 rounded-xl border border-gray-200" />
+        <button type="submit" class="w-full py-2.5 rounded-xl bg-accent-700 text-white font-semibold">保存</button>
       </form>
     </div>
   </div>
@@ -478,8 +373,8 @@
       <p id="vm-meaning" class="text-sm text-gray-700"></p>
       <p id="vm-tip" class="text-xs text-muted bg-paper p-2.5 rounded-lg"></p>
       <div class="flex gap-2 pt-1">
-        <button type="button" id="vm-speak-btn" class="px-3 py-2 rounded-xl border border-gray-200 text-xs font-medium hover:bg-gray-50">🔊 发音</button>
-        <button type="button" id="vm-add-srs-btn" class="flex-1 py-2 rounded-xl bg-tealbrand-700 text-white text-xs font-semibold hover:bg-tealbrand-800">+ 加入 SRS 词库</button>
+        <button type="button" id="vm-speak-btn" class="px-3 py-2 rounded-xl border border-gray-200 text-xs font-medium hover:bg-gray-50">发音</button>
+        <button type="button" id="vm-add-srs-btn" class="flex-1 py-2 rounded-xl bg-accent-700 text-white text-xs font-semibold hover:bg-accent-800">加入词库</button>
       </div>
     </div>
   </div>
@@ -810,6 +705,7 @@
 
         document.querySelectorAll('.nav-btn').forEach(btn => {
           const isCurrent = btn.dataset.tab === tab;
+          btn.setAttribute('aria-current', isCurrent ? 'page' : 'false');
           btn.className = isCurrent
             ? 'nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold whitespace-nowrap bg-ink text-white transition'
             : 'nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap text-gray-600 hover:bg-gray-100 transition';
@@ -828,7 +724,7 @@
         // Countdown to 2026-12-12 15:00+08:00
         const examDate = new Date('2026-12-12T15:00:00+08:00');
         const diffDays = Math.max(0, Math.ceil((examDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24)));
-        document.getElementById('countdown-pill').textContent = `距 12 月 12 日六级开考 · ${diffDays} 天`;
+        document.getElementById('countdown-pill').textContent = `距考试 ${diffDays} 天`;
 
         // Streak & Check-in
         const streak = computeStreak();
@@ -846,37 +742,29 @@
 
         const checkinBtn = document.getElementById('checkin-btn');
         if (checkedToday) {
-          checkinBtn.textContent = '✓ 今日已打卡';
-          checkinBtn.className = 'px-3 py-1.5 rounded-xl text-xs font-semibold bg-tealbrand-50 text-tealbrand-800 border border-tealbrand-200';
+          checkinBtn.textContent = '已打卡';
+          checkinBtn.className = 'px-3 py-1.5 rounded-xl text-xs font-semibold bg-accent-50 text-accent-800 border border-accent-200';
         } else {
-          checkinBtn.textContent = '完成今日打卡';
-          checkinBtn.className = 'px-3 py-1.5 rounded-xl text-xs font-semibold bg-tealbrand-700 hover:bg-tealbrand-800 text-white transition';
-        }
-
-        // Coach Factual Opening
-        const opening = document.getElementById('coach-opening-text');
-        if (streak === 0) {
-          opening.textContent = `当前连续打卡 0 天。四级总分 489 中，阅读（200）已够用，听力（140）是唯一明显短板。今天不用追求长时间硬撑，先拿下一段精听或 10 分钟微任务即可。`;
-        } else {
-          opening.textContent = `已连续打卡 ${streak} 天。距离 12 月 12 日还剩 ${diffDays} 天，当前估分 ${estTotal}，距离目标 ${targetTotal} 差 ${Math.max(0, targetTotal - estTotal)} 分，重点盯住听力弱读与写译句式升格。`;
+          checkinBtn.textContent = '打卡';
+          checkinBtn.className = 'px-3 py-1.5 rounded-xl text-xs font-semibold bg-accent-700 hover:bg-accent-800 text-white transition';
         }
 
         // Energy switcher
         document.querySelectorAll('.energy-btn').forEach(btn => {
           const active = btn.dataset.energy === state.energyMode;
+          btn.setAttribute('aria-pressed', String(active));
           btn.className = active
             ? 'energy-btn px-3 py-1 rounded-lg text-xs font-semibold bg-white text-ink shadow-sm transition'
             : 'energy-btn px-3 py-1 rounded-lg text-xs font-medium text-gray-600 hover:text-ink transition';
         });
 
         const missions = {
-          '35m': { title: '标准冲刺（约 35 分钟）', desc: '1 篇六级精听三步闭环（18m）+ 1 组写译句式升格（12m）+ 待复习 SRS 词卡（5m）。', targetTab: 'listening' },
-          '20m': { title: '轻量保持（约 20 分钟）', desc: '1 篇六级精听逐句听写（12m）+ 8 张高频错词卡片（8m）。', targetTab: 'listening' },
-          '10m': { title: '低能量微任务 · 10 分钟小胜利', desc: '不想学时的兜底方案：仅精听 2 句六级真题，或改写 1 个写作句子，保持手感不断档。', targetTab: 'writing' }
+          '35m': { title: '精听 · 写作 · 词汇', targetTab: 'listening' },
+          '20m': { title: '精听 · 词汇', targetTab: 'listening' },
+          '10m': { title: '句子练习', targetTab: 'writing' }
         };
         const curM = missions[state.energyMode] || missions['35m'];
         document.getElementById('mission-title').textContent = curM.title;
-        document.getElementById('mission-desc').textContent = curM.desc;
         document.getElementById('start-mission-btn').onclick = () => switchTab(curM.targetTab);
 
         // 14-day grid
@@ -893,11 +781,10 @@
           const cell = document.createElement('div');
           cell.title = s + (hit ? ' · 已学习' : ' · 未记录');
           cell.className = hit
-            ? 'h-5 rounded-md bg-tealbrand-700'
+            ? 'h-5 rounded-md bg-accent-700'
             : 'h-5 rounded-md bg-gray-100 border border-gray-200';
           grid.appendChild(cell);
         }
-        document.getElementById('missed-days-label').textContent = `近两周漏学 ${missed} 天`;
 
         // Chart
         renderScoreChart();
@@ -910,7 +797,7 @@
           btn.type = 'button';
           const isSel = state.errorFilter === p;
           btn.className = isSel
-            ? 'px-2.5 py-1 rounded-full text-xs font-semibold bg-tealbrand-700 text-white'
+            ? 'px-2.5 py-1 rounded-full text-xs font-semibold bg-accent-700 text-white'
             : 'px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600 hover:bg-gray-200';
           btn.textContent = p;
           btn.addEventListener('click', () => {
@@ -928,14 +815,14 @@
           : state.errorLogs.filter(e => e.pattern === state.errorFilter);
 
         if (filtered.length === 0) {
-          errList.innerHTML = '<div class="text-xs text-muted py-4 text-center">该错误模式下暂无记录，保持观察。</div>';
+          errList.innerHTML = '<div class="text-xs text-muted py-4 text-center">暂无记录</div>';
         } else {
           filtered.forEach(item => {
             const row = document.createElement('div');
             row.className = 'rounded-xl border border-gray-200 bg-paper p-3 space-y-1';
             row.innerHTML = `
               <div class="flex items-center justify-between gap-2">
-                <span class="px-2 py-0.5 rounded-md bg-tealbrand-50 text-tealbrand-800 text-[11px] font-semibold">${item.pattern}</span>
+                <span class="px-2 py-0.5 rounded-md bg-accent-50 text-accent-800 text-[11px] font-semibold">${item.pattern}</span>
                 <span class="text-[11px] font-mono text-muted">${item.date}</span>
               </div>
               <div class="text-xs font-medium text-ink">${item.note}</div>
@@ -953,24 +840,24 @@
         scoreChartInstance = new Chart(ctx, {
           type: 'bar',
           data: {
-            labels: ['听力 (满分249)', '阅读 (满分249)', '写译 (满分212)'],
+            labels: ['听力', '阅读', '写译'],
             datasets: [
               {
-                label: '四级基线 (489)',
+                label: '基线',
                 data: [140, 200, 149],
-                backgroundColor: '#CBD5E1',
+                backgroundColor: '#E1E6EC',
                 borderRadius: 6
               },
               {
-                label: '当前六级估分',
+                label: '当前',
                 data: [state.currentEst.listen, state.currentEst.read, state.currentEst.write],
-                backgroundColor: '#0D9488',
+                backgroundColor: '#7D9BB5',
                 borderRadius: 6
               },
               {
-                label: '六级目标线',
+                label: '目标',
                 data: [state.targets.listen, state.targets.read, state.targets.write],
-                backgroundColor: '#134E4A',
+                backgroundColor: '#344E65',
                 borderRadius: 6
               }
             ]
@@ -1016,7 +903,6 @@
           const box = document.createElement('div');
           box.className = 'space-y-4';
           box.innerHTML = `
-            <div class="text-xs text-muted">第一步：先不看原文，点击上方“播放整段音频”完成盲听，再选出答案。</div>
             <div class="p-4 rounded-xl border border-gray-200 space-y-3">
               <div class="text-sm font-semibold text-ink">${passage.question}</div>
               <div class="space-y-2" id="l-options"></div>
@@ -1028,13 +914,13 @@
           passage.options.forEach((optText, i) => {
             const b = document.createElement('button');
             b.type = 'button';
-            b.className = 'w-full text-left px-4 py-2.5 rounded-xl border border-gray-200 text-xs sm:text-sm hover:bg-tealbrand-50/50 transition';
+            b.className = 'w-full text-left px-4 py-2.5 rounded-xl border border-gray-200 text-xs sm:text-sm hover:bg-accent-50/50 transition';
             b.textContent = optText;
             b.addEventListener('click', () => {
               const fb = box.querySelector('#l-feedback');
               fb.classList.remove('hidden');
               if (i === passage.answerIdx) {
-                fb.className = 'rounded-xl p-3 text-xs bg-tealbrand-50 text-tealbrand-900 border border-tealbrand-200';
+                fb.className = 'rounded-xl p-3 text-xs bg-accent-50 text-accent-900 border border-accent-200';
                 fb.innerHTML = `<strong>✓ 回答正确。</strong> ${passage.explanation}`;
                 addXP(15);
               } else {
@@ -1045,20 +931,16 @@
             optWrap.appendChild(b);
           });
         } else if (state.listeningStep === 'dictation') {
-          const tip = document.createElement('div');
-          tip.className = 'text-xs text-muted';
-          tip.textContent = '第二步：逐句点击“单句朗读”，在输入框默写你听到的内容，点击“比对差异”检查漏听词。';
-          container.appendChild(tip);
 
           passage.sentences.forEach((sent, idx) => {
             const row = document.createElement('div');
             row.className = 'p-4 rounded-xl border border-gray-200 space-y-2.5';
             row.innerHTML = `
               <div class="flex items-center justify-between">
-                <span class="text-xs font-mono font-semibold text-tealbrand-700">Sentence ${idx + 1}</span>
-                <button type="button" class="play-sent-btn px-3 py-1 rounded-lg bg-tealbrand-50 text-tealbrand-800 text-xs font-semibold hover:bg-tealbrand-100">🔊 单句朗读</button>
+                <span class="text-xs font-mono font-semibold text-accent-700">Sentence ${idx + 1}</span>
+                <button type="button" class="play-sent-btn px-3 py-1 rounded-lg bg-accent-50 text-accent-800 text-xs font-semibold hover:bg-accent-100">播放</button>
               </div>
-              <input type="text" class="dict-input w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-tealbrand-600" placeholder="输入你听到的英文句子..." />
+              <input type="text" class="dict-input w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-accent-600" placeholder="输入听写…" />
               <div class="flex items-center justify-between gap-2">
                 <button type="button" class="check-dict-btn px-3 py-1.5 rounded-lg bg-ink text-white text-xs font-medium">比对差异</button>
                 <span class="dict-score text-xs font-mono text-muted"></span>
@@ -1079,7 +961,7 @@
                 const key = rawW.toLowerCase().replace(/[^a-z0-9']/g, '');
                 if (userWords.has(key)) {
                   hit++;
-                  return `<span class="text-tealbrand-800 font-medium">${rawW}</span>`;
+                  return `<span class="text-accent-800 font-medium">${rawW}</span>`;
                 }
                 return `<span class="bg-amber-100 text-amber-900 px-1 rounded underline decoration-amber-400 cursor-pointer missed-word" data-w="${key}">${rawW}</span>`;
               }).join(' ');
@@ -1087,7 +969,7 @@
               row.querySelector('.dict-score').textContent = `匹配率 ${pct}%`;
               const diffBox = row.querySelector('.dict-diff');
               diffBox.classList.remove('hidden');
-              diffBox.innerHTML = `<div class="mb-1 text-[11px] text-muted">参考原文（点击黄色漏听词可一键加入 SRS 词库）：</div><div>${diffHtml}</div>`;
+              diffBox.innerHTML = `<div class="mb-1 text-xs text-muted">原文</div><div>${diffHtml}</div>`;
               diffBox.querySelectorAll('.missed-word').forEach(span => {
                 span.addEventListener('click', () => {
                   const w = span.dataset.w;
@@ -1119,7 +1001,7 @@
           const wrap = document.createElement('div');
           wrap.className = 'p-5 rounded-xl bg-paper border border-gray-200 space-y-3';
           wrap.innerHTML = `
-            <div class="text-xs font-semibold text-tealbrand-800">完整听力原文</div>
+            <div class="text-xs font-semibold text-accent-800">完整听力原文</div>
             <div class="space-y-2 text-sm leading-7 text-gray-800">
               ${passage.sentences.map((s, i) => `<p><span class="font-mono text-xs text-muted mr-2">${i + 1}.</span>${s}</p>`).join('')}
             </div>
@@ -1193,13 +1075,13 @@
           qItem.options.forEach((o, oi) => {
             const b = document.createElement('button');
             b.type = 'button';
-            b.className = 'w-full text-left px-3 py-2 rounded-lg border border-gray-200 text-xs hover:bg-tealbrand-50/50 transition';
+            b.className = 'w-full text-left px-3 py-2 rounded-lg border border-gray-200 text-xs hover:bg-accent-50/50 transition';
             b.textContent = o;
             b.addEventListener('click', () => {
               const fb = card.querySelector('.rq-fb');
               fb.classList.remove('hidden');
               if (oi === qItem.ans) {
-                fb.className = 'rq-fb text-xs p-2.5 rounded-lg bg-tealbrand-50 text-tealbrand-900 border border-tealbrand-200';
+                fb.className = 'rq-fb text-xs p-2.5 rounded-lg bg-accent-50 text-accent-900 border border-accent-200';
                 fb.innerHTML = `<strong>✓ 正确。</strong> ${qItem.exp}`;
                 addXP(10);
               } else {
@@ -1246,19 +1128,19 @@
             box.className = 'p-5 rounded-xl border border-gray-200 bg-paper space-y-3';
             const savedVal = state.writingDrafts[item.id] || '';
             box.innerHTML = `
-              <div class="text-xs font-semibold text-tealbrand-800">${item.topic}</div>
+              <div class="text-xs font-semibold text-accent-800">${item.topic}</div>
               <div class="p-3 rounded-lg bg-white border border-gray-200 text-sm text-gray-800">
-                <span class="text-[11px] font-mono text-muted block mb-1">原始句（待升格）：</span>
+                <span class="text-[11px] font-mono text-muted block mb-1">原句</span>
                 ${item.raw}
               </div>
               <div class="text-xs text-gray-600">${item.diag}</div>
-              <div class="text-xs text-tealbrand-800 bg-tealbrand-50/70 p-2.5 rounded-lg border border-tealbrand-100">升格提示：${item.stepHint}</div>
-              <textarea rows="2" class="w-draft w-full rounded-xl border border-gray-200 p-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-tealbrand-600" placeholder="写下你的升格版本...">${savedVal}</textarea>
+              <div class="text-xs text-accent-800 bg-accent-50/70 p-2.5 rounded-lg border border-accent-100">升格提示：${item.stepHint}</div>
+              <textarea rows="2" class="w-draft w-full rounded-xl border border-gray-200 p-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-accent-600" placeholder="输入改写…">${savedVal}</textarea>
               <div class="flex items-center justify-between">
-                <button type="button" class="toggle-ref-btn px-3 py-1.5 rounded-xl bg-tealbrand-700 text-white text-xs font-semibold">查看参考高分改写</button>
+                <button type="button" class="toggle-ref-btn px-3 py-1.5 rounded-xl bg-accent-700 text-white text-xs font-semibold">查看参考</button>
               </div>
-              <div class="w-ref hidden p-3 rounded-xl bg-white border border-tealbrand-200 text-sm text-tealbrand-900">
-                <span class="text-[11px] font-mono text-tealbrand-700 block mb-1">高分升格参考：</span>
+              <div class="w-ref hidden p-3 rounded-xl bg-white border border-accent-200 text-sm text-accent-900">
+                <span class="text-[11px] font-mono text-accent-700 block mb-1">参考改写</span>
                 ${item.upgraded}
               </div>
             `;
@@ -1281,16 +1163,15 @@
               <div class="text-sm font-bold text-ink">${t.title}</div>
               <p class="text-sm leading-7 text-gray-800 bg-white p-4 rounded-xl border border-gray-200">${t.chinese}</p>
               <div class="flex flex-wrap gap-1.5">
-                ${t.keywords.map(k => `<span class="px-2 py-0.5 rounded-md bg-tealbrand-50 text-tealbrand-800 text-[11px] font-mono">${k}</span>`).join('')}
+                ${t.keywords.map(k => `<span class="px-2 py-0.5 rounded-md bg-accent-50 text-accent-800 text-[11px] font-mono">${k}</span>`).join('')}
               </div>
-              <textarea rows="4" class="t-draft w-full rounded-xl border border-gray-200 p-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-tealbrand-600" placeholder="在此完成整段英文翻译...">${savedVal}</textarea>
+              <textarea rows="4" class="t-draft w-full rounded-xl border border-gray-200 p-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-accent-600" placeholder="输入翻译…">${savedVal}</textarea>
               <div class="flex flex-wrap items-center justify-between gap-2">
-                <button type="button" class="toggle-tref-btn px-3 py-1.5 rounded-xl bg-tealbrand-700 text-white text-xs font-semibold">对照参考译文与自评</button>
+                <button type="button" class="toggle-tref-btn px-3 py-1.5 rounded-xl bg-accent-700 text-white text-xs font-semibold">查看译文</button>
               </div>
-              <div class="t-ref hidden p-4 rounded-xl bg-white border border-tealbrand-200 space-y-2">
-                <div class="text-xs font-semibold text-tealbrand-800">参考译文：</div>
+              <div class="t-ref hidden p-4 rounded-xl bg-white border border-accent-200 space-y-2">
+                <div class="text-xs font-semibold text-accent-800">参考译文：</div>
                 <p class="text-sm leading-6 text-gray-800">${t.reference}</p>
-                <div class="text-[11px] text-muted pt-2 border-t border-gray-100">自评标尺：13–15分（切题、无语法硬伤、准确用上核心词组）；10–12分（基本达意但句式偏平或有小错）。</div>
               </div>
             `;
             box.querySelector('.t-draft').addEventListener('input', (e) => {
@@ -1317,8 +1198,7 @@
         if (dueCards.length === 0) {
           stage.innerHTML = `
             <div class="flex-1 flex flex-col items-center justify-center text-center space-y-3 py-8">
-              <div class="text-2xl font-bold text-tealbrand-700">✓ 今日词库已清零</div>
-              <p class="text-xs text-muted max-w-xs">去精听或阅读模块中抓取新词，或点击下方按钮提前复习全部词卡。</p>
+              <div class="text-2xl font-bold text-accent-700">今日复习完成</div>
               <button type="button" id="srs-review-all-btn" class="px-4 py-2 rounded-xl border border-gray-200 bg-white text-xs font-semibold hover:bg-gray-50">提前复习全部词卡</button>
             </div>
           `;
@@ -1333,16 +1213,16 @@
           top.className = 'space-y-3';
           top.innerHTML = `
             <div class="flex items-center justify-between">
-              <span class="px-2 py-0.5 rounded-md bg-tealbrand-50 text-tealbrand-800 text-[11px] font-medium">${card.source}</span>
-              <button type="button" id="srs-speak-btn" class="px-2.5 py-1 rounded-lg border border-gray-200 bg-white text-xs hover:bg-gray-50">🔊 朗读</button>
+              <span class="px-2 py-0.5 rounded-md bg-accent-50 text-accent-800 text-[11px] font-medium">${card.source}</span>
+              <button type="button" id="srs-speak-btn" class="px-2.5 py-1 rounded-lg border border-gray-200 bg-white text-xs hover:bg-gray-50">朗读</button>
             </div>
             <div class="text-3xl font-bold text-ink tracking-tight py-4">${card.word}</div>
             ${srsFlipped ? `
               <div class="p-4 rounded-xl bg-white border border-gray-200 space-y-1.5">
-                <div class="text-sm font-semibold text-tealbrand-900">${card.meaning}</div>
-                <div class="text-xs text-muted">${card.note || '无附加提示'}</div>
+                <div class="text-sm font-semibold text-accent-900">${card.meaning}</div>
+                <div class="text-xs text-muted">${card.note || ''}</div>
               </div>
-            ` : `<div class="text-xs text-muted">先回忆词义与听觉发音，再点击下方翻面。</div>`}
+            ` : ''}
           `;
           stage.appendChild(top);
           top.querySelector('#srs-speak-btn').addEventListener('click', () => speakText(card.word, 0.95));
@@ -1366,7 +1246,7 @@
             grades.forEach(g => {
               const b = document.createElement('button');
               b.type = 'button';
-              b.className = 'py-2 rounded-xl border border-gray-200 bg-white hover:bg-tealbrand-50 text-xs font-medium transition';
+              b.className = 'py-2 rounded-xl border border-gray-200 bg-white hover:bg-accent-50 text-xs font-medium transition';
               b.textContent = g.label;
               b.addEventListener('click', () => {
                 card.reps = (card.reps || 0) + 1;
@@ -1391,7 +1271,7 @@
           item.className = 'flex items-center justify-between py-1.5 border-b border-gray-100';
           item.innerHTML = `
             <div><span class="font-semibold text-ink">${c.word}</span> <span class="text-muted ml-1">${c.meaning}</span></div>
-            <span class="text-[10px] font-mono text-tealbrand-700">${c.source}</span>
+            <span class="text-[10px] font-mono text-accent-700">${c.source}</span>
           `;
           listEl.appendChild(item);
         });
@@ -1399,27 +1279,10 @@
 
       // ---------- Render Mock ----------
       function renderMock() {
-        const adviseEl = document.getElementById('mock-advice-box');
-        const lGap = state.targets.listen - state.currentEst.listen;
-        const rGap = state.targets.read - state.currentEst.read;
-        const wGap = state.targets.write - state.currentEst.write;
-
-        if (lGap > 15 || rGap > 15 || wGap > 15) {
-          const lagging = [];
-          if (lGap > 15) lagging.push(`听力（差目标 ${lGap} 分）`);
-          if (rGap > 15) lagging.push(`阅读（差目标 ${rGap} 分）`);
-          if (wGap > 15) lagging.push(`写译（差目标 ${wGap} 分）`);
-          adviseEl.className = 'rounded-xl p-4 text-xs leading-relaxed border border-amber-200 bg-amber-50 text-amber-900';
-          adviseEl.innerHTML = `<strong>教练冷静预警：</strong> 当前 ${lagging.join('、')} 落后目标线超过 15 分。考前冲刺期建议把 70% 精力收拢到薄弱单项，不要平均用力。`;
-        } else {
-          adviseEl.className = 'rounded-xl p-4 text-xs leading-relaxed border border-tealbrand-200 bg-tealbrand-50 text-tealbrand-900';
-          adviseEl.innerHTML = `<strong>节奏稳定：</strong> 各单项与目标线差距均控制在 15 分以内，保持隔日 1 套限时分项训练即可。`;
-        }
-
         const histEl = document.getElementById('mock-history-list');
         histEl.innerHTML = '';
         if (state.mockHistory.length === 0) {
-          histEl.innerHTML = '<div class="text-muted text-center py-3">尚无模考记录，完成一套计时后可在上方录入。</div>';
+          histEl.innerHTML = '<div class="text-muted text-center py-3">暂无记录</div>';
         } else {
           state.mockHistory.forEach(m => {
             const row = document.createElement('div');
@@ -1427,7 +1290,7 @@
             row.innerHTML = `
               <span class="font-mono text-muted">${m.date}</span>
               <span>听 ${m.listen} / 阅 ${m.read} / 写译 ${m.write}</span>
-              <span class="font-mono font-bold text-tealbrand-700">总 ${m.total}</span>
+              <span class="font-mono font-bold text-accent-700">总 ${m.total}</span>
             `;
             histEl.appendChild(row);
           });
@@ -1498,7 +1361,7 @@
         hlModeActive = !hlModeActive;
         e.target.textContent = hlModeActive ? '高亮笔：开启' : '高亮笔：关闭';
         e.target.className = hlModeActive
-          ? 'px-3 py-1.5 rounded-xl border border-tealbrand-200 bg-tealbrand-50 text-tealbrand-800 text-xs font-semibold transition'
+          ? 'px-3 py-1.5 rounded-xl border border-accent-200 bg-accent-50 text-accent-800 text-xs font-semibold transition'
           : 'px-3 py-1.5 rounded-xl border border-gray-200 bg-white text-gray-600 text-xs font-medium transition';
       });
 
@@ -1687,7 +1550,7 @@
         document.getElementById('settings-modal').classList.add('hidden');
         renderHeaderExtras();
         renderDashboard();
-        showToast('档案设置已保存');
+        showToast('设置已保存');
       });
 
       document.getElementById('export-json-btn').addEventListener('click', () => {

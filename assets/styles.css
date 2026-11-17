@@ -1,22 +1,22 @@
 :root {
   color-scheme: light;
-  --bg: #f7f7f4;
+  --bg: #f6f8fa;
   --surface: #ffffff;
-  --surface-soft: #f1f3ef;
-  --ink: #1d2523;
-  --muted: #68716d;
-  --line: #d9ddd8;
-  --line-strong: #c3cac4;
-  --accent: #0f766e;
-  --accent-soft: #e8f3f0;
-  --accent-ink: #064e47;
+  --surface-soft: #f0f4f7;
+  --ink: #293744;
+  --muted: #788591;
+  --line: #e5ebf0;
+  --line-strong: #cbd7e1;
+  --accent: #536f88;
+  --accent-soft: #edf3f8;
+  --accent-ink: #344e65;
   --warn: #a45317;
   --warn-soft: #fff2df;
   --danger: #b33a3a;
   --danger-soft: #fbeaea;
   --correct: #217a4b;
   --correct-soft: #e7f4ec;
-  --shadow: 0 12px 30px rgba(29, 37, 35, 0.06);
+  --shadow: none;
   --radius: 16px;
   font-family:
     Inter, "SF Pro Text", "Segoe UI", "PingFang SC", "Microsoft YaHei",
@@ -78,7 +78,7 @@ h4 {
   min-height: 68px;
   padding: 0 28px;
   border-bottom: 1px solid var(--line);
-  background: rgba(247, 247, 244, 0.94);
+  background: rgba(246, 248, 250, 0.94);
   backdrop-filter: blur(14px);
 }
 
