@@ -82,6 +82,8 @@ input::placeholder, textarea::placeholder { color: #96a2ad; }
 #listening-content { padding-top: 12px; }
 #listening-content input { font-size: 15px; }
 #imagery-search-input { min-width: 0; }
+.lookup-zone { -webkit-user-select: text; user-select: text; }
+input, select, textarea { min-width: 0; max-width: 100%; }
 #srs-word-list .truncate { min-width: 0; }
 #mock-part-tabs { max-width: 100%; flex-wrap: wrap; }
 .hl-sentence { cursor: pointer; border-radius: 3px; transition: background-color .15s; padding: 1px 2px; }

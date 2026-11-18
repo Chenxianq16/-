@@ -2,8 +2,8 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>C6 · 专属 CET-6 学习教练（精听全卷 + 3207意象词库 + AI批改）</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>C6 · 六级学习</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,16 +14,20 @@
       theme: {
         extend: {
           colors: {
-            paper: '#F7F7F5',
-            ink: '#111827',
-            muted: '#6B7280',
-            tealbrand: {
-              50: '#F0FDFA',
-              100: '#CCFBF1',
-              600: '#0D9488',
-              700: '#0F766E',
-              800: '#115E59',
-              900: '#134E4A'
+            paper: '#F6F8FA',
+            ink: '#293744',
+            muted: '#788591',
+            accent: {
+              50: '#EFF4F8',
+              100: '#E1EAF2',
+              200: '#CAD8E4',
+              300: '#B4C7D8',
+              400: '#9BB4C9',
+              500: '#829EB7',
+              600: '#7D9BB5',
+              700: '#536F88',
+              800: '#425F78',
+              900: '#344E65'
             }
           },
           fontFamily: {
@@ -34,72 +38,32 @@
       }
     };
   </script>
-  <style>
-    body {
-      background-color: #F7F7F5;
-      color: #111827;
-      font-family: 'Inter', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .tabular-nums { font-variant-numeric: tabular-nums; }
-    .card {
-      background: #FFFFFF;
-      border: 1px solid #E5E7EB;
-      border-radius: 1rem;
-    }
-    .micro-label {
-      font-family: 'JetBrains Mono', ui-monospace, monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #0F766E;
-      font-weight: 600;
-    }
-    .hl-sentence {
-      cursor: pointer;
-      border-radius: 0.25rem;
-      transition: background-color 0.15s ease;
-      padding: 1px 2px;
-    }
-    .hl-sentence:hover { background-color: #F0FDFA; }
-    .hl-sentence.active-hl {
-      background-color: #CCFBF1;
-      border-bottom: 2px solid #0F766E;
-    }
-    .lookup-zone {
-      -webkit-user-select: text;
-      user-select: text;
-    }
-    .no-scrollbar::-webkit-scrollbar { display: none; }
-    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-  </style>
+  <link rel="stylesheet" href="./assets/coach.css" />
 </head>
 <body class="min-h-screen flex flex-col">
 
   <!-- Top Navigation -->
-  <header class="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-gray-200">
-    <div class="max-w-6xl mx-auto px-3 sm:px-6 h-14 flex items-center justify-between gap-2">
-      <div class="flex items-center gap-2 shrink-0">
-        <div class="w-8 h-8 rounded-lg bg-tealbrand-700 text-white font-mono font-semibold text-sm flex items-center justify-center tracking-tight">C6</div>
-        <div class="leading-tight hidden md:block">
-          <div class="text-sm font-bold text-ink">CET-6 专属教练</div>
-          <div class="text-[11px] text-muted">精听全卷 · 3207意象词库 · AI批改</div>
+  <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-gray-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5 shrink-0">
+        <div class="w-8 h-8 rounded-lg bg-accent-700 text-white font-mono font-semibold text-sm flex items-center justify-center tracking-tight">C6</div>
+        <div class="leading-tight">
+          <div class="text-sm font-bold text-ink">六级学习</div>
         </div>
       </div>
 
       <nav id="main-nav" class="flex items-center gap-1 overflow-x-auto no-scrollbar py-1">
-        <button type="button" data-tab="dashboard" class="nav-btn px-2.5 sm:px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition">面板</button>
-        <button type="button" data-tab="listening" class="nav-btn px-2.5 sm:px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition">精听</button>
-        <button type="button" data-tab="reading" class="nav-btn px-2.5 sm:px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition">阅读</button>
-        <button type="button" data-tab="writing" class="nav-btn px-2.5 sm:px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition">写译</button>
-        <button type="button" data-tab="srs" class="nav-btn px-2.5 sm:px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition">词库 <span id="nav-srs-badge" class="ml-0.5 px-1.5 py-0.5 text-[10px] rounded-full bg-tealbrand-50 text-tealbrand-700 font-mono">0</span></button>
-        <button type="button" data-tab="mock" class="nav-btn px-2.5 sm:px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition">模考</button>
+        <button type="button" data-tab="dashboard" class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition">面板</button>
+        <button type="button" data-tab="listening" class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition">精听</button>
+        <button type="button" data-tab="reading" class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition">阅读</button>
+        <button type="button" data-tab="writing" class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition">写译</button>
+        <button type="button" data-tab="srs" class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition">词库 <span id="nav-srs-badge" class="ml-1 px-1.5 py-0.5 text-[10px] rounded-full bg-accent-50 text-accent-700 font-mono">0</span></button>
+        <button type="button" data-tab="mock" class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition">模考</button>
       </nav>
 
-      <div class="flex items-center gap-1.5 shrink-0">
-        <span id="live-timer-pill" class="text-[11px] font-mono px-2 py-1 rounded-full bg-tealbrand-50 text-tealbrand-800 border border-tealbrand-100 tabular-nums" title="今日自动专注计时">今日 0m</span>
-        <span id="gamify-pill" class="hidden text-xs font-mono px-2 py-1 rounded-full bg-gray-100 text-gray-800">Lv.1</span>
+      <div class="flex items-center gap-2 shrink-0">
+        <span id="live-timer-pill" class="text-xs text-muted font-mono">0m</span>
+        <span id="gamify-pill" class="hidden text-xs font-mono px-2.5 py-1 rounded-full bg-accent-50 text-accent-800 border border-accent-100">Lv.1 · 0 XP</span>
         <button type="button" id="open-settings-btn" class="px-2.5 py-1.5 rounded-lg border border-gray-200 text-xs font-medium text-gray-700 hover:bg-gray-50 transition">设置</button>
       </div>
     </div>
@@ -110,93 +74,51 @@
 
     <!-- ==================== TAB 1: DASHBOARD ==================== -->
     <section id="view-dashboard" class="tab-view space-y-5">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-        <!-- Left Hero -->
-        <div class="lg:col-span-8 card p-5 sm:p-6 flex flex-col justify-between gap-4">
-          <div class="space-y-2.5">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="micro-label">CET-6 SPRINT · 12.05 模考 → 12.12 正式考</span>
-              <div class="flex items-center gap-1.5">
-                <span id="mock-countdown-pill" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono font-medium bg-amber-50 text-amber-900 border border-amber-200">距 12.5 模考 -- 天</span>
-                <span id="countdown-pill" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono font-medium bg-tealbrand-50 text-tealbrand-800 border border-tealbrand-100">距 12.12 开考 -- 天</span>
-              </div>
-            </div>
-            <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink">先听懂，再写对，最后看透错因。</h1>
-            <p id="coach-opening-text" class="text-sm text-gray-600 leading-relaxed"></p>
+      <div class="dashboard-top">
+        <div class="study-start">
+          <div class="hero-heading">
+            <h1>今日学习</h1>
+            <span id="countdown-pill"></span>
           </div>
-
-          <div class="pt-3 border-t border-gray-100 space-y-3">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="text-xs font-semibold text-gray-700">今日状态切换（随时按安排调整）</span>
-              <div class="inline-flex rounded-xl bg-gray-100 p-1 gap-1" id="energy-switcher">
-                <button type="button" data-energy="35m" class="energy-btn px-2.5 py-1 rounded-lg text-xs font-medium transition">标准 35m</button>
-                <button type="button" data-energy="20m" class="energy-btn px-2.5 py-1 rounded-lg text-xs font-medium transition">轻量 20m</button>
-                <button type="button" data-energy="10m" class="energy-btn px-2.5 py-1 rounded-lg text-xs font-medium transition">微任务 10m</button>
-              </div>
-            </div>
-            <div id="today-mission-box" class="rounded-xl bg-tealbrand-50/70 border border-tealbrand-100 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div class="space-y-1">
-                <div id="mission-title" class="text-sm font-semibold text-tealbrand-900"></div>
-                <div id="mission-desc" class="text-xs text-tealbrand-800/80"></div>
-              </div>
-              <button type="button" id="start-mission-btn" class="shrink-0 px-4 py-2 rounded-xl bg-tealbrand-700 hover:bg-tealbrand-800 text-white text-xs font-semibold transition">立即开始</button>
-            </div>
+          <div id="energy-switcher" class="duration-switch">
+            <button type="button" data-energy="10m" class="energy-btn">10 分钟</button>
+            <button type="button" data-energy="20m" class="energy-btn">20 分钟</button>
+            <button type="button" data-energy="35m" class="energy-btn">35 分钟</button>
           </div>
+          <div id="today-mission-box" class="study-action">
+            <span id="mission-title"></span>
+            <button type="button" id="start-mission-btn">开始学习 <span aria-hidden="true">↗</span></button>
+          </div>
+          <a class="practice-link" href="./listening.html">真题精听 <span aria-hidden="true">→</span></a>
         </div>
-
-        <!-- Right Auto Study Tracker & Streak -->
-        <div class="lg:col-span-4 card p-5 sm:p-6 flex flex-col justify-between gap-4">
-          <div class="flex items-center justify-between">
-            <div>
-              <div class="micro-label">AUTO STUDY LOG</div>
-              <h2 class="text-base font-bold text-ink mt-0.5">自动计时与打卡</h2>
-            </div>
-            <span id="checkin-status-badge" class="px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-600">学习满1分钟自动打卡</span>
+        <aside class="progress-panel">
+          <div class="progress-heading"><h2>学习记录</h2><span id="checkin-status-badge"></span></div>
+          <div class="progress-stats">
+            <div><strong id="stat-streak">0</strong><span>连续天数</span></div>
+            <div><strong id="stat-est-total">489</strong><span>当前估分</span></div>
+            <div><strong id="stat-today-mins">0m</strong><span>今日专注</span></div>
           </div>
-
-          <div class="grid grid-cols-3 gap-2 text-center py-1">
-            <div class="rounded-xl bg-paper p-3">
-              <div id="stat-today-mins" class="text-xl font-bold font-mono text-tealbrand-700 tabular-nums">0m</div>
-              <div class="text-[11px] text-muted mt-0.5">今日专注</div>
-            </div>
-            <div class="rounded-xl bg-paper p-3">
-              <div id="stat-streak" class="text-xl font-bold font-mono text-ink tabular-nums">0</div>
-              <div class="text-[11px] text-muted mt-0.5">连续打卡</div>
-            </div>
-            <div class="rounded-xl bg-paper p-3">
-              <div id="stat-est-total" class="text-xl font-bold font-mono text-ink tabular-nums">489</div>
-              <div class="text-[11px] text-muted mt-0.5">当前估分</div>
-            </div>
-          </div>
-
-          <div>
-            <div class="flex items-center justify-between text-[11px] text-muted mb-1.5">
-              <span>近 14 天轨迹（自动记录）</span>
-              <span id="missed-days-label"></span>
-            </div>
-            <div id="streak-grid" class="grid grid-cols-7 gap-1.5"></div>
-          </div>
-        </div>
+          <div id="streak-grid" class="streak-grid"></div>
+        </aside>
       </div>
 
       <!-- Today's Study Review Card (New: Auto-tracked content + time + AI review) -->
       <div class="card p-5 sm:p-6 space-y-4">
         <div class="flex flex-wrap items-center justify-between gap-2">
           <div>
-            <div class="micro-label">TODAY'S STUDY REVIEW</div>
-            <h2 class="text-base font-bold text-ink mt-0.5">今日学习内容记录与复盘</h2>
+            <h2 class="text-base font-bold text-ink mt-0.5">今日记录</h2>
           </div>
-          <button type="button" id="ai-daily-review-btn" class="px-3.5 py-1.5 rounded-xl bg-tealbrand-700 hover:bg-tealbrand-800 text-white text-xs font-semibold transition">✨ 生成今日 AI 复盘</button>
+          <button type="button" id="ai-daily-review-btn" class="px-3.5 py-1.5 rounded-xl bg-accent-700 hover:bg-accent-800 text-white text-xs font-semibold transition">AI 复盘</button>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
           <div class="md:col-span-5 space-y-2" id="today-module-bars"></div>
           <div class="md:col-span-7 space-y-2">
-            <div class="text-xs font-semibold text-gray-700">今日学习明细</div>
+            <div class="text-xs font-semibold text-gray-700">学习明细</div>
             <div id="today-activity-list" class="space-y-1.5 max-h-36 overflow-y-auto text-xs"></div>
           </div>
         </div>
-        <div id="ai-daily-review-box" class="hidden rounded-xl bg-tealbrand-50/70 border border-tealbrand-100 p-4 text-xs leading-relaxed text-tealbrand-900"></div>
+        <div id="ai-daily-review-box" class="hidden rounded-xl bg-accent-50/70 border border-accent-100 p-4 text-xs leading-relaxed text-accent-900"></div>
       </div>
 
       <!-- Score Chart + Error Log -->
@@ -204,8 +126,7 @@
         <div class="lg:col-span-5 card p-5 sm:p-6 space-y-4">
           <div class="flex items-center justify-between">
             <div>
-              <div class="micro-label">SCORE LEVERAGE</div>
-              <h2 class="text-base font-bold text-ink mt-0.5">四级基线 → 六级目标拆解</h2>
+              <h2 class="text-base font-bold text-ink mt-0.5">分数进度</h2>
             </div>
             <span id="target-badge" class="text-xs font-mono px-2.5 py-1 rounded-full bg-gray-100 text-gray-800">目标 545+</span>
           </div>
@@ -217,8 +138,7 @@
         <div class="lg:col-span-7 card p-5 sm:p-6 space-y-4">
           <div class="flex flex-wrap items-center justify-between gap-2">
             <div>
-              <div class="micro-label">ERROR PATTERN LOG</div>
-              <h2 class="text-base font-bold text-ink mt-0.5">按错误模式归档的错题本</h2>
+              <h2 class="text-base font-bold text-ink mt-0.5">错题记录</h2>
             </div>
             <button type="button" id="open-add-error-btn" class="px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-medium text-ink hover:bg-gray-50 transition">+ 记录错因</button>
           </div>
@@ -233,8 +153,7 @@
       <div class="card p-5 sm:p-6 space-y-4">
         <div class="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <div class="micro-label">CET-6 INTENSIVE LISTENING · 直连你的 7 套真题音频库</div>
-            <h2 class="text-xl font-bold text-ink mt-0.5">真题精听与逐句听写（长按英文单词查意象）</h2>
+            <h2 class="text-xl font-bold text-ink mt-0.5">真题精听</h2>
           </div>
           <div class="flex flex-wrap items-center gap-2 w-full sm:w-auto">
             <select id="listening-exam-select" class="flex-1 sm:flex-none px-3 py-2 rounded-xl border border-gray-200 text-xs sm:text-sm bg-white text-ink"></select>
@@ -245,9 +164,9 @@
         <!-- Real Audio Player Bar -->
         <div class="rounded-xl bg-paper border border-gray-200 p-4 space-y-3">
           <div class="flex flex-wrap items-center justify-between gap-2">
-            <span id="listening-source-badge" class="text-xs font-mono text-tealbrand-800 font-semibold">正在加载真题索引...</span>
+            <span id="listening-source-badge" class="text-xs font-mono text-accent-800 font-semibold">正在加载真题索引...</span>
             <div class="flex items-center gap-2">
-              <button type="button" id="play-section-btn" class="px-3 py-1.5 rounded-lg bg-tealbrand-700 hover:bg-tealbrand-800 text-white text-xs font-semibold">▶ 播放本篇章</button>
+              <button type="button" id="play-section-btn" class="px-3 py-1.5 rounded-lg bg-accent-700 hover:bg-accent-800 text-white text-xs font-semibold">▶ 播放本篇章</button>
               <select id="listening-speed-select" class="px-2.5 py-1.5 rounded-lg border border-gray-200 text-xs font-mono bg-white text-ink">
                 <option value="0.75">0.75x</option>
                 <option value="0.9">0.90x</option>
@@ -274,12 +193,11 @@
       <div class="card p-5 sm:p-6 space-y-4">
         <div class="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <div class="micro-label">READING LAB · 历年真题 7 篇（长按单词查意象）</div>
-            <h2 class="text-xl font-bold text-ink mt-0.5">六级阅读高亮与意象生词提取</h2>
+            <h2 class="text-xl font-bold text-ink mt-0.5">阅读</h2>
           </div>
           <div class="flex flex-wrap items-center gap-2">
             <select id="reading-passage-select" class="px-3 py-2 rounded-xl border border-gray-200 text-xs sm:text-sm bg-white text-ink max-w-full"></select>
-            <button type="button" id="toggle-hl-mode-btn" class="px-3 py-1.5 rounded-xl border border-tealbrand-200 bg-tealbrand-50 text-tealbrand-800 text-xs font-semibold transition">高亮笔：开启</button>
+            <button type="button" id="toggle-hl-mode-btn" class="px-3 py-1.5 rounded-xl border border-accent-200 bg-accent-50 text-accent-800 text-xs font-semibold transition">高亮笔：开启</button>
             <div class="px-3 py-1.5 rounded-xl bg-gray-100 font-mono text-xs text-ink tabular-nums" id="reading-timer-display">09:00</div>
             <button type="button" id="reading-timer-btn" class="px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-medium hover:bg-gray-50 transition">计时</button>
           </div>
@@ -287,7 +205,7 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
           <div class="lg:col-span-7 space-y-2.5">
-            <div class="text-xs text-muted">手机端<strong class="text-tealbrand-800">长按任意英文单词</strong>即可查「单词意象」并加入单词本；轻点句子可高亮主干。</div>
+            <div class="text-xs text-muted">手机端<strong class="text-accent-800">长按任意英文单词</strong>即可查「单词意象」并加入单词本；轻点句子可高亮主干。</div>
             <div id="reading-passage-body" class="lookup-zone p-4 sm:p-5 rounded-xl bg-paper border border-gray-200 space-y-3 text-sm leading-7 text-gray-800 max-h-[580px] overflow-y-auto"></div>
           </div>
 
@@ -295,7 +213,7 @@
             <div id="reading-questions-box" class="space-y-4 max-h-[480px] overflow-y-auto pr-1"></div>
             <div class="pt-3 border-t border-gray-100 space-y-2">
               <label for="reading-note-input" class="text-xs font-semibold text-gray-700 block">本篇笔记（自动保存）</label>
-              <textarea id="reading-note-input" rows="3" placeholder="记录干扰项特征、同义替换对..." class="w-full rounded-xl border border-gray-200 p-3 text-xs focus:outline-none focus:ring-2 focus:ring-tealbrand-600"></textarea>
+              <textarea id="reading-note-input" rows="3" placeholder="写点笔记…" class="w-full rounded-xl border border-gray-200 p-3 text-xs focus:outline-none focus:ring-2 focus:ring-accent-600"></textarea>
             </div>
           </div>
         </div>
@@ -307,8 +225,7 @@
       <div class="card p-5 sm:p-6 space-y-5">
         <div class="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <div class="micro-label">WRITING &amp; TRANSLATION · 12 套真题 + AI 自动批改</div>
-            <h2 class="text-xl font-bold text-ink mt-0.5">六级真题写译训练（长按题目/范文单词查意象）</h2>
+            <h2 class="text-xl font-bold text-ink mt-0.5">写作与翻译</h2>
           </div>
           <div class="inline-flex rounded-xl bg-gray-100 p-1 gap-1" id="writing-mode-tabs">
             <button type="button" data-wmode="upgrade" class="wmode-btn px-3 py-1.5 rounded-lg text-xs font-medium transition">真题写作 (6套)</button>
@@ -325,16 +242,15 @@
       <div class="card p-5 sm:p-6 space-y-4">
         <div class="flex flex-wrap items-center justify-between gap-2">
           <div>
-            <div class="micro-label">WORD IMAGERY · 3207 词原库 + 同义词细微差别跳转</div>
-            <h2 class="text-xl font-bold text-ink mt-0.5">输入单词，看它本来的画面</h2>
+            <h2 class="text-xl font-bold text-ink mt-0.5">单词意象</h2>
           </div>
-          <span id="wordbank-status-pill" class="text-xs font-mono px-2.5 py-1 rounded-full bg-tealbrand-50 text-tealbrand-800 border border-tealbrand-100">正在同步 3,207 词库...</span>
+          <span id="wordbank-status-pill" class="text-xs font-mono px-2.5 py-1 rounded-full bg-accent-50 text-accent-800 border border-accent-100">正在同步 3,207 词库...</span>
         </div>
 
         <div class="relative max-w-xl">
           <div class="flex gap-2">
-            <input type="text" id="imagery-search-input" placeholder="输入任意英文词（比如 cling, abandon, erode, alleviate...）" class="flex-1 px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-tealbrand-600" autocomplete="off" />
-            <button type="button" id="imagery-search-btn" class="px-5 py-2.5 rounded-xl bg-tealbrand-700 hover:bg-tealbrand-800 text-white text-xs font-semibold transition">解释</button>
+            <input type="text" id="imagery-search-input" placeholder="搜索单词" class="flex-1 px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-accent-600" autocomplete="off" />
+            <button type="button" id="imagery-search-btn" class="px-5 py-2.5 rounded-xl bg-accent-700 hover:bg-accent-800 text-white text-xs font-semibold transition">解释</button>
           </div>
           <div id="imagery-suggest-box" class="hidden absolute left-0 right-0 top-12 z-20 bg-white rounded-xl border border-gray-200 shadow-lg max-h-64 overflow-y-auto divide-y divide-gray-100"></div>
         </div>
@@ -350,10 +266,9 @@
         <div class="lg:col-span-5 card p-5 sm:p-6 space-y-4">
           <div class="flex items-center justify-between">
             <div>
-              <div class="micro-label">MY WORDBOOK &amp; SRS QUEUE</div>
-              <h3 class="text-base font-bold text-ink">我的单词本（长按/收藏自动入库）</h3>
+              <h3 class="text-base font-bold text-ink">我的单词本</h3>
             </div>
-            <span id="srs-queue-count" class="text-xs font-mono text-tealbrand-700">待复习 0</span>
+            <span id="srs-queue-count" class="text-xs font-mono text-accent-700">待复习 0</span>
           </div>
           <div class="flex gap-2">
             <button type="button" id="wb-filter-due" class="px-3 py-1 rounded-lg text-xs font-semibold bg-ink text-white">今日待复习</button>
@@ -370,12 +285,11 @@
       <div class="card p-5 sm:p-6 space-y-4">
         <div class="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <div class="micro-label">DEC 05 FULL MOCK · 2024.12 第 1 套全真卷</div>
-            <h2 class="text-xl font-bold text-ink mt-0.5">12 月 5 日全真模拟考场</h2>
+            <h2 class="text-xl font-bold text-ink mt-0.5">模拟练习</h2>
           </div>
           <div class="flex items-center gap-2">
             <div class="px-3 py-1.5 rounded-xl bg-paper border border-gray-200 font-mono text-base font-bold text-ink tabular-nums" id="mock-timer-display">30:00</div>
-            <button type="button" id="mock-start-btn" class="px-4 py-2 rounded-xl bg-tealbrand-700 hover:bg-tealbrand-800 text-white text-xs font-semibold">开始计时</button>
+            <button type="button" id="mock-start-btn" class="px-4 py-2 rounded-xl bg-accent-700 hover:bg-accent-800 text-white text-xs font-semibold">开始计时</button>
             <button type="button" id="mock-reset-btn" class="px-3 py-2 rounded-xl border border-gray-200 bg-white text-xs font-medium text-gray-700">重置</button>
           </div>
         </div>
@@ -395,8 +309,7 @@
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
         <div class="lg:col-span-6 card p-5 sm:p-6 space-y-4">
-          <div class="micro-label">MANUAL SCORE LOG</div>
-          <h3 class="text-base font-bold text-ink">录入线下纸质卷模考分</h3>
+          <h3 class="text-base font-bold text-ink">录入成绩</h3>
           <form id="mock-log-form" class="grid grid-cols-3 gap-3">
             <div>
               <label class="text-[11px] text-muted block mb-1">听力 (0-249)</label>
@@ -410,14 +323,12 @@
               <label class="text-[11px] text-muted block mb-1">写译 (0-212)</label>
               <input type="number" id="mock-in-write" min="0" max="212" value="152" class="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm font-mono" />
             </div>
-            <button type="submit" class="col-span-3 py-2.5 rounded-xl bg-tealbrand-700 hover:bg-tealbrand-800 text-white text-xs font-semibold">记录本次模考并更新面板估分</button>
+            <button type="submit" class="col-span-3 py-2.5 rounded-xl bg-accent-700 hover:bg-accent-800 text-white text-xs font-semibold">记录本次模考并更新面板估分</button>
           </form>
         </div>
 
         <div class="lg:col-span-6 card p-5 sm:p-6 space-y-4">
-          <div class="micro-label">COACH DIAGNOSTIC &amp; HISTORY</div>
-          <h3 class="text-base font-bold text-ink">模考诊断与历史记录</h3>
-          <div id="mock-advice-box" class="rounded-xl p-4 text-xs leading-relaxed border"></div>
+          <h3 class="text-base font-bold text-ink">历史记录</h3>
           <div id="mock-history-list" class="space-y-2 max-h-36 overflow-y-auto text-xs"></div>
         </div>
       </div>
@@ -429,23 +340,22 @@
     <div class="bg-white rounded-2xl border border-gray-200 max-w-xl w-full p-5 sm:p-6 space-y-5 shadow-xl max-h-[90vh] overflow-y-auto">
       <div class="flex items-center justify-between">
         <div>
-          <div class="micro-label">SETTINGS &amp; AI CONFIG</div>
-          <h3 class="text-lg font-bold text-ink">AI 批改接口（双兼容）与八字档案设置</h3>
+          <h3 class="text-lg font-bold text-ink">学习设置</h3>
         </div>
         <button type="button" id="close-settings-btn" class="w-8 h-8 rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50">✕</button>
       </div>
 
       <!-- Dual-Compatible AI Config -->
       <div class="rounded-xl bg-paper border border-gray-200 p-4 space-y-3 text-xs">
-        <div class="font-bold text-ink">1. AI 批改与同义词辨析接口（仅存本地浏览器）</div>
+        <div class="font-bold text-ink">AI 设置</div>
         <div class="flex gap-3">
           <label class="flex items-center gap-1.5 cursor-pointer">
-            <input type="radio" name="ai-mode" value="direct" id="ai-mode-direct" class="accent-teal-700" />
-            <span>直连 API Key（DeepSeek / OpenAI 兼容）</span>
+            <input type="radio" name="ai-mode" value="direct" id="ai-mode-direct" class="accent-slate-500" />
+            <span>API Key</span>
           </label>
           <label class="flex items-center gap-1.5 cursor-pointer">
-            <input type="radio" name="ai-mode" value="worker" id="ai-mode-worker" class="accent-teal-700" />
-            <span>你的 Worker 代理</span>
+            <input type="radio" name="ai-mode" value="worker" id="ai-mode-worker" class="accent-slate-500" />
+            <span>代理接口</span>
           </label>
         </div>
 
@@ -459,14 +369,7 @@
 
         <div id="ai-worker-fields" class="hidden space-y-2">
           <input type="url" id="set-worker-url" placeholder="https://lingosu.online/cet6-listening-ai/api/analyze" class="w-full px-3 py-2 rounded-xl border border-gray-200 bg-white font-mono text-xs" />
-          <p class="text-[11px] text-muted">提示：你的 Worker 目前仅放行听力四类请求，若需批改写译请切到“直连 API Key”或在 Worker 放行 writing/translation/synonyms。</p>
         </div>
-      </div>
-
-      <!-- Bazi Profile Explanation -->
-      <div class="rounded-xl bg-tealbrand-50/70 border border-tealbrand-100 p-4 space-y-1.5 text-xs leading-relaxed text-tealbrand-900">
-        <div class="font-bold">2. 庚金·水木清润学习档案（不存任何生辰原文）</div>
-        <p>偏印重喜“先看画面逻辑、忌死记硬背”，故引入 3,207 词「单词意象」与同义词对比跳转；食神壬水喜短时高爆发，故内置自动计时与 10m 微任务破局；视觉采用水木深青绿 + 暖米白。</p>
       </div>
 
       <div class="grid grid-cols-2 gap-3 text-xs">
@@ -484,7 +387,7 @@
         </div>
         <div class="flex items-end">
           <label class="flex items-center gap-2 cursor-pointer p-2 rounded-xl border border-gray-200 w-full">
-            <input type="checkbox" id="set-gamify" class="accent-teal-700 w-4 h-4" />
+            <input type="checkbox" id="set-gamify" class="accent-slate-500 w-4 h-4" />
             <span class="font-medium text-ink">开启积分等级</span>
           </label>
         </div>
@@ -495,7 +398,7 @@
           <button type="button" id="export-json-btn" class="px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-medium hover:bg-gray-50">导出进度</button>
           <button type="button" id="reset-demo-btn" class="px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-medium text-gray-600 hover:bg-gray-50">恢复初始</button>
         </div>
-        <button type="button" id="save-settings-btn" class="px-4 py-2 rounded-xl bg-tealbrand-700 hover:bg-tealbrand-800 text-white text-xs font-semibold">保存设置</button>
+        <button type="button" id="save-settings-btn" class="px-4 py-2 rounded-xl bg-accent-700 hover:bg-accent-800 text-white text-xs font-semibold">保存设置</button>
       </div>
     </div>
   </div>
@@ -517,7 +420,7 @@
         </select>
         <input type="text" id="err-note" required placeholder="具体错题点" class="w-full px-3 py-2 rounded-xl border border-gray-200" />
         <input type="text" id="err-fix" required placeholder="修正策略" class="w-full px-3 py-2 rounded-xl border border-gray-200" />
-        <button type="submit" class="w-full py-2.5 rounded-xl bg-tealbrand-700 text-white font-semibold">保存到错题本</button>
+        <button type="submit" class="w-full py-2.5 rounded-xl bg-accent-700 text-white font-semibold">保存到错题本</button>
       </form>
     </div>
   </div>
@@ -529,14 +432,14 @@
         <span id="vm-word" class="text-2xl font-bold text-ink"></span>
         <button type="button" id="close-vocab-modal-btn" class="w-8 h-8 rounded-lg border border-gray-200 text-gray-500">✕</button>
       </div>
-      <div id="vm-imagery" class="text-sm font-bold text-tealbrand-700 leading-snug"></div>
-      <div id="vm-ext" class="pl-3 border-l-2 border-tealbrand-600 text-xs text-gray-700 space-y-1"></div>
+      <div id="vm-imagery" class="text-sm font-bold text-accent-700 leading-snug"></div>
+      <div id="vm-ext" class="pl-3 border-l-2 border-accent-600 text-xs text-gray-700 space-y-1"></div>
       <div id="vm-meaning" class="flex flex-wrap gap-1.5"></div>
       <div id="vm-lost" class="text-xs text-amber-900 bg-amber-50/90 border border-amber-200 p-3 rounded-xl leading-relaxed"></div>
       <div id="vm-synonyms" class="space-y-1.5"></div>
       <div class="flex gap-2 pt-2">
-        <button type="button" id="vm-speak-btn" class="px-3.5 py-2.5 rounded-xl border border-gray-200 text-xs font-medium hover:bg-gray-50">🔊 发音</button>
-        <button type="button" id="vm-add-srs-btn" class="flex-1 py-2.5 rounded-xl bg-tealbrand-700 text-white text-xs font-semibold hover:bg-tealbrand-800">+ 加入我的单词本 (SRS)</button>
+        <button type="button" id="vm-speak-btn" class="px-3.5 py-2.5 rounded-xl border border-gray-200 text-xs font-medium hover:bg-gray-50">发音</button>
+        <button type="button" id="vm-add-srs-btn" class="flex-1 py-2.5 rounded-xl bg-accent-700 text-white text-xs font-semibold hover:bg-accent-800">+ 加入我的单词本 (SRS)</button>
       </div>
     </div>
   </div>
@@ -991,17 +894,21 @@
       }
 
       function loadState() {
+        const def = getDefaultState();
         try {
-          const raw = localStorage.getItem(STORAGE_KEY);
-          if (!raw) return getDefaultState();
+          const saved = localStorage.getItem(STORAGE_KEY);
+          const raw = saved || localStorage.getItem('cet6_coach_v2') || localStorage.getItem('cet6_coach_v1');
+          if (!raw) return def;
           const parsed = JSON.parse(raw);
-          const def = getDefaultState();
-          return Object.assign(def, parsed, {
-            aiConfig: Object.assign(def.aiConfig, parsed.aiConfig || {})
-          });
-        } catch (e) {
-          return getDefaultState();
-        }
+          const result = {...def, ...parsed, aiConfig:{...def.aiConfig, ...parsed.aiConfig}, mockAnswers:{...def.mockAnswers, ...parsed.mockAnswers}};
+          if (!saved && Array.isArray(parsed.srsCards)) {
+            result.wordbook = parsed.srsCards.map(c=>({word:c.word, source:c.source || '个人词库', reps:c.reps || 0, interval:c.interval || 0, due:c.due ?? Date.now()}));
+            result.personalImagery = parsed.srsCards.map(c=>({w:c.word,i:c.imagery || c.meaning || '',s:c.extensions || [],c:c.translations || [c.meaning || ''],l:c.lostInTranslation || c.note || '',e:[c.exampleEn || '',c.exampleZh || '']}));
+            result.selectedWord = parsed.srsCards.find(c=>c.id===parsed.selectedSrsWordId)?.word || 'cling';
+            for (const key of ['highlights','readingNotes','writingDrafts','translationDrafts','mockAnswers','listeningSectionIdx']) result[key]=def[key];
+          }
+          return result;
+        } catch { return def; }
       }
 
       function saveState() {
@@ -1011,8 +918,13 @@
       }
 
       let state = loadState();
-      let wordImageryBank = [...FALLBACK_WORDS];
-      let wordImageryMap = new Map(FALLBACK_WORDS.map(item => [item.w.toLowerCase(), item]));
+      function mergeWordBank(base) {
+        const map = new Map(base.map(item=>[item.w.toLowerCase(),item]));
+        for (const item of state.personalImagery || []) map.set(item.w.toLowerCase(),item);
+        return [...map.values()];
+      }
+      let wordImageryBank = mergeWordBank(FALLBACK_WORDS);
+      let wordImageryMap = new Map(wordImageryBank.map(item => [item.w.toLowerCase(), item]));
       let listeningIndex = [];
       let currentListeningExam = FALLBACK_LISTENING;
       let scoreChartInstance = null;
@@ -1117,13 +1029,13 @@
           if (!res.ok) throw new Error('HTTP ' + res.status);
           const data = await res.json();
           if (Array.isArray(data) && data.length > 100) {
-            wordImageryBank = data;
-            wordImageryMap = new Map(data.map(item => [item.w.toLowerCase(), item]));
+            wordImageryBank = mergeWordBank(data);
+            wordImageryMap = new Map(wordImageryBank.map(item => [item.w.toLowerCase(), item]));
             if (pill) pill.textContent = `已同步原库 ${data.length} 词`;
             if (state.activeTab === 'srs') renderSRS();
           }
         } catch (e) {
-          if (pill) pill.textContent = `离线精选 ${wordImageryBank.length} 词（部署后自动同步 3,207 词）`;
+          if (pill) pill.textContent = `备用词库 ${wordImageryBank.length} 词`;
         }
       }
 
@@ -1165,7 +1077,7 @@
             if (!res.ok) continue;
             const examJson = await res.json();
             const audioRel = examJson.meta?.audio || `assets/audio/${examId}.mp3`;
-            examJson.resolvedAudioUrl = `https://lingosu.online/cet6-media/${audioRel}`;
+            examJson.resolvedAudioUrl = `https://lingosu.online/cet6-media/${audioRel.replace(/^assets\//, '')}`;
             currentListeningExam = examJson;
             state.listeningExamId = examId;
             state.listeningSectionIdx = 0;
@@ -1273,15 +1185,15 @@
         document.getElementById('vm-word').textContent = entry.w;
         document.getElementById('vm-imagery').textContent = entry.i;
         document.getElementById('vm-ext').innerHTML = (entry.s || []).map(x => `<div>• ${x}</div>`).join('');
-        document.getElementById('vm-meaning').innerHTML = (entry.c || []).map(x => `<span class="px-2 py-0.5 rounded-full bg-tealbrand-50 text-tealbrand-800 border border-tealbrand-100 text-xs">${x}</span>`).join('');
-        document.getElementById('vm-lost').innerHTML = `<strong>这样翻丢掉了什么：</strong>${entry.l || ''}`;
+        document.getElementById('vm-meaning').innerHTML = (entry.c || []).map(x => `<span class="px-2 py-0.5 rounded-full bg-accent-50 text-accent-800 border border-accent-100 text-xs">${x}</span>`).join('');
+        document.getElementById('vm-lost').innerHTML = `<strong>语感：</strong>${entry.l || ''}`;
 
         // Render clickable synonyms if available
         const synWrap = document.getElementById('vm-synonyms');
         const syns = SYNONYM_NUANCES[entry.w.toLowerCase()] || state.aiSynonymCache[entry.w.toLowerCase()] || [];
         if (syns.length) {
           synWrap.innerHTML = `<div class="text-[11px] font-semibold text-muted">同义词细微差别（点击跳转）：</div>` +
-            syns.map(s => `<button type="button" class="vm-syn-jump w-full text-left px-3 py-1.5 rounded-lg bg-paper border border-gray-200 hover:border-tealbrand-600 text-xs" data-w="${s.w}"><strong class="text-tealbrand-800">${s.w}</strong>：${s.diff}</button>`).join('');
+            syns.map(s => `<button type="button" class="vm-syn-jump w-full text-left px-3 py-1.5 rounded-lg bg-paper border border-gray-200 hover:border-accent-600 text-xs" data-w="${s.w}"><strong class="text-accent-800">${s.w}</strong>：${s.diff}</button>`).join('');
           synWrap.querySelectorAll('.vm-syn-jump').forEach(btn => {
             btn.addEventListener('click', () => openWordLookupModal(btn.dataset.w));
           });
@@ -1367,6 +1279,7 @@
 
         document.querySelectorAll('.nav-btn').forEach(btn => {
           const isCurrent = btn.dataset.tab === tab;
+          btn.setAttribute('aria-current', isCurrent ? 'page' : 'false');
           btn.className = isCurrent
             ? 'nav-btn px-2.5 sm:px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold whitespace-nowrap bg-ink text-white transition'
             : 'nav-btn px-2.5 sm:px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap text-gray-600 hover:bg-gray-100 transition';
@@ -1382,12 +1295,9 @@
 
       // ---------- TAB 1: Dashboard ----------
       function renderDashboard() {
-        const mockDate = new Date('2026-12-05T15:00:00+08:00');
         const examDate = new Date('2026-12-12T15:00:00+08:00');
-        const mockDiff = Math.max(0, Math.ceil((mockDate.getTime() - Date.now()) / 86400000));
         const examDiff = Math.max(0, Math.ceil((examDate.getTime() - Date.now()) / 86400000));
-        document.getElementById('mock-countdown-pill').textContent = `距 12.05 模考 · ${mockDiff} 天`;
-        document.getElementById('countdown-pill').textContent = `距 12.12 开考 · ${examDiff} 天`;
+        document.getElementById('countdown-pill').textContent = `距考试 ${examDiff} 天`;
 
         const tLog = ensureTodayLog();
         const mins = Math.floor((tLog.totalSec || 0) / 60);
@@ -1398,8 +1308,8 @@
 
         const badge = document.getElementById('checkin-status-badge');
         if ((state.checkedDates || []).includes(todayStr())) {
-          badge.textContent = '✓ 今日已自动打卡';
-          badge.className = 'px-2.5 py-1 rounded-full text-xs font-semibold bg-tealbrand-50 text-tealbrand-800 border border-tealbrand-200';
+          badge.textContent = '已打卡';
+          badge.className = 'px-2.5 py-1 rounded-full text-xs font-semibold bg-accent-50 text-accent-800 border border-accent-200';
         } else {
           badge.textContent = `再学 ${Math.max(1, 60 - (tLog.totalSec || 0))}s 自动打卡`;
           badge.className = 'px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600';
@@ -1407,24 +1317,21 @@
 
         const targetTotal = (state.targets.listen || 0) + (state.targets.read || 0) + (state.targets.write || 0);
         document.getElementById('target-badge').textContent = `目标 ${targetTotal}+`;
-        document.getElementById('coach-opening-text').textContent =
-          `四级基线 489（听140 / 阅200 / 写译149）。精听已直连你原仓库的 7 套真题与音频，词库已接通 3,207 个「单词意象」并支持同义词跳转，网页全程自动计时并记录今日学习内容。`;
-
         document.querySelectorAll('.energy-btn').forEach(btn => {
           const active = btn.dataset.energy === state.energyMode;
+          btn.setAttribute('aria-pressed', String(active));
           btn.className = active
             ? 'energy-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-white text-ink shadow-sm transition'
             : 'energy-btn px-2.5 py-1 rounded-lg text-xs font-medium text-gray-600 hover:text-ink transition';
         });
 
         const missions = {
-          '35m': { title: '标准冲刺（35m）', desc: '1 篇精听真题音频逐句听写（18m）+ 1 篇写译并让 AI 批改（12m）+ 词库复习（5m）。', tab: 'listening' },
-          '20m': { title: '轻量保持（20m）', desc: '1 篇 2024.12 仔细阅读真题（12m）+ 长按生词加入意象词库（8m）。', tab: 'reading' },
-          '10m': { title: '低能量破局微任务（10m）', desc: '去「词库」刷 5 个单词的画面与同义词差别，或精听 1 段短对话。', tab: 'srs' }
+          '35m': { title: '精听 · 写作 · 词汇', tab: 'listening' },
+          '20m': { title: '阅读 · 词汇', tab: 'reading' },
+          '10m': { title: '词汇练习', tab: 'srs' }
         };
         const curM = missions[state.energyMode] || missions['35m'];
         document.getElementById('mission-title').textContent = curM.title;
-        document.getElementById('mission-desc').textContent = curM.desc;
         document.getElementById('start-mission-btn').onclick = () => switchTab(curM.tab);
 
         // 14-day grid
@@ -1440,10 +1347,9 @@
           const cell = document.createElement('div');
           const sec = state.dailyLogs[s]?.totalSec || 0;
           cell.title = `${s} · ${Math.floor(sec / 60)}分钟`;
-          cell.className = hit ? 'h-5 rounded-md bg-tealbrand-700' : 'h-5 rounded-md bg-gray-100 border border-gray-200';
+          cell.className = hit ? 'h-5 rounded-md bg-accent-700' : 'h-5 rounded-md bg-gray-100 border border-gray-200';
           grid.appendChild(cell);
         }
-        document.getElementById('missed-days-label').textContent = `近两周漏学 ${missed} 天`;
 
         // Today's Study Review Module Bars
         const barsEl = document.getElementById('today-module-bars');
@@ -1460,7 +1366,7 @@
                 <span class="font-mono text-muted">${m} 分钟</span>
               </div>
               <div class="h-2 rounded-full bg-gray-100 overflow-hidden">
-                <div class="h-full bg-tealbrand-700 rounded-full" style="width:${pct}%"></div>
+                <div class="h-full bg-accent-700 rounded-full" style="width:${pct}%"></div>
               </div>
             </div>
           `;
@@ -1469,7 +1375,7 @@
         const actList = document.getElementById('today-activity-list');
         actList.innerHTML = (tLog.items && tLog.items.length)
           ? tLog.items.map(it => `<div class="px-3 py-1.5 rounded-lg bg-paper border border-gray-200 text-ink">✓ ${it}</div>`).join('')
-          : '<div class="text-muted py-4 text-center">今天还没有完成具体题目或词卡操作，进入任意模块开始后会自动记录。</div>';
+          : '<div class="text-muted py-4 text-center">暂无记录</div>';
 
         renderScoreChart();
 
@@ -1480,7 +1386,7 @@
           const btn = document.createElement('button');
           btn.type = 'button';
           btn.className = state.errorFilter === p
-            ? 'px-2.5 py-1 rounded-full text-xs font-semibold bg-tealbrand-700 text-white'
+            ? 'px-2.5 py-1 rounded-full text-xs font-semibold bg-accent-700 text-white'
             : 'px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600';
           btn.textContent = p;
           btn.addEventListener('click', () => { state.errorFilter = p; saveState(); renderDashboard(); });
@@ -1492,7 +1398,7 @@
         errList.innerHTML = filtered.length
           ? filtered.map(item => `
               <div class="rounded-xl border border-gray-200 bg-paper p-3 space-y-1">
-                <div class="flex justify-between"><span class="px-2 py-0.5 rounded bg-tealbrand-50 text-tealbrand-800 text-[11px] font-semibold">${item.pattern}</span><span class="text-[11px] font-mono text-muted">${item.date}</span></div>
+                <div class="flex justify-between"><span class="px-2 py-0.5 rounded bg-accent-50 text-accent-800 text-[11px] font-semibold">${item.pattern}</span><span class="text-[11px] font-mono text-muted">${item.date}</span></div>
                 <div class="text-xs font-medium text-ink">${item.note}</div>
                 <div class="text-[11px] text-gray-600">对策：${item.fix}</div>
               </div>
@@ -1510,8 +1416,8 @@
             labels: ['听力 (249)', '阅读 (249)', '写译 (212)'],
             datasets: [
               { label: '四级基线', data: [140, 200, 149], backgroundColor: '#CBD5E1', borderRadius: 6 },
-              { label: '当前估分', data: [state.currentEst.listen, state.currentEst.read, state.currentEst.write], backgroundColor: '#0D9488', borderRadius: 6 },
-              { label: '六级目标', data: [state.targets.listen, state.targets.read, state.targets.write], backgroundColor: '#134E4A', borderRadius: 6 }
+              { label: '当前估分', data: [state.currentEst.listen, state.currentEst.read, state.currentEst.write], backgroundColor: '#7D9BB5', borderRadius: 6 },
+              { label: '六级目标', data: [state.targets.listen, state.targets.read, state.targets.write], backgroundColor: '#344E65', borderRadius: 6 }
             ]
           },
           options: {
@@ -1573,7 +1479,7 @@
         document.getElementById('listening-source-badge').textContent =
           currentListeningExam.meta?.shortTitle
             ? `${currentListeningExam.meta.shortTitle} · ${currentListeningExam.meta.questionCount || 25}题`
-            : '离线备用模式（部署到你的 GitHub 目录后自动加载全部 7 套真题音频）';
+            : '备用练习';
 
         document.querySelectorAll('.lstep-btn').forEach(btn => {
           const active = btn.dataset.lstep === state.listeningStep;
@@ -1600,13 +1506,13 @@
             (q.options || []).forEach(o => {
               const b = document.createElement('button');
               b.type = 'button';
-              b.className = 'w-full text-left px-3.5 py-2 rounded-xl border border-gray-200 text-xs sm:text-sm hover:bg-tealbrand-50/50 transition';
+              b.className = 'w-full text-left px-3.5 py-2 rounded-xl border border-gray-200 text-xs sm:text-sm hover:bg-accent-50/50 transition';
               b.textContent = `${o.letter}) ${o.text}`;
               b.addEventListener('click', () => {
                 const fb = card.querySelector('.lq-fb');
                 fb.classList.remove('hidden');
                 if (o.letter === q.correct) {
-                  fb.className = 'lq-fb rounded-lg p-2.5 text-xs bg-tealbrand-50 text-tealbrand-900 border border-tealbrand-200';
+                  fb.className = 'lq-fb rounded-lg p-2.5 text-xs bg-accent-50 text-accent-900 border border-accent-200';
                   fb.textContent = `✓ 正确 (${q.correct})`;
                   logStudyActivity(`精听答题：${sec.title} Q${q.number}`);
                   addXP(10);
@@ -1625,10 +1531,10 @@
             row.className = 'p-4 rounded-xl border border-gray-200 space-y-2.5';
             row.innerHTML = `
               <div class="flex items-center justify-between">
-                <span class="text-xs font-mono font-semibold text-tealbrand-700">#${idx + 1} ${sent.speaker ? '[' + sent.speaker + ']' : ''}</span>
-                <button type="button" class="play-sent-btn px-3 py-1 rounded-lg bg-tealbrand-50 text-tealbrand-800 text-xs font-semibold">🔊 播本句</button>
+                <span class="text-xs font-mono font-semibold text-accent-700">#${idx + 1} ${sent.speaker ? '[' + sent.speaker + ']' : ''}</span>
+                <button type="button" class="play-sent-btn px-3 py-1 rounded-lg bg-accent-50 text-accent-800 text-xs font-semibold">🔊 播本句</button>
               </div>
-              <input type="text" class="dict-input w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-tealbrand-600" placeholder="输入听到的英文..." />
+              <input type="text" class="dict-input w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-accent-600" placeholder="输入听到的英文..." />
               <div class="flex items-center justify-between">
                 <button type="button" class="check-dict-btn px-3 py-1.5 rounded-lg bg-ink text-white text-xs font-medium">比对差异</button>
                 <span class="dict-score text-xs font-mono text-muted"></span>
@@ -1646,7 +1552,7 @@
               let hit = 0;
               const diffHtml = sent.text.split(/\s+/).map(rawW => {
                 const key = rawW.toLowerCase().replace(/[^a-z0-9']/g, '');
-                if (userWords.has(key)) { hit++; return `<span class="text-tealbrand-800 font-medium">${rawW}</span>`; }
+                if (userWords.has(key)) { hit++; return `<span class="text-accent-800 font-medium">${rawW}</span>`; }
                 return `<span class="bg-amber-100 text-amber-900 px-1 rounded underline decoration-amber-400 cursor-pointer missed-word" data-w="${key}">${rawW}</span>`;
               }).join(' ');
               const pct = Math.round((hit / Math.max(1, targetWords.length)) * 100);
@@ -1666,7 +1572,7 @@
           const wrap = document.createElement('div');
           wrap.className = 'p-4 sm:p-5 rounded-xl bg-paper border border-gray-200 space-y-3';
           wrap.innerHTML = `
-            <div class="text-xs font-semibold text-tealbrand-800">完整听力原文与译文（长按英文单词可查意象）</div>
+            <div class="text-xs font-semibold text-accent-800">完整听力原文与译文（长按英文单词可查意象）</div>
             <div class="space-y-3 text-sm leading-relaxed">
               ${(sec.sentences || []).map((s, i) => `
                 <div>
@@ -1722,14 +1628,14 @@
           qItem.options.forEach((o, oi) => {
             const b = document.createElement('button');
             b.type = 'button';
-            b.className = 'w-full text-left px-3 py-2 rounded-lg border border-gray-200 text-xs hover:bg-tealbrand-50/50 transition';
+            b.className = 'w-full text-left px-3 py-2 rounded-lg border border-gray-200 text-xs hover:bg-accent-50/50 transition';
             b.textContent = o;
             b.addEventListener('click', () => {
               const fb = card.querySelector('.rq-fb');
               fb.classList.remove('hidden');
               logStudyActivity(`阅读真题：${passage.title.slice(0, 14)}`);
               if (oi === qItem.ans) {
-                fb.className = 'rq-fb text-xs p-2.5 rounded-lg bg-tealbrand-50 text-tealbrand-900 border border-tealbrand-200';
+                fb.className = 'rq-fb text-xs p-2.5 rounded-lg bg-accent-50 text-accent-900 border border-accent-200';
                 fb.innerHTML = `<strong>✓ 正确。</strong> ${qItem.exp}`;
                 addXP(10);
               } else {
@@ -1768,15 +1674,15 @@
               <div class="text-sm font-bold text-ink">${item.topic}</div>
               <div class="text-xs text-muted bg-white p-3 rounded-lg border border-gray-200 font-mono">${item.prompt}</div>
               <div class="p-3 rounded-lg bg-white border border-gray-200 text-xs sm:text-sm text-gray-800"><span class="text-[11px] font-mono text-muted block mb-0.5">149分原句：</span>${item.raw}</div>
-              <div class="text-xs text-tealbrand-800 bg-tealbrand-50/70 p-2.5 rounded-lg border border-tealbrand-100">${item.diag} 提示：${item.stepHint}</div>
-              <textarea rows="4" class="w-draft w-full rounded-xl border border-gray-200 p-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-tealbrand-600" placeholder="写下你的单句升格或完整作文...">${savedVal}</textarea>
+              <div class="text-xs text-accent-800 bg-accent-50/70 p-2.5 rounded-lg border border-accent-100">${item.diag} 提示：${item.stepHint}</div>
+              <textarea rows="4" class="w-draft w-full rounded-xl border border-gray-200 p-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-accent-600" placeholder="写下你的单句升格或完整作文...">${savedVal}</textarea>
               <div class="flex flex-wrap items-center gap-2">
-                <button type="button" class="ai-grade-w-btn px-3.5 py-1.5 rounded-xl bg-tealbrand-700 hover:bg-tealbrand-800 text-white text-xs font-semibold">✨ AI 自动批改</button>
+                <button type="button" class="ai-grade-w-btn px-3.5 py-1.5 rounded-xl bg-accent-700 hover:bg-accent-800 text-white text-xs font-semibold">AI 批改</button>
                 <button type="button" class="toggle-ref-btn px-3 py-1.5 rounded-xl border border-gray-200 bg-white text-xs font-medium">查看升格句与范文</button>
               </div>
-              <div class="ai-w-res ${aiFeedback ? '' : 'hidden'} p-4 rounded-xl bg-white border border-tealbrand-200 text-xs leading-relaxed text-gray-800 whitespace-pre-line">${aiFeedback}</div>
+              <div class="ai-w-res ${aiFeedback ? '' : 'hidden'} p-4 rounded-xl bg-white border border-accent-200 text-xs leading-relaxed text-gray-800 whitespace-pre-line">${aiFeedback}</div>
               <div class="w-ref hidden p-4 rounded-xl bg-white border border-gray-200 space-y-2 text-xs leading-6 text-gray-800">
-                <p class="font-semibold text-tealbrand-900">升格句：${item.upgraded}</p>
+                <p class="font-semibold text-accent-900">升格句：${item.upgraded}</p>
                 <p class="whitespace-pre-line border-t border-gray-100 pt-2">${item.fullEssay}</p>
               </div>
             `;
@@ -1804,7 +1710,7 @@
               } catch (err) {
                 showToast(err.message || 'AI 批改失败');
               } finally {
-                btn.disabled = false; btn.textContent = '✨ AI 自动批改';
+                btn.disabled = false; btn.textContent = 'AI 批改';
               }
             });
             wrap.appendChild(box);
@@ -1818,12 +1724,12 @@
             box.innerHTML = `
               <div class="text-sm font-bold text-ink">${t.title}</div>
               <p class="text-sm leading-7 text-gray-800 bg-white p-4 rounded-xl border border-gray-200">${t.chinese}</p>
-              <textarea rows="4" class="t-draft w-full rounded-xl border border-gray-200 p-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-tealbrand-600" placeholder="在此输入你的汉译英作答...">${savedVal}</textarea>
+              <textarea rows="4" class="t-draft w-full rounded-xl border border-gray-200 p-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-accent-600" placeholder="在此输入你的汉译英作答...">${savedVal}</textarea>
               <div class="flex flex-wrap items-center gap-2">
-                <button type="button" class="ai-grade-t-btn px-3.5 py-1.5 rounded-xl bg-tealbrand-700 hover:bg-tealbrand-800 text-white text-xs font-semibold">✨ AI 自动批改翻译</button>
+                <button type="button" class="ai-grade-t-btn px-3.5 py-1.5 rounded-xl bg-accent-700 hover:bg-accent-800 text-white text-xs font-semibold">AI 批改</button>
                 <button type="button" class="toggle-tref-btn px-3 py-1.5 rounded-xl border border-gray-200 bg-white text-xs font-medium">对照参考译文</button>
               </div>
-              <div class="ai-t-res ${aiFeedback ? '' : 'hidden'} p-4 rounded-xl bg-white border border-tealbrand-200 text-xs leading-relaxed text-gray-800 whitespace-pre-line">${aiFeedback}</div>
+              <div class="ai-t-res ${aiFeedback ? '' : 'hidden'} p-4 rounded-xl bg-white border border-accent-200 text-xs leading-relaxed text-gray-800 whitespace-pre-line">${aiFeedback}</div>
               <div class="t-ref hidden p-4 rounded-xl bg-white border border-gray-200 text-sm leading-6 text-gray-800">${t.reference}</div>
             `;
             box.querySelector('.t-draft').addEventListener('input', (e) => { state.translationDrafts[t.id] = e.target.value; saveState(); });
@@ -1850,7 +1756,7 @@
               } catch (err) {
                 showToast(err.message || 'AI 批改失败');
               } finally {
-                btn.disabled = false; btn.textContent = '✨ AI 自动批改翻译';
+                btn.disabled = false; btn.textContent = 'AI 批改';
               }
             });
             wrap.appendChild(box);
@@ -1880,44 +1786,44 @@
         top.className = 'space-y-4';
         top.innerHTML = `
           <div class="flex flex-wrap items-center justify-between gap-2">
-            <span class="px-2.5 py-0.5 rounded-md bg-tealbrand-50 text-tealbrand-800 text-[11px] font-semibold">${inWordbook ? inWordbook.source : '3,207 词意象原库'}</span>
+            <span class="px-2.5 py-0.5 rounded-md bg-accent-50 text-accent-800 text-[11px] font-semibold">${inWordbook ? inWordbook.source : '3,207 词意象原库'}</span>
             <div class="flex items-center gap-1.5">
-              <button type="button" id="srs-toggle-mask-btn" class="px-2.5 py-1 rounded-lg border border-gray-200 bg-white text-xs text-gray-600">${srsFlipped ? '遮住画面自测' : '展开画面'}</button>
-              <button type="button" id="srs-speak-btn" class="px-2.5 py-1 rounded-lg border border-gray-200 bg-white text-xs">🔊 发音</button>
-              ${!inWordbook ? `<button type="button" id="srs-add-wb-btn" class="px-2.5 py-1 rounded-lg bg-tealbrand-700 text-white text-xs font-semibold">+ 加入单词本</button>` : ''}
+              <button type="button" id="srs-toggle-mask-btn" class="px-2.5 py-1 rounded-lg border border-gray-200 bg-white text-xs text-gray-600">${srsFlipped ? '收起' : '展开'}</button>
+              <button type="button" id="srs-speak-btn" class="px-2.5 py-1 rounded-lg border border-gray-200 bg-white text-xs">发音</button>
+              ${!inWordbook ? `<button type="button" id="srs-add-wb-btn" class="px-2.5 py-1 rounded-lg bg-accent-700 text-white text-xs font-semibold">+ 加入单词本</button>` : ''}
             </div>
           </div>
 
           <div class="text-3xl sm:text-4xl font-bold text-ink tracking-tight">${entry.w}</div>
 
           ${srsFlipped ? `
-            <div class="text-base sm:text-lg font-bold text-tealbrand-700 leading-snug">${entry.i}</div>
+            <div class="text-base sm:text-lg font-bold text-accent-700 leading-snug">${entry.i}</div>
 
-            <div class="pl-3.5 border-l-2 border-tealbrand-600 space-y-1">
-              <div class="text-[11px] font-semibold text-muted">由这个画面引申出的意思</div>
+            <div class="pl-3.5 border-l-2 border-accent-600 space-y-1">
+              <div class="text-[11px] font-semibold text-muted">引申含义</div>
               <ul class="space-y-1 text-xs text-gray-700">${(entry.s || []).map(x => `<li>• ${x}</li>`).join('')}</ul>
             </div>
 
             <div class="pl-3.5 border-l-2 border-gray-200 space-y-1.5">
-              <div class="text-[11px] font-semibold text-muted">平时常被翻成</div>
-              <div class="flex flex-wrap gap-1.5">${(entry.c || []).map(t => `<span class="px-2.5 py-0.5 rounded-full bg-tealbrand-50 text-tealbrand-800 border border-tealbrand-100 text-xs font-medium">${t}</span>`).join('')}</div>
+              <div class="text-[11px] font-semibold text-muted">常用释义</div>
+              <div class="flex flex-wrap gap-1.5">${(entry.c || []).map(t => `<span class="px-2.5 py-0.5 rounded-full bg-accent-50 text-accent-800 border border-accent-100 text-xs font-medium">${t}</span>`).join('')}</div>
             </div>
 
             <div class="rounded-xl bg-amber-50/90 border border-amber-200 p-3.5 space-y-1">
-              <div class="text-xs font-bold text-amber-900">这样翻丢掉了什么</div>
+              <div class="text-xs font-bold text-amber-900">语感</div>
               <p class="text-xs text-amber-900/90 leading-relaxed">${entry.l || ''}</p>
             </div>
 
             <!-- Synonym Nuances (Clickable Jump!) -->
-            <div class="pl-3.5 border-l-2 border-tealbrand-200 space-y-2">
+            <div class="pl-3.5 border-l-2 border-accent-200 space-y-2">
               <div class="flex items-center justify-between">
-                <span class="text-[11px] font-semibold text-muted">同义词细微差别（点击直接跳转该词）</span>
-                ${!syns.length ? `<button type="button" id="ai-gen-syn-btn" class="text-[11px] font-semibold text-tealbrand-700 hover:underline">✨ AI 生成同义词辨析</button>` : ''}
+                <span class="text-[11px] font-semibold text-muted">近义词辨析</span>
+                ${!syns.length ? `<button type="button" id="ai-gen-syn-btn" class="text-[11px] font-semibold text-accent-700 hover:underline">AI 辨析</button>` : ''}
               </div>
               <div class="space-y-1.5" id="syn-jump-list">
                 ${syns.length
-                  ? syns.map(s => `<button type="button" class="syn-jump-btn w-full text-left px-3 py-2 rounded-xl bg-white border border-gray-200 hover:border-tealbrand-600 text-xs transition" data-w="${s.w}"><strong class="text-tealbrand-800">${s.w}</strong> → ${s.diff}</button>`).join('')
-                  : '<div class="text-[11px] text-muted">该词暂未配置内置同义词组，可点击右上角由 AI 实时生成并缓存。</div>'}
+                  ? syns.map(s => `<button type="button" class="syn-jump-btn w-full text-left px-3 py-2 rounded-xl bg-white border border-gray-200 hover:border-accent-600 text-xs transition" data-w="${s.w}"><strong class="text-accent-800">${s.w}</strong> → ${s.diff}</button>`).join('')
+                  : '<div class="text-[11px] text-muted">暂无辨析</div>'}
               </div>
             </div>
 
@@ -1930,8 +1836,7 @@
             ` : ''}
           ` : `
             <div class="py-10 text-center space-y-3">
-              <p class="text-xs text-muted">先在脑海里回想这个词的「原始动作画面」，再点击展开。</p>
-              <button type="button" id="srs-unmask-btn" class="px-5 py-2.5 rounded-xl bg-ink text-white text-xs font-semibold">显示单词意象画面</button>
+              <button type="button" id="srs-unmask-btn" class="px-5 py-2.5 rounded-xl bg-ink text-white text-xs font-semibold">显示释义</button>
             </div>
           `}
         `;
@@ -1985,7 +1890,7 @@
               }
             } catch (err) {
               showToast(err.message || '生成同义词失败');
-              aiSynBtn.textContent = '✨ AI 生成同义词辨析';
+              aiSynBtn.textContent = 'AI 辨析';
             }
           });
         }
@@ -2004,7 +1909,7 @@
         ].forEach(g => {
           const b = document.createElement('button');
           b.type = 'button';
-          b.className = 'py-2 rounded-xl border border-gray-200 bg-white hover:bg-tealbrand-50 text-xs font-medium transition';
+          b.className = 'py-2 rounded-xl border border-gray-200 bg-white hover:bg-accent-50 text-xs font-medium transition';
           b.textContent = g.label;
           b.addEventListener('click', () => {
             let wbItem = state.wordbook.find(x => x.word.toLowerCase() === wKey);
@@ -2043,11 +1948,11 @@
             const btn = document.createElement('button');
             btn.type = 'button';
             btn.className = wb.word.toLowerCase() === wKey
-              ? 'w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-tealbrand-50 border border-tealbrand-200'
+              ? 'w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-accent-50 border border-accent-200'
               : 'w-full text-left flex items-center justify-between px-3 py-2 rounded-xl hover:bg-gray-50 border border-transparent';
             btn.innerHTML = `
               <div class="truncate pr-2"><strong class="text-ink">${wb.word}</strong> <span class="text-muted text-[11px] ml-1">${wEntry ? wEntry.i : ''}</span></div>
-              <span class="shrink-0 text-[10px] font-mono text-tealbrand-700">${wb.source}</span>
+              <span class="shrink-0 text-[10px] font-mono text-accent-700">${wb.source}</span>
             `;
             btn.addEventListener('click', () => { state.selectedWord = wb.word; srsFlipped = true; saveState(); renderSRS(); });
             listEl.appendChild(btn);
@@ -2070,7 +1975,7 @@
           const wTask = WRITING_STEPS[0];
           ws.innerHTML = `
             <div class="p-4 sm:p-5 rounded-xl bg-paper border border-gray-200 space-y-3">
-              <div class="text-xs font-bold text-tealbrand-800">Part I Writing (30 minutes) · 2024.12 第1套真题</div>
+              <div class="text-xs font-bold text-accent-800">Part I Writing (30 minutes) · 2024.12 第1套真题</div>
               <p class="text-xs text-ink bg-white p-3 rounded-xl border border-gray-200 font-mono">${wTask.prompt}</p>
               <textarea id="mock-write-area" rows="6" class="w-full rounded-xl border border-gray-200 p-3 text-sm bg-white" placeholder="输入150-200词作文...">${state.mockAnswers.writeText || ''}</textarea>
             </div>
@@ -2078,7 +1983,7 @@
           ws.querySelector('#mock-write-area').addEventListener('input', (e) => { state.mockAnswers.writeText = e.target.value; saveState(); });
         } else if (state.mockPart === 'part2') {
           const secs = (currentListeningExam.sections || []).slice(0, 3);
-          ws.innerHTML = `<div class="p-4 sm:p-5 rounded-xl bg-paper border border-gray-200 space-y-3"><div class="text-xs font-bold text-tealbrand-800">Part II Listening · 抽测 ${secs.length} 篇章</div><div id="mock-l-list" class="space-y-3"></div></div>`;
+          ws.innerHTML = `<div class="p-4 sm:p-5 rounded-xl bg-paper border border-gray-200 space-y-3"><div class="text-xs font-bold text-accent-800">Part II Listening · 抽测 ${secs.length} 篇章</div><div id="mock-l-list" class="space-y-3"></div></div>`;
           const list = ws.querySelector('#mock-l-list');
           secs.forEach(sec => {
             (sec.questions || []).slice(0, 2).forEach(q => {
@@ -2090,7 +1995,7 @@
                 const b = document.createElement('button');
                 b.type = 'button';
                 const chosen = state.mockAnswers.listen[q.number] === o.letter;
-                b.className = chosen ? 'text-left px-3 py-1.5 rounded-lg border border-tealbrand-600 bg-tealbrand-50 text-xs font-semibold' : 'text-left px-3 py-1.5 rounded-lg border border-gray-200 text-xs';
+                b.className = chosen ? 'text-left px-3 py-1.5 rounded-lg border border-accent-600 bg-accent-50 text-xs font-semibold' : 'text-left px-3 py-1.5 rounded-lg border border-gray-200 text-xs';
                 b.textContent = `${o.letter}) ${o.text}`;
                 b.addEventListener('click', () => { state.mockAnswers.listen[q.number] = o.letter; saveState(); renderMock(); });
                 oWrap.appendChild(b);
@@ -2115,7 +2020,7 @@
               qObj.options.forEach((optText, oi) => {
                 const b = document.createElement('button');
                 b.type = 'button';
-                b.className = chosen === oi ? 'text-left px-3 py-1.5 rounded-lg border border-tealbrand-600 bg-tealbrand-50 text-xs font-semibold' : 'text-left px-3 py-1.5 rounded-lg border border-gray-200 bg-white text-xs';
+                b.className = chosen === oi ? 'text-left px-3 py-1.5 rounded-lg border border-accent-600 bg-accent-50 text-xs font-semibold' : 'text-left px-3 py-1.5 rounded-lg border border-gray-200 bg-white text-xs';
                 b.textContent = optText;
                 b.addEventListener('click', () => { state.mockAnswers.read[qKey] = oi; saveState(); renderMock(); });
                 qDiv.querySelector('.mr-o').appendChild(b);
@@ -2129,7 +2034,7 @@
           const tTask = TRANSLATION_TASKS[0];
           ws.innerHTML = `
             <div class="p-4 sm:p-5 rounded-xl bg-paper border border-gray-200 space-y-3">
-              <div class="text-xs font-bold text-tealbrand-800">Part IV Translation (30 minutes) · ${tTask.title}</div>
+              <div class="text-xs font-bold text-accent-800">Part IV Translation (30 minutes) · ${tTask.title}</div>
               <p class="text-sm leading-7 text-ink bg-white p-4 rounded-xl border border-gray-200">${tTask.chinese}</p>
               <textarea id="mock-trans-area" rows="5" class="w-full rounded-xl border border-gray-200 p-3 text-sm bg-white" placeholder="输入北斗翻译作答...">${state.mockAnswers.transText || ''}</textarea>
             </div>
@@ -2138,16 +2043,9 @@
         }
 
         // Diagnostic & History
-        const adviseEl = document.getElementById('mock-advice-box');
-        const lGap = state.targets.listen - state.currentEst.listen;
-        adviseEl.className = lGap > 15 ? 'rounded-xl p-4 text-xs leading-relaxed border border-amber-200 bg-amber-50 text-amber-900' : 'rounded-xl p-4 text-xs leading-relaxed border border-tealbrand-200 bg-tealbrand-50 text-tealbrand-900';
-        adviseEl.innerHTML = lGap > 15
-          ? `<strong>教练冷静预警：</strong> 当前听力估分落后目标 ${lGap} 分，12 月 5 日模考前请把 70% 时间留在「精听」模块。`
-          : `<strong>节奏稳定：</strong> 各单项与目标差距在 15 分以内，按当前节奏推进即可。`;
-
         const histEl = document.getElementById('mock-history-list');
         histEl.innerHTML = state.mockHistory.length
-          ? state.mockHistory.map(m => `<div class="flex justify-between p-2.5 rounded-lg bg-paper border border-gray-200"><span class="font-mono text-muted">${m.date}</span><span>听${m.listen}/阅${m.read}/写译${m.write}</span><strong class="font-mono text-tealbrand-700">${m.total}</strong></div>`).join('')
+          ? state.mockHistory.map(m => `<div class="flex justify-between p-2.5 rounded-lg bg-paper border border-gray-200"><span class="font-mono text-muted">${m.date}</span><span>听${m.listen}/阅${m.read}/写译${m.write}</span><strong class="font-mono text-accent-700">${m.total}</strong></div>`).join('')
           : '<div class="text-muted text-center py-3">尚无模考记录</div>';
       }
 
@@ -2203,7 +2101,7 @@
         if (!q) { suggestBox.classList.add('hidden'); return; }
         const matches = wordImageryBank.filter(c => c.w.toLowerCase().startsWith(q) || c.w.toLowerCase().includes(q) || c.i.includes(q)).slice(0, 8);
         if (!matches.length) { suggestBox.classList.add('hidden'); return; }
-        suggestBox.innerHTML = matches.map(m => `<button type="button" class="sug-item w-full text-left px-4 py-2.5 hover:bg-tealbrand-50/60 flex justify-between gap-2 text-xs" data-w="${m.w}"><strong class="text-ink">${m.w}</strong><span class="text-muted truncate">${m.i}</span></button>`).join('');
+        suggestBox.innerHTML = matches.map(m => `<button type="button" class="sug-item w-full text-left px-4 py-2.5 hover:bg-accent-50/60 flex justify-between gap-2 text-xs" data-w="${m.w}"><strong class="text-ink">${m.w}</strong><span class="text-muted truncate">${m.i}</span></button>`).join('');
         suggestBox.querySelectorAll('.sug-item').forEach(b => b.addEventListener('click', () => { searchInput.value = b.dataset.w; jumpToWord(b.dataset.w); }));
         suggestBox.classList.remove('hidden');
       });
@@ -2246,7 +2144,7 @@
         btn.disabled = true; btn.textContent = '复盘生成中...';
         try {
           const reply = await callDualAi(
-            '你是务实客观的 CET-6 学习教练（庚金风格：直指重点、不灌鸡汤）。根据学习者今日实际用时和完成内容，给出100字以内的明日最小可执行建议。',
+            '你是 CET-6 学习教练。根据学习者今日实际用时和完成内容，给出100字以内的明日最小可执行建议。',
             `今日专注时长：${mins} 分钟；完成记录：${(log.items || []).join('；') || '刚打开网页'}；四级基线：听140/阅200/写译149。`
           );
           box.textContent = typeof reply === 'string' ? reply : JSON.stringify(reply);
@@ -2255,7 +2153,7 @@
           box.textContent = `本地复盘：今日累计专注 ${mins} 分钟，已完成 ${(log.items || []).length} 项记录。若尚未配置 AI Key，可在右上角「设置」填入后获取个性化 AI 复盘。`;
           box.classList.remove('hidden');
         } finally {
-          btn.disabled = false; btn.textContent = '✨ 生成今日 AI 复盘';
+          btn.disabled = false; btn.textContent = 'AI 复盘';
         }
       });
 
