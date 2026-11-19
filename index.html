@@ -6,6 +6,12 @@
   <title>C6 · 六级学习</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="./assets/data/reading-papers.js"></script>
+  <script src="./assets/data/reading-native.js"></script>
+  <script src="./js/reading-ink.js"></script>
+  <script src="./js/language-help.js"></script>
+  <script src="./js/reading-original.js"></script>
+  <link rel="stylesheet" href="./assets/reading.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -190,34 +196,7 @@
 
     <!-- ==================== TAB 3: READING LAB ==================== -->
     <section id="view-reading" class="tab-view hidden space-y-5">
-      <div class="card p-5 sm:p-6 space-y-4">
-        <div class="flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <h2 class="text-xl font-bold text-ink mt-0.5">阅读</h2>
-          </div>
-          <div class="flex flex-wrap items-center gap-2">
-            <select id="reading-passage-select" class="px-3 py-2 rounded-xl border border-gray-200 text-xs sm:text-sm bg-white text-ink max-w-full"></select>
-            <button type="button" id="toggle-hl-mode-btn" class="px-3 py-1.5 rounded-xl border border-accent-200 bg-accent-50 text-accent-800 text-xs font-semibold transition">高亮笔：开启</button>
-            <div class="px-3 py-1.5 rounded-xl bg-gray-100 font-mono text-xs text-ink tabular-nums" id="reading-timer-display">09:00</div>
-            <button type="button" id="reading-timer-btn" class="px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-medium hover:bg-gray-50 transition">计时</button>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-          <div class="lg:col-span-7 space-y-2.5">
-            <div class="text-xs text-muted">手机端<strong class="text-accent-800">长按任意英文单词</strong>即可查「单词意象」并加入单词本；轻点句子可高亮主干。</div>
-            <div id="reading-passage-body" class="lookup-zone p-4 sm:p-5 rounded-xl bg-paper border border-gray-200 space-y-3 text-sm leading-7 text-gray-800 max-h-[580px] overflow-y-auto"></div>
-          </div>
-
-          <div class="lg:col-span-5 space-y-4">
-            <div id="reading-questions-box" class="space-y-4 max-h-[480px] overflow-y-auto pr-1"></div>
-            <div class="pt-3 border-t border-gray-100 space-y-2">
-              <label for="reading-note-input" class="text-xs font-semibold text-gray-700 block">本篇笔记（自动保存）</label>
-              <textarea id="reading-note-input" rows="3" placeholder="写点笔记…" class="w-full rounded-xl border border-gray-200 p-3 text-xs focus:outline-none focus:ring-2 focus:ring-accent-600"></textarea>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div id="original-reading-app"></div>
     </section>
 
     <!-- ==================== TAB 4: WRITING & TRANSLATION + AI GRADING ==================== -->
@@ -301,7 +280,7 @@
             <button type="button" data-mpart="part3" data-mins="40" class="mpart-btn px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap">Part III 阅读 (40m)</button>
             <button type="button" data-mpart="part4" data-mins="30" class="mpart-btn px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap">Part IV 翻译 (30m)</button>
           </div>
-          <button type="button" id="submit-full-mock-btn" class="px-4 py-2 rounded-xl bg-ink hover:bg-gray-800 text-white text-xs font-semibold">交卷判分</button>
+          <button type="button" id="submit-full-mock-btn" class="px-4 py-2 rounded-xl bg-ink hover:bg-gray-800 text-white text-xs font-semibold">保存作答</button>
         </div>
 
         <div id="mock-paper-workspace" class="pt-2 lookup-zone"></div>
@@ -432,6 +411,8 @@
         <span id="vm-word" class="text-2xl font-bold text-ink"></span>
         <button type="button" id="close-vocab-modal-btn" class="w-8 h-8 rounded-lg border border-gray-200 text-gray-500">✕</button>
       </div>
+      <div id="vm-source" class="text-xs text-muted"></div>
+      <button type="button" id="vm-retry" hidden class="text-sm text-accent-700">重试查询</button>
       <div id="vm-imagery" class="text-sm font-bold text-accent-700 leading-snug"></div>
       <div id="vm-ext" class="pl-3 border-l-2 border-accent-600 text-xs text-gray-700 space-y-1"></div>
       <div id="vm-meaning" class="flex flex-wrap gap-1.5"></div>
@@ -608,132 +589,6 @@
           }
         ]
       };
-
-      const READING_PASSAGES = [
-        {
-          id: 'r1',
-          title: '【2024.12 第1套 P1】恐怖娱乐的心理学悖论 (Q46–Q50)',
-          sentences: [
-            "Imagine you're an alien sent to Earth to document the behaviour of the mammals inhabiting the planet. You stumble into a movie theatre that's showing the latest Hollywood horror film.",
-            "Several dozen humans are gathered together in a dark, undecorated room. They're all staring at a rectangular area on which patterns of light change rapidly.",
-            "They are clearly in a state of high arousal. Their heart rate is elevated, they occasionally glance around nervously, and they sometimes jump collectively in their seats, and emit high-pitched warning calls.",
-            "Eventually, the lights come up and the rectangular screen goes black. The humans stand up and leave the room, chatting and laughing, and showing signs of pleasure.",
-            "Why do these humans voluntarily expose themselves to what appears to be a deeply unpleasant experience? My research suggests that we humans evolved to find pleasure in situations that allow us to experience negative emotions in a safe context.",
-            "Take hide-and-seek for example, which is a simulation of a predator-prey interaction. This simulation gives the child crucial information about how to avoid becoming prey, and children tend to find that kind of activity deeply satisfying.",
-            "Horror is pleasurable to many people because it lets us play with negative emotions and develop coping strategies. We learn what it feels like to be truly afraid, and we learn how to handle negative emotion.",
-            "If you make it through the film in one piece, you'll probably experience a strong sense of mastery, a sense that you were able to make it through an appalling experience."
-          ],
-          questions: [
-            { q: "46. The alien finds the audience in the movie theatre clearly in a state of ______.", options: ["A) total mindfulness", "B) extreme excitement", "C) spiritual elevation", "D) intense curiosity"], ans: 1, exp: "定位 high arousal（高度兴奋与警觉）。" },
-            { q: "47. Why do many people seek out scary entertainment?", options: ["A) Overcoming real horror.", "B) They find joy in going through simulated horrible experiences.", "C) Kids' thrill.", "D) Escaping danger."], ans: 1, exp: "定位 safe context 模拟体验负面情绪。" },
-            { q: "48. What do children learn from hide-and-seek?", options: ["A) How to avoid falling prey to an attacker.", "B) Simulate predator.", "C) Avoid errors.", "D) Turn danger safe."], ans: 0, exp: "定位 avoid becoming prey。" },
-            { q: "49. Why is horror gratifying to many people?", options: ["A) Biological defense.", "B) Virtual fantasy.", "C) It allows them to learn what fear feels like and how to tackle it.", "D) Evolved fear."], ans: 2, exp: "定位 handle negative emotion。" },
-            { q: "50. What will one experience if they watch a horror film through without being hurt?", options: ["A) Clear relevance.", "B) Good fortune.", "C) Intense relief.", "D) A strong sense of being in control."], ans: 3, exp: "定位 strong sense of mastery。" }
-          ]
-        },
-        {
-          id: 'r2',
-          title: '【2024.12 第1套 P2】社交滤镜与容貌焦虑 (Q51–Q55)',
-          sentences: [
-            "An awakening has been taking place in the physical world against the beauty model that has been dictated to us for years. But in the digital arena, social media determines what is considered beautiful.",
-            "In the physical world, the struggle goes against the underlying pressure exerted on women to conform to an unrealistic beauty ideal.",
-            "Today, however, the Instagram face has become the new beauty ideal. The internalization of accepted beauty norms is much more effective when there is active involvement in the learning process.",
-            "One of the significant consequences of obsessive filtering is the emerging tendency to treat oneself as an object to be observed and valued, in the same way another person observes and judges from the side.",
-            "Even though humanity has always cherished beauty, in the last decade our obsession with looks has reached an unprecedented peak. The time spent on social media creates an urge so powerful that the only thing that can fix it is not cosmetic intervention, but mental health care."
-          ],
-          questions: [
-            { q: "51. What do we learn about beauty in the digital arena?", options: ["A) Dictates media.", "B) Made for years.", "C) New awakening.", "D) It is defined by social media."], ans: 3, exp: "定位 social media determines what is considered beautiful。" },
-            { q: "52. What does the passage say about beauty in the physical world?", options: ["A) Constant pressure.", "B) Never existed.", "C) A fight is going on to remove pressure on women to conform to an absurd beauty ideal.", "D) No makeup."], ans: 2, exp: "定位 struggle goes against the underlying pressure。" },
-            { q: "53. What do we learn about the Instagram face?", options: ["A) It is now regarded as the new beauty ideal.", "B) 2050 trend.", "C) Talked about.", "D) Ultimate beauty."], ans: 0, exp: "定位 has become the new beauty ideal。" },
-            { q: "54. What has obsessive filtering resulted in?", options: ["A) Perfection.", "B) Network advantage.", "C) A tendency to regard one's body as an object of observation and judgment.", "D) More filtering."], ans: 2, exp: "定位 treat oneself as an object to be observed。" },
-            { q: "55. What does the author emphasize at the end?", options: ["A) Cosmetic surgery.", "B) Psychological intervention should be introduced to alleviate it.", "C) Control time.", "D) Examine root cause."], ans: 1, exp: "定位 not cosmetic intervention, but mental health care。" }
-          ]
-        },
-        {
-          id: 'r_2024_12_s2_p1',
-          title: '【2024.12 第2套 P1】全球城市化与乡村演变 (Q46–Q50)',
-          sentences: [
-            "With population increases and global urbanisation ever accelerating, much attention is focused on the sustainability of our cities and scarce attention is paid to the countryside.",
-            "Rural life is associated with closely-knit communities, sense of belonging, and a simple, tranquil life. Yet country dwellers across the world are moving out, leaving the countryside in desolation.",
-            "Due to intermittent public transport, those living in the countryside are heavier automobile users. We may be piled up like boxes in the city, but this brings energy efficiency that the countryside cannot match.",
-            "Those who have made their fortunes in the city often buy second homes in the countryside. Market forces are further forcing residents out of the countryside. For those who believe in rural preservation, this is deplorable.",
-            "Considering these changes, surely an evolving countryside is inevitable. We know that the world is going to see current cities growing into megacities, but the future of the countryside is less clear."
-          ],
-          questions: [
-            { q: "46. What has become of the rural areas nowadays?", options: ["A) They are becoming somewhat deserted.", "B) Urbanised.", "C) Closely-knit.", "D) Conservation."], ans: 0, exp: "in desolation 对应 deserted。" },
-            { q: "47. What does the author think of the rural lifestyle?", options: ["A) Unlikely to survive.", "B) It is less energy-efficient compared to that in cities.", "C) Heavy cars.", "D) Affluent endorse."], ans: 1, exp: "energy efficiency that the countryside cannot match。" },
-            { q: "48. Rich urban residents buying a second home?", options: ["A) Mar life.", "B) Social stability.", "C) Hinder economy.", "D) It is detrimental to rural preservation."], ans: 3, exp: "deplorable for rural preservation。" },
-            { q: "49. Countryside with industrialisation?", options: ["A) It is destined to change gradually.", "B) Idealised.", "C) Foreign culture.", "D) Diversified."], ans: 0, exp: "evolving countryside is inevitable。" },
-            { q: "50. Future of countryside compared with cities?", options: ["A) Harder.", "B) Resemble cities.", "C) Stay static.", "D) It is less easy to envisage."], ans: 3, exp: "less clear 对应 less easy to envisage。" }
-          ]
-        },
-        {
-          id: 'r_2024_12_s3_p1',
-          title: '【2024.12 第3套 P1】“左右脑分工”的神经科学辟谣 (Q46–Q50)',
-          sentences: [
-            "There are hundreds of personality quizzes online that assert they can ascertain whether the right or left half of your brain is dominant. There's just one problem: That's not how brains work.",
-            "Despite this enduring belief, there's no such thing as being 'right-brained' or 'left-brained.' But the actual science of how the two halves of our brains work together is sometimes stranger than fiction.",
-            "Many scientists struggled with this idea, because the very suggestion that the left and right halves of the brain operate differently disrupted the idea that nature tends toward perfect symmetry.",
-            "The idea that we have left-dominant people and right-dominant people, and that this is related to personality, is categorically false. Neuroscientists don't believe that and never have.",
-            "When you come up with an online quiz that tells us something about ourselves, we're drawn to that. But you have to take it with an enormous grain of salt."
-          ],
-          questions: [
-            { q: "46. What do online personality quizzes claim?", options: ["A) Distinguish hemispheres.", "B) Determine whether one is left-brained or right-brained.", "C) Linguist or mathematician.", "D) Brain tasks."], ans: 1, exp: "定位 ascertain whether the right or left half is dominant。" },
-            { q: "47. What is sometimes stranger than fiction?", options: ["A) Creativity.", "B) Work alternately.", "C) How the two hemispheres of our brains cooperate.", "D) Dominates other."], ans: 2, exp: "work together 对应 cooperate。" },
-            { q: "48. Why did scientists struggle with brain differences?", options: ["A) It contradicts the assumption that the two hemispheres are symmetrical.", "B) Consistent universe.", "C) Conflict.", "D) Left side body."], ans: 0, exp: "disrupted perfect symmetry。" },
-            { q: "49. What belief have neuroscientists rejected?", options: ["A) There are left-dominant and right-dominant people with different personalities.", "B) Noticeable differences.", "C) Hardly related.", "D) Different areas."], ans: 0, exp: "categorically false。" },
-            { q: "50. Advice on online self-quizzes?", options: ["A) Authority.", "B) Originality.", "C) Popularity.", "D) Question its reliability."], ans: 3, exp: "take it with an enormous grain of salt。" }
-          ]
-        },
-        {
-          id: 'r_2024_12_s3_p2',
-          title: '【2024.12 第3套 P2】打破教室围墙的团队教学 (Q51–Q55)',
-          sentences: [
-            "Westwood High School piloted a classroom model known as team teaching which allows teachers to dissolve the walls that separate their classes.",
-            "What looks at times like chaos is in fact a carefully orchestrated plan: Each morning, the Westwood teams meet to hammer out a personalized program for every student.",
-            "Initial research suggests the gamble could pay off. Superintendent Andi Fourlis said: 'Our profession is so slow to advance because we are working in isolation.'",
-            "Overhauling teaching approaches can't fix low pay, but team teaching helps teachers improve instruction. English teacher Hall told a science teacher her lecture had bewildered him and teammates.",
-            "There are also thorny questions like how to evaluate four teachers on the performance of 135 students. But for the time being, it seems to be working."
-          ],
-          questions: [
-            { q: "51. What do we learn about team teaching?", options: ["A) Without walls.", "B) Choose teachers.", "C) Peer work.", "D) It is closely coordinated despite seeming confusion."], ans: 3, exp: "chaos is in fact a carefully orchestrated plan。" },
-            { q: "52. What does initial research suggest?", options: ["A) Raise pay.", "B) It could turn out to be a success.", "C) Cut costs.", "D) Gamble."], ans: 1, exp: "pay off 即取得成功。" },
-            { q: "53. What did Andi Fourlis say?", options: ["A) Morale.", "B) Too busy.", "C) Progress is slow due to lack of collaboration among teachers.", "D) Unnoticed."], ans: 2, exp: "working in isolation 对应缺乏协作。" },
-            { q: "54. Why cite Jeff Hall's experience?", options: ["A) Complementary.", "B) Puzzled.", "C) The new model helps inform the teacher how their instruction is received.", "D) Appraisal."], ans: 2, exp: "队友反馈让老师了解授课接收度。" },
-            { q: "55. Difficult problem in the new model?", options: ["A) Alone.", "B) Schedules.", "C) Recruit.", "D) How to assess each teacher's performance."], ans: 3, exp: "how to evaluate four teachers。" }
-          ]
-        },
-        {
-          id: 'r_2024_06_s1_p1',
-          title: '【2024.06 第1套 P1】职场安全干预与旁观者效应 (Q46–Q50)',
-          sentences: [
-            "It is irrefutable that employees know the difference between right and wrong. So why don't more employees intervene when they see someone exhibiting at-risk behavior in the workplace?",
-            "First, they need to see a risky situation unfold. Second, the company's culture needs to make them feel safe to speak up.",
-            "The psychology behind standing idly by is called diffusion of responsibility—the larger the crowd, the more people assume someone else will take care of it.",
-            "This crowd mentality is strong enough for people to evade their known responsibilities. Fear is the ultimate factor in not intervening—fear of penalty and fear that they'll have to do more work.",
-            "Supervisors play a critical role to alleviate workplace hazards and build a safety climate within their team."
-          ],
-          questions: [
-            { q: "46. Factor contributing to failure of intervention?", options: ["A) Slack supervision.", "B) Unfavorable workplace culture.", "C) Unforeseeable risk.", "D) Blocked communication."], ans: 1, exp: "company's culture needs to make them feel safe。" },
-            { q: "47. Meaning of 'diffusion of responsibility'?", options: ["A) Personal safety.", "B) Venture to participate.", "C) Idling.", "D) The more people around, the less chance someone will step forward to intervene."], ans: 3, exp: "旁观者效应核心定义。" },
-            { q: "48. When unsafe behavior is not addressed by leaders?", options: ["A) No one will intervene when they see similar behaviors.", "B) Easiest way.", "C) Extra caution.", "D) Emergency."], ans: 0, exp: "树立消极先例。" },
-            { q: "49. Ultimate reason workers won't act?", options: ["A) Defer action.", "B) Leadership.", "C) Isolated.", "D) Fear of having to do more work."], ans: 3, exp: "fear that they'll have to do more work。" },
-            { q: "50. Critical to ensuring workplace safety?", options: ["A) Equipment.", "B) Disciplined.", "C) Supervisors create a safety environment for timely intervention.", "D) Frontline."], ans: 2, exp: "build a safety climate。" }
-          ]
-        },
-        {
-          id: 'r_algo_2026',
-          title: '【六级预测精选 P7】算法推荐与认知窄化',
-          sentences: [
-            "Recommendation algorithms have become so ubiquitous that most readers barely notice how silently their curiosity is being curated.",
-            "By optimizing for immediate clicks, platforms inadvertently reward emotionally charged headlines over nuanced, evidence-based reporting.",
-            "Over time, this feedback loop erodes independent judgment and constructs an epistemic bubble in which dissenting viewpoints feel implausible."
-          ],
-          questions: [
-            { q: "1. Unintended consequence of optimizing for clicks?", options: ["A) Lose interest.", "B) Emotional headlines gain an advantage over nuanced reporting.", "C) Inaccessible.", "D) Stop long-form."], ans: 1, exp: "reward emotionally charged headlines over nuanced reporting。" }
-          ]
-        }
-      ];
 
       const WRITING_STEPS = [
         {
@@ -1127,81 +982,51 @@
         const text = range.startContainer.textContent || '';
         let start = range.startOffset;
         let end = range.startOffset;
-        while (start > 0 && /[a-zA-Z-]/.test(text[start - 1])) start--;
-        while (end < text.length && /[a-zA-Z-]/.test(text[end])) end++;
+        while (start > 0 && /[a-zA-Z'-]/.test(text[start - 1])) start--;
+        while (end < text.length && /[a-zA-Z'-]/.test(text[end])) end++;
         return text.slice(start, end);
       }
 
       function bindGlobalLongPressLookup() {
-        let pressTimer = null;
-        let startX = 0, startY = 0;
-
-        document.addEventListener('touchstart', (e) => {
-          const zone = e.target.closest('.lookup-zone');
-          if (!zone || e.touches.length !== 1) return;
-          if (['INPUT', 'TEXTAREA', 'BUTTON', 'SELECT'].includes(e.target.tagName)) return;
-          startX = e.touches[0].clientX;
-          startY = e.touches[0].clientY;
-          clearTimeout(pressTimer);
-          pressTimer = setTimeout(() => {
-            const word = getWordAtPoint(startX, startY);
-            if (word && word.length >= 2) {
-              openWordLookupModal(word);
-            }
-          }, 420);
-        }, { passive: true });
-
-        document.addEventListener('touchmove', (e) => {
-          if (!pressTimer || e.touches.length !== 1) return;
-          if (Math.abs(e.touches[0].clientX - startX) > 10 || Math.abs(e.touches[0].clientY - startY) > 10) {
-            clearTimeout(pressTimer);
-            pressTimer = null;
-          }
-        }, { passive: true });
-
-        document.addEventListener('touchend', () => {
-          clearTimeout(pressTimer);
-          pressTimer = null;
-        }, { passive: true });
-
-        // Also support double-click on desktop
-        document.addEventListener('dblclick', (e) => {
-          const zone = e.target.closest('.lookup-zone');
-          if (!zone || ['INPUT', 'TEXTAREA', 'BUTTON', 'SELECT'].includes(e.target.tagName)) return;
-          const sel = window.getSelection ? window.getSelection().toString().trim() : '';
-          if (sel && /^[a-zA-Z-]+$/.test(sel)) {
-            openWordLookupModal(sel);
-          }
+        let timer=null,x=0,y=0,target=null,blocked=null,blockedUntil=0;
+        const clear=()=>{clearTimeout(timer);timer=null;};
+        document.addEventListener('pointerdown',e=>{
+          clear();const zone=e.target.closest('.lookup-zone');
+          if(!zone||e.target.closest('input,textarea,button,select,.native-ink,.native-toolbar')||e.button>0)return;
+          x=e.clientX;y=e.clientY;target=e.target;
+          timer=setTimeout(()=>{timer=null;const word=getWordAtPoint(x,y);if(word?.length>=2){blocked=target.closest('.native-option')||target;blockedUntil=Date.now()+1000;openWordLookupModal(word);}},450);
+        });
+        document.addEventListener('pointermove',e=>{if(timer&&(Math.abs(e.clientX-x)>10||Math.abs(e.clientY-y)>10))clear();});
+        document.addEventListener('pointerup',clear);document.addEventListener('pointercancel',clear);window.addEventListener('scroll',clear,true);
+        document.addEventListener('click',e=>{if(blocked&&Date.now()<blockedUntil&&blocked.contains(e.target)){e.preventDefault();e.stopImmediatePropagation();blocked=null;}},true);
+        document.addEventListener('dblclick',e=>{
+          if(!e.target.closest('.lookup-zone')||e.target.closest('input,textarea,button,select,.native-ink'))return;
+          const selected=window.getSelection?.().toString().trim();if(selected&&/^[a-zA-Z'-]+$/.test(selected))openWordLookupModal(selected);
         });
       }
 
-      function openWordLookupModal(rawWord) {
-        const entry = lookupWordEntry(rawWord);
-        if (!entry) {
-          showToast(`意象库暂未收录 “${rawWord}”，可在词库页搜索其他词`);
-          return;
-        }
-        currentModalWord = entry;
-        document.getElementById('vm-word').textContent = entry.w;
-        document.getElementById('vm-imagery').textContent = entry.i;
-        document.getElementById('vm-ext').innerHTML = (entry.s || []).map(x => `<div>• ${x}</div>`).join('');
-        document.getElementById('vm-meaning').innerHTML = (entry.c || []).map(x => `<span class="px-2 py-0.5 rounded-full bg-accent-50 text-accent-800 border border-accent-100 text-xs">${x}</span>`).join('');
-        document.getElementById('vm-lost').innerHTML = `<strong>语感：</strong>${entry.l || ''}`;
-
-        // Render clickable synonyms if available
-        const synWrap = document.getElementById('vm-synonyms');
-        const syns = SYNONYM_NUANCES[entry.w.toLowerCase()] || state.aiSynonymCache[entry.w.toLowerCase()] || [];
-        if (syns.length) {
-          synWrap.innerHTML = `<div class="text-[11px] font-semibold text-muted">同义词细微差别（点击跳转）：</div>` +
-            syns.map(s => `<button type="button" class="vm-syn-jump w-full text-left px-3 py-1.5 rounded-lg bg-paper border border-gray-200 hover:border-accent-600 text-xs" data-w="${s.w}"><strong class="text-accent-800">${s.w}</strong>：${s.diff}</button>`).join('');
-          synWrap.querySelectorAll('.vm-syn-jump').forEach(btn => {
-            btn.addEventListener('click', () => openWordLookupModal(btn.dataset.w));
-          });
-        } else {
-          synWrap.innerHTML = '';
-        }
-
-        document.getElementById('vocab-modal').classList.remove('hidden');
+      let wordLookupToken=0;
+      async function openWordLookupModal(rawWord) {
+        const word=String(rawWord).toLowerCase().replace(/[^a-z'-]/g,'');if(word.length<2)return;
+        const token=++wordLookupToken,modal=document.getElementById('vocab-modal'),add=document.getElementById('vm-add-srs-btn'),retry=document.getElementById('vm-retry');
+        currentModalWord=null;add.disabled=true;retry.hidden=true;
+        document.getElementById('vm-word').textContent=word;
+        document.getElementById('vm-source').textContent='';
+        for(const id of ['vm-imagery','vm-ext','vm-meaning','vm-lost','vm-synonyms']){const el=document.getElementById(id);el.replaceChildren();el.classList.remove('hidden');}
+        document.getElementById('vm-imagery').textContent='正在查询…';document.getElementById('vm-lost').classList.add('hidden');modal.classList.remove('hidden');
+        let entry=lookupWordEntry(word);
+        try{
+          if(!entry)entry=await window.C6LanguageHelp.lookupDictionary(word);
+          if(token!==wordLookupToken||modal.classList.contains('hidden'))return;
+          currentModalWord=entry;add.disabled=false;
+          document.getElementById('vm-source').textContent=entry.kind==='dictionary'?`普通释义 · ${entry.source}`:'单词意象';
+          document.getElementById('vm-imagery').textContent=entry.kind==='dictionary'?'':entry.i;
+          const ext=document.getElementById('vm-ext');for(const definition of entry.s||[]){const div=document.createElement('div');div.textContent='• '+definition;ext.append(div);}
+          const meaning=document.getElementById('vm-meaning');for(const definition of entry.c||[]){const span=document.createElement('span');span.className='px-2 py-0.5 rounded-full bg-accent-50 text-accent-800 border border-accent-100 text-xs';span.textContent=definition;meaning.append(span);}
+          const lost=document.getElementById('vm-lost');if(entry.l){lost.textContent='语感：'+entry.l;lost.classList.remove('hidden');}
+          const wrap=document.getElementById('vm-synonyms'),syns=SYNONYM_NUANCES[entry.w.toLowerCase()]||state.aiSynonymCache[entry.w.toLowerCase()]||[];
+          for(const syn of syns){const btn=document.createElement('button');btn.type='button';btn.className='vm-syn-jump w-full text-left px-3 py-1.5 rounded-lg bg-paper border border-gray-200 text-xs';btn.textContent=syn.w+'：'+syn.diff;btn.onclick=()=>openWordLookupModal(syn.w);wrap.append(btn);}
+        }catch(e){if(token!==wordLookupToken||modal.classList.contains('hidden'))return;document.getElementById('vm-imagery').textContent=e.message||'词典暂不可用';retry.hidden=false;retry.onclick=()=>openWordLookupModal(word);}
       }
 
       // ---------- 7. Dual-Compatible AI Client ----------
@@ -1589,68 +1414,9 @@
       // ---------- TAB 3: Reading Lab ----------
       let hlModeActive = true;
       function renderReading() {
-        const sel = document.getElementById('reading-passage-select');
-        sel.innerHTML = '';
-        READING_PASSAGES.forEach((p, idx) => {
-          const opt = document.createElement('option');
-          opt.value = String(idx);
-          opt.textContent = p.title;
-          if (idx === state.readingIdx) opt.selected = true;
-          sel.appendChild(opt);
+        window.C6OriginalReading.mount(document.getElementById('original-reading-app'), {
+          onActivity: label => logStudyActivity(label)
         });
-
-        const passage = READING_PASSAGES[state.readingIdx] || READING_PASSAGES[0];
-        const body = document.getElementById('reading-passage-body');
-        body.innerHTML = '';
-        const hlSet = new Set(state.highlights[passage.id] || []);
-
-        passage.sentences.forEach((sent, idx) => {
-          const p = document.createElement('p');
-          p.className = 'hl-sentence ' + (hlSet.has(idx) ? 'active-hl' : '');
-          p.textContent = sent;
-          p.addEventListener('click', () => {
-            if (!hlModeActive) return;
-            const list = state.highlights[passage.id] || [];
-            state.highlights[passage.id] = list.includes(idx) ? list.filter(x => x !== idx) : [...list, idx];
-            saveState();
-            renderReading();
-          });
-          body.appendChild(p);
-        });
-
-        const qBox = document.getElementById('reading-questions-box');
-        qBox.innerHTML = '';
-        passage.questions.forEach((qItem) => {
-          const card = document.createElement('div');
-          card.className = 'p-4 rounded-xl border border-gray-200 space-y-2';
-          card.innerHTML = `<div class="text-xs font-semibold text-ink">${qItem.q}</div><div class="space-y-1.5 rq-opts"></div><div class="rq-fb hidden text-xs p-2.5 rounded-lg"></div>`;
-          const optsEl = card.querySelector('.rq-opts');
-          qItem.options.forEach((o, oi) => {
-            const b = document.createElement('button');
-            b.type = 'button';
-            b.className = 'w-full text-left px-3 py-2 rounded-lg border border-gray-200 text-xs hover:bg-accent-50/50 transition';
-            b.textContent = o;
-            b.addEventListener('click', () => {
-              const fb = card.querySelector('.rq-fb');
-              fb.classList.remove('hidden');
-              logStudyActivity(`阅读真题：${passage.title.slice(0, 14)}`);
-              if (oi === qItem.ans) {
-                fb.className = 'rq-fb text-xs p-2.5 rounded-lg bg-accent-50 text-accent-900 border border-accent-200';
-                fb.innerHTML = `<strong>✓ 正确。</strong> ${qItem.exp}`;
-                addXP(10);
-              } else {
-                fb.className = 'rq-fb text-xs p-2.5 rounded-lg bg-amber-50 text-amber-900 border border-amber-200';
-                fb.innerHTML = `<strong>× 正解为 ${qItem.options[qItem.ans].slice(0, 2)}。</strong> ${qItem.exp}`;
-              }
-            });
-            optsEl.appendChild(b);
-          });
-          qBox.appendChild(card);
-        });
-
-        const noteInput = document.getElementById('reading-note-input');
-        noteInput.value = state.readingNotes[passage.id] || '';
-        noteInput.oninput = () => { state.readingNotes[passage.id] = noteInput.value; saveState(); };
       }
 
       // ---------- TAB 4: Writing & Translation + AI Auto Grading ----------
@@ -2004,32 +1770,8 @@
             });
           });
         } else if (state.mockPart === 'part3') {
-          const rCont = document.createElement('div');
-          rCont.className = 'space-y-4';
-          [READING_PASSAGES[0], READING_PASSAGES[1]].forEach(pass => {
-            const blk = document.createElement('div');
-            blk.className = 'p-4 rounded-xl bg-paper border border-gray-200 space-y-3';
-            blk.innerHTML = `<div class="text-sm font-bold text-ink">${pass.title}</div><div class="text-xs leading-6 bg-white p-3.5 rounded-xl border border-gray-200 max-h-48 overflow-y-auto space-y-1.5">${pass.sentences.map(s => `<p>${s}</p>`).join('')}</div><div class="space-y-2 mr-q"></div>`;
-            const mq = blk.querySelector('.mr-q');
-            pass.questions.forEach((qObj, qi) => {
-              const qKey = `${pass.id}_${qi}`;
-              const chosen = state.mockAnswers.read[qKey];
-              const qDiv = document.createElement('div');
-              qDiv.className = 'space-y-1';
-              qDiv.innerHTML = `<div class="text-xs font-semibold">${qObj.q}</div><div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 mr-o"></div>`;
-              qObj.options.forEach((optText, oi) => {
-                const b = document.createElement('button');
-                b.type = 'button';
-                b.className = chosen === oi ? 'text-left px-3 py-1.5 rounded-lg border border-accent-600 bg-accent-50 text-xs font-semibold' : 'text-left px-3 py-1.5 rounded-lg border border-gray-200 bg-white text-xs';
-                b.textContent = optText;
-                b.addEventListener('click', () => { state.mockAnswers.read[qKey] = oi; saveState(); renderMock(); });
-                qDiv.querySelector('.mr-o').appendChild(b);
-              });
-              mq.appendChild(qDiv);
-            });
-            rCont.appendChild(blk);
-          });
-          ws.appendChild(rCont);
+          ws.innerHTML = '<div class="card p-6 space-y-4"><h3 class="text-base font-semibold">原卷阅读</h3><p class="text-sm text-muted">5 套原卷 · 选词填空 / 长篇匹配 / 仔细阅读</p><button type="button" id="open-original-reading" class="px-4 py-2 rounded-xl bg-accent-700 text-white text-sm">进入阅读</button></div>';
+          ws.querySelector('#open-original-reading').onclick = () => switchTab('reading');
         } else {
           const tTask = TRANSLATION_TASKS[0];
           ws.innerHTML = `
@@ -2062,24 +1804,6 @@
         if (!sec) return;
         playAudioSegment(sec.start, sec.end, (sec.sentences || []).map(s => s.text).join(' '));
         logStudyActivity(`精听播放：${sec.title}`);
-      });
-
-      // Reading controls
-      document.getElementById('reading-passage-select').addEventListener('change', (e) => { state.readingIdx = parseInt(e.target.value, 10) || 0; saveState(); renderReading(); });
-      document.getElementById('toggle-hl-mode-btn').addEventListener('click', (e) => {
-        hlModeActive = !hlModeActive;
-        e.target.textContent = hlModeActive ? '高亮笔：开启' : '高亮笔：关闭';
-      });
-      document.getElementById('reading-timer-btn').addEventListener('click', (e) => {
-        if (readingTimerId) { clearInterval(readingTimerId); readingTimerId = null; e.target.textContent = '继续'; }
-        else {
-          e.target.textContent = '暂停';
-          readingTimerId = setInterval(() => {
-            if (readingSecondsLeft > 0) readingSecondsLeft--;
-            document.getElementById('reading-timer-display').textContent = `${String(Math.floor(readingSecondsLeft / 60)).padStart(2, '0')}:${String(readingSecondsLeft % 60).padStart(2, '0')}`;
-            if (readingSecondsLeft === 0) { clearInterval(readingTimerId); readingTimerId = null; showToast('9 分钟阅读计时结束'); }
-          }, 1000);
-        }
       });
 
       // Writing switcher
@@ -2121,6 +1845,12 @@
       document.getElementById('vm-speak-btn').addEventListener('click', () => { if (currentModalWord) speakText(currentModalWord.w, 0.95); });
       document.getElementById('vm-add-srs-btn').addEventListener('click', () => {
         if (!currentModalWord) return;
+        if(currentModalWord.kind === 'dictionary') {
+          wordImageryMap.set(currentModalWord.w.toLowerCase(),currentModalWord);
+          if(!wordImageryBank.some(x=>x.w===currentModalWord.w))wordImageryBank.push(currentModalWord);
+          state.personalImagery ||= [];
+          if(!state.personalImagery.some(x=>x.w===currentModalWord.w))state.personalImagery.push(currentModalWord);
+        }
         const exists = state.wordbook.find(x => x.word.toLowerCase() === currentModalWord.w.toLowerCase());
         if (!exists) {
           state.wordbook.unshift({ word: currentModalWord.w, source: '长按抓词', reps: 0, interval: 0, due: Date.now() });
@@ -2185,17 +1915,9 @@
         document.getElementById('mock-start-btn').textContent = '开始计时';
       });
       document.getElementById('submit-full-mock-btn').addEventListener('click', () => {
-        let rCorrect = 0;
-        [READING_PASSAGES[0], READING_PASSAGES[1]].forEach(p => p.questions.forEach((q, qi) => { if (state.mockAnswers.read[`${p.id}_${qi}`] === q.ans) rCorrect++; }));
-        const readEst = Math.round(145 + (rCorrect / 10) * 95);
-        const listenEst = state.currentEst.listen || 155;
-        const writeEst = (state.mockAnswers.writeText?.length > 200 ? 80 : 72) + (state.mockAnswers.transText?.length > 120 ? 80 : 72);
-        const total = listenEst + readEst + writeEst;
-        state.currentEst = { listen: listenEst, read: readEst, write: writeEst };
-        state.mockHistory.unshift({ date: todayStr() + ' (全真)', listen: listenEst, read: readEst, write: writeEst, total });
-        logStudyActivity(`全真模考交卷：折算 ${total} 分`);
-        saveState(); renderMock();
-        showToast(`交卷完成！阅读对 ${rCorrect}/10，折算总分 ${total}`);
+        saveState();
+        logStudyActivity('保存模拟作答');
+        showToast('作答已保存；核对原卷答案后可录入成绩');
       });
       document.getElementById('mock-log-form').addEventListener('submit', (e) => {
         e.preventDefault();
@@ -2280,7 +2002,7 @@
       loadWordImageryBank();
       loadListeningIndex();
       renderHeaderExtras();
-      switchTab(state.activeTab || 'dashboard');
+      switchTab(new URLSearchParams(location.search).get('view') === 'reading' ? 'reading' : (state.activeTab || 'dashboard'));
     })();
   </script>
 </body>

@@ -1,5 +1,26 @@
 # Content attribution
 
+## User-supplied reading originals
+
+The five reading PDFs for 2025 December set 3, 2025 June sets 1/2 and 2024
+December sets 1/3 were supplied by the user on 2026-11-19. The reading UI displays
+native HTML passages, numbered questions and complete options, rather than
+a PDF viewer. The source files are preserved for auditing. Their SHA-256 hashes, page counts and
+type-specific page ranges are recorded in `assets/data/reading-papers.js`.
+The reading module uses no imported answer key: grading is enabled only after a user
+enters a reference key for the selected paper and question type.
+
+The 2025 June sets 1/2 text was extracted from the user's PDF. Clearer same-exam
+PDFs from the first repository below were used to correct extraction issues in
+2025 December set 3 and 2024 December sets 1/3. The structured data includes
+all 150 reading questions; the unrelated abbreviated question bank was removed.
+Previous handwritten annotations are not baked into the native text; the UI
+provides a new per-passage pen/highlighter overlay. The second repository was
+inspected but its question/answer data was not used:
+
+- https://github.com/0609x/CET46-Resources
+- https://github.com/Drhm1224/cet6-all-in-one
+
 ## CET-6 listening sets
 
 The listening audio, transcripts, question options, and answer keys for the
@@ -33,3 +54,5 @@ publisher; it is not an independent warranty for every underlying item.
 
 This project is an independent learning tool and is not affiliated with the
 National College English Testing Committee or the content publishers.
+
+The duplicate 2025 June set 1 upload was detected by SHA-256 and is included once.
