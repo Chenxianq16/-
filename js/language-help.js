@@ -1,7 +1,8 @@
 (() => {
   const KEY='c6_language_cache_v1',pending=new Map();
   let cache={};try{cache=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch{}
-  function remember(key,value){cache[key]={value,time:Date.now()};const keys=Object.keys(cache).sort((a,b)=>cache[a].time-cache[b].time);while(keys.length>250)delete cache[keys.shift()];try{localStorage.setItem(KEY,JSON.stringify(cache));}catch{}}
+  window.C6Storage?.ready.then(()=>{try{cache={...JSON.parse(window.C6Storage.read(KEY)||'{}'),...cache};}catch{}});
+  function remember(key,value){cache[key]={value,time:Date.now()};const keys=Object.keys(cache).sort((a,b)=>cache[a].time-cache[b].time);while(keys.length>250)delete cache[keys.shift()];if(window.C6Storage)window.C6Storage.write(KEY,cache);else try{localStorage.setItem(KEY,JSON.stringify(cache));}catch{}}
   async function memo(key,work){if(cache[key])return cache[key].value;if(pending.has(key))return pending.get(key);const task=work().then(v=>{remember(key,v);return v;}).finally(()=>pending.delete(key));pending.set(key,task);return task;}
   async function json(url){const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),18000);try{const r=await fetch(url,{signal:controller.signal});if(!r.ok)throw Error(`查询服务暂不可用（${r.status}）`);return await r.json();}catch(e){if(e.name==='AbortError')throw Error('查询超时，请重试');throw e;}finally{clearTimeout(timer);}}
   const bytes=s=>new TextEncoder().encode(s).length;

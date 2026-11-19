@@ -1,4 +1,5 @@
-(() => {
+(async () => {
+  if(window.C6Storage)await window.C6Storage.ready;
   'use strict';
   const TYPES = {
     cloze: {label:'选词填空', start:26, end:35, detail:'26–35 · 15 选 10'},
@@ -9,14 +10,14 @@
   let host, options={}, saveWarning=false;
   const initial=()=>({paperId:window.C6_READING_PAPERS[0].id,type:'cloze',records:{}});
   let state;
-  try { state={...initial(),...JSON.parse(localStorage.getItem(STORAGE)||'null')}; } catch { state=initial(); }
+  try { state={...initial(),...JSON.parse((window.C6Storage?window.C6Storage.read(STORAGE):localStorage.getItem(STORAGE))||'null')}; } catch { state=initial(); }
   if(!TYPES[state.type]) state.type='cloze';
   if(!window.C6_READING_PAPERS.some(p=>p.id===state.paperId))state.paperId=window.C6_READING_PAPERS[0].id;
   const paper=()=>window.C6_READING_PAPERS.find(p=>p.id===state.paperId);
   const numbers=type=>Array.from({length:TYPES[type].end-TYPES[type].start+1},(_,i)=>TYPES[type].start+i);
   function save(){
-    try{localStorage.setItem(STORAGE,JSON.stringify(state));saveWarning=false;return true;}
-    catch{saveWarning=true;return false;}
+    const task=window.C6Storage?window.C6Storage.write(STORAGE,state):Promise.resolve().then(()=>{try{localStorage.setItem(STORAGE,JSON.stringify(state));return true;}catch{return false;}});
+    return task.then(ok=>{saveWarning=!ok;if(host?.querySelector('.or-result'))updateResult();return ok;});
   }
   function record(){return state.records[state.paperId+':'+state.type] ||= {answers:{},note:'',keyRaw:'',key:null,submitted:false};}
   function parseKey(raw,type,lastLetter){
@@ -89,17 +90,27 @@
       card.append(el('div','native-feedback'));
       const savedKey=[p.id,state.type,state.type==='detailed'?state.part:0,q.number].join(':');
       const collect=el('button','native-collect',state.wrongQuestions[savedKey]?'已收藏错题':'加入错题本');collect.type='button';collect.disabled=Boolean(state.wrongQuestions[savedKey]);
-      collect.onclick=()=>{
+      collect.onclick=async()=>{
+        collect.disabled=true;collect.textContent="正在保存…";
         state.wrongQuestions[savedKey]={paperId:p.id,type:state.type,part:state.part,number:q.number,selected:r.answers[q.number]||'',addedAt:Date.now()};
-        if(!save()){delete state.wrongQuestions[savedKey];updateResult();return;}
+        if(!await save()){delete state.wrongQuestions[savedKey];collect.disabled=false;collect.textContent='重试收藏';updateResult();return;}
         collect.textContent='已收藏错题';collect.disabled=true;wrongBook.textContent=`错题本 (${Object.keys(state.wrongQuestions).length})`;
       };
       card.append(collect);qbox.append(card);
     }
     host.querySelector('.or-submit').textContent='提交本篇';
-    host.querySelector('.or-submit').onclick=()=>{r.submitted=true;if(state.type==='detailed'){r.submittedParts ||= {};r.submittedParts[state.part]=true;}save();updateResult();if(visibleQuestions().some(q=>r.answers[q.number]))options.onActivity?.(`阅读：${p.title} · ${TYPES[state.type].label}`);};
+    host.querySelector('.or-submit').onclick=async()=>{
+      const btn=host.querySelector('.or-submit');btn.disabled=true;btn.textContent='正在保存…';
+      const previousWrong={...state.wrongQuestions},previousSubmitted=r.submitted,previousParts={...r.submittedParts};
+      r.submitted=true;if(state.type==='detailed'){r.submittedParts ||= {};r.submittedParts[state.part]=true;}
+      if(r.key){for(const q of visibleQuestions()){if(r.answers[q.number]&&r.answers[q.number]!==r.key[q.number]){const id=[p.id,state.type,state.type==='detailed'?state.part:0,q.number].join(':');state.wrongQuestions[id]={paperId:p.id,type:state.type,part:state.part,number:q.number,selected:r.answers[q.number],addedAt:Date.now()};}}}
+      const ok=await save();btn.disabled=false;btn.textContent='提交本篇';
+      if(!ok){state.wrongQuestions=previousWrong;r.submitted=previousSubmitted;r.submittedParts=previousParts;updateResult();return;}
+      updateResult();
+      if(ok){render();if(visibleQuestions().some(q=>r.answers[q.number]))options.onActivity?.(`阅读：${p.title} · ${TYPES[state.type].label}`);}
+    };
     const key=host.querySelector('.or-key-input');key.value=r.keyRaw;key.placeholder=`录入 ${TYPES[state.type].start}–${TYPES[state.type].end} 参考答案`;
-    host.querySelector('.or-save-key').onclick=()=>{try{r.key=parseKey(key.value,state.type,p.matchingLastLetter);r.keyRaw=key.value;save();host.querySelector('.or-key-status').textContent='已保存你录入的参考答案';updateResult();}catch(e){host.querySelector('.or-key-status').textContent=e.message;}};
+    host.querySelector('.or-save-key').onclick=async()=>{try{r.key=parseKey(key.value,state.type,p.matchingLastLetter);r.keyRaw=key.value;const ok=await save();host.querySelector('.or-key-status').textContent=ok?'已保存你录入的参考答案':'保存失败，请重试';updateResult();}catch(e){host.querySelector('.or-key-status').textContent=e.message;}};
     const note=host.querySelector('.or-note');note.value=r.note;note.oninput=()=>{r.note=note.value;save();};
     host.querySelector('.or-reset').onclick=()=>{for(const q of visibleQuestions())delete r.answers[q.number];invalidate(r);save();render();};
     updateResult();cleanupInk=window.C6ReadingInk.attach({surface,toolbar:host.querySelector('.native-toolbar'),record:r.ink[inkKey],onSave:save});

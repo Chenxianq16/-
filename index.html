@@ -9,9 +9,10 @@
   <script src="./assets/data/reading-papers.js"></script>
   <script src="./assets/data/reading-native.js"></script>
   <script src="./js/reading-ink.js?v=20261119-switch"></script>
+  <script src="./js/durable-storage.js"></script>
   <script src="./js/study-core.js"></script>
-  <script src="./js/language-help.js?v=20261119-repairs"></script>
-  <script src="./js/reading-original.js?v=20261119-repairs"></script>
+  <script src="./js/language-help.js?v=20261119-database"></script>
+  <script src="./js/reading-original.js?v=20261119-database"></script>
   <link rel="stylesheet" href="./assets/reading.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -432,7 +433,8 @@
   <div id="toast" class="fixed bottom-5 right-5 z-50 hidden px-4 py-2.5 rounded-xl bg-ink text-white text-xs font-medium shadow-lg transition"></div>
 
   <script>
-    (function () {
+    (async function () {
+      await window.C6Storage.ready;
       const STORAGE_KEY = 'cet6_coach_v3';
 
       // ---------- 1. Curated Synonym Nuances (Clickable Jump Graph) ----------
@@ -754,7 +756,7 @@
       function loadState() {
         const def = getDefaultState();
         try {
-          const saved = localStorage.getItem(STORAGE_KEY);
+          const saved = window.C6Storage.read(STORAGE_KEY);
           const raw = saved || localStorage.getItem('cet6_coach_v2') || localStorage.getItem('cet6_coach_v1');
           if (!raw) return def;
           const parsed = JSON.parse(raw);
@@ -773,10 +775,10 @@
       }
 
       function saveState() {
-        try {
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-          return true;
-        } catch (e) { showToast('保存失败：浏览器存储空间不足或被禁用，请先导出进度'); return false; }
+        return window.C6Storage.write(STORAGE_KEY,state).then(ok=>{
+          if(!ok)showToast('浏览器暂时无法保存，请导出进度备份；已有记录不会清空');
+          return ok;
+        });
       }
 
       let state = loadState();
@@ -1916,10 +1918,10 @@
       // Error Modal
       document.getElementById('open-add-error-btn').addEventListener('click', () => document.getElementById('error-modal').classList.remove('hidden'));
       document.getElementById('close-error-modal-btn').addEventListener('click', () => document.getElementById('error-modal').classList.add('hidden'));
-      document.getElementById('add-error-form').addEventListener('submit', (e) => {
+      document.getElementById('add-error-form').addEventListener('submit', async (e) => {
         e.preventDefault();
         state.errorLogs.unshift({ id: 'e_' + Date.now(), pattern: document.getElementById('err-pattern').value, note: document.getElementById('err-note').value.trim(), fix: document.getElementById('err-fix').value.trim(), date: todayStr() });
-        if(!saveState()){state.errorLogs.shift();return;} e.target.reset(); document.getElementById('error-modal').classList.add('hidden'); renderDashboard(); showToast('错因已归档');
+        if(!await saveState()){state.errorLogs.shift();return;} e.target.reset(); document.getElementById('error-modal').classList.add('hidden'); renderDashboard(); showToast('错因已归档');
       });
 
       // Settings Modal
@@ -1952,7 +1954,7 @@
         document.getElementById('settings-modal').classList.remove('hidden');
       });
       document.getElementById('close-settings-btn').addEventListener('click', () => document.getElementById('settings-modal').classList.add('hidden'));
-      document.getElementById('save-settings-btn').addEventListener('click', () => {
+      document.getElementById('save-settings-btn').addEventListener('click', async () => {
         state.aiConfig = {
           mode: document.getElementById('ai-mode-worker').checked ? 'worker' : 'direct',
           baseUrl: document.getElementById('set-ai-baseurl').value.trim() || 'https://api.deepseek.com/chat/completions',
@@ -1966,7 +1968,7 @@
           write: parseInt(document.getElementById('set-target-write').value, 10) || 160
         };
         state.gamify = document.getElementById('set-gamify').checked;
-        if(!saveState())return;
+        if(!await saveState())return;
         document.getElementById('settings-modal').classList.add('hidden');
         renderHeaderExtras();
         renderDashboard();
@@ -1974,7 +1976,7 @@
       });
 
       document.getElementById('export-json-btn').addEventListener('click', () => {
-        const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+        const blob = new Blob([JSON.stringify({...state,originalReading:JSON.parse(window.C6Storage.read('c6_original_reading_v1')||'null')}, null, 2)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a'); a.href = url; a.download = `cet6-coach-backup-${todayStr()}.json`; a.click();
         URL.revokeObjectURL(url);
