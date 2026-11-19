@@ -31,8 +31,11 @@ function jsonResponse(body, status, request, env) {
 }
 
 function validateBody(body) {
-  if (!body || !["sentence", "question", "article", "word"].includes(body.type)) {
+  if (!body || !["sentence", "question", "article", "word", "chat"].includes(body.type)) {
     throw new Error("Request type must be sentence, question, article, or word.");
+  }
+  if(body.type === 'chat') {
+    if(!String(body.userPrompt || '').trim() || String(body.userPrompt).length>24000 || String(body.systemPrompt || '').length>4000)throw new Error('Invalid chat prompt length.');
   }
   if (body.type === "sentence") {
     if (!String(body.reference || "").trim()) {
@@ -293,7 +296,7 @@ export default {
     }
 
     const instructions =
-      body.type === "sentence"
+      body.type === "chat" ? String(body.systemPrompt || 'You are a CET-6 study assistant.') + '\nReturn a JSON object with one field "reply" containing your complete answer as a string.' : body.type === "sentence"
         ? sentenceInstructions()
         : body.type === "question"
           ? questionInstructions()
@@ -310,7 +313,7 @@ export default {
         model: env.DEEPSEEK_MODEL || "deepseek-chat",
         messages: [
           { role: "system", content: instructions },
-          { role: "user", content: JSON.stringify(body) }
+          { role: "user", content: body.type === 'chat' ? body.userPrompt : JSON.stringify(body) }
         ],
         response_format: { type: "json_object" },
         max_tokens: 1800,

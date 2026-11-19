@@ -29,9 +29,9 @@
     });
   }
   async function lookupDictionary(raw){
-    const word=String(raw).toLowerCase().replace(/[^a-z'-]/g,'');if(word.length<2)throw Error('请选择英文单词');
+    const word=String(raw).trim().toLowerCase().replace(/[’‘]/g,"'").replace(/[^a-z'\-\s]/g,'').replace(/\s+/g,' ');if(word.length<2)throw Error('请选择英文单词');
     return memo('word:'+word,async()=>{
-      const [dict,zh]=await Promise.allSettled([json('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(word)),translate(word)]);
+      const [dict,zh]=await Promise.allSettled([word.includes(' ')?Promise.resolve([]):json('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(word)),translate(word)]);
       if(zh.status==='rejected')throw zh.reason;
       const definitions=dict.status==='fulfilled'&&Array.isArray(dict.value)?dict.value.flatMap(e=>(e.meanings||[]).flatMap(m=>(m.definitions||[]).slice(0,2).map(d=>`${m.partOfSpeech}: ${d.definition}`))).slice(0,5):[];
       return {w:word,i:zh.value,s:definitions,c:[zh.value],l:'',kind:'dictionary',source:definitions.length?'Free Dictionary / MyMemory':'MyMemory 中译',e:[]};

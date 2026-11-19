@@ -2,6 +2,12 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import worker from "../worker/src/index.js";
 
+test('worker accepts compatible chat prompts and returns the model reply', async()=>{
+ const original=globalThis.fetch;
+ globalThis.fetch=async(_url,options)=>{const body=JSON.parse(options.body);assert.match(body.messages[0].content,/reply/);return new Response(JSON.stringify({choices:[{message:{content:'{"reply":"批改成功"}'}}]}));};
+ try{const response=await worker.fetch(new Request('https://worker.example/api/analyze',{method:'POST',headers:{Origin:'https://chenxianq16.github.io','Content-Type':'application/json'},body:JSON.stringify({type:'chat',systemPrompt:'Review writing.',userPrompt:'My essay.'})}),{ALLOWED_ORIGIN:'https://chenxianq16.github.io',DEEPSEEK_API_KEY:'test'});assert.equal(response.status,200);assert.equal((await response.json()).data.reply,'批改成功');}finally{globalThis.fetch=original;}
+});
+
 test("worker answers CORS preflight", async () => {
   const response = await worker.fetch(
     new Request("https://worker.example/api/analyze", {

@@ -9,8 +9,9 @@
   <script src="./assets/data/reading-papers.js"></script>
   <script src="./assets/data/reading-native.js"></script>
   <script src="./js/reading-ink.js?v=20261119-switch"></script>
-  <script src="./js/language-help.js"></script>
-  <script src="./js/reading-original.js"></script>
+  <script src="./js/study-core.js"></script>
+  <script src="./js/language-help.js?v=20261119-repairs"></script>
+  <script src="./js/reading-original.js?v=20261119-repairs"></script>
   <link rel="stylesheet" href="./assets/reading.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -346,6 +347,8 @@
           </div>
         </div>
 
+        <button type="button" id="test-ai-btn" class="px-3 py-2 rounded-lg bg-accent-50 text-accent-800">测试连接</button>
+        <p id="ai-test-result" class="text-xs text-muted" role="status"></p>
         <div id="ai-worker-fields" class="hidden space-y-2">
           <input type="url" id="set-worker-url" placeholder="https://lingosu.online/cet6-listening-ai/api/analyze" class="w-full px-3 py-2 rounded-xl border border-gray-200 bg-white font-mono text-xs" />
         </div>
@@ -398,7 +401,7 @@
           <option value="高级句式单一">高级句式单一（写作）</option>
         </select>
         <input type="text" id="err-note" required placeholder="具体错题点" class="w-full px-3 py-2 rounded-xl border border-gray-200" />
-        <input type="text" id="err-fix" required placeholder="修正策略" class="w-full px-3 py-2 rounded-xl border border-gray-200" />
+        <input type="text" id="err-fix" placeholder="修正策略（选填）" class="w-full px-3 py-2 rounded-xl border border-gray-200" />
         <button type="submit" class="w-full py-2.5 rounded-xl bg-accent-700 text-white font-semibold">保存到错题本</button>
       </form>
     </div>
@@ -762,6 +765,9 @@
             result.selectedWord = parsed.srsCards.find(c=>c.id===parsed.selectedSrsWordId)?.word || 'cling';
             for (const key of ['highlights','readingNotes','writingDrafts','translationDrafts','mockAnswers','listeningSectionIdx']) result[key]=def[key];
           }
+          if(/\/api\/analyze\/?$/.test(result.aiConfig.baseUrl?.trim()||'')){result.aiConfig.workerUrl=result.aiConfig.baseUrl.trim();result.aiConfig.mode='worker';}
+          result.errorLogs=Array.isArray(result.errorLogs)?result.errorLogs:def.errorLogs;
+          result.wordbook=Array.isArray(result.wordbook)?result.wordbook.filter(x=>typeof x.word==='string'&&x.word.trim()):def.wordbook;
           return result;
         } catch { return def; }
       }
@@ -769,17 +775,18 @@
       function saveState() {
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-        } catch (e) {}
+          return true;
+        } catch (e) { showToast('保存失败：浏览器存储空间不足或被禁用，请先导出进度'); return false; }
       }
 
       let state = loadState();
       function mergeWordBank(base) {
-        const map = new Map(base.map(item=>[item.w.toLowerCase(),item]));
-        for (const item of state.personalImagery || []) map.set(item.w.toLowerCase(),item);
+        const map = new Map(base.map(item=>[window.C6StudyCore.normalizeWord(item.w),item]));
+        for (const item of state.personalImagery || []) map.set(window.C6StudyCore.normalizeWord(item.w),item);
         return [...map.values()];
       }
       let wordImageryBank = mergeWordBank(FALLBACK_WORDS);
-      let wordImageryMap = new Map(wordImageryBank.map(item => [item.w.toLowerCase(), item]));
+      let wordImageryMap = new Map(wordImageryBank.map(item => [window.C6StudyCore.normalizeWord(item.w), item]));
       let listeningIndex = [];
       let currentListeningExam = FALLBACK_LISTENING;
       let scoreChartInstance = null;
@@ -885,7 +892,7 @@
           const data = await res.json();
           if (Array.isArray(data) && data.length > 100) {
             wordImageryBank = mergeWordBank(data);
-            wordImageryMap = new Map(wordImageryBank.map(item => [item.w.toLowerCase(), item]));
+            wordImageryMap = new Map(wordImageryBank.map(item => [window.C6StudyCore.normalizeWord(item.w), item]));
             if (pill) pill.textContent = `已同步原库 ${data.length} 词`;
             if (state.activeTab === 'srs') renderSRS();
           }
@@ -946,9 +953,10 @@
       // ---------- 6. Word Lookup & Mobile Long-Press Engine ----------
       function lookupWordEntry(raw) {
         if (!raw) return null;
-        const clean = raw.toLowerCase().replace(/[^a-z-]/g, '');
+        const clean = window.C6StudyCore.normalizeWord(raw);
         if (!clean || clean.length < 2) return null;
         if (wordImageryMap.has(clean)) return wordImageryMap.get(clean);
+        if(clean.includes(' '))return null;
         // Basic inflection stripping
         const candidates = [
           clean.replace(/ies$/, 'y'),
@@ -1030,40 +1038,8 @@
       }
 
       // ---------- 7. Dual-Compatible AI Client ----------
-      async function callDualAi(systemPrompt, userPrompt, workerPayload = null) {
-        const cfg = state.aiConfig;
-        if (cfg.mode === 'worker') {
-          const url = (cfg.workerUrl || '').trim();
-          if (!url) throw new Error('请先在设置中填写 Worker 地址');
-          const res = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(workerPayload || { type: 'article', text: userPrompt })
-          });
-          if (!res.ok) throw new Error(`Worker 返回 ${res.status}（可能未放行该类型或跨域受限，可切到直连 API Key）`);
-          return await res.json();
-        } else {
-          const key = (cfg.apiKey || '').trim();
-          if (!key) throw new Error('请先点击右上角「设置」填写你的 DeepSeek / OpenAI API Key');
-          const res = await fetch((cfg.baseUrl || 'https://api.deepseek.com/chat/completions').trim(), {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${key}`
-            },
-            body: JSON.stringify({
-              model: (cfg.model || 'deepseek-chat').trim(),
-              messages: [
-                { role: 'system', content: systemPrompt },
-                { role: 'user', content: userPrompt }
-              ],
-              temperature: 0.3
-            })
-          });
-          if (!res.ok) throw new Error(`API 请求失败 (${res.status})`);
-          const data = await res.json();
-          return data.choices?.[0]?.message?.content || '';
-        }
+      async function callDualAi(systemPrompt,userPrompt,workerPayload=null) {
+        return window.C6StudyCore.requestAi(state.aiConfig,systemPrompt,userPrompt,workerPayload);
       }
 
       // ---------- 8. Header & Tabs ----------
@@ -1540,19 +1516,27 @@
         wbDueBtn.className = state.wordbookFilter === 'due' ? 'px-3 py-1 rounded-lg text-xs font-semibold bg-ink text-white' : 'px-3 py-1 rounded-lg text-xs font-medium bg-gray-100 text-gray-600';
         wbAllBtn.className = state.wordbookFilter === 'all' ? 'px-3 py-1 rounded-lg text-xs font-semibold bg-ink text-white' : 'px-3 py-1 rounded-lg text-xs font-medium bg-gray-100 text-gray-600';
 
-        const entry = lookupWordEntry(state.selectedWord) || wordImageryBank[0];
+        const requested=state.selectedWord;
+        const entry = lookupWordEntry(requested);
+        if(!entry){
+          const stage=document.getElementById('srs-card-stage');stage.replaceChildren();
+          const title=document.createElement('h3');title.textContent=requested;stage.append(title);
+          const message=document.createElement('p');message.textContent='正在查询该词…';stage.append(message);
+          resolveWord(requested).then(()=>{if(state.activeTab==='srs'&&state.selectedWord===requested)renderSRS();}).catch(err=>{if(state.selectedWord!==requested)return;message.textContent=err.message;const retry=document.createElement('button');retry.textContent='重新查询';retry.onclick=()=>renderSRS();stage.append(retry);});
+          return;
+        }
         const stage = document.getElementById('srs-card-stage');
         stage.innerHTML = '';
 
-        const wKey = entry.w.toLowerCase();
+        const wKey = window.C6StudyCore.normalizeWord(entry.w);
         const syns = SYNONYM_NUANCES[wKey] || state.aiSynonymCache[wKey] || [];
-        const inWordbook = state.wordbook.find(item => item.word.toLowerCase() === wKey);
+        const inWordbook = state.wordbook.find(item => window.C6StudyCore.normalizeWord(item.word) === wKey);
 
         const top = document.createElement('div');
         top.className = 'space-y-4';
         top.innerHTML = `
           <div class="flex flex-wrap items-center justify-between gap-2">
-            <span class="px-2.5 py-0.5 rounded-md bg-accent-50 text-accent-800 text-[11px] font-semibold">${inWordbook ? inWordbook.source : '3,207 词意象原库'}</span>
+            <span class="px-2.5 py-0.5 rounded-md bg-accent-50 text-accent-800 text-[11px] font-semibold">${inWordbook ? (inWordbook.source || '个人词库') : '3,207 词意象原库'}</span>
             <div class="flex items-center gap-1.5">
               <button type="button" id="srs-toggle-mask-btn" class="px-2.5 py-1 rounded-lg border border-gray-200 bg-white text-xs text-gray-600">${srsFlipped ? '收起' : '展开'}</button>
               <button type="button" id="srs-speak-btn" class="px-2.5 py-1 rounded-lg border border-gray-200 bg-white text-xs">发音</button>
@@ -1626,15 +1610,7 @@
 
         top.querySelectorAll('.syn-jump-btn').forEach(btn => {
           btn.addEventListener('click', () => {
-            const target = lookupWordEntry(btn.dataset.w);
-            if (target) {
-              state.selectedWord = target.w;
-              srsFlipped = true;
-              saveState();
-              renderSRS();
-            } else {
-              showToast(`意象原库暂未收录 "${btn.dataset.w}"`);
-            }
+            jumpToWord(btn.dataset.w);
           });
         });
 
@@ -1678,7 +1654,7 @@
           b.className = 'py-2 rounded-xl border border-gray-200 bg-white hover:bg-accent-50 text-xs font-medium transition';
           b.textContent = g.label;
           b.addEventListener('click', () => {
-            let wbItem = state.wordbook.find(x => x.word.toLowerCase() === wKey);
+            let wbItem = state.wordbook.find(x => window.C6StudyCore.normalizeWord(x.word) === wKey);
             if (!wbItem) {
               wbItem = { word: entry.w, source: '意象复习', reps: 0, interval: 0, due: Date.now() };
               state.wordbook.unshift(wbItem);
@@ -1687,7 +1663,7 @@
             wbItem.interval = g.days;
             wbItem.due = Date.now() + (g.days === 0 ? 60000 : g.days * 86400000);
             logStudyActivity(`意象词库复习：${entry.w}`);
-            const nextDue = state.wordbook.find(x => x.due <= Date.now() && x.word.toLowerCase() !== wKey);
+            const nextDue = state.wordbook.find(x => x.due <= Date.now() && window.C6StudyCore.normalizeWord(x.word) !== wKey);
             if (nextDue) state.selectedWord = nextDue.word;
             addXP(5);
             saveState();
@@ -1713,14 +1689,14 @@
             const wEntry = lookupWordEntry(wb.word);
             const btn = document.createElement('button');
             btn.type = 'button';
-            btn.className = wb.word.toLowerCase() === wKey
+            btn.className = window.C6StudyCore.normalizeWord(wb.word) === wKey
               ? 'w-full text-left flex items-center justify-between px-3 py-2 rounded-xl bg-accent-50 border border-accent-200'
               : 'w-full text-left flex items-center justify-between px-3 py-2 rounded-xl hover:bg-gray-50 border border-transparent';
             btn.innerHTML = `
               <div class="truncate pr-2"><strong class="text-ink">${wb.word}</strong> <span class="text-muted text-[11px] ml-1">${wEntry ? wEntry.i : ''}</span></div>
               <span class="shrink-0 text-[10px] font-mono text-accent-700">${wb.source}</span>
             `;
-            btn.addEventListener('click', () => { state.selectedWord = wb.word; srsFlipped = true; saveState(); renderSRS(); });
+            btn.addEventListener('click', () => jumpToWord(wb.word));
             listEl.appendChild(btn);
           });
         }
@@ -1812,14 +1788,20 @@
       // Word Imagery Search
       const searchInput = document.getElementById('imagery-search-input');
       const suggestBox = document.getElementById('imagery-suggest-box');
-      function jumpToWord(q) {
-        const entry = lookupWordEntry(q);
-        if (entry) {
-          state.selectedWord = entry.w; srsFlipped = true; suggestBox.classList.add('hidden'); saveState(); renderSRS();
-        } else {
-          showToast(`词库暂未收录 “${q}”`);
-        }
+      async function resolveWord(raw) {
+        const normalized=window.C6StudyCore.normalizeWord(raw);
+        const known=lookupWordEntry(normalized);if(known)return known;
+        const definition=await window.C6LanguageHelp.lookupDictionary(normalized);
+        const arrived=lookupWordEntry(normalized);if(arrived)return arrived;
+        wordImageryMap.set(normalized,definition);wordImageryBank.push(definition);
+        state.personalImagery ||= [];if(!state.personalImagery.some(x=>window.C6StudyCore.normalizeWord(x.w)===normalized))state.personalImagery.push(definition);
+        saveState();return definition;
       }
+      async function jumpToWord(q) {
+        const normalized=window.C6StudyCore.normalizeWord(q);if(!normalized)return;
+        state.selectedWord=normalized;srsFlipped=true;suggestBox.classList.add('hidden');saveState();renderSRS();
+      }
+
       searchInput.addEventListener('input', () => {
         const q = searchInput.value.trim().toLowerCase();
         if (!q) { suggestBox.classList.add('hidden'); return; }
@@ -1937,7 +1919,7 @@
       document.getElementById('add-error-form').addEventListener('submit', (e) => {
         e.preventDefault();
         state.errorLogs.unshift({ id: 'e_' + Date.now(), pattern: document.getElementById('err-pattern').value, note: document.getElementById('err-note').value.trim(), fix: document.getElementById('err-fix').value.trim(), date: todayStr() });
-        saveState(); e.target.reset(); document.getElementById('error-modal').classList.add('hidden'); renderDashboard(); showToast('错因已归档');
+        if(!saveState()){state.errorLogs.shift();return;} e.target.reset(); document.getElementById('error-modal').classList.add('hidden'); renderDashboard(); showToast('错因已归档');
       });
 
       // Settings Modal
@@ -1948,6 +1930,13 @@
       document.getElementById('ai-mode-direct').addEventListener('change', () => syncAiModeUI('direct'));
       document.getElementById('ai-mode-worker').addEventListener('change', () => syncAiModeUI('worker'));
 
+      document.getElementById('test-ai-btn').onclick=async()=>{
+        const btn=document.getElementById('test-ai-btn'),result=document.getElementById('ai-test-result');
+        const cfg={mode:document.getElementById('ai-mode-worker').checked?'worker':'direct',baseUrl:document.getElementById('set-ai-baseurl').value,model:document.getElementById('set-ai-model').value,apiKey:document.getElementById('set-ai-key').value.trim(),workerUrl:document.getElementById('set-worker-url').value};
+        btn.disabled=true;result.textContent='正在测试…';
+        try{await window.C6StudyCore.requestAi(cfg,'Reply OK.','Connection test.',{type:'word',word:'test'},true);result.textContent='连接成功';if(/\/api\/analyze\/?$/.test(cfg.baseUrl.trim())){document.getElementById('ai-mode-worker').checked=true;document.getElementById('set-worker-url').value=cfg.baseUrl.trim();syncAiModeUI('worker');}else if(cfg.mode==='direct')document.getElementById('set-ai-baseurl').value=window.C6StudyCore.endpoint(cfg.baseUrl);}
+        catch(e){result.textContent=e.message;}finally{btn.disabled=false;}
+      };
       document.getElementById('open-settings-btn').addEventListener('click', () => {
         document.getElementById('ai-mode-direct').checked = state.aiConfig.mode === 'direct';
         document.getElementById('ai-mode-worker').checked = state.aiConfig.mode === 'worker';
@@ -1977,7 +1966,7 @@
           write: parseInt(document.getElementById('set-target-write').value, 10) || 160
         };
         state.gamify = document.getElementById('set-gamify').checked;
-        saveState();
+        if(!saveState())return;
         document.getElementById('settings-modal').classList.add('hidden');
         renderHeaderExtras();
         renderDashboard();

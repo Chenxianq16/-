@@ -15,8 +15,8 @@
   const paper=()=>window.C6_READING_PAPERS.find(p=>p.id===state.paperId);
   const numbers=type=>Array.from({length:TYPES[type].end-TYPES[type].start+1},(_,i)=>TYPES[type].start+i);
   function save(){
-    try{localStorage.setItem(STORAGE,JSON.stringify(state));saveWarning=false;}
-    catch{saveWarning=true;}
+    try{localStorage.setItem(STORAGE,JSON.stringify(state));saveWarning=false;return true;}
+    catch{saveWarning=true;return false;}
   }
   function record(){return state.records[state.paperId+':'+state.type] ||= {answers:{},note:'',keyRaw:'',key:null,submitted:false};}
   function parseKey(raw,type,lastLetter){
@@ -56,6 +56,8 @@
     for(const [key,t]of Object.entries(TYPES)){const b=el('button','or-type');b.type='button';b.dataset.type=key;b.setAttribute('aria-pressed',String(key===state.type));b.append(el('strong','',t.label),el('span','',t.detail));b.onclick=()=>{state.type=key;save();render();};host.querySelector('.or-types').append(b);}
     if(state.type==='detailed')for(let i=0;i<2;i++){const b=el('button','native-part',i===0?'篇一 · 46–50':'篇二 · 51–55');b.type='button';b.dataset.part=i;b.setAttribute('aria-pressed',String(i===state.part));b.onclick=()=>{state.part=i;save();render();};host.querySelector('.native-subtabs').append(b);}
     const surface=host.querySelector('.native-surface');
+    state.wrongQuestions ||= {};
+    const wrongBook=el('button','native-wrongbook',`错题本 (${Object.keys(state.wrongQuestions).length})`);wrongBook.type='button';wrongBook.onclick=showWrongBook;host.querySelector('.or-heading').append(wrongBook);
     host.querySelector('.native-question-panel').classList.add('lookup-zone');
     const content=state.type==='detailed'?data.detailed[state.part]:data[state.type];
     if(state.type==='cloze'){
@@ -84,7 +86,15 @@
         const opts=state.type==='cloze'?content.options:content.paragraphs.map(x=>({letter:x.letter,text:`段落 ${x.letter}`}));
         for(const opt of opts){const item=el('option','',state.type==='cloze'?`${opt.letter}. ${opt.text}`:opt.text);item.value=opt.letter;choice.append(item);}choice.value=r.answers[q.number]||'';choice.onchange=()=>{r.answers[q.number]=choice.value;invalidate(r);save();updateResult();};card.append(choice);
       }
-      card.append(el('div','native-feedback'));qbox.append(card);
+      card.append(el('div','native-feedback'));
+      const savedKey=[p.id,state.type,state.type==='detailed'?state.part:0,q.number].join(':');
+      const collect=el('button','native-collect',state.wrongQuestions[savedKey]?'已收藏错题':'加入错题本');collect.type='button';collect.disabled=Boolean(state.wrongQuestions[savedKey]);
+      collect.onclick=()=>{
+        state.wrongQuestions[savedKey]={paperId:p.id,type:state.type,part:state.part,number:q.number,selected:r.answers[q.number]||'',addedAt:Date.now()};
+        if(!save()){delete state.wrongQuestions[savedKey];updateResult();return;}
+        collect.textContent='已收藏错题';collect.disabled=true;wrongBook.textContent=`错题本 (${Object.keys(state.wrongQuestions).length})`;
+      };
+      card.append(collect);qbox.append(card);
     }
     host.querySelector('.or-submit').textContent='提交本篇';
     host.querySelector('.or-submit').onclick=()=>{r.submitted=true;if(state.type==='detailed'){r.submittedParts ||= {};r.submittedParts[state.part]=true;}save();updateResult();if(visibleQuestions().some(q=>r.answers[q.number]))options.onActivity?.(`阅读：${p.title} · ${TYPES[state.type].label}`);};
@@ -93,6 +103,13 @@
     const note=host.querySelector('.or-note');note.value=r.note;note.oninput=()=>{r.note=note.value;save();};
     host.querySelector('.or-reset').onclick=()=>{for(const q of visibleQuestions())delete r.answers[q.number];invalidate(r);save();render();};
     updateResult();cleanupInk=window.C6ReadingInk.attach({surface,toolbar:host.querySelector('.native-toolbar'),record:r.ink[inkKey],onSave:save});
+  }
+  function showWrongBook(){
+    const dialog=el('dialog','paragraph-dialog'),heading=el('div','paragraph-dialog-head');heading.append(el('h2','','阅读错题本'));const close=el('button','','×');close.type='button';close.onclick=()=>dialog.close();heading.append(close);dialog.append(heading);
+    const rows=Object.values(state.wrongQuestions||{}).sort((a,b)=>b.addedAt-a.addedAt);
+    if(!rows.length)dialog.append(el('p','','尚未收藏错题'));
+    for(const item of rows){const p=window.C6_READING_NATIVE.find(p=>p.id===item.paperId);if(!p)continue;const content=item.type==='detailed'?p.detailed[item.part]:p[item.type];const q=content.questions.find(q=>q.number===item.number);if(!q)continue;const button=el('button','wrongbook-row',`${p.title} · ${TYPES[item.type].label}\n${q.number}. ${q.stem}`);button.type='button';button.onclick=()=>{state.paperId=item.paperId;state.type=item.type;state.part=item.part;save();dialog.close();render();host.querySelector(`[data-question="${item.number}"]`)?.scrollIntoView({block:'center'});};dialog.append(button);}
+    dialog.onclose=()=>dialog.remove();document.body.append(dialog);dialog.showModal();
   }
   window.C6OriginalReading={mount(root,settings={}){options=settings;if(host===root)return;host=root;render();},parseKey,numbers};
 })();

@@ -1,5 +1,11 @@
 # DeepSeek Worker proxy
 
+In addition to the existing `sentence`, `question`, `article`, and `word`
+payloads, the Worker accepts `{type: "chat", systemPrompt, userPrompt}` with
+length validation. It returns `{data: {reply: "..."}}` for the homepage's
+writing, translation, synonym and daily-review requests. The existing deployed
+proxy was verified with a short real chat request on 2026-11-19.
+
 The browser calls this Worker instead of calling DeepSeek directly. This keeps
 the API key out of the public GitHub Pages site.
 

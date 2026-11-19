@@ -73,6 +73,10 @@
 .paragraph-source { font-size:13px; line-height:1.9; margin-top:12px; }
 .paragraph-dialog small { display:block; margin-top:20px; font-size:11px; color:#96a2ad; }
 .paragraph-retry { margin-top:14px; padding:8px 14px; border-radius:8px; color:#425f78; background:#edf3f8; }
+.native-collect { font-size:12px; color:#536f88; margin-top:10px; padding:5px 0; }
+.native-collect:disabled { color:#96a2ad; cursor:default; }
+.native-wrongbook { padding:9px 14px; border-radius:9px; color:#425f78; background:#e5edf4; font-size:13px; }
+.wrongbook-row { display:block; text-align:left; width:100%; white-space:pre-line; padding:15px 0; border-bottom:1px solid #edf1f5; font-size:13px; line-height:1.9; }
 #vm-add-srs-btn:disabled { opacity:.5; cursor:wait; }
 #vocab-modal > div { max-height:85vh; overflow-y:auto; }
 .native-question[data-grade="wrong"] { border-bottom-color:#d9b7ad; }
