@@ -7,8 +7,45 @@ import crypto from 'node:crypto';
 const context=vm.createContext({window:{addEventListener(){}},localStorage:{getItem(){return null;}}});
 vm.runInContext(fs.readFileSync(new URL('../assets/data/reading-papers.js',import.meta.url),'utf8'),context);
 vm.runInContext(fs.readFileSync(new URL('../assets/data/reading-native.js',import.meta.url),'utf8'),context);
+vm.runInContext(fs.readFileSync(new URL('../assets/data/reading-answers.js',import.meta.url),'utf8'),context);
 vm.runInContext(fs.readFileSync(new URL('../js/reading-original.js',import.meta.url),'utf8'),context);
 const api=context.window.C6OriginalReading;
+
+test('all uploaded reading questions have built-in keys that refer to actual available options',()=>{
+  let total=0;
+  for(const p of context.window.C6_READING_NATIVE)for(const type of ['cloze','matching','detailed']){
+    const key=api.referenceKey(p.id,type);
+    assert.equal(Object.keys(key).length,10);
+    const questions=type==='detailed'?p.detailed.flatMap(x=>x.questions):p[type].questions;
+    for(const q of questions){
+      const choices=type==='cloze'?p.cloze.options:type==='matching'?p.matching.paragraphs:q.options;
+      assert.ok(choices.some(x=>x.letter===key[q.number]),`${p.id} ${q.number}`);total++;
+    }
+  }
+  assert.equal(total,150);
+  assert.equal(api.referenceKey('2024-12-set3','cloze')[32],'G');
+  assert.equal(api.referenceKey('2025-06-set2','cloze')[34],'O');
+  assert.equal(api.referenceKey('2025-06-set1','detailed')[52],'D');
+});
+
+test('existing submissions gain verified keys and missing mistakes without changing answers, ink, notes or manual collections',()=>{
+  const saved={paperId:'2025-06-set1',type:'detailed',records:{
+    '2025-06-set1:detailed':{answers:{46:'A',47:'A',51:'A'},note:'retain note',ink:{p0:{strokes:[{points:[1,2]}]}},key:{46:'A'},keyRaw:'old manual key',submitted:true,submittedParts:{0:true}},
+    '2024-12-set3:cloze':{answers:{26:'A',32:'G'},submitted:true},
+    '2025-06-set2:matching':{answers:{36:'A'},submitted:false}
+  },wrongQuestions:{'2025-06-set1:detailed:0:47':{addedAt:123,selected:'B'}}};
+  const original=JSON.stringify(saved.records['2025-06-set1:detailed']);
+  assert.equal(api.restoreReferenceAnswers(saved),true);
+  const before=JSON.parse(original),after=saved.records['2025-06-set1:detailed'];
+  for(const field of ['answers','note','ink','keyRaw','submitted','submittedParts'])assert.deepEqual(after[field],before[field]);
+  assert.equal(after.key[46],'C');
+  assert.equal(after.keySource,'builtin');
+  assert.deepEqual(Object.keys(saved.wrongQuestions).sort(),['2024-12-set3:cloze:0:26','2025-06-set1:detailed:0:46','2025-06-set1:detailed:0:47']);
+  assert.equal(saved.wrongQuestions['2025-06-set1:detailed:0:47'].addedAt,123);
+  const snapshot=JSON.stringify(saved);
+  assert.equal(api.restoreReferenceAnswers(saved),false);
+  assert.equal(JSON.stringify(saved),snapshot);
+});
 test('native reading has all 150 numbered questions, complete word banks and four options per detailed question',()=>{
   let total=0;
   for(const p of context.window.C6_READING_NATIVE){

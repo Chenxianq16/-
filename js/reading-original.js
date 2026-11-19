@@ -19,7 +19,38 @@
     const task=window.C6Storage?window.C6Storage.write(STORAGE,state):Promise.resolve().then(()=>{try{localStorage.setItem(STORAGE,JSON.stringify(state));return true;}catch{return false;}});
     return task.then(ok=>{saveWarning=!ok;if(host?.querySelector('.or-result'))updateResult();return ok;});
   }
-  function record(){return state.records[state.paperId+':'+state.type] ||= {answers:{},note:'',keyRaw:'',key:null,submitted:false};}
+  function referenceKey(paperId,type){
+    const raw=window.C6_READING_ANSWERS?.papers[paperId]?.[type];
+    if(!raw)return null;
+    const metadata=window.C6_READING_PAPERS.find(p=>p.id===paperId);
+    return parseKey(raw,type,metadata.matchingLastLetter);
+  }
+  function applyReference(r,paperId,type){
+    const key=referenceKey(paperId,type);
+    if(key){r.key=key;r.keySource='builtin';r.keyVersion=window.C6_READING_ANSWERS.version;}
+    return r;
+  }
+  function record(){return applyReference(state.records[state.paperId+':'+state.type] ||= {answers:{},note:'',keyRaw:'',key:null,submitted:false},state.paperId,state.type);}
+  function restoreReferenceAnswers(snapshot){
+    let changed=false;
+    for(const p of window.C6_READING_NATIVE)for(const type of Object.keys(TYPES)){
+      const r=snapshot.records?.[p.id+':'+type];
+      if(!r||!referenceKey(p.id,type)||r.keyVersion===window.C6_READING_ANSWERS.version&&r.keySource==='builtin')continue;
+      applyReference(r,p.id,type);changed=true;
+      const parts=type==='detailed'?p.detailed:[p[type]];
+      parts.forEach((part,i)=>{
+        if(!(type==='detailed'?r.submittedParts?.[i]:r.submitted))return;
+        for(const q of part.questions){
+          const selected=r.answers?.[q.number],id=[p.id,type,i,q.number].join(':');
+          if(selected&&selected!==r.key[q.number]){
+            snapshot.wrongQuestions ||= {};
+            snapshot.wrongQuestions[id] ||= {paperId:p.id,type,part:i,number:q.number,selected,addedAt:Date.now()};
+          }
+        }
+      });
+    }
+    return changed;
+  }
   function parseKey(raw,type,lastLetter){
     const ns=numbers(type), maximum=type==='cloze'?'O':type==='matching'?lastLetter:'D';
     const text=raw.trim().toUpperCase(), result={};
@@ -44,7 +75,7 @@
   function invalidate(r){r.submitted=false;if(state.type==='detailed'){r.submittedParts ||= {};r.submittedParts[state.part]=false;}}
   function updateResult(){
     const r=record(),qs=visibleQuestions(),count=qs.filter(q=>r.answers[q.number]).length;
-    host.querySelector('.or-progress').textContent=`已答 ${count} / ${qs.length} · ${r.key?'已录入参考答案':'答案待核对'}`;
+    host.querySelector('.or-progress').textContent=`已答 ${count} / ${qs.length} · ${r.keySource==='builtin'?'答案已内置':r.key?'已录入参考答案':'答案待核对'}`;
     for(const row of host.querySelectorAll('.native-question')){const n=row.dataset.question;row.dataset.grade=submitted(r)&&r.key&&r.answers[n]?(r.answers[n]===r.key[n]?'correct':'wrong'):'';const fb=row.querySelector('.native-feedback');fb.textContent=submitted(r)&&r.key?`参考答案：${r.key[n]}`:'';}
     for(const p of host.querySelectorAll('.native-paragraph')){p.dataset.translationReady=String(submitted(r));p.title=submitted(r)?'点击查看段落翻译':'提交本篇后可查看段落翻译';p.tabIndex=submitted(r)?0:-1;}
     host.querySelector('.or-result').textContent=saveWarning?'浏览器暂时无法保存作答，请备份记录。':!submitted(r)?'':r.key?`本篇答对 ${qs.filter(q=>r.answers[q.number]===r.key[q.number]).length} / ${qs.length}`:'作答已提交；可点击段落查看翻译。参考答案尚未核对，暂不判分。';
@@ -109,8 +140,9 @@
       updateResult();
       if(ok){render();if(visibleQuestions().some(q=>r.answers[q.number]))options.onActivity?.(`阅读：${p.title} · ${TYPES[state.type].label}`);}
     };
-    const key=host.querySelector('.or-key-input');key.value=r.keyRaw;key.placeholder=`录入 ${TYPES[state.type].start}–${TYPES[state.type].end} 参考答案`;
-    host.querySelector('.or-save-key').onclick=async()=>{try{r.key=parseKey(key.value,state.type,p.matchingLastLetter);r.keyRaw=key.value;const ok=await save();host.querySelector('.or-key-status').textContent=ok?'已保存你录入的参考答案':'保存失败，请重试';updateResult();}catch(e){host.querySelector('.or-key-status').textContent=e.message;}};
+    if(r.keySource==='builtin')host.querySelector('.or-key').remove();
+    const key=host.querySelector('.or-key-input');if(key){key.value=r.keyRaw;key.placeholder=`录入 ${TYPES[state.type].start}–${TYPES[state.type].end} 参考答案`;
+    host.querySelector('.or-save-key').onclick=async()=>{try{r.key=parseKey(key.value,state.type,p.matchingLastLetter);r.keyRaw=key.value;const ok=await save();host.querySelector('.or-key-status').textContent=ok?'已保存你录入的参考答案':'保存失败，请重试';updateResult();}catch(e){host.querySelector('.or-key-status').textContent=e.message;}};}
     const note=host.querySelector('.or-note');note.value=r.note;note.oninput=()=>{r.note=note.value;save();};
     host.querySelector('.or-reset').onclick=()=>{for(const q of visibleQuestions())delete r.answers[q.number];invalidate(r);save();render();};
     updateResult();cleanupInk=window.C6ReadingInk.attach({surface,toolbar:host.querySelector('.native-toolbar'),record:r.ink[inkKey],onSave:save});
@@ -122,5 +154,6 @@
     for(const item of rows){const p=window.C6_READING_NATIVE.find(p=>p.id===item.paperId);if(!p)continue;const content=item.type==='detailed'?p.detailed[item.part]:p[item.type];const q=content.questions.find(q=>q.number===item.number);if(!q)continue;const button=el('button','wrongbook-row',`${p.title} · ${TYPES[item.type].label}\n${q.number}. ${q.stem}`);button.type='button';button.onclick=()=>{state.paperId=item.paperId;state.type=item.type;state.part=item.part;save();dialog.close();render();host.querySelector(`[data-question="${item.number}"]`)?.scrollIntoView({block:'center'});};dialog.append(button);}
     dialog.onclose=()=>dialog.remove();document.body.append(dialog);dialog.showModal();
   }
-  window.C6OriginalReading={mount(root,settings={}){options=settings;if(host===root)return;host=root;render();},parseKey,numbers};
+  if(restoreReferenceAnswers(state))save();
+  window.C6OriginalReading={mount(root,settings={}){options=settings;if(host===root)return;host=root;render();},parseKey,numbers,referenceKey,restoreReferenceAnswers};
 })();

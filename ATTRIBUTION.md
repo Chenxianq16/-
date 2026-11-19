@@ -7,8 +7,9 @@ December sets 1/3 were supplied by the user on 2026-11-19. The reading UI displa
 native HTML passages, numbered questions and complete options, rather than
 a PDF viewer. The source files are preserved for auditing. Their SHA-256 hashes, page counts and
 type-specific page ranges are recorded in `assets/data/reading-papers.js`.
-The reading module uses no imported answer key: grading is enabled only after a user
-enters a reference key for the selected paper and question type.
+The reading module includes reference keys for all 150 reading questions. Sources,
+paper identity checks, and corrections to conflicting online keys are recorded in
+[`assets/reading/ANSWER-SOURCES.md`](assets/reading/ANSWER-SOURCES.md).
 
 The 2025 June sets 1/2 text was extracted from the user's PDF. Clearer same-exam
 PDFs from the first repository below were used to correct extraction issues in
